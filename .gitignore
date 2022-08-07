@@ -1,0 +1,5 @@
+out
+.cipd
+.gclient_entries
+.gclient_previous_sync_commits
+third_party/dawn
