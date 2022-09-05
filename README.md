@@ -31,7 +31,7 @@ ninja
 Dawn has a lot of dependencies, in order to simplify things this repo is using
 the `gclient` command from
 [depot_tools](https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html#_setting_up)
-to handle the heavy lifting of checkout out all the neede dependencies.
+to handle the heavy lifting of checkout out all the needed dependencies.
 
 In order to make `gclient` happy we require a `git` repo for our project and it
 needs to have an commit. Simply doing the following will get things setup for
@@ -62,10 +62,10 @@ standard, c++20 is used for a few of the newer features. The only things of note
 are, adding the `third_party/dawn/include` directory to the `target_include_directories`
 and when linking the executable we add the following to the `target_link_libraries`:
 
-* webgpu_dawn
-* webgpu_cpp
-* webgpu_glfw
-* glfw
+* `webgpu_dawn`
+* `webgpu_cpp`
+* `webgpu_glfw`
+* `glfw`
 
 The last two are only needed because `GLFW` is being used for the window management.
 If something else is providing the window, and code is written to create the
