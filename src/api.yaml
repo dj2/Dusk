@@ -1,0 +1,127 @@
+constant:
+  array layer count undefined: Undefined value for array layer count
+  copy stride undefined: Undefined value for copy stride
+  limit u32 undefined: Undefined U32 limit value
+  limit u64 undefined: Undefined U64 limit value
+  mip level count undefined: Undefined MIP level count
+  stride undefined: Undefined stride
+  whole map size: Value representing size of entire map
+  whole size: Value representing the whole size value
+
+enum:
+  adapter type:
+    description: Provides information on the type of adapter.
+    values:
+      discrete GPU: A separate discrete GPU adapter
+      integrated GPU: An integrated GPU / CPU adapter
+      CPU: A CPU adapter
+      unknown: A unknown adapter type
+
+  address mode:
+    description: >
+      Describes the behaviour of the sampler if the sampler footprint extends
+      beyond the bounds of the sampled texture.
+    ref:
+      name: GPUAddressMode
+      anchor: '#enumdef-gpuaddressmode'
+    values:
+      repeat: Texture coordinates wrap to the other side of the texture
+      mirror repeat: >
+          Texture coordinates wrap to the other side of the texture, but the
+          texture is flipped when the integer part of the coordinate is odd.
+      clamp to edge: Texture coordinates are clamped between 0.0 and 1.0, inclusive.
+
+  alpha mode:
+    description: >
+      Selects how the contents of the surface will be interpreted when read,
+      when rendered to the screen or used as an image source.
+    ref:
+      name: GPUCanvasAlphaMode
+      anchor: '#GPUCanvasAlphaMode'
+    values:
+      premultiplied: >
+          Read RBGA as premultipled: color values are premultipled by their
+          alpha value.
+      unpremultiplied: >
+          Read RGBA as not premulitipled: Color values are not premultipled by
+          their alpha value
+      opaque: Read RGB as opaque and ignore alpha value
+
+  backend type:
+    description: >
+      Specifies the type of backend to use with Dawn.
+    ref:
+    values:
+      'null': A null backend
+      WebGPU: The WebGPU backend
+      D3D11: The D3D11 backend
+      D3D12: The D3D12 backend
+      metal: The Metal backend
+      vulkan: The Vulkan backend
+      openGL: The OpenGL backend
+      openGLES: The OpenGL ES backend
+
+bitmask:
+  texture usage:
+    description: Determine how a GPUTexture maybe be used after creation.
+    ref:
+      name: GPUTextureUsage
+      anchor: '#namespacedef-gputextureusage'
+    values:
+      none: No usage specified.
+      copy src: The texture can be used as the source of a copy operation.
+      copy dst: The texture can be used as the destination of a copy operation.
+      texture binding: >
+        The texture can be bound for use as a sampled texture in a shader.
+      storage binding: >
+        The texture can be bound for use as a storage texture in a shader.
+      render attachment: >
+        The texture can be used as a colour or depth/stencil attachment in a
+        render pass.
+      present: The texture can be used to "present" the texture on screen.
+
+function:
+  create instance:
+    description: Creates an instance of the Dawn WebGPU system
+    returns:
+      instance: The created %% instance %%.
+    args:
+      descriptor: The %% instance descriptor %% pointer. Maybe `%% null %%`.
+
+  get proc address:
+    description: >
+      Returns the function pointer for the requested WebGPU API method *procName*.
+    returns:
+      proc: The %% proc %% function pointer.
+    args:
+      device: The %% device %% to retrieve the proc for
+      proc name: The name of the pointer to retrieve
+
+structure:
+  adapter properties:
+    description: Property information for a specific adapter
+    values:
+      vendor ID: The ID for the adapter vendor
+      vendor name: The vendor name for the adapter
+      architecture: The architectue of the adapter
+      device ID: The device ID for the adapter
+      name: The name of the adapter
+      driver description: The driver description reported by the adapter
+      adapter type: The type of the adapter
+      backend type: The backend platform used by the adapter
+
+object:
+  adapter:
+    description: >
+      An *adapter* identifies an implemention of WebGPU on the system.
+    ref:
+        name: Adapters
+        anchor: '#adapters'
+    methods:
+      get limits:
+        description: Retrieves the limits which can be used with this adapter.
+        returns:
+          bool: Returns true if the limits were successfully retrieved.
+        args:
+          adapter: The %% adapter %% from which to query the limits.
+          limits: The %% supported limits %% object to populate. Must not be %% null %%.

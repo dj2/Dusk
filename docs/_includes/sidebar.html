@@ -1,0 +1,19 @@
+<div id="sidebar">
+  <section>
+    <h1>Examples</h1>
+    <ul>
+    </ul>
+  </section>
+  <section>
+    <details {% if page.title == 'C++ API' %}open{% endif %}>
+      <summary>C++ API</summary>
+      {% include cpp_nav.html %}
+    </details>
+  </section>
+  <section>
+      <details {% if page.title == 'C API' %}open{% endif %}>
+      <summary>C API</summary>
+      {% include c_nav.html %}
+    </details>
+  </section>
+</div>

@@ -1,0 +1,144 @@
+$table-border: #188eac;
+$shadow-colour: rgba(0, 0, 0, 0.15);
+
+* { box-sizing: border-box; }
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  padding-bottom: 2em;
+}
+
+header {
+  background-color: $table-border;
+  color: #fff;
+  padding: .5em 2em;
+  margin-bottom: 1em;
+}
+
+.wrapper {
+  display: flex;
+  padding: 0 1em;
+
+  h3 {
+    margin-bottom: 0;
+  }
+}
+
+#sidebar {
+  padding: 0 1em;
+
+  h1, h2 {
+    margin: 0;
+    padding: 0;
+  }
+  h2 {
+    padding-top: .5em;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  section {
+    margin-bottom: 1em;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  box-shadow: 0 0 20px $shadow-colour;
+
+  thead > tr {
+    border-radius: 5px;
+    background-color: $table-border;
+    color: #fff;
+    text-align: left;
+  }
+
+  th, td {
+    padding: 12px 15px;
+  }
+
+  tbody > tr {
+    border-bottom: 1px solid #ddd;
+
+    &:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+
+    &:last-of-type {
+      border-bottom: 2px solid $table-border;
+    }
+  }
+}
+
+.signature {
+  font-family: monospace;
+}
+
+.function {
+  box-shadow: 0 0 20px $shadow-colour;
+  margin-bottom: 1em;
+
+  .header-link {
+    text-decoration: none;
+  }
+
+  h3 {
+    background-color: $table-border;
+    color: #fff;
+    padding: 2px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .content {
+    padding: 5px;
+
+    h4 { margin-bottom: 0; }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 1em;
+    }
+  }
+}
+
+.object {
+  .header-link { text-decoration: none; }
+
+  h3 {
+    background-color: $table-border;
+    color: #fff;
+    padding: 2px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .method {
+    box-shadow: 0 0 20px $shadow-colour;
+    margin: .5em 0;
+    padding: .5em .5em;
+
+    h4 { margin-bottom: 0; }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 1em;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, minimum-scale=1">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <title>Dusk &mdash; {{ page.title }}</title>
+</head>
+<body>
+  <header>
+    <h1>Dusk WebGPU Documentation</h1>
+  </header>
+
+  <div class="wrapper">
+    {% include sidebar.html %}
+
+    <div class="main">
+      {{ content }}
+    </div>
+  </div>
+
+  {% include anchor_links.html %}
+</body>
+</html>
