@@ -79,3 +79,42 @@ The following examples are provided:
 * [02 - Coloured Triangle](src/example_02/README.md)
 * [03 - Using an Index Buffer](src/example_03/README.md)
 * [04 - Rotating Cube](src/example_04/README.md)
+
+## Doc Site
+The documentation site is served by GitHub pages. The generate is Jekyll. There
+are current two parts to the docs site, the C and C++ API generator and the site
+itself.
+
+### C and C++ API Generator
+The generator for the C and C++ API is `scripts/api_doc_generator.rb`. This script
+reads the `dawn.json` file in the `third_party/dawn` folder along with the
+`src/api.yaml` file and generates the API documentation.
+
+Warning messages are emitted for items in the `dawn.json` file which are not found
+in the `api.yaml` file. This should help in making sure all the appropriate
+values are documented, and hopefully catch API changes in `dawn.json` during
+future upgrades.
+
+Running the generator should just consist of:
+
+```shell
+./scripts/api_doc_generator.rb
+```
+
+### Jekyll Site
+The Jekyll site lives in the `docs` folder. In order to test the doc changes you'll
+need to install some RubyGems. This can be done with:
+
+```shell
+cd docs
+bundle install
+```
+
+With the appropriate gems installed, the site can be run by executing (still in
+the docs folder):
+
+```
+jekyll serve
+```
+
+This should launch the site on `localhosts:4000`.

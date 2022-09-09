@@ -1,0 +1,17 @@
+title: Dusk
+email: dsinclair@google.com
+description: Dusk WebGPU Documentation
+baseurl: "/"
+url: ""
+
+highlighter: rouge
+
+redcarpet:
+  extensions:
+    - no_intra_emphasis
+    - tables
+    - strikethrough
+    - with_toc_data
+    - hard_wrap
+    - no_styles
+    - safe_links_only

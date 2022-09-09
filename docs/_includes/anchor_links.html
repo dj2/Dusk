@@ -1,0 +1,30 @@
+<!-- Updates any h{2,3} elements to include an anchor tag for their ID -->
+<script>
+var gen_anchor = function(header) {
+  var anchor = document.createElement("a");
+  anchor.className = "header-link";
+  anchor.href = "#" + header.id;
+
+  header.parentNode.insertBefore(anchor, header);
+  anchor.appendChild(header);
+};
+
+var link_anchors = function(level, parent) {
+  var headers = parent.getElementsByTagName("h" + level);
+  for (var i = 0; i < headers.length; i++) {
+    var header = headers[i];
+    if (typeof header.id === "undefined" || header.id === "") {
+      continue;
+    }
+
+    gen_anchor(header);
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  var main = document.getElementsByClassName("main")[0];
+  for(var i = 2; i < 4; i++) {
+    link_anchors(i, main);
+  }
+});
+</script>
