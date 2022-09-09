@@ -1,12 +1,28 @@
 constant:
-  array layer count undefined: Undefined value for array layer count
-  copy stride undefined: Undefined value for copy stride
-  limit u32 undefined: Undefined U32 limit value
-  limit u64 undefined: Undefined U64 limit value
-  mip level count undefined: Undefined MIP level count
-  stride undefined: Undefined stride
-  whole map size: Value representing size of entire map
-  whole size: Value representing the whole size value
+  array layer count undefined: >
+    Undefined value for array layer count. Providing undefined will cause a
+    default value to be used.
+  copy stride undefined: >
+    Undefined value for copy stride. Providing undefined will cause a
+    default value to be used.
+  limit u32 undefined: >
+    Undefined U32 limit value. Providing undefined will cause a
+    default value to be used.
+  limit u64 undefined: >
+    Undefined U64 limit value. Providing undefined will cause a
+    default value to be used.
+  mip level count undefined: >
+    Undefined mip level count. Providing undefined will cause a
+    default value to be used.
+  stride undefined: >
+    Undefined stride. Providing undefined will cause a
+    default value to be used.
+  whole map size: >
+    Value representing size of entire map. Providing undefined will cause a
+    default value to be used.
+  whole size: >
+    Value representing the whole size value. Providing undefined will cause a
+    default value to be used.
 
 enum:
   adapter type:
@@ -86,13 +102,17 @@ function:
     returns:
       instance: The created %% instance %%.
     args:
-      descriptor: The %% instance descriptor %% pointer. Maybe `%% null %%`.
+      descriptor: >
+        The %% instance descriptor %% pointer. Maybe `%% null %%` to create
+        a default instance.
 
   get proc address:
     description: >
       Returns the function pointer for the requested WebGPU API method *procName*.
     returns:
-      proc: The %% proc %% function pointer.
+      proc: >
+        The %% proc %% function pointer if it exists,
+        %% null %% otherwise.
     args:
       device: The %% device %% to retrieve the proc for
       proc name: The name of the pointer to retrieve
@@ -101,12 +121,23 @@ structure:
   adapter properties:
     description: Property information for a specific adapter
     values:
-      vendor ID: The ID for the adapter vendor
-      vendor name: The vendor name for the adapter
-      architecture: The architectue of the adapter
-      device ID: The device ID for the adapter
-      name: The name of the adapter
-      driver description: The driver description reported by the adapter
+      vendor ID: >
+        The PCIe ID if available but can be other values on systems which do
+        not provide a PCIe ID.
+      vendor name: >
+        The name of the vendor of the adapter, if available.
+        Empty string otherwise.
+      architecture: >
+        The name of the family or class of GPUs the adapter belongs to, if
+        available. Empty string otherwise.
+      device ID: >
+        The vendor-specific device identifier.
+      name: >
+        A vendor-specific identifier for the adapter, if available.
+        Empty string otherwise.
+      driver description: >
+        A human readable string describing the adapter as reported by the
+        driver, if available. Empty string otherwise.
       adapter type: The type of the adapter
       backend type: The backend platform used by the adapter
 

@@ -200,6 +200,11 @@ def gen_c_member(member)
 end
 
 def gen_nav_section(f, src, title, kind, name_prefix="")
+  if "constant" == kind
+    f.puts "<h2><a href='#{src}#constants'>Constants</a></h2>"
+    return
+  end
+
   f.puts "<h2>#{title}</h2>"
   f.puts "<ul>"
 
@@ -242,7 +247,7 @@ def emit_value_or_warning(f, lang, info, value, name, default="")
     puts "Missing #{name} :: value"
     f.write default
   else
-    f.write substitute(lang, info[value])
+    f.write substitute(lang, info[value].strip)
   end
 end
 
@@ -281,7 +286,7 @@ def gen_cpp_constants(f)
   order_by_name(@categories['constant']).each do |c|
     n = c['name']
     puts "Unable to find constant description for #{n}" unless info.has_key?(n)
-    f.puts "| `k#{n.CamelCase}` | #{info[n]} |"
+    f.puts "| `k#{n.CamelCase}` | #{info[n].strip} |"
   end
   f.puts ""
 end
@@ -444,6 +449,7 @@ def gen_cpp_classes(f)
 end
 
 def gen_cpp_nav(f)
+  gen_nav_section(f, "cpp.html", "Constants", "constant")
   gen_nav_section(f, "cpp.html", "Enums", "enum")
   gen_nav_section(f, "cpp.html", "Bitmasks", "bitmask")
   gen_nav_section(f, "cpp.html", "Functions", "function")
@@ -499,7 +505,7 @@ def gen_c_constants(f)
   order_by_name(@categories['constant']).each do |c|
     n = c['name']
     puts "Unable to find constant description for #{n}" unless info.has_key?(n)
-    f.puts "| `#{n.UpSnakeCase("WGPU")}` | #{info[n]} |"
+    f.puts "| `#{n.UpSnakeCase("WGPU")}` | #{info[n].strip} |"
   end
   f.puts ""
 end
@@ -673,6 +679,7 @@ def gen_c_objects(f)
 end
 
 def gen_c_nav(f)
+  gen_nav_section(f, "c.html", "Constants", "constant", "WGPU")
   gen_nav_section(f, "c.html", "Enums", "enum", "WGPU")
   gen_nav_section(f, "c.html", "Bitmasks", "bitmask", "WGPU")
   gen_nav_section(f, "c.html", "Functions", "function", "wgpu")

@@ -9,14 +9,14 @@ parent: API Documentation
 
 | Value | Description |
 |:------|:------------|
-| `kArrayLayerCountUndefined` | Undefined value for array layer count |
-| `kCopyStrideUndefined` | Undefined value for copy stride |
-| `kLimitU32Undefined` | Undefined U32 limit value |
-| `kLimitU64Undefined` | Undefined U64 limit value |
-| `kMipLevelCountUndefined` | Undefined MIP level count |
-| `kStrideUndefined` | Undefined stride |
-| `kWholeMapSize` | Value representing size of entire map |
-| `kWholeSize` | Value representing the whole size value |
+| `kArrayLayerCountUndefined` | Undefined value for array layer count. Providing undefined will cause a default value to be used. |
+| `kCopyStrideUndefined` | Undefined value for copy stride. Providing undefined will cause a default value to be used. |
+| `kLimitU32Undefined` | Undefined U32 limit value. Providing undefined will cause a default value to be used. |
+| `kLimitU64Undefined` | Undefined U64 limit value. Providing undefined will cause a default value to be used. |
+| `kMipLevelCountUndefined` | Undefined mip level count. Providing undefined will cause a default value to be used. |
+| `kStrideUndefined` | Undefined stride. Providing undefined will cause a default value to be used. |
+| `kWholeMapSize` | Value representing size of entire map. Providing undefined will cause a default value to be used. |
+| `kWholeSize` | Value representing the whole size value. Providing undefined will cause a default value to be used. |
 
 ## Enums
 
@@ -734,7 +734,7 @@ The created [Instance](cpp.html#class-Instance).
 
 #### Arguments
 
-* *descriptor*: The [InstanceDescriptor](cpp.html#structure-InstanceDescriptor) pointer. Maybe `nullptr`.
+* *descriptor*: The [InstanceDescriptor](cpp.html#structure-InstanceDescriptor) pointer. Maybe `nullptr` to create a default instance.
 
 </div>
 
@@ -755,7 +755,7 @@ Returns the function pointer for the requested WebGPU API method *procName*.
 
 #### Returns
 
-The [Proc](cpp.html#function-pointer-Proc) function pointer.
+The [Proc](cpp.html#function-pointer-Proc) function pointer if it exists, nullptr otherwise.
 
 #### Arguments
 
@@ -1002,12 +1002,12 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | `ChainedStructOut const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
-| uint32_t vendorID |  | The ID for the adapter vendor |
-| char const\* vendorName |  | The vendor name for the adapter |
-| char const\* architecture |  | The architectue of the adapter |
-| uint32_t deviceID |  | The device ID for the adapter |
-| char const\* name |  | The name of the adapter |
-| char const\* driverDescription |  | The driver description reported by the adapter |
+| uint32_t vendorID |  | The PCIe ID if available but can be other values on systems which do not provide a PCIe ID. |
+| char const\* vendorName |  | The name of the vendor of the adapter, if available. Empty string otherwise. |
+| char const\* architecture |  | The name of the family or class of GPUs the adapter belongs to, if available. Empty string otherwise. |
+| uint32_t deviceID |  | The vendor-specific device identifier. |
+| char const\* name |  | A vendor-specific identifier for the adapter, if available. Empty string otherwise. |
+| char const\* driverDescription |  | A human readable string describing the adapter as reported by the driver, if available. Empty string otherwise. |
 | [AdapterType](cpp.html#enum-AdapterType) adapterType |  | The type of the adapter |
 | [BackendType](cpp.html#enum-BackendType) backendType |  | The backend platform used by the adapter |
 

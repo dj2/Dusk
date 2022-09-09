@@ -9,14 +9,14 @@ parent: API Documentation
 
 | Value | Description |
 |:------|:------------|
-| `WGPU_ARRAY_LAYER_COUNT_UNDEFINED` | Undefined value for array layer count |
-| `WGPU_COPY_STRIDE_UNDEFINED` | Undefined value for copy stride |
-| `WGPU_LIMIT_U32_UNDEFINED` | Undefined U32 limit value |
-| `WGPU_LIMIT_U64_UNDEFINED` | Undefined U64 limit value |
-| `WGPU_MIP_LEVEL_COUNT_UNDEFINED` | Undefined MIP level count |
-| `WGPU_STRIDE_UNDEFINED` | Undefined stride |
-| `WGPU_WHOLE_MAP_SIZE` | Value representing size of entire map |
-| `WGPU_WHOLE_SIZE` | Value representing the whole size value |
+| `WGPU_ARRAY_LAYER_COUNT_UNDEFINED` | Undefined value for array layer count. Providing undefined will cause a default value to be used. |
+| `WGPU_COPY_STRIDE_UNDEFINED` | Undefined value for copy stride. Providing undefined will cause a default value to be used. |
+| `WGPU_LIMIT_U32_UNDEFINED` | Undefined U32 limit value. Providing undefined will cause a default value to be used. |
+| `WGPU_LIMIT_U64_UNDEFINED` | Undefined U64 limit value. Providing undefined will cause a default value to be used. |
+| `WGPU_MIP_LEVEL_COUNT_UNDEFINED` | Undefined mip level count. Providing undefined will cause a default value to be used. |
+| `WGPU_STRIDE_UNDEFINED` | Undefined stride. Providing undefined will cause a default value to be used. |
+| `WGPU_WHOLE_MAP_SIZE` | Value representing size of entire map. Providing undefined will cause a default value to be used. |
+| `WGPU_WHOLE_SIZE` | Value representing the whole size value. Providing undefined will cause a default value to be used. |
 
 ## Enums
 
@@ -740,7 +740,7 @@ The created [WGPUInstance](c.html#class-Instance).
 
 #### Arguments
 
-* *descriptor*: The [WGPUInstanceDescriptor](c.html#structure-InstanceDescriptor) pointer. Maybe `NULL`.
+* *descriptor*: The [WGPUInstanceDescriptor](c.html#structure-InstanceDescriptor) pointer. Maybe `NULL` to create a default instance.
 
 </div>
 
@@ -761,7 +761,7 @@ Returns the function pointer for the requested WebGPU API method *procName*.
 
 #### Returns
 
-The [WGPUProc](c.html#function-pointer-Proc) function pointer.
+The [WGPUProc](c.html#function-pointer-Proc) function pointer if it exists, NULL otherwise.
 
 #### Arguments
 
@@ -1008,12 +1008,12 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStructOut* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
-| uint32_t vendorID | The ID for the adapter vendor |
-| char const\* vendorName | The vendor name for the adapter |
-| char const\* architecture | The architectue of the adapter |
-| uint32_t deviceID | The device ID for the adapter |
-| char const\* name | The name of the adapter |
-| char const\* driverDescription | The driver description reported by the adapter |
+| uint32_t vendorID | The PCIe ID if available but can be other values on systems which do not provide a PCIe ID. |
+| char const\* vendorName | The name of the vendor of the adapter, if available. Empty string otherwise. |
+| char const\* architecture | The name of the family or class of GPUs the adapter belongs to, if available. Empty string otherwise. |
+| uint32_t deviceID | The vendor-specific device identifier. |
+| char const\* name | A vendor-specific identifier for the adapter, if available. Empty string otherwise. |
+| char const\* driverDescription | A human readable string describing the adapter as reported by the driver, if available. Empty string otherwise. |
 | [WGPUAdapterType](c.html#enum-AdapterType) adapterType | The type of the adapter |
 | [WGPUBackendType](c.html#enum-BackendType) backendType | The backend platform used by the adapter |
 
