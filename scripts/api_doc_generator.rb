@@ -131,16 +131,16 @@ def gen_type_link(prefix, page, type)
   if $native_types.has_key?(type)
     type
   else
-    "[#{prefix}#{type.CamelCase}](#{page}##{$kinds[type]}-#{type.CamelCase})"
+    "[#{prefix}#{type.CamelCase}]({{ '#{page}##{$kinds[type]}-#{type.CamelCase}' | relative_url }})"
   end
 end
 
 def gen_cpp_type_link(type)
-  gen_type_link("", "cpp.html", type)
+  gen_type_link("", "/api/cpp.html", type)
 end
 
 def gen_c_type_link(type)
-  gen_type_link("WGPU", "c.html", type)
+  gen_type_link("WGPU", "/api/c.html", type)
 end
 
 def emit_type(type, &block)
@@ -201,7 +201,7 @@ end
 
 def gen_nav_section(f, src, title, kind, name_prefix="")
   if "constant" == kind
-    f.puts "<h2><a href='#{src}#constants'>Constants</a></h2>"
+    f.puts "<h2><a href='{{ '#{src}#constants' | relative_url }}'>Constants</a></h2>"
     return
   end
 
@@ -216,7 +216,7 @@ def gen_nav_section(f, src, title, kind, name_prefix="")
 
   order_by_name(@categories[kind]).each do |e|
     name = e['name']
-    f.puts "<li><a href='/api/#{src}##{prefix}#{name.CamelCase}'>#{name_prefix}#{name.CamelCase}</a>"
+    f.puts "<li><a href='{{ '#{src}##{prefix}#{name.CamelCase}' | relative_url }}'>#{name_prefix}#{name.CamelCase}</a>"
   end
   f.puts "</ul>"
 end
@@ -449,13 +449,13 @@ def gen_cpp_classes(f)
 end
 
 def gen_cpp_nav(f)
-  gen_nav_section(f, "cpp.html", "Constants", "constant")
-  gen_nav_section(f, "cpp.html", "Enums", "enum")
-  gen_nav_section(f, "cpp.html", "Bitmasks", "bitmask")
-  gen_nav_section(f, "cpp.html", "Functions", "function")
-  gen_nav_section(f, "cpp.html", "Function Pointers", "function pointer")
-  gen_nav_section(f, "cpp.html", "Structures", "structure")
-  gen_nav_section(f, "cpp.html", "Classes", "object")
+  gen_nav_section(f, "/api/cpp.html", "Constants", "constant")
+  gen_nav_section(f, "/api/cpp.html", "Enums", "enum")
+  gen_nav_section(f, "/api/cpp.html", "Bitmasks", "bitmask")
+  gen_nav_section(f, "/api/cpp.html", "Functions", "function")
+  gen_nav_section(f, "/api/cpp.html", "Function Pointers", "function pointer")
+  gen_nav_section(f, "/api/cpp.html", "Structures", "structure")
+  gen_nav_section(f, "/api/cpp.html", "Classes", "object")
 end
 
 def gen_cpp
@@ -679,13 +679,13 @@ def gen_c_objects(f)
 end
 
 def gen_c_nav(f)
-  gen_nav_section(f, "c.html", "Constants", "constant", "WGPU")
-  gen_nav_section(f, "c.html", "Enums", "enum", "WGPU")
-  gen_nav_section(f, "c.html", "Bitmasks", "bitmask", "WGPU")
-  gen_nav_section(f, "c.html", "Functions", "function", "wgpu")
-  gen_nav_section(f, "c.html", "Function Pointers", "function pointer", "WGPU")
-  gen_nav_section(f, "c.html", "Structures", "structure", "WGPU")
-  gen_nav_section(f, "c.html", "Methods", "object", "WGPU")
+  gen_nav_section(f, "/api/c.html", "Constants", "constant", "WGPU")
+  gen_nav_section(f, "/api/c.html", "Enums", "enum", "WGPU")
+  gen_nav_section(f, "/api/c.html", "Bitmasks", "bitmask", "WGPU")
+  gen_nav_section(f, "/api/c.html", "Functions", "function", "wgpu")
+  gen_nav_section(f, "/api/c.html", "Function Pointers", "function pointer", "WGPU")
+  gen_nav_section(f, "/api/c.html", "Structures", "structure", "WGPU")
+  gen_nav_section(f, "/api/c.html", "Methods", "object", "WGPU")
 end
 
 def gen_c
