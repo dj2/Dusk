@@ -1,8 +1,8 @@
 title: Dusk
 email: dsinclair@google.com
 description: Dusk WebGPU Documentation
-baseurl: "/"
-url: ""
+baseurl: "/Dusk"
+url: "https://dj2.github.io"
 
 highlighter: rouge
 

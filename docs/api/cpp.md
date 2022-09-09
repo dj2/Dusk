@@ -725,16 +725,16 @@ Creates an instance of the Dawn WebGPU system
 
 <div class='signature' markdown=1>
 
-[Instance](cpp.html#class-Instance) CreateInstance([InstanceDescriptor](cpp.html#structure-InstanceDescriptor) const\* descriptor)
+[Instance]({{ '/api/cpp.html#class-Instance' | relative_url }}) CreateInstance([InstanceDescriptor]({{ '/api/cpp.html#structure-InstanceDescriptor' | relative_url }}) const\* descriptor)
 </div>
 
 #### Returns
 
-The created [Instance](cpp.html#class-Instance).
+The created [Instance]({{ '/api/cpp.html#class-Instance' | relative_url }}).
 
 #### Arguments
 
-* *descriptor*: The [InstanceDescriptor](cpp.html#structure-InstanceDescriptor) pointer. Maybe `nullptr` to create a default instance.
+* *descriptor*: The [InstanceDescriptor]({{ '/api/cpp.html#structure-InstanceDescriptor' | relative_url }}) pointer. Maybe `nullptr` to create a default instance.
 
 </div>
 
@@ -750,16 +750,16 @@ Returns the function pointer for the requested WebGPU API method *procName*.
 
 <div class='signature' markdown=1>
 
-[Proc](cpp.html#function-pointer-Proc) GetProcAddress([Device](cpp.html#class-Device) device, char const\* procName)
+[Proc]({{ '/api/cpp.html#function-pointer-Proc' | relative_url }}) GetProcAddress([Device]({{ '/api/cpp.html#class-Device' | relative_url }}) device, char const\* procName)
 </div>
 
 #### Returns
 
-The [Proc](cpp.html#function-pointer-Proc) function pointer if it exists, nullptr otherwise.
+The [Proc]({{ '/api/cpp.html#function-pointer-Proc' | relative_url }}) function pointer if it exists, nullptr otherwise.
 
 #### Arguments
 
-* *device*: The [Device](cpp.html#class-Device) to retrieve the proc for
+* *device*: The [Device]({{ '/api/cpp.html#class-Device' | relative_url }}) to retrieve the proc for
 * *procName*: The name of the pointer to retrieve
 
 </div>
@@ -776,7 +776,7 @@ The [Proc](cpp.html#function-pointer-Proc) function pointer if it exists, nullpt
 
 <div class='signature' markdown=1>
 
-void (&#x2a;BufferMapCallback)([WGPUBufferMapAsyncStatus](c.html#enum-BufferMapAsyncStatus) status, void \* userdata)
+void (&#x2a;BufferMapCallback)([WGPUBufferMapAsyncStatus]({{ '/api/c.html#enum-BufferMapAsyncStatus' | relative_url }}) status, void \* userdata)
 </div>
 
 #### Arguments
@@ -796,7 +796,7 @@ void (&#x2a;BufferMapCallback)([WGPUBufferMapAsyncStatus](c.html#enum-BufferMapA
 
 <div class='signature' markdown=1>
 
-void (&#x2a;CompilationInfoCallback)([WGPUCompilationInfoRequestStatus](c.html#enum-CompilationInfoRequestStatus) status, [WGPUCompilationInfo](c.html#structure-CompilationInfo) const\* compilationInfo, void \* userdata)
+void (&#x2a;CompilationInfoCallback)([WGPUCompilationInfoRequestStatus]({{ '/api/c.html#enum-CompilationInfoRequestStatus' | relative_url }}) status, [WGPUCompilationInfo]({{ '/api/c.html#structure-CompilationInfo' | relative_url }}) const\* compilationInfo, void \* userdata)
 </div>
 
 #### Arguments
@@ -817,7 +817,7 @@ void (&#x2a;CompilationInfoCallback)([WGPUCompilationInfoRequestStatus](c.html#e
 
 <div class='signature' markdown=1>
 
-void (&#x2a;CreateComputePipelineAsyncCallback)([WGPUCreatePipelineAsyncStatus](c.html#enum-CreatePipelineAsyncStatus) status, [WGPUComputePipeline](c.html#class-ComputePipeline) pipeline, char const\* message, void \* userdata)
+void (&#x2a;CreateComputePipelineAsyncCallback)([WGPUCreatePipelineAsyncStatus]({{ '/api/c.html#enum-CreatePipelineAsyncStatus' | relative_url }}) status, [WGPUComputePipeline]({{ '/api/c.html#class-ComputePipeline' | relative_url }}) pipeline, char const\* message, void \* userdata)
 </div>
 
 #### Arguments
@@ -839,7 +839,7 @@ void (&#x2a;CreateComputePipelineAsyncCallback)([WGPUCreatePipelineAsyncStatus](
 
 <div class='signature' markdown=1>
 
-void (&#x2a;CreateRenderPipelineAsyncCallback)([WGPUCreatePipelineAsyncStatus](c.html#enum-CreatePipelineAsyncStatus) status, [WGPURenderPipeline](c.html#class-RenderPipeline) pipeline, char const\* message, void \* userdata)
+void (&#x2a;CreateRenderPipelineAsyncCallback)([WGPUCreatePipelineAsyncStatus]({{ '/api/c.html#enum-CreatePipelineAsyncStatus' | relative_url }}) status, [WGPURenderPipeline]({{ '/api/c.html#class-RenderPipeline' | relative_url }}) pipeline, char const\* message, void \* userdata)
 </div>
 
 #### Arguments
@@ -861,7 +861,7 @@ void (&#x2a;CreateRenderPipelineAsyncCallback)([WGPUCreatePipelineAsyncStatus](c
 
 <div class='signature' markdown=1>
 
-void (&#x2a;DeviceLostCallback)([WGPUDeviceLostReason](c.html#enum-DeviceLostReason) reason, char const\* message, void \* userdata)
+void (&#x2a;DeviceLostCallback)([WGPUDeviceLostReason]({{ '/api/c.html#enum-DeviceLostReason' | relative_url }}) reason, char const\* message, void \* userdata)
 </div>
 
 #### Arguments
@@ -882,7 +882,7 @@ void (&#x2a;DeviceLostCallback)([WGPUDeviceLostReason](c.html#enum-DeviceLostRea
 
 <div class='signature' markdown=1>
 
-void (&#x2a;ErrorCallback)([WGPUErrorType](c.html#enum-ErrorType) type, char const\* message, void \* userdata)
+void (&#x2a;ErrorCallback)([WGPUErrorType]({{ '/api/c.html#enum-ErrorType' | relative_url }}) type, char const\* message, void \* userdata)
 </div>
 
 #### Arguments
@@ -903,7 +903,7 @@ void (&#x2a;ErrorCallback)([WGPUErrorType](c.html#enum-ErrorType) type, char con
 
 <div class='signature' markdown=1>
 
-void (&#x2a;LoggingCallback)([WGPULoggingType](c.html#enum-LoggingType) type, char const\* message, void \* userdata)
+void (&#x2a;LoggingCallback)([WGPULoggingType]({{ '/api/c.html#enum-LoggingType' | relative_url }}) type, char const\* message, void \* userdata)
 </div>
 
 #### Arguments
@@ -939,7 +939,7 @@ void (&#x2a;Proc)()
 
 <div class='signature' markdown=1>
 
-void (&#x2a;QueueWorkDoneCallback)([WGPUQueueWorkDoneStatus](c.html#enum-QueueWorkDoneStatus) status, void \* userdata)
+void (&#x2a;QueueWorkDoneCallback)([WGPUQueueWorkDoneStatus]({{ '/api/c.html#enum-QueueWorkDoneStatus' | relative_url }}) status, void \* userdata)
 </div>
 
 #### Arguments
@@ -959,7 +959,7 @@ void (&#x2a;QueueWorkDoneCallback)([WGPUQueueWorkDoneStatus](c.html#enum-QueueWo
 
 <div class='signature' markdown=1>
 
-void (&#x2a;RequestAdapterCallback)([WGPURequestAdapterStatus](c.html#enum-RequestAdapterStatus) status, [WGPUAdapter](c.html#class-Adapter) adapter, char const\* message, void \* userdata)
+void (&#x2a;RequestAdapterCallback)([WGPURequestAdapterStatus]({{ '/api/c.html#enum-RequestAdapterStatus' | relative_url }}) status, [WGPUAdapter]({{ '/api/c.html#class-Adapter' | relative_url }}) adapter, char const\* message, void \* userdata)
 </div>
 
 #### Arguments
@@ -981,7 +981,7 @@ void (&#x2a;RequestAdapterCallback)([WGPURequestAdapterStatus](c.html#enum-Reque
 
 <div class='signature' markdown=1>
 
-void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-RequestDeviceStatus) status, [WGPUDevice](c.html#class-Device) device, char const\* message, void \* userdata)
+void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus]({{ '/api/c.html#enum-RequestDeviceStatus' | relative_url }}) status, [WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, char const\* message, void \* userdata)
 </div>
 
 #### Arguments
@@ -1008,8 +1008,8 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 | uint32_t deviceID |  | The vendor-specific device identifier. |
 | char const\* name |  | A vendor-specific identifier for the adapter, if available. Empty string otherwise. |
 | char const\* driverDescription |  | A human readable string describing the adapter as reported by the driver, if available. Empty string otherwise. |
-| [AdapterType](cpp.html#enum-AdapterType) adapterType |  | The type of the adapter |
-| [BackendType](cpp.html#enum-BackendType) backendType |  | The backend platform used by the adapter |
+| [AdapterType]({{ '/api/cpp.html#enum-AdapterType' | relative_url }}) adapterType |  | The type of the adapter |
+| [BackendType]({{ '/api/cpp.html#enum-BackendType' | relative_url }}) backendType |  | The backend platform used by the adapter |
 
 ### struct BindGroupDescriptor {#structure-BindGroupDescriptor}
 
@@ -1017,9 +1017,9 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
-| [BindGroupLayout](cpp.html#class-BindGroupLayout) layout |  |  |
+| [BindGroupLayout]({{ '/api/cpp.html#class-BindGroupLayout' | relative_url }}) layout |  |  |
 | uint32_t entryCount |  |  |
-| [BindGroupEntry](cpp.html#structure-BindGroupEntry) const\* entries |  |  |
+| [BindGroupEntry]({{ '/api/cpp.html#structure-BindGroupEntry' | relative_url }}) const\* entries |  |  |
 
 ### struct BindGroupEntry {#structure-BindGroupEntry}
 
@@ -1027,15 +1027,15 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | uint32_t binding |  |  |
-| [Buffer](cpp.html#class-Buffer) buffer |  |  |
+| [Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) buffer |  |  |
 | uint64_t offset | `0` |  |
 | uint64_t size |  |  |
-| [Sampler](cpp.html#class-Sampler) sampler |  |  |
-| [TextureView](cpp.html#class-TextureView) textureView |  |  |
+| [Sampler]({{ '/api/cpp.html#class-Sampler' | relative_url }}) sampler |  |  |
+| [TextureView]({{ '/api/cpp.html#class-TextureView' | relative_url }}) textureView |  |  |
 
 #### Chainable Structures
 
- * [ExternalTextureBindingEntry](cpp.html#structure-ExternalTextureBindingEntry)
+ * [ExternalTextureBindingEntry]({{ '/api/cpp.html#structure-ExternalTextureBindingEntry' | relative_url }})
 
 ### struct BindGroupLayoutDescriptor {#structure-BindGroupLayoutDescriptor}
 
@@ -1044,7 +1044,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
 | uint32_t entryCount |  |  |
-| [BindGroupLayoutEntry](cpp.html#structure-BindGroupLayoutEntry) const\* entries |  |  |
+| [BindGroupLayoutEntry]({{ '/api/cpp.html#structure-BindGroupLayoutEntry' | relative_url }}) const\* entries |  |  |
 
 ### struct BindGroupLayoutEntry {#structure-BindGroupLayoutEntry}
 
@@ -1052,37 +1052,37 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | uint32_t binding |  |  |
-| [ShaderStage](cpp.html#bitmask-ShaderStage) visibility |  |  |
-| [BufferBindingLayout](cpp.html#structure-BufferBindingLayout) buffer |  |  |
-| [SamplerBindingLayout](cpp.html#structure-SamplerBindingLayout) sampler |  |  |
-| [TextureBindingLayout](cpp.html#structure-TextureBindingLayout) texture |  |  |
-| [StorageTextureBindingLayout](cpp.html#structure-StorageTextureBindingLayout) storageTexture |  |  |
+| [ShaderStage]({{ '/api/cpp.html#bitmask-ShaderStage' | relative_url }}) visibility |  |  |
+| [BufferBindingLayout]({{ '/api/cpp.html#structure-BufferBindingLayout' | relative_url }}) buffer |  |  |
+| [SamplerBindingLayout]({{ '/api/cpp.html#structure-SamplerBindingLayout' | relative_url }}) sampler |  |  |
+| [TextureBindingLayout]({{ '/api/cpp.html#structure-TextureBindingLayout' | relative_url }}) texture |  |  |
+| [StorageTextureBindingLayout]({{ '/api/cpp.html#structure-StorageTextureBindingLayout' | relative_url }}) storageTexture |  |  |
 
 #### Chainable Structures
 
- * [ExternalTextureBindingLayout](cpp.html#structure-ExternalTextureBindingLayout)
+ * [ExternalTextureBindingLayout]({{ '/api/cpp.html#structure-ExternalTextureBindingLayout' | relative_url }})
 
 ### struct BlendComponent {#structure-BlendComponent}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
-| [BlendOperation](cpp.html#enum-BlendOperation) operation | `BlendOperation::Add` |  |
-| [BlendFactor](cpp.html#enum-BlendFactor) srcFactor | `BlendFactor::One` |  |
-| [BlendFactor](cpp.html#enum-BlendFactor) dstFactor | `BlendFactor::Zero` |  |
+| [BlendOperation]({{ '/api/cpp.html#enum-BlendOperation' | relative_url }}) operation | `BlendOperation::Add` |  |
+| [BlendFactor]({{ '/api/cpp.html#enum-BlendFactor' | relative_url }}) srcFactor | `BlendFactor::One` |  |
+| [BlendFactor]({{ '/api/cpp.html#enum-BlendFactor' | relative_url }}) dstFactor | `BlendFactor::Zero` |  |
 
 ### struct BlendState {#structure-BlendState}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
-| [BlendComponent](cpp.html#structure-BlendComponent) color |  |  |
-| [BlendComponent](cpp.html#structure-BlendComponent) alpha |  |  |
+| [BlendComponent]({{ '/api/cpp.html#structure-BlendComponent' | relative_url }}) color |  |  |
+| [BlendComponent]({{ '/api/cpp.html#structure-BlendComponent' | relative_url }}) alpha |  |  |
 
 ### struct BufferBindingLayout {#structure-BufferBindingLayout}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
-| [BufferBindingType](cpp.html#enum-BufferBindingType) type | `BufferBindingType::Undefined` |  |
+| [BufferBindingType]({{ '/api/cpp.html#enum-BufferBindingType' | relative_url }}) type | `BufferBindingType::Undefined` |  |
 | bool hasDynamicOffset | `false` |  |
 | uint64_t minBindingSize | `0` |  |
 
@@ -1092,7 +1092,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
-| [BufferUsage](cpp.html#bitmask-BufferUsage) usage |  |  |
+| [BufferUsage]({{ '/api/cpp.html#bitmask-BufferUsage' | relative_url }}) usage |  |  |
 | uint64_t size |  |  |
 | bool mappedAtCreation | `false` |  |
 
@@ -1110,9 +1110,9 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
-| [TextureFormat](cpp.html#enum-TextureFormat) format |  |  |
-| [BlendState](cpp.html#structure-BlendState) const\* blend |  |  |
-| [ColorWriteMask](cpp.html#bitmask-ColorWriteMask) writeMask | `ColorWriteMask::All` |  |
+| [TextureFormat]({{ '/api/cpp.html#enum-TextureFormat' | relative_url }}) format |  |  |
+| [BlendState]({{ '/api/cpp.html#structure-BlendState' | relative_url }}) const\* blend |  |  |
+| [ColorWriteMask]({{ '/api/cpp.html#bitmask-ColorWriteMask' | relative_url }}) writeMask | `ColorWriteMask::All` |  |
 
 ### struct CommandBufferDescriptor {#structure-CommandBufferDescriptor}
 
@@ -1130,7 +1130,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chainable Structures
 
- * [DawnEncoderInternalUsageDescriptor](cpp.html#structure-DawnEncoderInternalUsageDescriptor)
+ * [DawnEncoderInternalUsageDescriptor]({{ '/api/cpp.html#structure-DawnEncoderInternalUsageDescriptor' | relative_url }})
 
 ### struct CompilationInfo {#structure-CompilationInfo}
 
@@ -1138,7 +1138,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | uint32_t messageCount |  |  |
-| [CompilationMessage](cpp.html#structure-CompilationMessage) const\* messages |  |  |
+| [CompilationMessage]({{ '/api/cpp.html#structure-CompilationMessage' | relative_url }}) const\* messages |  |  |
 
 ### struct CompilationMessage {#structure-CompilationMessage}
 
@@ -1146,7 +1146,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* message |  |  |
-| [CompilationMessageType](cpp.html#enum-CompilationMessageType) type |  |  |
+| [CompilationMessageType]({{ '/api/cpp.html#enum-CompilationMessageType' | relative_url }}) type |  |  |
 | uint64_t lineNum |  |  |
 | uint64_t linePos |  |  |
 | uint64_t offset |  |  |
@@ -1159,15 +1159,15 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
 | uint32_t timestampWriteCount | `0` |  |
-| [ComputePassTimestampWrite](cpp.html#structure-ComputePassTimestampWrite) const\* timestampWrites |  |  |
+| [ComputePassTimestampWrite]({{ '/api/cpp.html#structure-ComputePassTimestampWrite' | relative_url }}) const\* timestampWrites |  |  |
 
 ### struct ComputePassTimestampWrite {#structure-ComputePassTimestampWrite}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
-| [QuerySet](cpp.html#class-QuerySet) querySet |  |  |
+| [QuerySet]({{ '/api/cpp.html#class-QuerySet' | relative_url }}) querySet |  |  |
 | uint32_t queryIndex |  |  |
-| [ComputePassTimestampLocation](cpp.html#enum-ComputePassTimestampLocation) location |  |  |
+| [ComputePassTimestampLocation]({{ '/api/cpp.html#enum-ComputePassTimestampLocation' | relative_url }}) location |  |  |
 
 ### struct ComputePipelineDescriptor {#structure-ComputePipelineDescriptor}
 
@@ -1175,8 +1175,8 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
-| [PipelineLayout](cpp.html#class-PipelineLayout) layout |  |  |
-| [ProgrammableStageDescriptor](cpp.html#structure-ProgrammableStageDescriptor) compute |  |  |
+| [PipelineLayout]({{ '/api/cpp.html#class-PipelineLayout' | relative_url }}) layout |  |  |
+| [ProgrammableStageDescriptor]({{ '/api/cpp.html#structure-ProgrammableStageDescriptor' | relative_url }}) compute |  |  |
 
 ### struct ConstantEntry {#structure-ConstantEntry}
 
@@ -1193,11 +1193,11 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | bool flipY | `false` |  |
 | bool needsColorSpaceConversion | `false` |  |
-| [AlphaMode](cpp.html#enum-AlphaMode) srcAlphaMode | `AlphaMode::Unpremultiplied` |  |
+| [AlphaMode]({{ '/api/cpp.html#enum-AlphaMode' | relative_url }}) srcAlphaMode | `AlphaMode::Unpremultiplied` |  |
 | float const\* srcTransferFunctionParameters |  |  |
 | float const\* conversionMatrix |  |  |
 | float const\* dstTransferFunctionParameters |  |  |
-| [AlphaMode](cpp.html#enum-AlphaMode) dstAlphaMode | `AlphaMode::Unpremultiplied` |  |
+| [AlphaMode]({{ '/api/cpp.html#enum-AlphaMode' | relative_url }}) dstAlphaMode | `AlphaMode::Unpremultiplied` |  |
 | bool internalUsage | `false` |  |
 
 ### struct DawnCacheDeviceDescriptor {#structure-DawnCacheDeviceDescriptor}
@@ -1210,7 +1210,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [DeviceDescriptor](cpp.html#structure-DeviceDescriptor)
+ * [DeviceDescriptor]({{ '/api/cpp.html#structure-DeviceDescriptor' | relative_url }})
 
 ### struct DawnEncoderInternalUsageDescriptor {#structure-DawnEncoderInternalUsageDescriptor}
 
@@ -1222,7 +1222,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [CommandEncoderDescriptor](cpp.html#structure-CommandEncoderDescriptor)
+ * [CommandEncoderDescriptor]({{ '/api/cpp.html#structure-CommandEncoderDescriptor' | relative_url }})
 
 ### struct DawnInstanceDescriptor {#structure-DawnInstanceDescriptor}
 
@@ -1235,7 +1235,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [InstanceDescriptor](cpp.html#structure-InstanceDescriptor)
+ * [InstanceDescriptor]({{ '/api/cpp.html#structure-InstanceDescriptor' | relative_url }})
 
 ### struct DawnTextureInternalUsageDescriptor {#structure-DawnTextureInternalUsageDescriptor}
 
@@ -1243,11 +1243,11 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | `SType stype` | `SType::DawnTextureInternalUsageDescriptor` | Structure type |
-| [TextureUsage](cpp.html#bitmask-TextureUsage) internalUsage | `TextureUsage::None` |  |
+| [TextureUsage]({{ '/api/cpp.html#bitmask-TextureUsage' | relative_url }}) internalUsage | `TextureUsage::None` |  |
 
 #### Chain Parent Structures
 
- * [TextureDescriptor](cpp.html#structure-TextureDescriptor)
+ * [TextureDescriptor]({{ '/api/cpp.html#structure-TextureDescriptor' | relative_url }})
 
 ### struct DawnTogglesDeviceDescriptor {#structure-DawnTogglesDeviceDescriptor}
 
@@ -1262,18 +1262,18 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [DeviceDescriptor](cpp.html#structure-DeviceDescriptor)
+ * [DeviceDescriptor]({{ '/api/cpp.html#structure-DeviceDescriptor' | relative_url }})
 
 ### struct DepthStencilState {#structure-DepthStencilState}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
-| [TextureFormat](cpp.html#enum-TextureFormat) format |  |  |
+| [TextureFormat]({{ '/api/cpp.html#enum-TextureFormat' | relative_url }}) format |  |  |
 | bool depthWriteEnabled | `false` |  |
-| [CompareFunction](cpp.html#enum-CompareFunction) depthCompare | `CompareFunction::Always` |  |
-| [StencilFaceState](cpp.html#structure-StencilFaceState) stencilFront |  |  |
-| [StencilFaceState](cpp.html#structure-StencilFaceState) stencilBack |  |  |
+| [CompareFunction]({{ '/api/cpp.html#enum-CompareFunction' | relative_url }}) depthCompare | `CompareFunction::Always` |  |
+| [StencilFaceState]({{ '/api/cpp.html#structure-StencilFaceState' | relative_url }}) stencilFront |  |  |
+| [StencilFaceState]({{ '/api/cpp.html#structure-StencilFaceState' | relative_url }}) stencilBack |  |  |
 | uint32_t stencilReadMask | `0xFFFFFFFF` |  |
 | uint32_t stencilWriteMask | `0xFFFFFFFF` |  |
 | int32_t depthBias | `0` |  |
@@ -1287,14 +1287,14 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
 | uint32_t requiredFeaturesCount | `0` |  |
-| [FeatureName](cpp.html#enum-FeatureName) const\* requiredFeatures | `FeatureName::Nullptr` |  |
-| [RequiredLimits](cpp.html#structure-RequiredLimits) const\* requiredLimits |  |  |
-| [QueueDescriptor](cpp.html#structure-QueueDescriptor) defaultQueue |  |  |
+| [FeatureName]({{ '/api/cpp.html#enum-FeatureName' | relative_url }}) const\* requiredFeatures | `FeatureName::Nullptr` |  |
+| [RequiredLimits]({{ '/api/cpp.html#structure-RequiredLimits' | relative_url }}) const\* requiredLimits |  |  |
+| [QueueDescriptor]({{ '/api/cpp.html#structure-QueueDescriptor' | relative_url }}) defaultQueue |  |  |
 
 #### Chainable Structures
 
- * [DawnTogglesDeviceDescriptor](cpp.html#structure-DawnTogglesDeviceDescriptor)
- * [DawnCacheDeviceDescriptor](cpp.html#structure-DawnCacheDeviceDescriptor)
+ * [DawnTogglesDeviceDescriptor]({{ '/api/cpp.html#structure-DawnTogglesDeviceDescriptor' | relative_url }})
+ * [DawnCacheDeviceDescriptor]({{ '/api/cpp.html#structure-DawnCacheDeviceDescriptor' | relative_url }})
 
 ### struct Extent3D {#structure-Extent3D}
 
@@ -1310,11 +1310,11 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | `SType stype` | `SType::ExternalTextureBindingEntry` | Structure type |
-| [ExternalTexture](cpp.html#class-ExternalTexture) externalTexture |  |  |
+| [ExternalTexture]({{ '/api/cpp.html#class-ExternalTexture' | relative_url }}) externalTexture |  |  |
 
 #### Chain Parent Structures
 
- * [BindGroupEntry](cpp.html#structure-BindGroupEntry)
+ * [BindGroupEntry]({{ '/api/cpp.html#structure-BindGroupEntry' | relative_url }})
 
 ### struct ExternalTextureBindingLayout {#structure-ExternalTextureBindingLayout}
 
@@ -1325,7 +1325,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [BindGroupLayoutEntry](cpp.html#structure-BindGroupLayoutEntry)
+ * [BindGroupLayoutEntry]({{ '/api/cpp.html#structure-BindGroupLayoutEntry' | relative_url }})
 
 ### struct ExternalTextureDescriptor {#structure-ExternalTextureDescriptor}
 
@@ -1333,8 +1333,8 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
-| [TextureView](cpp.html#class-TextureView) plane0 |  |  |
-| [TextureView](cpp.html#class-TextureView) plane1 |  |  |
+| [TextureView]({{ '/api/cpp.html#class-TextureView' | relative_url }}) plane0 |  |  |
+| [TextureView]({{ '/api/cpp.html#class-TextureView' | relative_url }}) plane1 |  |  |
 | bool doYuvToRgbConversionOnly | `false` |  |
 | float const\* yuvToRgbConversionMatrix |  |  |
 | float const\* srcTransferFunctionParameters |  |  |
@@ -1346,30 +1346,30 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
-| [ShaderModule](cpp.html#class-ShaderModule) module |  |  |
+| [ShaderModule]({{ '/api/cpp.html#class-ShaderModule' | relative_url }}) module |  |  |
 | char const\* entryPoint |  |  |
 | uint32_t constantCount | `0` |  |
-| [ConstantEntry](cpp.html#structure-ConstantEntry) const\* constants |  |  |
+| [ConstantEntry]({{ '/api/cpp.html#structure-ConstantEntry' | relative_url }}) const\* constants |  |  |
 | uint32_t targetCount |  |  |
-| [ColorTargetState](cpp.html#structure-ColorTargetState) const\* targets |  |  |
+| [ColorTargetState]({{ '/api/cpp.html#structure-ColorTargetState' | relative_url }}) const\* targets |  |  |
 
 ### struct ImageCopyBuffer {#structure-ImageCopyBuffer}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
-| [TextureDataLayout](cpp.html#structure-TextureDataLayout) layout |  |  |
-| [Buffer](cpp.html#class-Buffer) buffer |  |  |
+| [TextureDataLayout]({{ '/api/cpp.html#structure-TextureDataLayout' | relative_url }}) layout |  |  |
+| [Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) buffer |  |  |
 
 ### struct ImageCopyTexture {#structure-ImageCopyTexture}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
-| [Texture](cpp.html#class-Texture) texture |  |  |
+| [Texture]({{ '/api/cpp.html#class-Texture' | relative_url }}) texture |  |  |
 | uint32_t mipLevel | `0` |  |
-| [Origin3D](cpp.html#structure-Origin3D) origin |  |  |
-| [TextureAspect](cpp.html#enum-TextureAspect) aspect | `TextureAspect::All` |  |
+| [Origin3D]({{ '/api/cpp.html#structure-Origin3D' | relative_url }}) origin |  |  |
+| [TextureAspect]({{ '/api/cpp.html#enum-TextureAspect' | relative_url }}) aspect | `TextureAspect::All` |  |
 
 ### struct InstanceDescriptor {#structure-InstanceDescriptor}
 
@@ -1379,7 +1379,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chainable Structures
 
- * [DawnInstanceDescriptor](cpp.html#structure-DawnInstanceDescriptor)
+ * [DawnInstanceDescriptor]({{ '/api/cpp.html#structure-DawnInstanceDescriptor' | relative_url }})
 
 ### struct Limits {#structure-Limits}
 
@@ -1439,7 +1439,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
 | uint32_t bindGroupLayoutCount |  |  |
-| [BindGroupLayout](cpp.html#class-BindGroupLayout) const\* bindGroupLayouts |  |  |
+| [BindGroupLayout]({{ '/api/cpp.html#class-BindGroupLayout' | relative_url }}) const\* bindGroupLayouts |  |  |
 
 ### struct PrimitiveDepthClipControl {#structure-PrimitiveDepthClipControl}
 
@@ -1451,31 +1451,31 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [PrimitiveState](cpp.html#structure-PrimitiveState)
+ * [PrimitiveState]({{ '/api/cpp.html#structure-PrimitiveState' | relative_url }})
 
 ### struct PrimitiveState {#structure-PrimitiveState}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
-| [PrimitiveTopology](cpp.html#enum-PrimitiveTopology) topology | `PrimitiveTopology::TriangleList` |  |
-| [IndexFormat](cpp.html#enum-IndexFormat) stripIndexFormat | `IndexFormat::Undefined` |  |
-| [FrontFace](cpp.html#enum-FrontFace) frontFace | `FrontFace::CCW` |  |
-| [CullMode](cpp.html#enum-CullMode) cullMode | `CullMode::None` |  |
+| [PrimitiveTopology]({{ '/api/cpp.html#enum-PrimitiveTopology' | relative_url }}) topology | `PrimitiveTopology::TriangleList` |  |
+| [IndexFormat]({{ '/api/cpp.html#enum-IndexFormat' | relative_url }}) stripIndexFormat | `IndexFormat::Undefined` |  |
+| [FrontFace]({{ '/api/cpp.html#enum-FrontFace' | relative_url }}) frontFace | `FrontFace::CCW` |  |
+| [CullMode]({{ '/api/cpp.html#enum-CullMode' | relative_url }}) cullMode | `CullMode::None` |  |
 
 #### Chainable Structures
 
- * [PrimitiveDepthClipControl](cpp.html#structure-PrimitiveDepthClipControl)
+ * [PrimitiveDepthClipControl]({{ '/api/cpp.html#structure-PrimitiveDepthClipControl' | relative_url }})
 
 ### struct ProgrammableStageDescriptor {#structure-ProgrammableStageDescriptor}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
-| [ShaderModule](cpp.html#class-ShaderModule) module |  |  |
+| [ShaderModule]({{ '/api/cpp.html#class-ShaderModule' | relative_url }}) module |  |  |
 | char const\* entryPoint |  |  |
 | uint32_t constantCount | `0` |  |
-| [ConstantEntry](cpp.html#structure-ConstantEntry) const\* constants |  |  |
+| [ConstantEntry]({{ '/api/cpp.html#structure-ConstantEntry' | relative_url }}) const\* constants |  |  |
 
 ### struct QuerySetDescriptor {#structure-QuerySetDescriptor}
 
@@ -1483,9 +1483,9 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
-| [QueryType](cpp.html#enum-QueryType) type |  |  |
+| [QueryType]({{ '/api/cpp.html#enum-QueryType' | relative_url }}) type |  |  |
 | uint32_t count |  |  |
-| [PipelineStatisticName](cpp.html#enum-PipelineStatisticName) const\* pipelineStatistics |  |  |
+| [PipelineStatisticName]({{ '/api/cpp.html#enum-PipelineStatisticName' | relative_url }}) const\* pipelineStatistics |  |  |
 | uint32_t pipelineStatisticsCount | `0` |  |
 
 ### struct QueueDescriptor {#structure-QueueDescriptor}
@@ -1509,8 +1509,8 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
 | uint32_t colorFormatsCount |  |  |
-| [TextureFormat](cpp.html#enum-TextureFormat) const\* colorFormats |  |  |
-| [TextureFormat](cpp.html#enum-TextureFormat) depthStencilFormat | `TextureFormat::Undefined` |  |
+| [TextureFormat]({{ '/api/cpp.html#enum-TextureFormat' | relative_url }}) const\* colorFormats |  |  |
+| [TextureFormat]({{ '/api/cpp.html#enum-TextureFormat' | relative_url }}) depthStencilFormat | `TextureFormat::Undefined` |  |
 | uint32_t sampleCount | `1` |  |
 | bool depthReadOnly | `false` |  |
 | bool stencilReadOnly | `false` |  |
@@ -1519,25 +1519,25 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
-| [TextureView](cpp.html#class-TextureView) view |  |  |
-| [TextureView](cpp.html#class-TextureView) resolveTarget |  |  |
-| [LoadOp](cpp.html#enum-LoadOp) loadOp |  |  |
-| [StoreOp](cpp.html#enum-StoreOp) storeOp |  |  |
-| [Color](cpp.html#structure-Color) clearColor | `Color::{NAN,NAN,NAN,NAN}` |  |
-| [Color](cpp.html#structure-Color) clearValue |  |  |
+| [TextureView]({{ '/api/cpp.html#class-TextureView' | relative_url }}) view |  |  |
+| [TextureView]({{ '/api/cpp.html#class-TextureView' | relative_url }}) resolveTarget |  |  |
+| [LoadOp]({{ '/api/cpp.html#enum-LoadOp' | relative_url }}) loadOp |  |  |
+| [StoreOp]({{ '/api/cpp.html#enum-StoreOp' | relative_url }}) storeOp |  |  |
+| [Color]({{ '/api/cpp.html#structure-Color' | relative_url }}) clearColor | `Color::{NAN,NAN,NAN,NAN}` |  |
+| [Color]({{ '/api/cpp.html#structure-Color' | relative_url }}) clearValue |  |  |
 
 ### struct RenderPassDepthStencilAttachment {#structure-RenderPassDepthStencilAttachment}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
-| [TextureView](cpp.html#class-TextureView) view |  |  |
-| [LoadOp](cpp.html#enum-LoadOp) depthLoadOp | `LoadOp::Undefined` |  |
-| [StoreOp](cpp.html#enum-StoreOp) depthStoreOp | `StoreOp::Undefined` |  |
+| [TextureView]({{ '/api/cpp.html#class-TextureView' | relative_url }}) view |  |  |
+| [LoadOp]({{ '/api/cpp.html#enum-LoadOp' | relative_url }}) depthLoadOp | `LoadOp::Undefined` |  |
+| [StoreOp]({{ '/api/cpp.html#enum-StoreOp' | relative_url }}) depthStoreOp | `StoreOp::Undefined` |  |
 | float clearDepth | `NAN` |  |
 | float depthClearValue | `0` |  |
 | bool depthReadOnly | `false` |  |
-| [LoadOp](cpp.html#enum-LoadOp) stencilLoadOp | `LoadOp::Undefined` |  |
-| [StoreOp](cpp.html#enum-StoreOp) stencilStoreOp | `StoreOp::Undefined` |  |
+| [LoadOp]({{ '/api/cpp.html#enum-LoadOp' | relative_url }}) stencilLoadOp | `LoadOp::Undefined` |  |
+| [StoreOp]({{ '/api/cpp.html#enum-StoreOp' | relative_url }}) stencilStoreOp | `StoreOp::Undefined` |  |
 | uint32_t clearStencil | `0` |  |
 | uint32_t stencilClearValue | `0` |  |
 | bool stencilReadOnly | `false` |  |
@@ -1549,15 +1549,15 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
 | uint32_t colorAttachmentCount |  |  |
-| [RenderPassColorAttachment](cpp.html#structure-RenderPassColorAttachment) const\* colorAttachments |  |  |
-| [RenderPassDepthStencilAttachment](cpp.html#structure-RenderPassDepthStencilAttachment) const\* depthStencilAttachment |  |  |
-| [QuerySet](cpp.html#class-QuerySet) occlusionQuerySet |  |  |
+| [RenderPassColorAttachment]({{ '/api/cpp.html#structure-RenderPassColorAttachment' | relative_url }}) const\* colorAttachments |  |  |
+| [RenderPassDepthStencilAttachment]({{ '/api/cpp.html#structure-RenderPassDepthStencilAttachment' | relative_url }}) const\* depthStencilAttachment |  |  |
+| [QuerySet]({{ '/api/cpp.html#class-QuerySet' | relative_url }}) occlusionQuerySet |  |  |
 | uint32_t timestampWriteCount | `0` |  |
-| [RenderPassTimestampWrite](cpp.html#structure-RenderPassTimestampWrite) const\* timestampWrites |  |  |
+| [RenderPassTimestampWrite]({{ '/api/cpp.html#structure-RenderPassTimestampWrite' | relative_url }}) const\* timestampWrites |  |  |
 
 #### Chainable Structures
 
- * [RenderPassDescriptorMaxDrawCount](cpp.html#structure-RenderPassDescriptorMaxDrawCount)
+ * [RenderPassDescriptorMaxDrawCount]({{ '/api/cpp.html#structure-RenderPassDescriptorMaxDrawCount' | relative_url }})
 
 ### struct RenderPassDescriptorMaxDrawCount {#structure-RenderPassDescriptorMaxDrawCount}
 
@@ -1569,15 +1569,15 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [RenderPassDescriptor](cpp.html#structure-RenderPassDescriptor)
+ * [RenderPassDescriptor]({{ '/api/cpp.html#structure-RenderPassDescriptor' | relative_url }})
 
 ### struct RenderPassTimestampWrite {#structure-RenderPassTimestampWrite}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
-| [QuerySet](cpp.html#class-QuerySet) querySet |  |  |
+| [QuerySet]({{ '/api/cpp.html#class-QuerySet' | relative_url }}) querySet |  |  |
 | uint32_t queryIndex |  |  |
-| [RenderPassTimestampLocation](cpp.html#enum-RenderPassTimestampLocation) location |  |  |
+| [RenderPassTimestampLocation]({{ '/api/cpp.html#enum-RenderPassTimestampLocation' | relative_url }}) location |  |  |
 
 ### struct RenderPipelineDescriptor {#structure-RenderPipelineDescriptor}
 
@@ -1585,20 +1585,20 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
-| [PipelineLayout](cpp.html#class-PipelineLayout) layout |  |  |
-| [VertexState](cpp.html#structure-VertexState) vertex |  |  |
-| [PrimitiveState](cpp.html#structure-PrimitiveState) primitive |  |  |
-| [DepthStencilState](cpp.html#structure-DepthStencilState) const\* depthStencil |  |  |
-| [MultisampleState](cpp.html#structure-MultisampleState) multisample |  |  |
-| [FragmentState](cpp.html#structure-FragmentState) const\* fragment |  |  |
+| [PipelineLayout]({{ '/api/cpp.html#class-PipelineLayout' | relative_url }}) layout |  |  |
+| [VertexState]({{ '/api/cpp.html#structure-VertexState' | relative_url }}) vertex |  |  |
+| [PrimitiveState]({{ '/api/cpp.html#structure-PrimitiveState' | relative_url }}) primitive |  |  |
+| [DepthStencilState]({{ '/api/cpp.html#structure-DepthStencilState' | relative_url }}) const\* depthStencil |  |  |
+| [MultisampleState]({{ '/api/cpp.html#structure-MultisampleState' | relative_url }}) multisample |  |  |
+| [FragmentState]({{ '/api/cpp.html#structure-FragmentState' | relative_url }}) const\* fragment |  |  |
 
 ### struct RequestAdapterOptions {#structure-RequestAdapterOptions}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
-| [Surface](cpp.html#class-Surface) compatibleSurface |  |  |
-| [PowerPreference](cpp.html#enum-PowerPreference) powerPreference | `PowerPreference::Undefined` |  |
+| [Surface]({{ '/api/cpp.html#class-Surface' | relative_url }}) compatibleSurface |  |  |
+| [PowerPreference]({{ '/api/cpp.html#enum-PowerPreference' | relative_url }}) powerPreference | `PowerPreference::Undefined` |  |
 | bool forceFallbackAdapter | `false` |  |
 
 ### struct RequiredLimits {#structure-RequiredLimits}
@@ -1606,14 +1606,14 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
-| [Limits](cpp.html#structure-Limits) limits |  |  |
+| [Limits]({{ '/api/cpp.html#structure-Limits' | relative_url }}) limits |  |  |
 
 ### struct SamplerBindingLayout {#structure-SamplerBindingLayout}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
-| [SamplerBindingType](cpp.html#enum-SamplerBindingType) type | `SamplerBindingType::Undefined` |  |
+| [SamplerBindingType]({{ '/api/cpp.html#enum-SamplerBindingType' | relative_url }}) type | `SamplerBindingType::Undefined` |  |
 
 ### struct SamplerDescriptor {#structure-SamplerDescriptor}
 
@@ -1621,16 +1621,16 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
-| [AddressMode](cpp.html#enum-AddressMode) addressModeU | `AddressMode::ClampToEdge` |  |
-| [AddressMode](cpp.html#enum-AddressMode) addressModeV | `AddressMode::ClampToEdge` |  |
-| [AddressMode](cpp.html#enum-AddressMode) addressModeW | `AddressMode::ClampToEdge` |  |
-| [FilterMode](cpp.html#enum-FilterMode) magFilter | `FilterMode::Nearest` |  |
-| [FilterMode](cpp.html#enum-FilterMode) minFilter | `FilterMode::Nearest` |  |
-| [FilterMode](cpp.html#enum-FilterMode) mipmapFilter | `FilterMode::Nearest` |  |
-| [MipmapFilterMode](cpp.html#enum-MipmapFilterMode) mipmapFilter | `MipmapFilterMode::Nearest` |  |
+| [AddressMode]({{ '/api/cpp.html#enum-AddressMode' | relative_url }}) addressModeU | `AddressMode::ClampToEdge` |  |
+| [AddressMode]({{ '/api/cpp.html#enum-AddressMode' | relative_url }}) addressModeV | `AddressMode::ClampToEdge` |  |
+| [AddressMode]({{ '/api/cpp.html#enum-AddressMode' | relative_url }}) addressModeW | `AddressMode::ClampToEdge` |  |
+| [FilterMode]({{ '/api/cpp.html#enum-FilterMode' | relative_url }}) magFilter | `FilterMode::Nearest` |  |
+| [FilterMode]({{ '/api/cpp.html#enum-FilterMode' | relative_url }}) minFilter | `FilterMode::Nearest` |  |
+| [FilterMode]({{ '/api/cpp.html#enum-FilterMode' | relative_url }}) mipmapFilter | `FilterMode::Nearest` |  |
+| [MipmapFilterMode]({{ '/api/cpp.html#enum-MipmapFilterMode' | relative_url }}) mipmapFilter | `MipmapFilterMode::Nearest` |  |
 | float lodMinClamp | `0.0f` |  |
 | float lodMaxClamp | `1000.0f` |  |
-| [CompareFunction](cpp.html#enum-CompareFunction) compare | `CompareFunction::Undefined` |  |
+| [CompareFunction]({{ '/api/cpp.html#enum-CompareFunction' | relative_url }}) compare | `CompareFunction::Undefined` |  |
 | uint16_t maxAnisotropy | `1` |  |
 
 ### struct ShaderModuleSPIRVDescriptor {#structure-ShaderModuleSPIRVDescriptor}
@@ -1644,7 +1644,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [ShaderModuleDescriptor](cpp.html#structure-ShaderModuleDescriptor)
+ * [ShaderModuleDescriptor]({{ '/api/cpp.html#structure-ShaderModuleDescriptor' | relative_url }})
 
 ### struct ShaderModuleWGSLDescriptor {#structure-ShaderModuleWGSLDescriptor}
 
@@ -1657,7 +1657,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [ShaderModuleDescriptor](cpp.html#structure-ShaderModuleDescriptor)
+ * [ShaderModuleDescriptor]({{ '/api/cpp.html#structure-ShaderModuleDescriptor' | relative_url }})
 
 ### struct ShaderModuleCompilationHint {#structure-ShaderModuleCompilationHint}
 
@@ -1665,7 +1665,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* entryPoint |  |  |
-| [PipelineLayout](cpp.html#class-PipelineLayout) layout |  |  |
+| [PipelineLayout]({{ '/api/cpp.html#class-PipelineLayout' | relative_url }}) layout |  |  |
 
 ### struct ShaderModuleDescriptor {#structure-ShaderModuleDescriptor}
 
@@ -1674,37 +1674,37 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
 | uint32_t hintCount | `0` |  |
-| [ShaderModuleCompilationHint](cpp.html#structure-ShaderModuleCompilationHint) const\* hints |  |  |
+| [ShaderModuleCompilationHint]({{ '/api/cpp.html#structure-ShaderModuleCompilationHint' | relative_url }}) const\* hints |  |  |
 
 #### Chainable Structures
 
- * [ShaderModuleSPIRVDescriptor](cpp.html#structure-ShaderModuleSPIRVDescriptor)
- * [ShaderModuleWGSLDescriptor](cpp.html#structure-ShaderModuleWGSLDescriptor)
+ * [ShaderModuleSPIRVDescriptor]({{ '/api/cpp.html#structure-ShaderModuleSPIRVDescriptor' | relative_url }})
+ * [ShaderModuleWGSLDescriptor]({{ '/api/cpp.html#structure-ShaderModuleWGSLDescriptor' | relative_url }})
 
 ### struct StencilFaceState {#structure-StencilFaceState}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
-| [CompareFunction](cpp.html#enum-CompareFunction) compare | `CompareFunction::Always` |  |
-| [StencilOperation](cpp.html#enum-StencilOperation) failOp | `StencilOperation::Keep` |  |
-| [StencilOperation](cpp.html#enum-StencilOperation) depthFailOp | `StencilOperation::Keep` |  |
-| [StencilOperation](cpp.html#enum-StencilOperation) passOp | `StencilOperation::Keep` |  |
+| [CompareFunction]({{ '/api/cpp.html#enum-CompareFunction' | relative_url }}) compare | `CompareFunction::Always` |  |
+| [StencilOperation]({{ '/api/cpp.html#enum-StencilOperation' | relative_url }}) failOp | `StencilOperation::Keep` |  |
+| [StencilOperation]({{ '/api/cpp.html#enum-StencilOperation' | relative_url }}) depthFailOp | `StencilOperation::Keep` |  |
+| [StencilOperation]({{ '/api/cpp.html#enum-StencilOperation' | relative_url }}) passOp | `StencilOperation::Keep` |  |
 
 ### struct StorageTextureBindingLayout {#structure-StorageTextureBindingLayout}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
-| [StorageTextureAccess](cpp.html#enum-StorageTextureAccess) access | `StorageTextureAccess::Undefined` |  |
-| [TextureFormat](cpp.html#enum-TextureFormat) format | `TextureFormat::Undefined` |  |
-| [TextureViewDimension](cpp.html#enum-TextureViewDimension) viewDimension | `TextureViewDimension::Undefined` |  |
+| [StorageTextureAccess]({{ '/api/cpp.html#enum-StorageTextureAccess' | relative_url }}) access | `StorageTextureAccess::Undefined` |  |
+| [TextureFormat]({{ '/api/cpp.html#enum-TextureFormat' | relative_url }}) format | `TextureFormat::Undefined` |  |
+| [TextureViewDimension]({{ '/api/cpp.html#enum-TextureViewDimension' | relative_url }}) viewDimension | `TextureViewDimension::Undefined` |  |
 
 ### struct SupportedLimits {#structure-SupportedLimits}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | `ChainedStructOut const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
-| [Limits](cpp.html#structure-Limits) limits |  |  |
+| [Limits]({{ '/api/cpp.html#structure-Limits' | relative_url }}) limits |  |  |
 
 ### struct SurfaceDescriptor {#structure-SurfaceDescriptor}
 
@@ -1715,15 +1715,15 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chainable Structures
 
- * [SurfaceDescriptorFromAndroidNativeWindow](cpp.html#structure-SurfaceDescriptorFromAndroidNativeWindow)
- * [SurfaceDescriptorFromCanvasHTMLSelector](cpp.html#structure-SurfaceDescriptorFromCanvasHTMLSelector)
- * [SurfaceDescriptorFromMetalLayer](cpp.html#structure-SurfaceDescriptorFromMetalLayer)
- * [SurfaceDescriptorFromWindowsHWND](cpp.html#structure-SurfaceDescriptorFromWindowsHWND)
- * [SurfaceDescriptorFromXcbWindow](cpp.html#structure-SurfaceDescriptorFromXcbWindow)
- * [SurfaceDescriptorFromXlibWindow](cpp.html#structure-SurfaceDescriptorFromXlibWindow)
- * [SurfaceDescriptorFromWaylandSurface](cpp.html#structure-SurfaceDescriptorFromWaylandSurface)
- * [SurfaceDescriptorFromWindowsCoreWindow](cpp.html#structure-SurfaceDescriptorFromWindowsCoreWindow)
- * [SurfaceDescriptorFromWindowsSwapChainPanel](cpp.html#structure-SurfaceDescriptorFromWindowsSwapChainPanel)
+ * [SurfaceDescriptorFromAndroidNativeWindow]({{ '/api/cpp.html#structure-SurfaceDescriptorFromAndroidNativeWindow' | relative_url }})
+ * [SurfaceDescriptorFromCanvasHTMLSelector]({{ '/api/cpp.html#structure-SurfaceDescriptorFromCanvasHTMLSelector' | relative_url }})
+ * [SurfaceDescriptorFromMetalLayer]({{ '/api/cpp.html#structure-SurfaceDescriptorFromMetalLayer' | relative_url }})
+ * [SurfaceDescriptorFromWindowsHWND]({{ '/api/cpp.html#structure-SurfaceDescriptorFromWindowsHWND' | relative_url }})
+ * [SurfaceDescriptorFromXcbWindow]({{ '/api/cpp.html#structure-SurfaceDescriptorFromXcbWindow' | relative_url }})
+ * [SurfaceDescriptorFromXlibWindow]({{ '/api/cpp.html#structure-SurfaceDescriptorFromXlibWindow' | relative_url }})
+ * [SurfaceDescriptorFromWaylandSurface]({{ '/api/cpp.html#structure-SurfaceDescriptorFromWaylandSurface' | relative_url }})
+ * [SurfaceDescriptorFromWindowsCoreWindow]({{ '/api/cpp.html#structure-SurfaceDescriptorFromWindowsCoreWindow' | relative_url }})
+ * [SurfaceDescriptorFromWindowsSwapChainPanel]({{ '/api/cpp.html#structure-SurfaceDescriptorFromWindowsSwapChainPanel' | relative_url }})
 
 ### struct SurfaceDescriptorFromAndroidNativeWindow {#structure-SurfaceDescriptorFromAndroidNativeWindow}
 
@@ -1735,7 +1735,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [SurfaceDescriptor](cpp.html#structure-SurfaceDescriptor)
+ * [SurfaceDescriptor]({{ '/api/cpp.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct SurfaceDescriptorFromCanvasHTMLSelector {#structure-SurfaceDescriptorFromCanvasHTMLSelector}
 
@@ -1747,7 +1747,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [SurfaceDescriptor](cpp.html#structure-SurfaceDescriptor)
+ * [SurfaceDescriptor]({{ '/api/cpp.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct SurfaceDescriptorFromMetalLayer {#structure-SurfaceDescriptorFromMetalLayer}
 
@@ -1759,7 +1759,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [SurfaceDescriptor](cpp.html#structure-SurfaceDescriptor)
+ * [SurfaceDescriptor]({{ '/api/cpp.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct SurfaceDescriptorFromWaylandSurface {#structure-SurfaceDescriptorFromWaylandSurface}
 
@@ -1772,7 +1772,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [SurfaceDescriptor](cpp.html#structure-SurfaceDescriptor)
+ * [SurfaceDescriptor]({{ '/api/cpp.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct SurfaceDescriptorFromWindowsHWND {#structure-SurfaceDescriptorFromWindowsHWND}
 
@@ -1785,7 +1785,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [SurfaceDescriptor](cpp.html#structure-SurfaceDescriptor)
+ * [SurfaceDescriptor]({{ '/api/cpp.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct SurfaceDescriptorFromWindowsCoreWindow {#structure-SurfaceDescriptorFromWindowsCoreWindow}
 
@@ -1797,7 +1797,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [SurfaceDescriptor](cpp.html#structure-SurfaceDescriptor)
+ * [SurfaceDescriptor]({{ '/api/cpp.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct SurfaceDescriptorFromWindowsSwapChainPanel {#structure-SurfaceDescriptorFromWindowsSwapChainPanel}
 
@@ -1809,7 +1809,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [SurfaceDescriptor](cpp.html#structure-SurfaceDescriptor)
+ * [SurfaceDescriptor]({{ '/api/cpp.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct SurfaceDescriptorFromXcbWindow {#structure-SurfaceDescriptorFromXcbWindow}
 
@@ -1822,7 +1822,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [SurfaceDescriptor](cpp.html#structure-SurfaceDescriptor)
+ * [SurfaceDescriptor]({{ '/api/cpp.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct SurfaceDescriptorFromXlibWindow {#structure-SurfaceDescriptorFromXlibWindow}
 
@@ -1835,7 +1835,7 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 
 #### Chain Parent Structures
 
- * [SurfaceDescriptor](cpp.html#structure-SurfaceDescriptor)
+ * [SurfaceDescriptor]({{ '/api/cpp.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct SwapChainDescriptor {#structure-SwapChainDescriptor}
 
@@ -1843,11 +1843,11 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
-| [TextureUsage](cpp.html#bitmask-TextureUsage) usage |  |  |
-| [TextureFormat](cpp.html#enum-TextureFormat) format |  |  |
+| [TextureUsage]({{ '/api/cpp.html#bitmask-TextureUsage' | relative_url }}) usage |  |  |
+| [TextureFormat]({{ '/api/cpp.html#enum-TextureFormat' | relative_url }}) format |  |  |
 | uint32_t width |  |  |
 | uint32_t height |  |  |
-| [PresentMode](cpp.html#enum-PresentMode) presentMode |  |  |
+| [PresentMode]({{ '/api/cpp.html#enum-PresentMode' | relative_url }}) presentMode |  |  |
 | uint64_t implementation | `0` |  |
 
 ### struct TextureBindingLayout {#structure-TextureBindingLayout}
@@ -1855,8 +1855,8 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
-| [TextureSampleType](cpp.html#enum-TextureSampleType) sampleType | `TextureSampleType::Undefined` |  |
-| [TextureViewDimension](cpp.html#enum-TextureViewDimension) viewDimension | `TextureViewDimension::Undefined` |  |
+| [TextureSampleType]({{ '/api/cpp.html#enum-TextureSampleType' | relative_url }}) sampleType | `TextureSampleType::Undefined` |  |
+| [TextureViewDimension]({{ '/api/cpp.html#enum-TextureViewDimension' | relative_url }}) viewDimension | `TextureViewDimension::Undefined` |  |
 | bool multisampled | `false` |  |
 
 ### struct TextureDataLayout {#structure-TextureDataLayout}
@@ -1874,18 +1874,18 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
-| [TextureUsage](cpp.html#bitmask-TextureUsage) usage |  |  |
-| [TextureDimension](cpp.html#enum-TextureDimension) dimension | `TextureDimension::2D` |  |
-| [Extent3D](cpp.html#structure-Extent3D) size |  |  |
-| [TextureFormat](cpp.html#enum-TextureFormat) format |  |  |
+| [TextureUsage]({{ '/api/cpp.html#bitmask-TextureUsage' | relative_url }}) usage |  |  |
+| [TextureDimension]({{ '/api/cpp.html#enum-TextureDimension' | relative_url }}) dimension | `TextureDimension::2D` |  |
+| [Extent3D]({{ '/api/cpp.html#structure-Extent3D' | relative_url }}) size |  |  |
+| [TextureFormat]({{ '/api/cpp.html#enum-TextureFormat' | relative_url }}) format |  |  |
 | uint32_t mipLevelCount | `1` |  |
 | uint32_t sampleCount | `1` |  |
 | uint32_t viewFormatCount | `0` |  |
-| [TextureFormat](cpp.html#enum-TextureFormat) const\* viewFormats |  |  |
+| [TextureFormat]({{ '/api/cpp.html#enum-TextureFormat' | relative_url }}) const\* viewFormats |  |  |
 
 #### Chainable Structures
 
- * [DawnTextureInternalUsageDescriptor](cpp.html#structure-DawnTextureInternalUsageDescriptor)
+ * [DawnTextureInternalUsageDescriptor]({{ '/api/cpp.html#structure-DawnTextureInternalUsageDescriptor' | relative_url }})
 
 ### struct TextureViewDescriptor {#structure-TextureViewDescriptor}
 
@@ -1893,19 +1893,19 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
 | char const\* label |  |  |
-| [TextureFormat](cpp.html#enum-TextureFormat) format | `TextureFormat::Undefined` |  |
-| [TextureViewDimension](cpp.html#enum-TextureViewDimension) dimension | `TextureViewDimension::Undefined` |  |
+| [TextureFormat]({{ '/api/cpp.html#enum-TextureFormat' | relative_url }}) format | `TextureFormat::Undefined` |  |
+| [TextureViewDimension]({{ '/api/cpp.html#enum-TextureViewDimension' | relative_url }}) dimension | `TextureViewDimension::Undefined` |  |
 | uint32_t baseMipLevel | `0` |  |
 | uint32_t mipLevelCount | `WGPU_MIP_LEVEL_COUNT_UNDEFINED` |  |
 | uint32_t baseArrayLayer | `0` |  |
 | uint32_t arrayLayerCount | `WGPU_ARRAY_LAYER_COUNT_UNDEFINED` |  |
-| [TextureAspect](cpp.html#enum-TextureAspect) aspect | `TextureAspect::All` |  |
+| [TextureAspect]({{ '/api/cpp.html#enum-TextureAspect' | relative_url }}) aspect | `TextureAspect::All` |  |
 
 ### struct VertexAttribute {#structure-VertexAttribute}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
-| [VertexFormat](cpp.html#enum-VertexFormat) format |  |  |
+| [VertexFormat]({{ '/api/cpp.html#enum-VertexFormat' | relative_url }}) format |  |  |
 | uint64_t offset |  |  |
 | uint32_t shaderLocation |  |  |
 
@@ -1914,21 +1914,21 @@ void (&#x2a;RequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Request
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | uint64_t arrayStride |  |  |
-| [VertexStepMode](cpp.html#enum-VertexStepMode) stepMode | `VertexStepMode::Vertex` |  |
+| [VertexStepMode]({{ '/api/cpp.html#enum-VertexStepMode' | relative_url }}) stepMode | `VertexStepMode::Vertex` |  |
 | uint32_t attributeCount |  |  |
-| [VertexAttribute](cpp.html#structure-VertexAttribute) const\* attributes |  |  |
+| [VertexAttribute]({{ '/api/cpp.html#structure-VertexAttribute' | relative_url }}) const\* attributes |  |  |
 
 ### struct VertexState {#structure-VertexState}
 
 | Members | Default | Description |
 |:--------|:--------|:------------|
 | `ChainedStruct const* nextInChain` | `nullptr` | Pointer to next chained structure. Maybe `nullptr`. |
-| [ShaderModule](cpp.html#class-ShaderModule) module |  |  |
+| [ShaderModule]({{ '/api/cpp.html#class-ShaderModule' | relative_url }}) module |  |  |
 | char const\* entryPoint |  |  |
 | uint32_t constantCount | `0` |  |
-| [ConstantEntry](cpp.html#structure-ConstantEntry) const\* constants |  |  |
+| [ConstantEntry]({{ '/api/cpp.html#structure-ConstantEntry' | relative_url }}) const\* constants |  |  |
 | uint32_t bufferCount | `0` |  |
-| [VertexBufferLayout](cpp.html#structure-VertexBufferLayout) const\* buffers |  |  |
+| [VertexBufferLayout]({{ '/api/cpp.html#structure-VertexBufferLayout' | relative_url }}) const\* buffers |  |  |
 
 ## Classes
 
@@ -1944,7 +1944,7 @@ See [Adapters](https://webgpu.dev/#adapters) for more information.
 
 <div class='signature' markdown=1>
 
-[Device](cpp.html#class-Device) CreateDevice([DeviceDescriptor](cpp.html#structure-DeviceDescriptor) const\* descriptor)
+[Device]({{ '/api/cpp.html#class-Device' | relative_url }}) CreateDevice([DeviceDescriptor]({{ '/api/cpp.html#structure-DeviceDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -1961,7 +1961,7 @@ See [Adapters](https://webgpu.dev/#adapters) for more information.
 
 <div class='signature' markdown=1>
 
-size_t EnumerateFeatures([FeatureName](cpp.html#enum-FeatureName) \* features)
+size_t EnumerateFeatures([FeatureName]({{ '/api/cpp.html#enum-FeatureName' | relative_url }}) \* features)
 
 </div>
 
@@ -1980,7 +1980,7 @@ Retrieves the limits which can be used with this adapter.
 
 <div class='signature' markdown=1>
 
-bool GetLimits([SupportedLimits](cpp.html#structure-SupportedLimits) \* limits)
+bool GetLimits([SupportedLimits]({{ '/api/cpp.html#structure-SupportedLimits' | relative_url }}) \* limits)
 
 </div>
 
@@ -1989,7 +1989,7 @@ bool GetLimits([SupportedLimits](cpp.html#structure-SupportedLimits) \* limits)
 Returns true if the limits were successfully retrieved.
 #### Arguments
 
-* *limits*: The [SupportedLimits](cpp.html#structure-SupportedLimits) object to populate. Must not be nullptr.
+* *limits*: The [SupportedLimits]({{ '/api/cpp.html#structure-SupportedLimits' | relative_url }}) object to populate. Must not be nullptr.
 
 </div>
 
@@ -1997,7 +1997,7 @@ Returns true if the limits were successfully retrieved.
 
 <div class='signature' markdown=1>
 
-void GetProperties([AdapterProperties](cpp.html#structure-AdapterProperties) \* properties)
+void GetProperties([AdapterProperties]({{ '/api/cpp.html#structure-AdapterProperties' | relative_url }}) \* properties)
 
 </div>
 
@@ -2011,7 +2011,7 @@ void GetProperties([AdapterProperties](cpp.html#structure-AdapterProperties) \* 
 
 <div class='signature' markdown=1>
 
-bool HasFeature([FeatureName](cpp.html#enum-FeatureName) feature)
+bool HasFeature([FeatureName]({{ '/api/cpp.html#enum-FeatureName' | relative_url }}) feature)
 
 </div>
 
@@ -2028,7 +2028,7 @@ bool HasFeature([FeatureName](cpp.html#enum-FeatureName) feature)
 
 <div class='signature' markdown=1>
 
-void RequestDevice([DeviceDescriptor](cpp.html#structure-DeviceDescriptor) const\* descriptor, [RequestDeviceCallback](cpp.html#function-pointer-RequestDeviceCallback) callback, void \* userdata)
+void RequestDevice([DeviceDescriptor]({{ '/api/cpp.html#structure-DeviceDescriptor' | relative_url }}) const\* descriptor, [RequestDeviceCallback]({{ '/api/cpp.html#function-pointer-RequestDeviceCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -2149,7 +2149,7 @@ uint64_t GetSize()
 
 <div class='signature' markdown=1>
 
-[BufferUsage](cpp.html#bitmask-BufferUsage) GetUsage()
+[BufferUsage]({{ '/api/cpp.html#bitmask-BufferUsage' | relative_url }}) GetUsage()
 
 </div>
 
@@ -2162,7 +2162,7 @@ uint64_t GetSize()
 
 <div class='signature' markdown=1>
 
-void MapAsync([MapMode](cpp.html#bitmask-MapMode) mode, size_t offset, size_t size, [BufferMapCallback](cpp.html#function-pointer-BufferMapCallback) callback, void \* userdata)
+void MapAsync([MapMode]({{ '/api/cpp.html#bitmask-MapMode' | relative_url }}) mode, size_t offset, size_t size, [BufferMapCallback]({{ '/api/cpp.html#function-pointer-BufferMapCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -2230,7 +2230,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-[ComputePassEncoder](cpp.html#class-ComputePassEncoder) BeginComputePass([ComputePassDescriptor](cpp.html#structure-ComputePassDescriptor) const\* descriptor)
+[ComputePassEncoder]({{ '/api/cpp.html#class-ComputePassEncoder' | relative_url }}) BeginComputePass([ComputePassDescriptor]({{ '/api/cpp.html#structure-ComputePassDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -2247,7 +2247,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-[RenderPassEncoder](cpp.html#class-RenderPassEncoder) BeginRenderPass([RenderPassDescriptor](cpp.html#structure-RenderPassDescriptor) const\* descriptor)
+[RenderPassEncoder]({{ '/api/cpp.html#class-RenderPassEncoder' | relative_url }}) BeginRenderPass([RenderPassDescriptor]({{ '/api/cpp.html#structure-RenderPassDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -2264,7 +2264,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-void ClearBuffer([Buffer](cpp.html#class-Buffer) buffer, uint64_t offset, uint64_t size)
+void ClearBuffer([Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) buffer, uint64_t offset, uint64_t size)
 
 </div>
 
@@ -2280,7 +2280,7 @@ void ClearBuffer([Buffer](cpp.html#class-Buffer) buffer, uint64_t offset, uint64
 
 <div class='signature' markdown=1>
 
-void CopyBufferToBuffer([Buffer](cpp.html#class-Buffer) source, uint64_t sourceOffset, [Buffer](cpp.html#class-Buffer) destination, uint64_t destinationOffset, uint64_t size)
+void CopyBufferToBuffer([Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) source, uint64_t sourceOffset, [Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) destination, uint64_t destinationOffset, uint64_t size)
 
 </div>
 
@@ -2298,7 +2298,7 @@ void CopyBufferToBuffer([Buffer](cpp.html#class-Buffer) source, uint64_t sourceO
 
 <div class='signature' markdown=1>
 
-void CopyBufferToTexture([ImageCopyBuffer](cpp.html#structure-ImageCopyBuffer) const\* source, [ImageCopyTexture](cpp.html#structure-ImageCopyTexture) const\* destination, [Extent3D](cpp.html#structure-Extent3D) const\* copySize)
+void CopyBufferToTexture([ImageCopyBuffer]({{ '/api/cpp.html#structure-ImageCopyBuffer' | relative_url }}) const\* source, [ImageCopyTexture]({{ '/api/cpp.html#structure-ImageCopyTexture' | relative_url }}) const\* destination, [Extent3D]({{ '/api/cpp.html#structure-Extent3D' | relative_url }}) const\* copySize)
 
 </div>
 
@@ -2314,7 +2314,7 @@ void CopyBufferToTexture([ImageCopyBuffer](cpp.html#structure-ImageCopyBuffer) c
 
 <div class='signature' markdown=1>
 
-void CopyTextureToBuffer([ImageCopyTexture](cpp.html#structure-ImageCopyTexture) const\* source, [ImageCopyBuffer](cpp.html#structure-ImageCopyBuffer) const\* destination, [Extent3D](cpp.html#structure-Extent3D) const\* copySize)
+void CopyTextureToBuffer([ImageCopyTexture]({{ '/api/cpp.html#structure-ImageCopyTexture' | relative_url }}) const\* source, [ImageCopyBuffer]({{ '/api/cpp.html#structure-ImageCopyBuffer' | relative_url }}) const\* destination, [Extent3D]({{ '/api/cpp.html#structure-Extent3D' | relative_url }}) const\* copySize)
 
 </div>
 
@@ -2330,7 +2330,7 @@ void CopyTextureToBuffer([ImageCopyTexture](cpp.html#structure-ImageCopyTexture)
 
 <div class='signature' markdown=1>
 
-void CopyTextureToTexture([ImageCopyTexture](cpp.html#structure-ImageCopyTexture) const\* source, [ImageCopyTexture](cpp.html#structure-ImageCopyTexture) const\* destination, [Extent3D](cpp.html#structure-Extent3D) const\* copySize)
+void CopyTextureToTexture([ImageCopyTexture]({{ '/api/cpp.html#structure-ImageCopyTexture' | relative_url }}) const\* source, [ImageCopyTexture]({{ '/api/cpp.html#structure-ImageCopyTexture' | relative_url }}) const\* destination, [Extent3D]({{ '/api/cpp.html#structure-Extent3D' | relative_url }}) const\* copySize)
 
 </div>
 
@@ -2346,7 +2346,7 @@ void CopyTextureToTexture([ImageCopyTexture](cpp.html#structure-ImageCopyTexture
 
 <div class='signature' markdown=1>
 
-void CopyTextureToTextureInternal([ImageCopyTexture](cpp.html#structure-ImageCopyTexture) const\* source, [ImageCopyTexture](cpp.html#structure-ImageCopyTexture) const\* destination, [Extent3D](cpp.html#structure-Extent3D) const\* copySize)
+void CopyTextureToTextureInternal([ImageCopyTexture]({{ '/api/cpp.html#structure-ImageCopyTexture' | relative_url }}) const\* source, [ImageCopyTexture]({{ '/api/cpp.html#structure-ImageCopyTexture' | relative_url }}) const\* destination, [Extent3D]({{ '/api/cpp.html#structure-Extent3D' | relative_url }}) const\* copySize)
 
 </div>
 
@@ -2362,7 +2362,7 @@ void CopyTextureToTextureInternal([ImageCopyTexture](cpp.html#structure-ImageCop
 
 <div class='signature' markdown=1>
 
-[CommandBuffer](cpp.html#class-CommandBuffer) Finish([CommandBufferDescriptor](cpp.html#structure-CommandBufferDescriptor) const\* descriptor)
+[CommandBuffer]({{ '/api/cpp.html#class-CommandBuffer' | relative_url }}) Finish([CommandBufferDescriptor]({{ '/api/cpp.html#structure-CommandBufferDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -2431,7 +2431,7 @@ void PushDebugGroup(char const\* groupLabel)
 
 <div class='signature' markdown=1>
 
-void ResolveQuerySet([QuerySet](cpp.html#class-QuerySet) querySet, uint32_t firstQuery, uint32_t queryCount, [Buffer](cpp.html#class-Buffer) destination, uint64_t destinationOffset)
+void ResolveQuerySet([QuerySet]({{ '/api/cpp.html#class-QuerySet' | relative_url }}) querySet, uint32_t firstQuery, uint32_t queryCount, [Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) destination, uint64_t destinationOffset)
 
 </div>
 
@@ -2463,7 +2463,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-void WriteBuffer([Buffer](cpp.html#class-Buffer) buffer, uint64_t bufferOffset, uint8_t const\* data, uint64_t size)
+void WriteBuffer([Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) buffer, uint64_t bufferOffset, uint8_t const\* data, uint64_t size)
 
 </div>
 
@@ -2480,7 +2480,7 @@ void WriteBuffer([Buffer](cpp.html#class-Buffer) buffer, uint64_t bufferOffset, 
 
 <div class='signature' markdown=1>
 
-void WriteTimestamp([QuerySet](cpp.html#class-QuerySet) querySet, uint32_t queryIndex)
+void WriteTimestamp([QuerySet]({{ '/api/cpp.html#class-QuerySet' | relative_url }}) querySet, uint32_t queryIndex)
 
 </div>
 
@@ -2501,7 +2501,7 @@ void WriteTimestamp([QuerySet](cpp.html#class-QuerySet) querySet, uint32_t query
 
 <div class='signature' markdown=1>
 
-void BeginPipelineStatisticsQuery([QuerySet](cpp.html#class-QuerySet) querySet, uint32_t queryIndex)
+void BeginPipelineStatisticsQuery([QuerySet]({{ '/api/cpp.html#class-QuerySet' | relative_url }}) querySet, uint32_t queryIndex)
 
 </div>
 
@@ -2532,7 +2532,7 @@ void Dispatch(uint32_t workgroupCountX, uint32_t workgroupCountY, uint32_t workg
 
 <div class='signature' markdown=1>
 
-void DispatchIndirect([Buffer](cpp.html#class-Buffer) indirectBuffer, uint64_t indirectOffset)
+void DispatchIndirect([Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) indirectBuffer, uint64_t indirectOffset)
 
 </div>
 
@@ -2563,7 +2563,7 @@ void DispatchWorkgroups(uint32_t workgroupCountX, uint32_t workgroupCountY, uint
 
 <div class='signature' markdown=1>
 
-void DispatchWorkgroupsIndirect([Buffer](cpp.html#class-Buffer) indirectBuffer, uint64_t indirectOffset)
+void DispatchWorkgroupsIndirect([Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) indirectBuffer, uint64_t indirectOffset)
 
 </div>
 
@@ -2646,7 +2646,7 @@ void PushDebugGroup(char const\* groupLabel)
 
 <div class='signature' markdown=1>
 
-void SetBindGroup(uint32_t groupIndex, [BindGroup](cpp.html#class-BindGroup) group, uint32_t dynamicOffsetCount, uint32_t const\* dynamicOffsets)
+void SetBindGroup(uint32_t groupIndex, [BindGroup]({{ '/api/cpp.html#class-BindGroup' | relative_url }}) group, uint32_t dynamicOffsetCount, uint32_t const\* dynamicOffsets)
 
 </div>
 
@@ -2677,7 +2677,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-void SetPipeline([ComputePipeline](cpp.html#class-ComputePipeline) pipeline)
+void SetPipeline([ComputePipeline]({{ '/api/cpp.html#class-ComputePipeline' | relative_url }}) pipeline)
 
 </div>
 
@@ -2691,7 +2691,7 @@ void SetPipeline([ComputePipeline](cpp.html#class-ComputePipeline) pipeline)
 
 <div class='signature' markdown=1>
 
-void WriteTimestamp([QuerySet](cpp.html#class-QuerySet) querySet, uint32_t queryIndex)
+void WriteTimestamp([QuerySet]({{ '/api/cpp.html#class-QuerySet' | relative_url }}) querySet, uint32_t queryIndex)
 
 </div>
 
@@ -2712,7 +2712,7 @@ void WriteTimestamp([QuerySet](cpp.html#class-QuerySet) querySet, uint32_t query
 
 <div class='signature' markdown=1>
 
-[BindGroupLayout](cpp.html#class-BindGroupLayout) GetBindGroupLayout(uint32_t groupIndex)
+[BindGroupLayout]({{ '/api/cpp.html#class-BindGroupLayout' | relative_url }}) GetBindGroupLayout(uint32_t groupIndex)
 
 </div>
 
@@ -2749,7 +2749,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-[BindGroup](cpp.html#class-BindGroup) CreateBindGroup([BindGroupDescriptor](cpp.html#structure-BindGroupDescriptor) const\* descriptor)
+[BindGroup]({{ '/api/cpp.html#class-BindGroup' | relative_url }}) CreateBindGroup([BindGroupDescriptor]({{ '/api/cpp.html#structure-BindGroupDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -2766,7 +2766,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-[BindGroupLayout](cpp.html#class-BindGroupLayout) CreateBindGroupLayout([BindGroupLayoutDescriptor](cpp.html#structure-BindGroupLayoutDescriptor) const\* descriptor)
+[BindGroupLayout]({{ '/api/cpp.html#class-BindGroupLayout' | relative_url }}) CreateBindGroupLayout([BindGroupLayoutDescriptor]({{ '/api/cpp.html#structure-BindGroupLayoutDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -2783,7 +2783,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-[Buffer](cpp.html#class-Buffer) CreateBuffer([BufferDescriptor](cpp.html#structure-BufferDescriptor) const\* descriptor)
+[Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) CreateBuffer([BufferDescriptor]({{ '/api/cpp.html#structure-BufferDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -2800,7 +2800,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-[CommandEncoder](cpp.html#class-CommandEncoder) CreateCommandEncoder([CommandEncoderDescriptor](cpp.html#structure-CommandEncoderDescriptor) const\* descriptor)
+[CommandEncoder]({{ '/api/cpp.html#class-CommandEncoder' | relative_url }}) CreateCommandEncoder([CommandEncoderDescriptor]({{ '/api/cpp.html#structure-CommandEncoderDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -2817,7 +2817,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-[ComputePipeline](cpp.html#class-ComputePipeline) CreateComputePipeline([ComputePipelineDescriptor](cpp.html#structure-ComputePipelineDescriptor) const\* descriptor)
+[ComputePipeline]({{ '/api/cpp.html#class-ComputePipeline' | relative_url }}) CreateComputePipeline([ComputePipelineDescriptor]({{ '/api/cpp.html#structure-ComputePipelineDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -2834,7 +2834,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-void CreateComputePipelineAsync([ComputePipelineDescriptor](cpp.html#structure-ComputePipelineDescriptor) const\* descriptor, [CreateComputePipelineAsyncCallback](cpp.html#function-pointer-CreateComputePipelineAsyncCallback) callback, void \* userdata)
+void CreateComputePipelineAsync([ComputePipelineDescriptor]({{ '/api/cpp.html#structure-ComputePipelineDescriptor' | relative_url }}) const\* descriptor, [CreateComputePipelineAsyncCallback]({{ '/api/cpp.html#function-pointer-CreateComputePipelineAsyncCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -2850,7 +2850,7 @@ void CreateComputePipelineAsync([ComputePipelineDescriptor](cpp.html#structure-C
 
 <div class='signature' markdown=1>
 
-[Buffer](cpp.html#class-Buffer) CreateErrorBuffer()
+[Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) CreateErrorBuffer()
 
 </div>
 
@@ -2863,7 +2863,7 @@ void CreateComputePipelineAsync([ComputePipelineDescriptor](cpp.html#structure-C
 
 <div class='signature' markdown=1>
 
-[ExternalTexture](cpp.html#class-ExternalTexture) CreateErrorExternalTexture()
+[ExternalTexture]({{ '/api/cpp.html#class-ExternalTexture' | relative_url }}) CreateErrorExternalTexture()
 
 </div>
 
@@ -2876,7 +2876,7 @@ void CreateComputePipelineAsync([ComputePipelineDescriptor](cpp.html#structure-C
 
 <div class='signature' markdown=1>
 
-[Texture](cpp.html#class-Texture) CreateErrorTexture([TextureDescriptor](cpp.html#structure-TextureDescriptor) const\* descriptor)
+[Texture]({{ '/api/cpp.html#class-Texture' | relative_url }}) CreateErrorTexture([TextureDescriptor]({{ '/api/cpp.html#structure-TextureDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -2893,7 +2893,7 @@ void CreateComputePipelineAsync([ComputePipelineDescriptor](cpp.html#structure-C
 
 <div class='signature' markdown=1>
 
-[ExternalTexture](cpp.html#class-ExternalTexture) CreateExternalTexture([ExternalTextureDescriptor](cpp.html#structure-ExternalTextureDescriptor) const\* externalTextureDescriptor)
+[ExternalTexture]({{ '/api/cpp.html#class-ExternalTexture' | relative_url }}) CreateExternalTexture([ExternalTextureDescriptor]({{ '/api/cpp.html#structure-ExternalTextureDescriptor' | relative_url }}) const\* externalTextureDescriptor)
 
 </div>
 
@@ -2910,7 +2910,7 @@ void CreateComputePipelineAsync([ComputePipelineDescriptor](cpp.html#structure-C
 
 <div class='signature' markdown=1>
 
-[PipelineLayout](cpp.html#class-PipelineLayout) CreatePipelineLayout([PipelineLayoutDescriptor](cpp.html#structure-PipelineLayoutDescriptor) const\* descriptor)
+[PipelineLayout]({{ '/api/cpp.html#class-PipelineLayout' | relative_url }}) CreatePipelineLayout([PipelineLayoutDescriptor]({{ '/api/cpp.html#structure-PipelineLayoutDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -2927,7 +2927,7 @@ void CreateComputePipelineAsync([ComputePipelineDescriptor](cpp.html#structure-C
 
 <div class='signature' markdown=1>
 
-[QuerySet](cpp.html#class-QuerySet) CreateQuerySet([QuerySetDescriptor](cpp.html#structure-QuerySetDescriptor) const\* descriptor)
+[QuerySet]({{ '/api/cpp.html#class-QuerySet' | relative_url }}) CreateQuerySet([QuerySetDescriptor]({{ '/api/cpp.html#structure-QuerySetDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -2944,7 +2944,7 @@ void CreateComputePipelineAsync([ComputePipelineDescriptor](cpp.html#structure-C
 
 <div class='signature' markdown=1>
 
-[RenderBundleEncoder](cpp.html#class-RenderBundleEncoder) CreateRenderBundleEncoder([RenderBundleEncoderDescriptor](cpp.html#structure-RenderBundleEncoderDescriptor) const\* descriptor)
+[RenderBundleEncoder]({{ '/api/cpp.html#class-RenderBundleEncoder' | relative_url }}) CreateRenderBundleEncoder([RenderBundleEncoderDescriptor]({{ '/api/cpp.html#structure-RenderBundleEncoderDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -2961,7 +2961,7 @@ void CreateComputePipelineAsync([ComputePipelineDescriptor](cpp.html#structure-C
 
 <div class='signature' markdown=1>
 
-[RenderPipeline](cpp.html#class-RenderPipeline) CreateRenderPipeline([RenderPipelineDescriptor](cpp.html#structure-RenderPipelineDescriptor) const\* descriptor)
+[RenderPipeline]({{ '/api/cpp.html#class-RenderPipeline' | relative_url }}) CreateRenderPipeline([RenderPipelineDescriptor]({{ '/api/cpp.html#structure-RenderPipelineDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -2978,7 +2978,7 @@ void CreateComputePipelineAsync([ComputePipelineDescriptor](cpp.html#structure-C
 
 <div class='signature' markdown=1>
 
-void CreateRenderPipelineAsync([RenderPipelineDescriptor](cpp.html#structure-RenderPipelineDescriptor) const\* descriptor, [CreateRenderPipelineAsyncCallback](cpp.html#function-pointer-CreateRenderPipelineAsyncCallback) callback, void \* userdata)
+void CreateRenderPipelineAsync([RenderPipelineDescriptor]({{ '/api/cpp.html#structure-RenderPipelineDescriptor' | relative_url }}) const\* descriptor, [CreateRenderPipelineAsyncCallback]({{ '/api/cpp.html#function-pointer-CreateRenderPipelineAsyncCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -2994,7 +2994,7 @@ void CreateRenderPipelineAsync([RenderPipelineDescriptor](cpp.html#structure-Ren
 
 <div class='signature' markdown=1>
 
-[Sampler](cpp.html#class-Sampler) CreateSampler([SamplerDescriptor](cpp.html#structure-SamplerDescriptor) const\* descriptor)
+[Sampler]({{ '/api/cpp.html#class-Sampler' | relative_url }}) CreateSampler([SamplerDescriptor]({{ '/api/cpp.html#structure-SamplerDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3011,7 +3011,7 @@ void CreateRenderPipelineAsync([RenderPipelineDescriptor](cpp.html#structure-Ren
 
 <div class='signature' markdown=1>
 
-[ShaderModule](cpp.html#class-ShaderModule) CreateShaderModule([ShaderModuleDescriptor](cpp.html#structure-ShaderModuleDescriptor) const\* descriptor)
+[ShaderModule]({{ '/api/cpp.html#class-ShaderModule' | relative_url }}) CreateShaderModule([ShaderModuleDescriptor]({{ '/api/cpp.html#structure-ShaderModuleDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3028,25 +3028,7 @@ void CreateRenderPipelineAsync([RenderPipelineDescriptor](cpp.html#structure-Ren
 
 <div class='signature' markdown=1>
 
-[SwapChain](cpp.html#class-SwapChain) CreateSwapChain([Surface](cpp.html#class-Surface) surface, [SwapChainDescriptor](cpp.html#structure-SwapChainDescriptor) const\* descriptor)
-
-</div>
-
-#### Returns
-
-
-#### Arguments
-
-* *surface*: 
-* *descriptor*: 
-
-</div>
-
-<div class='method' markdown=1>
-
-<div class='signature' markdown=1>
-
-[SwapChain](cpp.html#class-SwapChain) CreateSwapChain([Surface](cpp.html#class-Surface) surface, [SwapChainDescriptor](cpp.html#structure-SwapChainDescriptor) const\* descriptor)
+[SwapChain]({{ '/api/cpp.html#class-SwapChain' | relative_url }}) CreateSwapChain([Surface]({{ '/api/cpp.html#class-Surface' | relative_url }}) surface, [SwapChainDescriptor]({{ '/api/cpp.html#structure-SwapChainDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3064,7 +3046,25 @@ void CreateRenderPipelineAsync([RenderPipelineDescriptor](cpp.html#structure-Ren
 
 <div class='signature' markdown=1>
 
-[Texture](cpp.html#class-Texture) CreateTexture([TextureDescriptor](cpp.html#structure-TextureDescriptor) const\* descriptor)
+[SwapChain]({{ '/api/cpp.html#class-SwapChain' | relative_url }}) CreateSwapChain([Surface]({{ '/api/cpp.html#class-Surface' | relative_url }}) surface, [SwapChainDescriptor]({{ '/api/cpp.html#structure-SwapChainDescriptor' | relative_url }}) const\* descriptor)
+
+</div>
+
+#### Returns
+
+
+#### Arguments
+
+* *surface*: 
+* *descriptor*: 
+
+</div>
+
+<div class='method' markdown=1>
+
+<div class='signature' markdown=1>
+
+[Texture]({{ '/api/cpp.html#class-Texture' | relative_url }}) CreateTexture([TextureDescriptor]({{ '/api/cpp.html#structure-TextureDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3091,7 +3091,7 @@ void Destroy()
 
 <div class='signature' markdown=1>
 
-size_t EnumerateFeatures([FeatureName](cpp.html#enum-FeatureName) \* features)
+size_t EnumerateFeatures([FeatureName]({{ '/api/cpp.html#enum-FeatureName' | relative_url }}) \* features)
 
 </div>
 
@@ -3108,7 +3108,7 @@ size_t EnumerateFeatures([FeatureName](cpp.html#enum-FeatureName) \* features)
 
 <div class='signature' markdown=1>
 
-void ForceLoss([DeviceLostReason](cpp.html#enum-DeviceLostReason) type, char const\* message)
+void ForceLoss([DeviceLostReason]({{ '/api/cpp.html#enum-DeviceLostReason' | relative_url }}) type, char const\* message)
 
 </div>
 
@@ -3123,7 +3123,7 @@ void ForceLoss([DeviceLostReason](cpp.html#enum-DeviceLostReason) type, char con
 
 <div class='signature' markdown=1>
 
-[Adapter](cpp.html#class-Adapter) GetAdapter()
+[Adapter]({{ '/api/cpp.html#class-Adapter' | relative_url }}) GetAdapter()
 
 </div>
 
@@ -3136,7 +3136,7 @@ void ForceLoss([DeviceLostReason](cpp.html#enum-DeviceLostReason) type, char con
 
 <div class='signature' markdown=1>
 
-bool GetLimits([SupportedLimits](cpp.html#structure-SupportedLimits) \* limits)
+bool GetLimits([SupportedLimits]({{ '/api/cpp.html#structure-SupportedLimits' | relative_url }}) \* limits)
 
 </div>
 
@@ -3153,7 +3153,7 @@ bool GetLimits([SupportedLimits](cpp.html#structure-SupportedLimits) \* limits)
 
 <div class='signature' markdown=1>
 
-[Queue](cpp.html#class-Queue) GetQueue()
+[Queue]({{ '/api/cpp.html#class-Queue' | relative_url }}) GetQueue()
 
 </div>
 
@@ -3166,7 +3166,7 @@ bool GetLimits([SupportedLimits](cpp.html#structure-SupportedLimits) \* limits)
 
 <div class='signature' markdown=1>
 
-bool HasFeature([FeatureName](cpp.html#enum-FeatureName) feature)
+bool HasFeature([FeatureName]({{ '/api/cpp.html#enum-FeatureName' | relative_url }}) feature)
 
 </div>
 
@@ -3183,7 +3183,7 @@ bool HasFeature([FeatureName](cpp.html#enum-FeatureName) feature)
 
 <div class='signature' markdown=1>
 
-void InjectError([ErrorType](cpp.html#enum-ErrorType) type, char const\* message)
+void InjectError([ErrorType]({{ '/api/cpp.html#enum-ErrorType' | relative_url }}) type, char const\* message)
 
 </div>
 
@@ -3198,7 +3198,7 @@ void InjectError([ErrorType](cpp.html#enum-ErrorType) type, char const\* message
 
 <div class='signature' markdown=1>
 
-bool PopErrorScope([ErrorCallback](cpp.html#function-pointer-ErrorCallback) callback, void \* userdata)
+bool PopErrorScope([ErrorCallback]({{ '/api/cpp.html#function-pointer-ErrorCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -3216,7 +3216,7 @@ bool PopErrorScope([ErrorCallback](cpp.html#function-pointer-ErrorCallback) call
 
 <div class='signature' markdown=1>
 
-void PushErrorScope([ErrorFilter](cpp.html#enum-ErrorFilter) filter)
+void PushErrorScope([ErrorFilter]({{ '/api/cpp.html#enum-ErrorFilter' | relative_url }}) filter)
 
 </div>
 
@@ -3230,7 +3230,7 @@ void PushErrorScope([ErrorFilter](cpp.html#enum-ErrorFilter) filter)
 
 <div class='signature' markdown=1>
 
-void SetDeviceLostCallback([DeviceLostCallback](cpp.html#function-pointer-DeviceLostCallback) callback, void \* userdata)
+void SetDeviceLostCallback([DeviceLostCallback]({{ '/api/cpp.html#function-pointer-DeviceLostCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -3259,7 +3259,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-void SetLoggingCallback([LoggingCallback](cpp.html#function-pointer-LoggingCallback) callback, void \* userdata)
+void SetLoggingCallback([LoggingCallback]({{ '/api/cpp.html#function-pointer-LoggingCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -3274,7 +3274,7 @@ void SetLoggingCallback([LoggingCallback](cpp.html#function-pointer-LoggingCallb
 
 <div class='signature' markdown=1>
 
-void SetUncapturedErrorCallback([ErrorCallback](cpp.html#function-pointer-ErrorCallback) callback, void \* userdata)
+void SetUncapturedErrorCallback([ErrorCallback]({{ '/api/cpp.html#function-pointer-ErrorCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -3335,7 +3335,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-[Surface](cpp.html#class-Surface) CreateSurface([SurfaceDescriptor](cpp.html#structure-SurfaceDescriptor) const\* descriptor)
+[Surface]({{ '/api/cpp.html#class-Surface' | relative_url }}) CreateSurface([SurfaceDescriptor]({{ '/api/cpp.html#structure-SurfaceDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3362,7 +3362,7 @@ void ProcessEvents()
 
 <div class='signature' markdown=1>
 
-void RequestAdapter([RequestAdapterOptions](cpp.html#structure-RequestAdapterOptions) const\* options, [RequestAdapterCallback](cpp.html#function-pointer-RequestAdapterCallback) callback, void \* userdata)
+void RequestAdapter([RequestAdapterOptions]({{ '/api/cpp.html#structure-RequestAdapterOptions' | relative_url }}) const\* options, [RequestAdapterCallback]({{ '/api/cpp.html#function-pointer-RequestAdapterCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -3427,7 +3427,7 @@ uint32_t GetCount()
 
 <div class='signature' markdown=1>
 
-[QueryType](cpp.html#enum-QueryType) GetType()
+[QueryType]({{ '/api/cpp.html#enum-QueryType' | relative_url }}) GetType()
 
 </div>
 
@@ -3460,7 +3460,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-void CopyTextureForBrowser([ImageCopyTexture](cpp.html#structure-ImageCopyTexture) const\* source, [ImageCopyTexture](cpp.html#structure-ImageCopyTexture) const\* destination, [Extent3D](cpp.html#structure-Extent3D) const\* copySize, [CopyTextureForBrowserOptions](cpp.html#structure-CopyTextureForBrowserOptions) const\* options)
+void CopyTextureForBrowser([ImageCopyTexture]({{ '/api/cpp.html#structure-ImageCopyTexture' | relative_url }}) const\* source, [ImageCopyTexture]({{ '/api/cpp.html#structure-ImageCopyTexture' | relative_url }}) const\* destination, [Extent3D]({{ '/api/cpp.html#structure-Extent3D' | relative_url }}) const\* copySize, [CopyTextureForBrowserOptions]({{ '/api/cpp.html#structure-CopyTextureForBrowserOptions' | relative_url }}) const\* options)
 
 </div>
 
@@ -3477,7 +3477,7 @@ void CopyTextureForBrowser([ImageCopyTexture](cpp.html#structure-ImageCopyTextur
 
 <div class='signature' markdown=1>
 
-void OnSubmittedWorkDone(uint64_t signalValue, [QueueWorkDoneCallback](cpp.html#function-pointer-QueueWorkDoneCallback) callback, void \* userdata)
+void OnSubmittedWorkDone(uint64_t signalValue, [QueueWorkDoneCallback]({{ '/api/cpp.html#function-pointer-QueueWorkDoneCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -3493,7 +3493,7 @@ void OnSubmittedWorkDone(uint64_t signalValue, [QueueWorkDoneCallback](cpp.html#
 
 <div class='signature' markdown=1>
 
-void OnSubmittedWorkDone([QueueWorkDoneCallback](cpp.html#function-pointer-QueueWorkDoneCallback) callback, void \* userdata)
+void OnSubmittedWorkDone([QueueWorkDoneCallback]({{ '/api/cpp.html#function-pointer-QueueWorkDoneCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -3522,7 +3522,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-void Submit(uint32_t commandCount, [CommandBuffer](cpp.html#class-CommandBuffer) const\* commands)
+void Submit(uint32_t commandCount, [CommandBuffer]({{ '/api/cpp.html#class-CommandBuffer' | relative_url }}) const\* commands)
 
 </div>
 
@@ -3537,7 +3537,7 @@ void Submit(uint32_t commandCount, [CommandBuffer](cpp.html#class-CommandBuffer)
 
 <div class='signature' markdown=1>
 
-void WriteBuffer([Buffer](cpp.html#class-Buffer) buffer, uint64_t bufferOffset, void const\* data, size_t size)
+void WriteBuffer([Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) buffer, uint64_t bufferOffset, void const\* data, size_t size)
 
 </div>
 
@@ -3554,7 +3554,7 @@ void WriteBuffer([Buffer](cpp.html#class-Buffer) buffer, uint64_t bufferOffset, 
 
 <div class='signature' markdown=1>
 
-void WriteTexture([ImageCopyTexture](cpp.html#structure-ImageCopyTexture) const\* destination, void const\* data, size_t dataSize, [TextureDataLayout](cpp.html#structure-TextureDataLayout) const\* dataLayout, [Extent3D](cpp.html#structure-Extent3D) const\* writeSize)
+void WriteTexture([ImageCopyTexture]({{ '/api/cpp.html#structure-ImageCopyTexture' | relative_url }}) const\* destination, void const\* data, size_t dataSize, [TextureDataLayout]({{ '/api/cpp.html#structure-TextureDataLayout' | relative_url }}) const\* dataLayout, [Extent3D]({{ '/api/cpp.html#structure-Extent3D' | relative_url }}) const\* writeSize)
 
 </div>
 
@@ -3619,7 +3619,7 @@ void DrawIndexed(uint32_t indexCount, uint32_t instanceCount, uint32_t firstInde
 
 <div class='signature' markdown=1>
 
-void DrawIndexedIndirect([Buffer](cpp.html#class-Buffer) indirectBuffer, uint64_t indirectOffset)
+void DrawIndexedIndirect([Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) indirectBuffer, uint64_t indirectOffset)
 
 </div>
 
@@ -3634,7 +3634,7 @@ void DrawIndexedIndirect([Buffer](cpp.html#class-Buffer) indirectBuffer, uint64_
 
 <div class='signature' markdown=1>
 
-void DrawIndirect([Buffer](cpp.html#class-Buffer) indirectBuffer, uint64_t indirectOffset)
+void DrawIndirect([Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) indirectBuffer, uint64_t indirectOffset)
 
 </div>
 
@@ -3649,7 +3649,7 @@ void DrawIndirect([Buffer](cpp.html#class-Buffer) indirectBuffer, uint64_t indir
 
 <div class='signature' markdown=1>
 
-[RenderBundle](cpp.html#class-RenderBundle) Finish([RenderBundleDescriptor](cpp.html#structure-RenderBundleDescriptor) const\* descriptor)
+[RenderBundle]({{ '/api/cpp.html#class-RenderBundle' | relative_url }}) Finish([RenderBundleDescriptor]({{ '/api/cpp.html#structure-RenderBundleDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3704,7 +3704,7 @@ void PushDebugGroup(char const\* groupLabel)
 
 <div class='signature' markdown=1>
 
-void SetBindGroup(uint32_t groupIndex, [BindGroup](cpp.html#class-BindGroup) group, uint32_t dynamicOffsetCount, uint32_t const\* dynamicOffsets)
+void SetBindGroup(uint32_t groupIndex, [BindGroup]({{ '/api/cpp.html#class-BindGroup' | relative_url }}) group, uint32_t dynamicOffsetCount, uint32_t const\* dynamicOffsets)
 
 </div>
 
@@ -3721,7 +3721,7 @@ void SetBindGroup(uint32_t groupIndex, [BindGroup](cpp.html#class-BindGroup) gro
 
 <div class='signature' markdown=1>
 
-void SetIndexBuffer([Buffer](cpp.html#class-Buffer) buffer, [IndexFormat](cpp.html#enum-IndexFormat) format, uint64_t offset, uint64_t size)
+void SetIndexBuffer([Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) buffer, [IndexFormat]({{ '/api/cpp.html#enum-IndexFormat' | relative_url }}) format, uint64_t offset, uint64_t size)
 
 </div>
 
@@ -3752,7 +3752,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-void SetPipeline([RenderPipeline](cpp.html#class-RenderPipeline) pipeline)
+void SetPipeline([RenderPipeline]({{ '/api/cpp.html#class-RenderPipeline' | relative_url }}) pipeline)
 
 </div>
 
@@ -3766,7 +3766,7 @@ void SetPipeline([RenderPipeline](cpp.html#class-RenderPipeline) pipeline)
 
 <div class='signature' markdown=1>
 
-void SetVertexBuffer(uint32_t slot, [Buffer](cpp.html#class-Buffer) buffer, uint64_t offset, uint64_t size)
+void SetVertexBuffer(uint32_t slot, [Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) buffer, uint64_t offset, uint64_t size)
 
 </div>
 
@@ -3803,7 +3803,7 @@ void BeginOcclusionQuery(uint32_t queryIndex)
 
 <div class='signature' markdown=1>
 
-void BeginPipelineStatisticsQuery([QuerySet](cpp.html#class-QuerySet) querySet, uint32_t queryIndex)
+void BeginPipelineStatisticsQuery([QuerySet]({{ '/api/cpp.html#class-QuerySet' | relative_url }}) querySet, uint32_t queryIndex)
 
 </div>
 
@@ -3853,7 +3853,7 @@ void DrawIndexed(uint32_t indexCount, uint32_t instanceCount, uint32_t firstInde
 
 <div class='signature' markdown=1>
 
-void DrawIndexedIndirect([Buffer](cpp.html#class-Buffer) indirectBuffer, uint64_t indirectOffset)
+void DrawIndexedIndirect([Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) indirectBuffer, uint64_t indirectOffset)
 
 </div>
 
@@ -3868,7 +3868,7 @@ void DrawIndexedIndirect([Buffer](cpp.html#class-Buffer) indirectBuffer, uint64_
 
 <div class='signature' markdown=1>
 
-void DrawIndirect([Buffer](cpp.html#class-Buffer) indirectBuffer, uint64_t indirectOffset)
+void DrawIndirect([Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) indirectBuffer, uint64_t indirectOffset)
 
 </div>
 
@@ -3923,7 +3923,7 @@ void EndPipelineStatisticsQuery()
 
 <div class='signature' markdown=1>
 
-void ExecuteBundles(uint32_t bundlesCount, [RenderBundle](cpp.html#class-RenderBundle) const\* bundles)
+void ExecuteBundles(uint32_t bundlesCount, [RenderBundle]({{ '/api/cpp.html#class-RenderBundle' | relative_url }}) const\* bundles)
 
 </div>
 
@@ -3976,7 +3976,7 @@ void PushDebugGroup(char const\* groupLabel)
 
 <div class='signature' markdown=1>
 
-void SetBindGroup(uint32_t groupIndex, [BindGroup](cpp.html#class-BindGroup) group, uint32_t dynamicOffsetCount, uint32_t const\* dynamicOffsets)
+void SetBindGroup(uint32_t groupIndex, [BindGroup]({{ '/api/cpp.html#class-BindGroup' | relative_url }}) group, uint32_t dynamicOffsetCount, uint32_t const\* dynamicOffsets)
 
 </div>
 
@@ -3993,7 +3993,7 @@ void SetBindGroup(uint32_t groupIndex, [BindGroup](cpp.html#class-BindGroup) gro
 
 <div class='signature' markdown=1>
 
-void SetBlendConstant([Color](cpp.html#structure-Color) const\* color)
+void SetBlendConstant([Color]({{ '/api/cpp.html#structure-Color' | relative_url }}) const\* color)
 
 </div>
 
@@ -4007,7 +4007,7 @@ void SetBlendConstant([Color](cpp.html#structure-Color) const\* color)
 
 <div class='signature' markdown=1>
 
-void SetIndexBuffer([Buffer](cpp.html#class-Buffer) buffer, [IndexFormat](cpp.html#enum-IndexFormat) format, uint64_t offset, uint64_t size)
+void SetIndexBuffer([Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) buffer, [IndexFormat]({{ '/api/cpp.html#enum-IndexFormat' | relative_url }}) format, uint64_t offset, uint64_t size)
 
 </div>
 
@@ -4038,7 +4038,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-void SetPipeline([RenderPipeline](cpp.html#class-RenderPipeline) pipeline)
+void SetPipeline([RenderPipeline]({{ '/api/cpp.html#class-RenderPipeline' | relative_url }}) pipeline)
 
 </div>
 
@@ -4083,7 +4083,7 @@ void SetStencilReference(uint32_t reference)
 
 <div class='signature' markdown=1>
 
-void SetVertexBuffer(uint32_t slot, [Buffer](cpp.html#class-Buffer) buffer, uint64_t offset, uint64_t size)
+void SetVertexBuffer(uint32_t slot, [Buffer]({{ '/api/cpp.html#class-Buffer' | relative_url }}) buffer, uint64_t offset, uint64_t size)
 
 </div>
 
@@ -4119,7 +4119,7 @@ void SetViewport(float x, float y, float width, float height, float minDepth, fl
 
 <div class='signature' markdown=1>
 
-void WriteTimestamp([QuerySet](cpp.html#class-QuerySet) querySet, uint32_t queryIndex)
+void WriteTimestamp([QuerySet]({{ '/api/cpp.html#class-QuerySet' | relative_url }}) querySet, uint32_t queryIndex)
 
 </div>
 
@@ -4140,7 +4140,7 @@ void WriteTimestamp([QuerySet](cpp.html#class-QuerySet) querySet, uint32_t query
 
 <div class='signature' markdown=1>
 
-[BindGroupLayout](cpp.html#class-BindGroupLayout) GetBindGroupLayout(uint32_t groupIndex)
+[BindGroupLayout]({{ '/api/cpp.html#class-BindGroupLayout' | relative_url }}) GetBindGroupLayout(uint32_t groupIndex)
 
 </div>
 
@@ -4197,7 +4197,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-void GetCompilationInfo([CompilationInfoCallback](cpp.html#function-pointer-CompilationInfoCallback) callback, void \* userdata)
+void GetCompilationInfo([CompilationInfoCallback]({{ '/api/cpp.html#function-pointer-CompilationInfoCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -4232,7 +4232,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-[TextureFormat](cpp.html#enum-TextureFormat) GetPreferredFormat([Adapter](cpp.html#class-Adapter) adapter)
+[TextureFormat]({{ '/api/cpp.html#enum-TextureFormat' | relative_url }}) GetPreferredFormat([Adapter]({{ '/api/cpp.html#class-Adapter' | relative_url }}) adapter)
 
 </div>
 
@@ -4255,7 +4255,7 @@ void SetLabel(char const\* label)
 
 <div class='signature' markdown=1>
 
-void Configure([TextureFormat](cpp.html#enum-TextureFormat) format, [TextureUsage](cpp.html#bitmask-TextureUsage) allowedUsage, uint32_t width, uint32_t height)
+void Configure([TextureFormat]({{ '/api/cpp.html#enum-TextureFormat' | relative_url }}) format, [TextureUsage]({{ '/api/cpp.html#bitmask-TextureUsage' | relative_url }}) allowedUsage, uint32_t width, uint32_t height)
 
 </div>
 
@@ -4272,7 +4272,7 @@ void Configure([TextureFormat](cpp.html#enum-TextureFormat) format, [TextureUsag
 
 <div class='signature' markdown=1>
 
-[TextureView](cpp.html#class-TextureView) GetCurrentTextureView()
+[TextureView]({{ '/api/cpp.html#class-TextureView' | relative_url }}) GetCurrentTextureView()
 
 </div>
 
@@ -4301,7 +4301,7 @@ void Present()
 
 <div class='signature' markdown=1>
 
-[TextureView](cpp.html#class-TextureView) CreateView([TextureViewDescriptor](cpp.html#structure-TextureViewDescriptor) const\* descriptor)
+[TextureView]({{ '/api/cpp.html#class-TextureView' | relative_url }}) CreateView([TextureViewDescriptor]({{ '/api/cpp.html#structure-TextureViewDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -4341,7 +4341,7 @@ uint32_t GetDepthOrArrayLayers()
 
 <div class='signature' markdown=1>
 
-[TextureDimension](cpp.html#enum-TextureDimension) GetDimension()
+[TextureDimension]({{ '/api/cpp.html#enum-TextureDimension' | relative_url }}) GetDimension()
 
 </div>
 
@@ -4354,7 +4354,7 @@ uint32_t GetDepthOrArrayLayers()
 
 <div class='signature' markdown=1>
 
-[TextureFormat](cpp.html#enum-TextureFormat) GetFormat()
+[TextureFormat]({{ '/api/cpp.html#enum-TextureFormat' | relative_url }}) GetFormat()
 
 </div>
 
@@ -4406,7 +4406,7 @@ uint32_t GetSampleCount()
 
 <div class='signature' markdown=1>
 
-[TextureUsage](cpp.html#bitmask-TextureUsage) GetUsage()
+[TextureUsage]({{ '/api/cpp.html#bitmask-TextureUsage' | relative_url }}) GetUsage()
 
 </div>
 

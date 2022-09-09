@@ -731,16 +731,16 @@ Creates an instance of the Dawn WebGPU system
 
 <div class='signature' markdown=1>
 
-[WGPUInstance](c.html#class-Instance) wgpuCreateInstance([WGPUInstanceDescriptor](c.html#structure-InstanceDescriptor) const\* descriptor)
+[WGPUInstance]({{ '/api/c.html#class-Instance' | relative_url }}) wgpuCreateInstance([WGPUInstanceDescriptor]({{ '/api/c.html#structure-InstanceDescriptor' | relative_url }}) const\* descriptor)
 </div>
 
 #### Returns
 
-The created [WGPUInstance](c.html#class-Instance).
+The created [WGPUInstance]({{ '/api/c.html#class-Instance' | relative_url }}).
 
 #### Arguments
 
-* *descriptor*: The [WGPUInstanceDescriptor](c.html#structure-InstanceDescriptor) pointer. Maybe `NULL` to create a default instance.
+* *descriptor*: The [WGPUInstanceDescriptor]({{ '/api/c.html#structure-InstanceDescriptor' | relative_url }}) pointer. Maybe `NULL` to create a default instance.
 
 </div>
 
@@ -756,16 +756,16 @@ Returns the function pointer for the requested WebGPU API method *procName*.
 
 <div class='signature' markdown=1>
 
-[WGPUProc](c.html#function-pointer-Proc) wgpuGetProcAddress([WGPUDevice](c.html#class-Device) device, char const\* procName)
+[WGPUProc]({{ '/api/c.html#function-pointer-Proc' | relative_url }}) wgpuGetProcAddress([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, char const\* procName)
 </div>
 
 #### Returns
 
-The [WGPUProc](c.html#function-pointer-Proc) function pointer if it exists, NULL otherwise.
+The [WGPUProc]({{ '/api/c.html#function-pointer-Proc' | relative_url }}) function pointer if it exists, NULL otherwise.
 
 #### Arguments
 
-* *device*: The [WGPUDevice](c.html#class-Device) to retrieve the proc for
+* *device*: The [WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) to retrieve the proc for
 * *procName*: The name of the pointer to retrieve
 
 </div>
@@ -782,7 +782,7 @@ The [WGPUProc](c.html#function-pointer-Proc) function pointer if it exists, NULL
 
 <div class='signature' markdown=1>
 
-void (&#x2a;WGPUBufferMapCallback)([WGPUBufferMapAsyncStatus](c.html#enum-BufferMapAsyncStatus) status, void \* userdata)
+void (&#x2a;WGPUBufferMapCallback)([WGPUBufferMapAsyncStatus]({{ '/api/c.html#enum-BufferMapAsyncStatus' | relative_url }}) status, void \* userdata)
 </div>
 
 #### Arguments
@@ -802,7 +802,7 @@ void (&#x2a;WGPUBufferMapCallback)([WGPUBufferMapAsyncStatus](c.html#enum-Buffer
 
 <div class='signature' markdown=1>
 
-void (&#x2a;WGPUCompilationInfoCallback)([WGPUCompilationInfoRequestStatus](c.html#enum-CompilationInfoRequestStatus) status, [WGPUCompilationInfo](c.html#structure-CompilationInfo) const\* compilationInfo, void \* userdata)
+void (&#x2a;WGPUCompilationInfoCallback)([WGPUCompilationInfoRequestStatus]({{ '/api/c.html#enum-CompilationInfoRequestStatus' | relative_url }}) status, [WGPUCompilationInfo]({{ '/api/c.html#structure-CompilationInfo' | relative_url }}) const\* compilationInfo, void \* userdata)
 </div>
 
 #### Arguments
@@ -823,7 +823,7 @@ void (&#x2a;WGPUCompilationInfoCallback)([WGPUCompilationInfoRequestStatus](c.ht
 
 <div class='signature' markdown=1>
 
-void (&#x2a;WGPUCreateComputePipelineAsyncCallback)([WGPUCreatePipelineAsyncStatus](c.html#enum-CreatePipelineAsyncStatus) status, [WGPUComputePipeline](c.html#class-ComputePipeline) pipeline, char const\* message, void \* userdata)
+void (&#x2a;WGPUCreateComputePipelineAsyncCallback)([WGPUCreatePipelineAsyncStatus]({{ '/api/c.html#enum-CreatePipelineAsyncStatus' | relative_url }}) status, [WGPUComputePipeline]({{ '/api/c.html#class-ComputePipeline' | relative_url }}) pipeline, char const\* message, void \* userdata)
 </div>
 
 #### Arguments
@@ -845,7 +845,7 @@ void (&#x2a;WGPUCreateComputePipelineAsyncCallback)([WGPUCreatePipelineAsyncStat
 
 <div class='signature' markdown=1>
 
-void (&#x2a;WGPUCreateRenderPipelineAsyncCallback)([WGPUCreatePipelineAsyncStatus](c.html#enum-CreatePipelineAsyncStatus) status, [WGPURenderPipeline](c.html#class-RenderPipeline) pipeline, char const\* message, void \* userdata)
+void (&#x2a;WGPUCreateRenderPipelineAsyncCallback)([WGPUCreatePipelineAsyncStatus]({{ '/api/c.html#enum-CreatePipelineAsyncStatus' | relative_url }}) status, [WGPURenderPipeline]({{ '/api/c.html#class-RenderPipeline' | relative_url }}) pipeline, char const\* message, void \* userdata)
 </div>
 
 #### Arguments
@@ -867,7 +867,7 @@ void (&#x2a;WGPUCreateRenderPipelineAsyncCallback)([WGPUCreatePipelineAsyncStatu
 
 <div class='signature' markdown=1>
 
-void (&#x2a;WGPUDeviceLostCallback)([WGPUDeviceLostReason](c.html#enum-DeviceLostReason) reason, char const\* message, void \* userdata)
+void (&#x2a;WGPUDeviceLostCallback)([WGPUDeviceLostReason]({{ '/api/c.html#enum-DeviceLostReason' | relative_url }}) reason, char const\* message, void \* userdata)
 </div>
 
 #### Arguments
@@ -888,7 +888,7 @@ void (&#x2a;WGPUDeviceLostCallback)([WGPUDeviceLostReason](c.html#enum-DeviceLos
 
 <div class='signature' markdown=1>
 
-void (&#x2a;WGPUErrorCallback)([WGPUErrorType](c.html#enum-ErrorType) type, char const\* message, void \* userdata)
+void (&#x2a;WGPUErrorCallback)([WGPUErrorType]({{ '/api/c.html#enum-ErrorType' | relative_url }}) type, char const\* message, void \* userdata)
 </div>
 
 #### Arguments
@@ -909,7 +909,7 @@ void (&#x2a;WGPUErrorCallback)([WGPUErrorType](c.html#enum-ErrorType) type, char
 
 <div class='signature' markdown=1>
 
-void (&#x2a;WGPULoggingCallback)([WGPULoggingType](c.html#enum-LoggingType) type, char const\* message, void \* userdata)
+void (&#x2a;WGPULoggingCallback)([WGPULoggingType]({{ '/api/c.html#enum-LoggingType' | relative_url }}) type, char const\* message, void \* userdata)
 </div>
 
 #### Arguments
@@ -945,7 +945,7 @@ void (&#x2a;WGPUProc)()
 
 <div class='signature' markdown=1>
 
-void (&#x2a;WGPUQueueWorkDoneCallback)([WGPUQueueWorkDoneStatus](c.html#enum-QueueWorkDoneStatus) status, void \* userdata)
+void (&#x2a;WGPUQueueWorkDoneCallback)([WGPUQueueWorkDoneStatus]({{ '/api/c.html#enum-QueueWorkDoneStatus' | relative_url }}) status, void \* userdata)
 </div>
 
 #### Arguments
@@ -965,7 +965,7 @@ void (&#x2a;WGPUQueueWorkDoneCallback)([WGPUQueueWorkDoneStatus](c.html#enum-Que
 
 <div class='signature' markdown=1>
 
-void (&#x2a;WGPURequestAdapterCallback)([WGPURequestAdapterStatus](c.html#enum-RequestAdapterStatus) status, [WGPUAdapter](c.html#class-Adapter) adapter, char const\* message, void \* userdata)
+void (&#x2a;WGPURequestAdapterCallback)([WGPURequestAdapterStatus]({{ '/api/c.html#enum-RequestAdapterStatus' | relative_url }}) status, [WGPUAdapter]({{ '/api/c.html#class-Adapter' | relative_url }}) adapter, char const\* message, void \* userdata)
 </div>
 
 #### Arguments
@@ -987,7 +987,7 @@ void (&#x2a;WGPURequestAdapterCallback)([WGPURequestAdapterStatus](c.html#enum-R
 
 <div class='signature' markdown=1>
 
-void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-RequestDeviceStatus) status, [WGPUDevice](c.html#class-Device) device, char const\* message, void \* userdata)
+void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus]({{ '/api/c.html#enum-RequestDeviceStatus' | relative_url }}) status, [WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, char const\* message, void \* userdata)
 </div>
 
 #### Arguments
@@ -1014,8 +1014,8 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 | uint32_t deviceID | The vendor-specific device identifier. |
 | char const\* name | A vendor-specific identifier for the adapter, if available. Empty string otherwise. |
 | char const\* driverDescription | A human readable string describing the adapter as reported by the driver, if available. Empty string otherwise. |
-| [WGPUAdapterType](c.html#enum-AdapterType) adapterType | The type of the adapter |
-| [WGPUBackendType](c.html#enum-BackendType) backendType | The backend platform used by the adapter |
+| [WGPUAdapterType]({{ '/api/c.html#enum-AdapterType' | relative_url }}) adapterType | The type of the adapter |
+| [WGPUBackendType]({{ '/api/c.html#enum-BackendType' | relative_url }}) backendType | The backend platform used by the adapter |
 
 ### struct WGPUBindGroupDescriptor {#structure-BindGroupDescriptor}
 
@@ -1023,9 +1023,9 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
-| [WGPUBindGroupLayout](c.html#class-BindGroupLayout) layout |  |
+| [WGPUBindGroupLayout]({{ '/api/c.html#class-BindGroupLayout' | relative_url }}) layout |  |
 | uint32_t entryCount |  |
-| [WGPUBindGroupEntry](c.html#structure-BindGroupEntry) const\* entries |  |
+| [WGPUBindGroupEntry]({{ '/api/c.html#structure-BindGroupEntry' | relative_url }}) const\* entries |  |
 
 ### struct WGPUBindGroupEntry {#structure-BindGroupEntry}
 
@@ -1033,15 +1033,15 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | uint32_t binding |  |
-| [WGPUBuffer](c.html#class-Buffer) buffer |  |
+| [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer |  |
 | uint64_t offset |  |
 | uint64_t size |  |
-| [WGPUSampler](c.html#class-Sampler) sampler |  |
-| [WGPUTextureView](c.html#class-TextureView) textureView |  |
+| [WGPUSampler]({{ '/api/c.html#class-Sampler' | relative_url }}) sampler |  |
+| [WGPUTextureView]({{ '/api/c.html#class-TextureView' | relative_url }}) textureView |  |
 
 #### Chainable Structures
 
- * [WGPUExternalTextureBindingEntry](c.html#structure-ExternalTextureBindingEntry)
+ * [WGPUExternalTextureBindingEntry]({{ '/api/c.html#structure-ExternalTextureBindingEntry' | relative_url }})
 
 ### struct WGPUBindGroupLayoutDescriptor {#structure-BindGroupLayoutDescriptor}
 
@@ -1050,7 +1050,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
 | uint32_t entryCount |  |
-| [WGPUBindGroupLayoutEntry](c.html#structure-BindGroupLayoutEntry) const\* entries |  |
+| [WGPUBindGroupLayoutEntry]({{ '/api/c.html#structure-BindGroupLayoutEntry' | relative_url }}) const\* entries |  |
 
 ### struct WGPUBindGroupLayoutEntry {#structure-BindGroupLayoutEntry}
 
@@ -1058,37 +1058,37 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | uint32_t binding |  |
-| [WGPUShaderStage](c.html#bitmask-ShaderStage) visibility |  |
-| [WGPUBufferBindingLayout](c.html#structure-BufferBindingLayout) buffer |  |
-| [WGPUSamplerBindingLayout](c.html#structure-SamplerBindingLayout) sampler |  |
-| [WGPUTextureBindingLayout](c.html#structure-TextureBindingLayout) texture |  |
-| [WGPUStorageTextureBindingLayout](c.html#structure-StorageTextureBindingLayout) storageTexture |  |
+| [WGPUShaderStage]({{ '/api/c.html#bitmask-ShaderStage' | relative_url }}) visibility |  |
+| [WGPUBufferBindingLayout]({{ '/api/c.html#structure-BufferBindingLayout' | relative_url }}) buffer |  |
+| [WGPUSamplerBindingLayout]({{ '/api/c.html#structure-SamplerBindingLayout' | relative_url }}) sampler |  |
+| [WGPUTextureBindingLayout]({{ '/api/c.html#structure-TextureBindingLayout' | relative_url }}) texture |  |
+| [WGPUStorageTextureBindingLayout]({{ '/api/c.html#structure-StorageTextureBindingLayout' | relative_url }}) storageTexture |  |
 
 #### Chainable Structures
 
- * [WGPUExternalTextureBindingLayout](c.html#structure-ExternalTextureBindingLayout)
+ * [WGPUExternalTextureBindingLayout]({{ '/api/c.html#structure-ExternalTextureBindingLayout' | relative_url }})
 
 ### struct WGPUBlendComponent {#structure-BlendComponent}
 
 | Members | Description |
 |:--------|:------------|
-| [WGPUBlendOperation](c.html#enum-BlendOperation) operation |  |
-| [WGPUBlendFactor](c.html#enum-BlendFactor) srcFactor |  |
-| [WGPUBlendFactor](c.html#enum-BlendFactor) dstFactor |  |
+| [WGPUBlendOperation]({{ '/api/c.html#enum-BlendOperation' | relative_url }}) operation |  |
+| [WGPUBlendFactor]({{ '/api/c.html#enum-BlendFactor' | relative_url }}) srcFactor |  |
+| [WGPUBlendFactor]({{ '/api/c.html#enum-BlendFactor' | relative_url }}) dstFactor |  |
 
 ### struct WGPUBlendState {#structure-BlendState}
 
 | Members | Description |
 |:--------|:------------|
-| [WGPUBlendComponent](c.html#structure-BlendComponent) color |  |
-| [WGPUBlendComponent](c.html#structure-BlendComponent) alpha |  |
+| [WGPUBlendComponent]({{ '/api/c.html#structure-BlendComponent' | relative_url }}) color |  |
+| [WGPUBlendComponent]({{ '/api/c.html#structure-BlendComponent' | relative_url }}) alpha |  |
 
 ### struct WGPUBufferBindingLayout {#structure-BufferBindingLayout}
 
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
-| [WGPUBufferBindingType](c.html#enum-BufferBindingType) type |  |
+| [WGPUBufferBindingType]({{ '/api/c.html#enum-BufferBindingType' | relative_url }}) type |  |
 | bool hasDynamicOffset |  |
 | uint64_t minBindingSize |  |
 
@@ -1098,7 +1098,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
-| [WGPUBufferUsage](c.html#bitmask-BufferUsage) usage |  |
+| [WGPUBufferUsage]({{ '/api/c.html#bitmask-BufferUsage' | relative_url }}) usage |  |
 | uint64_t size |  |
 | bool mappedAtCreation |  |
 
@@ -1116,9 +1116,9 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
-| [WGPUTextureFormat](c.html#enum-TextureFormat) format |  |
-| [WGPUBlendState](c.html#structure-BlendState) const\* blend |  |
-| [WGPUColorWriteMask](c.html#bitmask-ColorWriteMask) writeMask |  |
+| [WGPUTextureFormat]({{ '/api/c.html#enum-TextureFormat' | relative_url }}) format |  |
+| [WGPUBlendState]({{ '/api/c.html#structure-BlendState' | relative_url }}) const\* blend |  |
+| [WGPUColorWriteMask]({{ '/api/c.html#bitmask-ColorWriteMask' | relative_url }}) writeMask |  |
 
 ### struct WGPUCommandBufferDescriptor {#structure-CommandBufferDescriptor}
 
@@ -1136,7 +1136,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chainable Structures
 
- * [WGPUDawnEncoderInternalUsageDescriptor](c.html#structure-DawnEncoderInternalUsageDescriptor)
+ * [WGPUDawnEncoderInternalUsageDescriptor]({{ '/api/c.html#structure-DawnEncoderInternalUsageDescriptor' | relative_url }})
 
 ### struct WGPUCompilationInfo {#structure-CompilationInfo}
 
@@ -1144,7 +1144,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | uint32_t messageCount |  |
-| [WGPUCompilationMessage](c.html#structure-CompilationMessage) const\* messages |  |
+| [WGPUCompilationMessage]({{ '/api/c.html#structure-CompilationMessage' | relative_url }}) const\* messages |  |
 
 ### struct WGPUCompilationMessage {#structure-CompilationMessage}
 
@@ -1152,7 +1152,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* message |  |
-| [WGPUCompilationMessageType](c.html#enum-CompilationMessageType) type |  |
+| [WGPUCompilationMessageType]({{ '/api/c.html#enum-CompilationMessageType' | relative_url }}) type |  |
 | uint64_t lineNum |  |
 | uint64_t linePos |  |
 | uint64_t offset |  |
@@ -1165,15 +1165,15 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
 | uint32_t timestampWriteCount |  |
-| [WGPUComputePassTimestampWrite](c.html#structure-ComputePassTimestampWrite) const\* timestampWrites |  |
+| [WGPUComputePassTimestampWrite]({{ '/api/c.html#structure-ComputePassTimestampWrite' | relative_url }}) const\* timestampWrites |  |
 
 ### struct WGPUComputePassTimestampWrite {#structure-ComputePassTimestampWrite}
 
 | Members | Description |
 |:--------|:------------|
-| [WGPUQuerySet](c.html#class-QuerySet) querySet |  |
+| [WGPUQuerySet]({{ '/api/c.html#class-QuerySet' | relative_url }}) querySet |  |
 | uint32_t queryIndex |  |
-| [WGPUComputePassTimestampLocation](c.html#enum-ComputePassTimestampLocation) location |  |
+| [WGPUComputePassTimestampLocation]({{ '/api/c.html#enum-ComputePassTimestampLocation' | relative_url }}) location |  |
 
 ### struct WGPUComputePipelineDescriptor {#structure-ComputePipelineDescriptor}
 
@@ -1181,8 +1181,8 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
-| [WGPUPipelineLayout](c.html#class-PipelineLayout) layout |  |
-| [WGPUProgrammableStageDescriptor](c.html#structure-ProgrammableStageDescriptor) compute |  |
+| [WGPUPipelineLayout]({{ '/api/c.html#class-PipelineLayout' | relative_url }}) layout |  |
+| [WGPUProgrammableStageDescriptor]({{ '/api/c.html#structure-ProgrammableStageDescriptor' | relative_url }}) compute |  |
 
 ### struct WGPUConstantEntry {#structure-ConstantEntry}
 
@@ -1199,11 +1199,11 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | bool flipY |  |
 | bool needsColorSpaceConversion |  |
-| [WGPUAlphaMode](c.html#enum-AlphaMode) srcAlphaMode |  |
+| [WGPUAlphaMode]({{ '/api/c.html#enum-AlphaMode' | relative_url }}) srcAlphaMode |  |
 | float const\* srcTransferFunctionParameters |  |
 | float const\* conversionMatrix |  |
 | float const\* dstTransferFunctionParameters |  |
-| [WGPUAlphaMode](c.html#enum-AlphaMode) dstAlphaMode |  |
+| [WGPUAlphaMode]({{ '/api/c.html#enum-AlphaMode' | relative_url }}) dstAlphaMode |  |
 | bool internalUsage |  |
 
 ### struct WGPUDawnCacheDeviceDescriptor {#structure-DawnCacheDeviceDescriptor}
@@ -1215,7 +1215,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUDeviceDescriptor](c.html#structure-DeviceDescriptor)
+ * [WGPUDeviceDescriptor]({{ '/api/c.html#structure-DeviceDescriptor' | relative_url }})
 
 ### struct WGPUDawnEncoderInternalUsageDescriptor {#structure-DawnEncoderInternalUsageDescriptor}
 
@@ -1226,7 +1226,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUCommandEncoderDescriptor](c.html#structure-CommandEncoderDescriptor)
+ * [WGPUCommandEncoderDescriptor]({{ '/api/c.html#structure-CommandEncoderDescriptor' | relative_url }})
 
 ### struct WGPUDawnInstanceDescriptor {#structure-DawnInstanceDescriptor}
 
@@ -1238,18 +1238,18 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUInstanceDescriptor](c.html#structure-InstanceDescriptor)
+ * [WGPUInstanceDescriptor]({{ '/api/c.html#structure-InstanceDescriptor' | relative_url }})
 
 ### struct WGPUDawnTextureInternalUsageDescriptor {#structure-DawnTextureInternalUsageDescriptor}
 
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStruct chain` | | ChainedStruct base object|
-| [WGPUTextureUsage](c.html#bitmask-TextureUsage) internalUsage |  |
+| [WGPUTextureUsage]({{ '/api/c.html#bitmask-TextureUsage' | relative_url }}) internalUsage |  |
 
 #### Chain Parent Structures
 
- * [WGPUTextureDescriptor](c.html#structure-TextureDescriptor)
+ * [WGPUTextureDescriptor]({{ '/api/c.html#structure-TextureDescriptor' | relative_url }})
 
 ### struct WGPUDawnTogglesDeviceDescriptor {#structure-DawnTogglesDeviceDescriptor}
 
@@ -1263,18 +1263,18 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUDeviceDescriptor](c.html#structure-DeviceDescriptor)
+ * [WGPUDeviceDescriptor]({{ '/api/c.html#structure-DeviceDescriptor' | relative_url }})
 
 ### struct WGPUDepthStencilState {#structure-DepthStencilState}
 
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
-| [WGPUTextureFormat](c.html#enum-TextureFormat) format |  |
+| [WGPUTextureFormat]({{ '/api/c.html#enum-TextureFormat' | relative_url }}) format |  |
 | bool depthWriteEnabled |  |
-| [WGPUCompareFunction](c.html#enum-CompareFunction) depthCompare |  |
-| [WGPUStencilFaceState](c.html#structure-StencilFaceState) stencilFront |  |
-| [WGPUStencilFaceState](c.html#structure-StencilFaceState) stencilBack |  |
+| [WGPUCompareFunction]({{ '/api/c.html#enum-CompareFunction' | relative_url }}) depthCompare |  |
+| [WGPUStencilFaceState]({{ '/api/c.html#structure-StencilFaceState' | relative_url }}) stencilFront |  |
+| [WGPUStencilFaceState]({{ '/api/c.html#structure-StencilFaceState' | relative_url }}) stencilBack |  |
 | uint32_t stencilReadMask |  |
 | uint32_t stencilWriteMask |  |
 | int32_t depthBias |  |
@@ -1288,14 +1288,14 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
 | uint32_t requiredFeaturesCount |  |
-| [WGPUFeatureName](c.html#enum-FeatureName) const\* requiredFeatures |  |
-| [WGPURequiredLimits](c.html#structure-RequiredLimits) const\* requiredLimits |  |
-| [WGPUQueueDescriptor](c.html#structure-QueueDescriptor) defaultQueue |  |
+| [WGPUFeatureName]({{ '/api/c.html#enum-FeatureName' | relative_url }}) const\* requiredFeatures |  |
+| [WGPURequiredLimits]({{ '/api/c.html#structure-RequiredLimits' | relative_url }}) const\* requiredLimits |  |
+| [WGPUQueueDescriptor]({{ '/api/c.html#structure-QueueDescriptor' | relative_url }}) defaultQueue |  |
 
 #### Chainable Structures
 
- * [WGPUDawnTogglesDeviceDescriptor](c.html#structure-DawnTogglesDeviceDescriptor)
- * [WGPUDawnCacheDeviceDescriptor](c.html#structure-DawnCacheDeviceDescriptor)
+ * [WGPUDawnTogglesDeviceDescriptor]({{ '/api/c.html#structure-DawnTogglesDeviceDescriptor' | relative_url }})
+ * [WGPUDawnCacheDeviceDescriptor]({{ '/api/c.html#structure-DawnCacheDeviceDescriptor' | relative_url }})
 
 ### struct WGPUExtent3D {#structure-Extent3D}
 
@@ -1310,11 +1310,11 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStruct chain` | | ChainedStruct base object|
-| [WGPUExternalTexture](c.html#class-ExternalTexture) externalTexture |  |
+| [WGPUExternalTexture]({{ '/api/c.html#class-ExternalTexture' | relative_url }}) externalTexture |  |
 
 #### Chain Parent Structures
 
- * [WGPUBindGroupEntry](c.html#structure-BindGroupEntry)
+ * [WGPUBindGroupEntry]({{ '/api/c.html#structure-BindGroupEntry' | relative_url }})
 
 ### struct WGPUExternalTextureBindingLayout {#structure-ExternalTextureBindingLayout}
 
@@ -1324,7 +1324,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUBindGroupLayoutEntry](c.html#structure-BindGroupLayoutEntry)
+ * [WGPUBindGroupLayoutEntry]({{ '/api/c.html#structure-BindGroupLayoutEntry' | relative_url }})
 
 ### struct WGPUExternalTextureDescriptor {#structure-ExternalTextureDescriptor}
 
@@ -1332,8 +1332,8 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
-| [WGPUTextureView](c.html#class-TextureView) plane0 |  |
-| [WGPUTextureView](c.html#class-TextureView) plane1 |  |
+| [WGPUTextureView]({{ '/api/c.html#class-TextureView' | relative_url }}) plane0 |  |
+| [WGPUTextureView]({{ '/api/c.html#class-TextureView' | relative_url }}) plane1 |  |
 | bool doYuvToRgbConversionOnly |  |
 | float const\* yuvToRgbConversionMatrix |  |
 | float const\* srcTransferFunctionParameters |  |
@@ -1345,30 +1345,30 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
-| [WGPUShaderModule](c.html#class-ShaderModule) module |  |
+| [WGPUShaderModule]({{ '/api/c.html#class-ShaderModule' | relative_url }}) module |  |
 | char const\* entryPoint |  |
 | uint32_t constantCount |  |
-| [WGPUConstantEntry](c.html#structure-ConstantEntry) const\* constants |  |
+| [WGPUConstantEntry]({{ '/api/c.html#structure-ConstantEntry' | relative_url }}) const\* constants |  |
 | uint32_t targetCount |  |
-| [WGPUColorTargetState](c.html#structure-ColorTargetState) const\* targets |  |
+| [WGPUColorTargetState]({{ '/api/c.html#structure-ColorTargetState' | relative_url }}) const\* targets |  |
 
 ### struct WGPUImageCopyBuffer {#structure-ImageCopyBuffer}
 
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
-| [WGPUTextureDataLayout](c.html#structure-TextureDataLayout) layout |  |
-| [WGPUBuffer](c.html#class-Buffer) buffer |  |
+| [WGPUTextureDataLayout]({{ '/api/c.html#structure-TextureDataLayout' | relative_url }}) layout |  |
+| [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer |  |
 
 ### struct WGPUImageCopyTexture {#structure-ImageCopyTexture}
 
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
-| [WGPUTexture](c.html#class-Texture) texture |  |
+| [WGPUTexture]({{ '/api/c.html#class-Texture' | relative_url }}) texture |  |
 | uint32_t mipLevel |  |
-| [WGPUOrigin3D](c.html#structure-Origin3D) origin |  |
-| [WGPUTextureAspect](c.html#enum-TextureAspect) aspect |  |
+| [WGPUOrigin3D]({{ '/api/c.html#structure-Origin3D' | relative_url }}) origin |  |
+| [WGPUTextureAspect]({{ '/api/c.html#enum-TextureAspect' | relative_url }}) aspect |  |
 
 ### struct WGPUInstanceDescriptor {#structure-InstanceDescriptor}
 
@@ -1378,7 +1378,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chainable Structures
 
- * [WGPUDawnInstanceDescriptor](c.html#structure-DawnInstanceDescriptor)
+ * [WGPUDawnInstanceDescriptor]({{ '/api/c.html#structure-DawnInstanceDescriptor' | relative_url }})
 
 ### struct WGPULimits {#structure-Limits}
 
@@ -1438,7 +1438,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
 | uint32_t bindGroupLayoutCount |  |
-| [WGPUBindGroupLayout](c.html#class-BindGroupLayout) const\* bindGroupLayouts |  |
+| [WGPUBindGroupLayout]({{ '/api/c.html#class-BindGroupLayout' | relative_url }}) const\* bindGroupLayouts |  |
 
 ### struct WGPUPrimitiveDepthClipControl {#structure-PrimitiveDepthClipControl}
 
@@ -1449,31 +1449,31 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUPrimitiveState](c.html#structure-PrimitiveState)
+ * [WGPUPrimitiveState]({{ '/api/c.html#structure-PrimitiveState' | relative_url }})
 
 ### struct WGPUPrimitiveState {#structure-PrimitiveState}
 
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
-| [WGPUPrimitiveTopology](c.html#enum-PrimitiveTopology) topology |  |
-| [WGPUIndexFormat](c.html#enum-IndexFormat) stripIndexFormat |  |
-| [WGPUFrontFace](c.html#enum-FrontFace) frontFace |  |
-| [WGPUCullMode](c.html#enum-CullMode) cullMode |  |
+| [WGPUPrimitiveTopology]({{ '/api/c.html#enum-PrimitiveTopology' | relative_url }}) topology |  |
+| [WGPUIndexFormat]({{ '/api/c.html#enum-IndexFormat' | relative_url }}) stripIndexFormat |  |
+| [WGPUFrontFace]({{ '/api/c.html#enum-FrontFace' | relative_url }}) frontFace |  |
+| [WGPUCullMode]({{ '/api/c.html#enum-CullMode' | relative_url }}) cullMode |  |
 
 #### Chainable Structures
 
- * [WGPUPrimitiveDepthClipControl](c.html#structure-PrimitiveDepthClipControl)
+ * [WGPUPrimitiveDepthClipControl]({{ '/api/c.html#structure-PrimitiveDepthClipControl' | relative_url }})
 
 ### struct WGPUProgrammableStageDescriptor {#structure-ProgrammableStageDescriptor}
 
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
-| [WGPUShaderModule](c.html#class-ShaderModule) module |  |
+| [WGPUShaderModule]({{ '/api/c.html#class-ShaderModule' | relative_url }}) module |  |
 | char const\* entryPoint |  |
 | uint32_t constantCount |  |
-| [WGPUConstantEntry](c.html#structure-ConstantEntry) const\* constants |  |
+| [WGPUConstantEntry]({{ '/api/c.html#structure-ConstantEntry' | relative_url }}) const\* constants |  |
 
 ### struct WGPUQuerySetDescriptor {#structure-QuerySetDescriptor}
 
@@ -1481,9 +1481,9 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
-| [WGPUQueryType](c.html#enum-QueryType) type |  |
+| [WGPUQueryType]({{ '/api/c.html#enum-QueryType' | relative_url }}) type |  |
 | uint32_t count |  |
-| [WGPUPipelineStatisticName](c.html#enum-PipelineStatisticName) const\* pipelineStatistics |  |
+| [WGPUPipelineStatisticName]({{ '/api/c.html#enum-PipelineStatisticName' | relative_url }}) const\* pipelineStatistics |  |
 | uint32_t pipelineStatisticsCount |  |
 
 ### struct WGPUQueueDescriptor {#structure-QueueDescriptor}
@@ -1507,8 +1507,8 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
 | uint32_t colorFormatsCount |  |
-| [WGPUTextureFormat](c.html#enum-TextureFormat) const\* colorFormats |  |
-| [WGPUTextureFormat](c.html#enum-TextureFormat) depthStencilFormat |  |
+| [WGPUTextureFormat]({{ '/api/c.html#enum-TextureFormat' | relative_url }}) const\* colorFormats |  |
+| [WGPUTextureFormat]({{ '/api/c.html#enum-TextureFormat' | relative_url }}) depthStencilFormat |  |
 | uint32_t sampleCount |  |
 | bool depthReadOnly |  |
 | bool stencilReadOnly |  |
@@ -1517,25 +1517,25 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 | Members | Description |
 |:--------|:------------|
-| [WGPUTextureView](c.html#class-TextureView) view |  |
-| [WGPUTextureView](c.html#class-TextureView) resolveTarget |  |
-| [WGPULoadOp](c.html#enum-LoadOp) loadOp |  |
-| [WGPUStoreOp](c.html#enum-StoreOp) storeOp |  |
-| [WGPUColor](c.html#structure-Color) clearColor |  |
-| [WGPUColor](c.html#structure-Color) clearValue |  |
+| [WGPUTextureView]({{ '/api/c.html#class-TextureView' | relative_url }}) view |  |
+| [WGPUTextureView]({{ '/api/c.html#class-TextureView' | relative_url }}) resolveTarget |  |
+| [WGPULoadOp]({{ '/api/c.html#enum-LoadOp' | relative_url }}) loadOp |  |
+| [WGPUStoreOp]({{ '/api/c.html#enum-StoreOp' | relative_url }}) storeOp |  |
+| [WGPUColor]({{ '/api/c.html#structure-Color' | relative_url }}) clearColor |  |
+| [WGPUColor]({{ '/api/c.html#structure-Color' | relative_url }}) clearValue |  |
 
 ### struct WGPURenderPassDepthStencilAttachment {#structure-RenderPassDepthStencilAttachment}
 
 | Members | Description |
 |:--------|:------------|
-| [WGPUTextureView](c.html#class-TextureView) view |  |
-| [WGPULoadOp](c.html#enum-LoadOp) depthLoadOp |  |
-| [WGPUStoreOp](c.html#enum-StoreOp) depthStoreOp |  |
+| [WGPUTextureView]({{ '/api/c.html#class-TextureView' | relative_url }}) view |  |
+| [WGPULoadOp]({{ '/api/c.html#enum-LoadOp' | relative_url }}) depthLoadOp |  |
+| [WGPUStoreOp]({{ '/api/c.html#enum-StoreOp' | relative_url }}) depthStoreOp |  |
 | float clearDepth |  |
 | float depthClearValue |  |
 | bool depthReadOnly |  |
-| [WGPULoadOp](c.html#enum-LoadOp) stencilLoadOp |  |
-| [WGPUStoreOp](c.html#enum-StoreOp) stencilStoreOp |  |
+| [WGPULoadOp]({{ '/api/c.html#enum-LoadOp' | relative_url }}) stencilLoadOp |  |
+| [WGPUStoreOp]({{ '/api/c.html#enum-StoreOp' | relative_url }}) stencilStoreOp |  |
 | uint32_t clearStencil |  |
 | uint32_t stencilClearValue |  |
 | bool stencilReadOnly |  |
@@ -1547,15 +1547,15 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
 | uint32_t colorAttachmentCount |  |
-| [WGPURenderPassColorAttachment](c.html#structure-RenderPassColorAttachment) const\* colorAttachments |  |
-| [WGPURenderPassDepthStencilAttachment](c.html#structure-RenderPassDepthStencilAttachment) const\* depthStencilAttachment |  |
-| [WGPUQuerySet](c.html#class-QuerySet) occlusionQuerySet |  |
+| [WGPURenderPassColorAttachment]({{ '/api/c.html#structure-RenderPassColorAttachment' | relative_url }}) const\* colorAttachments |  |
+| [WGPURenderPassDepthStencilAttachment]({{ '/api/c.html#structure-RenderPassDepthStencilAttachment' | relative_url }}) const\* depthStencilAttachment |  |
+| [WGPUQuerySet]({{ '/api/c.html#class-QuerySet' | relative_url }}) occlusionQuerySet |  |
 | uint32_t timestampWriteCount |  |
-| [WGPURenderPassTimestampWrite](c.html#structure-RenderPassTimestampWrite) const\* timestampWrites |  |
+| [WGPURenderPassTimestampWrite]({{ '/api/c.html#structure-RenderPassTimestampWrite' | relative_url }}) const\* timestampWrites |  |
 
 #### Chainable Structures
 
- * [WGPURenderPassDescriptorMaxDrawCount](c.html#structure-RenderPassDescriptorMaxDrawCount)
+ * [WGPURenderPassDescriptorMaxDrawCount]({{ '/api/c.html#structure-RenderPassDescriptorMaxDrawCount' | relative_url }})
 
 ### struct WGPURenderPassDescriptorMaxDrawCount {#structure-RenderPassDescriptorMaxDrawCount}
 
@@ -1566,15 +1566,15 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPURenderPassDescriptor](c.html#structure-RenderPassDescriptor)
+ * [WGPURenderPassDescriptor]({{ '/api/c.html#structure-RenderPassDescriptor' | relative_url }})
 
 ### struct WGPURenderPassTimestampWrite {#structure-RenderPassTimestampWrite}
 
 | Members | Description |
 |:--------|:------------|
-| [WGPUQuerySet](c.html#class-QuerySet) querySet |  |
+| [WGPUQuerySet]({{ '/api/c.html#class-QuerySet' | relative_url }}) querySet |  |
 | uint32_t queryIndex |  |
-| [WGPURenderPassTimestampLocation](c.html#enum-RenderPassTimestampLocation) location |  |
+| [WGPURenderPassTimestampLocation]({{ '/api/c.html#enum-RenderPassTimestampLocation' | relative_url }}) location |  |
 
 ### struct WGPURenderPipelineDescriptor {#structure-RenderPipelineDescriptor}
 
@@ -1582,20 +1582,20 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
-| [WGPUPipelineLayout](c.html#class-PipelineLayout) layout |  |
-| [WGPUVertexState](c.html#structure-VertexState) vertex |  |
-| [WGPUPrimitiveState](c.html#structure-PrimitiveState) primitive |  |
-| [WGPUDepthStencilState](c.html#structure-DepthStencilState) const\* depthStencil |  |
-| [WGPUMultisampleState](c.html#structure-MultisampleState) multisample |  |
-| [WGPUFragmentState](c.html#structure-FragmentState) const\* fragment |  |
+| [WGPUPipelineLayout]({{ '/api/c.html#class-PipelineLayout' | relative_url }}) layout |  |
+| [WGPUVertexState]({{ '/api/c.html#structure-VertexState' | relative_url }}) vertex |  |
+| [WGPUPrimitiveState]({{ '/api/c.html#structure-PrimitiveState' | relative_url }}) primitive |  |
+| [WGPUDepthStencilState]({{ '/api/c.html#structure-DepthStencilState' | relative_url }}) const\* depthStencil |  |
+| [WGPUMultisampleState]({{ '/api/c.html#structure-MultisampleState' | relative_url }}) multisample |  |
+| [WGPUFragmentState]({{ '/api/c.html#structure-FragmentState' | relative_url }}) const\* fragment |  |
 
 ### struct WGPURequestAdapterOptions {#structure-RequestAdapterOptions}
 
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
-| [WGPUSurface](c.html#class-Surface) compatibleSurface |  |
-| [WGPUPowerPreference](c.html#enum-PowerPreference) powerPreference |  |
+| [WGPUSurface]({{ '/api/c.html#class-Surface' | relative_url }}) compatibleSurface |  |
+| [WGPUPowerPreference]({{ '/api/c.html#enum-PowerPreference' | relative_url }}) powerPreference |  |
 | bool forceFallbackAdapter |  |
 
 ### struct WGPURequiredLimits {#structure-RequiredLimits}
@@ -1603,14 +1603,14 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
-| [WGPULimits](c.html#structure-Limits) limits |  |
+| [WGPULimits]({{ '/api/c.html#structure-Limits' | relative_url }}) limits |  |
 
 ### struct WGPUSamplerBindingLayout {#structure-SamplerBindingLayout}
 
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
-| [WGPUSamplerBindingType](c.html#enum-SamplerBindingType) type |  |
+| [WGPUSamplerBindingType]({{ '/api/c.html#enum-SamplerBindingType' | relative_url }}) type |  |
 
 ### struct WGPUSamplerDescriptor {#structure-SamplerDescriptor}
 
@@ -1618,16 +1618,16 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
-| [WGPUAddressMode](c.html#enum-AddressMode) addressModeU |  |
-| [WGPUAddressMode](c.html#enum-AddressMode) addressModeV |  |
-| [WGPUAddressMode](c.html#enum-AddressMode) addressModeW |  |
-| [WGPUFilterMode](c.html#enum-FilterMode) magFilter |  |
-| [WGPUFilterMode](c.html#enum-FilterMode) minFilter |  |
-| [WGPUFilterMode](c.html#enum-FilterMode) mipmapFilter |  |
-| [WGPUMipmapFilterMode](c.html#enum-MipmapFilterMode) mipmapFilter |  |
+| [WGPUAddressMode]({{ '/api/c.html#enum-AddressMode' | relative_url }}) addressModeU |  |
+| [WGPUAddressMode]({{ '/api/c.html#enum-AddressMode' | relative_url }}) addressModeV |  |
+| [WGPUAddressMode]({{ '/api/c.html#enum-AddressMode' | relative_url }}) addressModeW |  |
+| [WGPUFilterMode]({{ '/api/c.html#enum-FilterMode' | relative_url }}) magFilter |  |
+| [WGPUFilterMode]({{ '/api/c.html#enum-FilterMode' | relative_url }}) minFilter |  |
+| [WGPUFilterMode]({{ '/api/c.html#enum-FilterMode' | relative_url }}) mipmapFilter |  |
+| [WGPUMipmapFilterMode]({{ '/api/c.html#enum-MipmapFilterMode' | relative_url }}) mipmapFilter |  |
 | float lodMinClamp |  |
 | float lodMaxClamp |  |
-| [WGPUCompareFunction](c.html#enum-CompareFunction) compare |  |
+| [WGPUCompareFunction]({{ '/api/c.html#enum-CompareFunction' | relative_url }}) compare |  |
 | uint16_t maxAnisotropy |  |
 
 ### struct WGPUShaderModuleSPIRVDescriptor {#structure-ShaderModuleSPIRVDescriptor}
@@ -1640,7 +1640,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUShaderModuleDescriptor](c.html#structure-ShaderModuleDescriptor)
+ * [WGPUShaderModuleDescriptor]({{ '/api/c.html#structure-ShaderModuleDescriptor' | relative_url }})
 
 ### struct WGPUShaderModuleWGSLDescriptor {#structure-ShaderModuleWGSLDescriptor}
 
@@ -1652,7 +1652,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUShaderModuleDescriptor](c.html#structure-ShaderModuleDescriptor)
+ * [WGPUShaderModuleDescriptor]({{ '/api/c.html#structure-ShaderModuleDescriptor' | relative_url }})
 
 ### struct WGPUShaderModuleCompilationHint {#structure-ShaderModuleCompilationHint}
 
@@ -1660,7 +1660,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* entryPoint |  |
-| [WGPUPipelineLayout](c.html#class-PipelineLayout) layout |  |
+| [WGPUPipelineLayout]({{ '/api/c.html#class-PipelineLayout' | relative_url }}) layout |  |
 
 ### struct WGPUShaderModuleDescriptor {#structure-ShaderModuleDescriptor}
 
@@ -1669,37 +1669,37 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
 | uint32_t hintCount |  |
-| [WGPUShaderModuleCompilationHint](c.html#structure-ShaderModuleCompilationHint) const\* hints |  |
+| [WGPUShaderModuleCompilationHint]({{ '/api/c.html#structure-ShaderModuleCompilationHint' | relative_url }}) const\* hints |  |
 
 #### Chainable Structures
 
- * [WGPUShaderModuleSPIRVDescriptor](c.html#structure-ShaderModuleSPIRVDescriptor)
- * [WGPUShaderModuleWGSLDescriptor](c.html#structure-ShaderModuleWGSLDescriptor)
+ * [WGPUShaderModuleSPIRVDescriptor]({{ '/api/c.html#structure-ShaderModuleSPIRVDescriptor' | relative_url }})
+ * [WGPUShaderModuleWGSLDescriptor]({{ '/api/c.html#structure-ShaderModuleWGSLDescriptor' | relative_url }})
 
 ### struct WGPUStencilFaceState {#structure-StencilFaceState}
 
 | Members | Description |
 |:--------|:------------|
-| [WGPUCompareFunction](c.html#enum-CompareFunction) compare |  |
-| [WGPUStencilOperation](c.html#enum-StencilOperation) failOp |  |
-| [WGPUStencilOperation](c.html#enum-StencilOperation) depthFailOp |  |
-| [WGPUStencilOperation](c.html#enum-StencilOperation) passOp |  |
+| [WGPUCompareFunction]({{ '/api/c.html#enum-CompareFunction' | relative_url }}) compare |  |
+| [WGPUStencilOperation]({{ '/api/c.html#enum-StencilOperation' | relative_url }}) failOp |  |
+| [WGPUStencilOperation]({{ '/api/c.html#enum-StencilOperation' | relative_url }}) depthFailOp |  |
+| [WGPUStencilOperation]({{ '/api/c.html#enum-StencilOperation' | relative_url }}) passOp |  |
 
 ### struct WGPUStorageTextureBindingLayout {#structure-StorageTextureBindingLayout}
 
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
-| [WGPUStorageTextureAccess](c.html#enum-StorageTextureAccess) access |  |
-| [WGPUTextureFormat](c.html#enum-TextureFormat) format |  |
-| [WGPUTextureViewDimension](c.html#enum-TextureViewDimension) viewDimension |  |
+| [WGPUStorageTextureAccess]({{ '/api/c.html#enum-StorageTextureAccess' | relative_url }}) access |  |
+| [WGPUTextureFormat]({{ '/api/c.html#enum-TextureFormat' | relative_url }}) format |  |
+| [WGPUTextureViewDimension]({{ '/api/c.html#enum-TextureViewDimension' | relative_url }}) viewDimension |  |
 
 ### struct WGPUSupportedLimits {#structure-SupportedLimits}
 
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStructOut* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
-| [WGPULimits](c.html#structure-Limits) limits |  |
+| [WGPULimits]({{ '/api/c.html#structure-Limits' | relative_url }}) limits |  |
 
 ### struct WGPUSurfaceDescriptor {#structure-SurfaceDescriptor}
 
@@ -1710,15 +1710,15 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chainable Structures
 
- * [WGPUSurfaceDescriptorFromAndroidNativeWindow](c.html#structure-SurfaceDescriptorFromAndroidNativeWindow)
- * [WGPUSurfaceDescriptorFromCanvasHTMLSelector](c.html#structure-SurfaceDescriptorFromCanvasHTMLSelector)
- * [WGPUSurfaceDescriptorFromMetalLayer](c.html#structure-SurfaceDescriptorFromMetalLayer)
- * [WGPUSurfaceDescriptorFromWindowsHWND](c.html#structure-SurfaceDescriptorFromWindowsHWND)
- * [WGPUSurfaceDescriptorFromXcbWindow](c.html#structure-SurfaceDescriptorFromXcbWindow)
- * [WGPUSurfaceDescriptorFromXlibWindow](c.html#structure-SurfaceDescriptorFromXlibWindow)
- * [WGPUSurfaceDescriptorFromWaylandSurface](c.html#structure-SurfaceDescriptorFromWaylandSurface)
- * [WGPUSurfaceDescriptorFromWindowsCoreWindow](c.html#structure-SurfaceDescriptorFromWindowsCoreWindow)
- * [WGPUSurfaceDescriptorFromWindowsSwapChainPanel](c.html#structure-SurfaceDescriptorFromWindowsSwapChainPanel)
+ * [WGPUSurfaceDescriptorFromAndroidNativeWindow]({{ '/api/c.html#structure-SurfaceDescriptorFromAndroidNativeWindow' | relative_url }})
+ * [WGPUSurfaceDescriptorFromCanvasHTMLSelector]({{ '/api/c.html#structure-SurfaceDescriptorFromCanvasHTMLSelector' | relative_url }})
+ * [WGPUSurfaceDescriptorFromMetalLayer]({{ '/api/c.html#structure-SurfaceDescriptorFromMetalLayer' | relative_url }})
+ * [WGPUSurfaceDescriptorFromWindowsHWND]({{ '/api/c.html#structure-SurfaceDescriptorFromWindowsHWND' | relative_url }})
+ * [WGPUSurfaceDescriptorFromXcbWindow]({{ '/api/c.html#structure-SurfaceDescriptorFromXcbWindow' | relative_url }})
+ * [WGPUSurfaceDescriptorFromXlibWindow]({{ '/api/c.html#structure-SurfaceDescriptorFromXlibWindow' | relative_url }})
+ * [WGPUSurfaceDescriptorFromWaylandSurface]({{ '/api/c.html#structure-SurfaceDescriptorFromWaylandSurface' | relative_url }})
+ * [WGPUSurfaceDescriptorFromWindowsCoreWindow]({{ '/api/c.html#structure-SurfaceDescriptorFromWindowsCoreWindow' | relative_url }})
+ * [WGPUSurfaceDescriptorFromWindowsSwapChainPanel]({{ '/api/c.html#structure-SurfaceDescriptorFromWindowsSwapChainPanel' | relative_url }})
 
 ### struct WGPUSurfaceDescriptorFromAndroidNativeWindow {#structure-SurfaceDescriptorFromAndroidNativeWindow}
 
@@ -1729,7 +1729,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUSurfaceDescriptor](c.html#structure-SurfaceDescriptor)
+ * [WGPUSurfaceDescriptor]({{ '/api/c.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct WGPUSurfaceDescriptorFromCanvasHTMLSelector {#structure-SurfaceDescriptorFromCanvasHTMLSelector}
 
@@ -1740,7 +1740,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUSurfaceDescriptor](c.html#structure-SurfaceDescriptor)
+ * [WGPUSurfaceDescriptor]({{ '/api/c.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct WGPUSurfaceDescriptorFromMetalLayer {#structure-SurfaceDescriptorFromMetalLayer}
 
@@ -1751,7 +1751,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUSurfaceDescriptor](c.html#structure-SurfaceDescriptor)
+ * [WGPUSurfaceDescriptor]({{ '/api/c.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct WGPUSurfaceDescriptorFromWaylandSurface {#structure-SurfaceDescriptorFromWaylandSurface}
 
@@ -1763,7 +1763,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUSurfaceDescriptor](c.html#structure-SurfaceDescriptor)
+ * [WGPUSurfaceDescriptor]({{ '/api/c.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct WGPUSurfaceDescriptorFromWindowsHWND {#structure-SurfaceDescriptorFromWindowsHWND}
 
@@ -1775,7 +1775,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUSurfaceDescriptor](c.html#structure-SurfaceDescriptor)
+ * [WGPUSurfaceDescriptor]({{ '/api/c.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct WGPUSurfaceDescriptorFromWindowsCoreWindow {#structure-SurfaceDescriptorFromWindowsCoreWindow}
 
@@ -1786,7 +1786,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUSurfaceDescriptor](c.html#structure-SurfaceDescriptor)
+ * [WGPUSurfaceDescriptor]({{ '/api/c.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct WGPUSurfaceDescriptorFromWindowsSwapChainPanel {#structure-SurfaceDescriptorFromWindowsSwapChainPanel}
 
@@ -1797,7 +1797,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUSurfaceDescriptor](c.html#structure-SurfaceDescriptor)
+ * [WGPUSurfaceDescriptor]({{ '/api/c.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct WGPUSurfaceDescriptorFromXcbWindow {#structure-SurfaceDescriptorFromXcbWindow}
 
@@ -1809,7 +1809,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUSurfaceDescriptor](c.html#structure-SurfaceDescriptor)
+ * [WGPUSurfaceDescriptor]({{ '/api/c.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct WGPUSurfaceDescriptorFromXlibWindow {#structure-SurfaceDescriptorFromXlibWindow}
 
@@ -1821,7 +1821,7 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 
 #### Chain Parent Structures
 
- * [WGPUSurfaceDescriptor](c.html#structure-SurfaceDescriptor)
+ * [WGPUSurfaceDescriptor]({{ '/api/c.html#structure-SurfaceDescriptor' | relative_url }})
 
 ### struct WGPUSwapChainDescriptor {#structure-SwapChainDescriptor}
 
@@ -1829,11 +1829,11 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
-| [WGPUTextureUsage](c.html#bitmask-TextureUsage) usage |  |
-| [WGPUTextureFormat](c.html#enum-TextureFormat) format |  |
+| [WGPUTextureUsage]({{ '/api/c.html#bitmask-TextureUsage' | relative_url }}) usage |  |
+| [WGPUTextureFormat]({{ '/api/c.html#enum-TextureFormat' | relative_url }}) format |  |
 | uint32_t width |  |
 | uint32_t height |  |
-| [WGPUPresentMode](c.html#enum-PresentMode) presentMode |  |
+| [WGPUPresentMode]({{ '/api/c.html#enum-PresentMode' | relative_url }}) presentMode |  |
 | uint64_t implementation |  |
 
 ### struct WGPUTextureBindingLayout {#structure-TextureBindingLayout}
@@ -1841,8 +1841,8 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
-| [WGPUTextureSampleType](c.html#enum-TextureSampleType) sampleType |  |
-| [WGPUTextureViewDimension](c.html#enum-TextureViewDimension) viewDimension |  |
+| [WGPUTextureSampleType]({{ '/api/c.html#enum-TextureSampleType' | relative_url }}) sampleType |  |
+| [WGPUTextureViewDimension]({{ '/api/c.html#enum-TextureViewDimension' | relative_url }}) viewDimension |  |
 | bool multisampled |  |
 
 ### struct WGPUTextureDataLayout {#structure-TextureDataLayout}
@@ -1860,18 +1860,18 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
-| [WGPUTextureUsage](c.html#bitmask-TextureUsage) usage |  |
-| [WGPUTextureDimension](c.html#enum-TextureDimension) dimension |  |
-| [WGPUExtent3D](c.html#structure-Extent3D) size |  |
-| [WGPUTextureFormat](c.html#enum-TextureFormat) format |  |
+| [WGPUTextureUsage]({{ '/api/c.html#bitmask-TextureUsage' | relative_url }}) usage |  |
+| [WGPUTextureDimension]({{ '/api/c.html#enum-TextureDimension' | relative_url }}) dimension |  |
+| [WGPUExtent3D]({{ '/api/c.html#structure-Extent3D' | relative_url }}) size |  |
+| [WGPUTextureFormat]({{ '/api/c.html#enum-TextureFormat' | relative_url }}) format |  |
 | uint32_t mipLevelCount |  |
 | uint32_t sampleCount |  |
 | uint32_t viewFormatCount |  |
-| [WGPUTextureFormat](c.html#enum-TextureFormat) const\* viewFormats |  |
+| [WGPUTextureFormat]({{ '/api/c.html#enum-TextureFormat' | relative_url }}) const\* viewFormats |  |
 
 #### Chainable Structures
 
- * [WGPUDawnTextureInternalUsageDescriptor](c.html#structure-DawnTextureInternalUsageDescriptor)
+ * [WGPUDawnTextureInternalUsageDescriptor]({{ '/api/c.html#structure-DawnTextureInternalUsageDescriptor' | relative_url }})
 
 ### struct WGPUTextureViewDescriptor {#structure-TextureViewDescriptor}
 
@@ -1879,19 +1879,19 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
 | char const\* label |  |
-| [WGPUTextureFormat](c.html#enum-TextureFormat) format |  |
-| [WGPUTextureViewDimension](c.html#enum-TextureViewDimension) dimension |  |
+| [WGPUTextureFormat]({{ '/api/c.html#enum-TextureFormat' | relative_url }}) format |  |
+| [WGPUTextureViewDimension]({{ '/api/c.html#enum-TextureViewDimension' | relative_url }}) dimension |  |
 | uint32_t baseMipLevel |  |
 | uint32_t mipLevelCount |  |
 | uint32_t baseArrayLayer |  |
 | uint32_t arrayLayerCount |  |
-| [WGPUTextureAspect](c.html#enum-TextureAspect) aspect |  |
+| [WGPUTextureAspect]({{ '/api/c.html#enum-TextureAspect' | relative_url }}) aspect |  |
 
 ### struct WGPUVertexAttribute {#structure-VertexAttribute}
 
 | Members | Description |
 |:--------|:------------|
-| [WGPUVertexFormat](c.html#enum-VertexFormat) format |  |
+| [WGPUVertexFormat]({{ '/api/c.html#enum-VertexFormat' | relative_url }}) format |  |
 | uint64_t offset |  |
 | uint32_t shaderLocation |  |
 
@@ -1900,21 +1900,21 @@ void (&#x2a;WGPURequestDeviceCallback)([WGPURequestDeviceStatus](c.html#enum-Req
 | Members | Description |
 |:--------|:------------|
 | uint64_t arrayStride |  |
-| [WGPUVertexStepMode](c.html#enum-VertexStepMode) stepMode |  |
+| [WGPUVertexStepMode]({{ '/api/c.html#enum-VertexStepMode' | relative_url }}) stepMode |  |
 | uint32_t attributeCount |  |
-| [WGPUVertexAttribute](c.html#structure-VertexAttribute) const\* attributes |  |
+| [WGPUVertexAttribute]({{ '/api/c.html#structure-VertexAttribute' | relative_url }}) const\* attributes |  |
 
 ### struct WGPUVertexState {#structure-VertexState}
 
 | Members | Description |
 |:--------|:------------|
 | `WGPUChainedStruct const* nextInChain` | Pointer to next chained structure. Maybe `NULL`. |
-| [WGPUShaderModule](c.html#class-ShaderModule) module |  |
+| [WGPUShaderModule]({{ '/api/c.html#class-ShaderModule' | relative_url }}) module |  |
 | char const\* entryPoint |  |
 | uint32_t constantCount |  |
-| [WGPUConstantEntry](c.html#structure-ConstantEntry) const\* constants |  |
+| [WGPUConstantEntry]({{ '/api/c.html#structure-ConstantEntry' | relative_url }}) const\* constants |  |
 | uint32_t bufferCount |  |
-| [WGPUVertexBufferLayout](c.html#structure-VertexBufferLayout) const\* buffers |  |
+| [WGPUVertexBufferLayout]({{ '/api/c.html#structure-VertexBufferLayout' | relative_url }}) const\* buffers |  |
 
 ## Methods
 
@@ -1930,7 +1930,7 @@ See [Adapters](https://webgpu.dev/#adapters) for more information.
 
 <div class='signature' markdown=1>
 
-[WGPUDevice](c.html#class-Device) wgpuAdapterCreateDevice([WGPUAdapter](c.html#class-Adapter) adapter, [WGPUDeviceDescriptor](c.html#structure-DeviceDescriptor) const\* descriptor)
+[WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) wgpuAdapterCreateDevice([WGPUAdapter]({{ '/api/c.html#class-Adapter' | relative_url }}) adapter, [WGPUDeviceDescriptor]({{ '/api/c.html#structure-DeviceDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -1948,7 +1948,7 @@ See [Adapters](https://webgpu.dev/#adapters) for more information.
 
 <div class='signature' markdown=1>
 
-size_t wgpuAdapterEnumerateFeatures([WGPUAdapter](c.html#class-Adapter) adapter, [WGPUFeatureName](c.html#enum-FeatureName) \* features)
+size_t wgpuAdapterEnumerateFeatures([WGPUAdapter]({{ '/api/c.html#class-Adapter' | relative_url }}) adapter, [WGPUFeatureName]({{ '/api/c.html#enum-FeatureName' | relative_url }}) \* features)
 
 </div>
 
@@ -1968,7 +1968,7 @@ Retrieves the limits which can be used with this adapter.
 
 <div class='signature' markdown=1>
 
-bool wgpuAdapterGetLimits([WGPUAdapter](c.html#class-Adapter) adapter, [WGPUSupportedLimits](c.html#structure-SupportedLimits) \* limits)
+bool wgpuAdapterGetLimits([WGPUAdapter]({{ '/api/c.html#class-Adapter' | relative_url }}) adapter, [WGPUSupportedLimits]({{ '/api/c.html#structure-SupportedLimits' | relative_url }}) \* limits)
 
 </div>
 
@@ -1977,8 +1977,8 @@ bool wgpuAdapterGetLimits([WGPUAdapter](c.html#class-Adapter) adapter, [WGPUSupp
 Returns true if the limits were successfully retrieved.
 #### Arguments
 
-* *adapter*: The [WGPUAdapter](c.html#class-Adapter) from which to query the limits.
-* *limits*: The [WGPUSupportedLimits](c.html#structure-SupportedLimits) object to populate. Must not be NULL.
+* *adapter*: The [WGPUAdapter]({{ '/api/c.html#class-Adapter' | relative_url }}) from which to query the limits.
+* *limits*: The [WGPUSupportedLimits]({{ '/api/c.html#structure-SupportedLimits' | relative_url }}) object to populate. Must not be NULL.
 
 </div>
 
@@ -1986,7 +1986,7 @@ Returns true if the limits were successfully retrieved.
 
 <div class='signature' markdown=1>
 
-void wgpuAdapterGetProperties([WGPUAdapter](c.html#class-Adapter) adapter, [WGPUAdapterProperties](c.html#structure-AdapterProperties) \* properties)
+void wgpuAdapterGetProperties([WGPUAdapter]({{ '/api/c.html#class-Adapter' | relative_url }}) adapter, [WGPUAdapterProperties]({{ '/api/c.html#structure-AdapterProperties' | relative_url }}) \* properties)
 
 </div>
 
@@ -2001,7 +2001,7 @@ void wgpuAdapterGetProperties([WGPUAdapter](c.html#class-Adapter) adapter, [WGPU
 
 <div class='signature' markdown=1>
 
-bool wgpuAdapterHasFeature([WGPUAdapter](c.html#class-Adapter) adapter, [WGPUFeatureName](c.html#enum-FeatureName) feature)
+bool wgpuAdapterHasFeature([WGPUAdapter]({{ '/api/c.html#class-Adapter' | relative_url }}) adapter, [WGPUFeatureName]({{ '/api/c.html#enum-FeatureName' | relative_url }}) feature)
 
 </div>
 
@@ -2019,7 +2019,7 @@ bool wgpuAdapterHasFeature([WGPUAdapter](c.html#class-Adapter) adapter, [WGPUFea
 
 <div class='signature' markdown=1>
 
-void wgpuAdapterReference([WGPUAdapter](c.html#class-Adapter) adapter)
+void wgpuAdapterReference([WGPUAdapter]({{ '/api/c.html#class-Adapter' | relative_url }}) adapter)
 
 </div>
 
@@ -2033,7 +2033,7 @@ void wgpuAdapterReference([WGPUAdapter](c.html#class-Adapter) adapter)
 
 <div class='signature' markdown=1>
 
-void wgpuAdapterRelease([WGPUAdapter](c.html#class-Adapter) adapter)
+void wgpuAdapterRelease([WGPUAdapter]({{ '/api/c.html#class-Adapter' | relative_url }}) adapter)
 
 </div>
 
@@ -2047,7 +2047,7 @@ void wgpuAdapterRelease([WGPUAdapter](c.html#class-Adapter) adapter)
 
 <div class='signature' markdown=1>
 
-void wgpuAdapterRequestDevice([WGPUAdapter](c.html#class-Adapter) adapter, [WGPUDeviceDescriptor](c.html#structure-DeviceDescriptor) const\* descriptor, [WGPURequestDeviceCallback](c.html#function-pointer-RequestDeviceCallback) callback, void \* userdata)
+void wgpuAdapterRequestDevice([WGPUAdapter]({{ '/api/c.html#class-Adapter' | relative_url }}) adapter, [WGPUDeviceDescriptor]({{ '/api/c.html#structure-DeviceDescriptor' | relative_url }}) const\* descriptor, [WGPURequestDeviceCallback]({{ '/api/c.html#function-pointer-RequestDeviceCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -2070,7 +2070,7 @@ void wgpuAdapterRequestDevice([WGPUAdapter](c.html#class-Adapter) adapter, [WGPU
 
 <div class='signature' markdown=1>
 
-void wgpuBindGroupReference([WGPUBindGroup](c.html#class-BindGroup) bindGroup)
+void wgpuBindGroupReference([WGPUBindGroup]({{ '/api/c.html#class-BindGroup' | relative_url }}) bindGroup)
 
 </div>
 
@@ -2084,7 +2084,7 @@ void wgpuBindGroupReference([WGPUBindGroup](c.html#class-BindGroup) bindGroup)
 
 <div class='signature' markdown=1>
 
-void wgpuBindGroupRelease([WGPUBindGroup](c.html#class-BindGroup) bindGroup)
+void wgpuBindGroupRelease([WGPUBindGroup]({{ '/api/c.html#class-BindGroup' | relative_url }}) bindGroup)
 
 </div>
 
@@ -2098,7 +2098,7 @@ void wgpuBindGroupRelease([WGPUBindGroup](c.html#class-BindGroup) bindGroup)
 
 <div class='signature' markdown=1>
 
-void wgpuBindGroupSetLabel([WGPUBindGroup](c.html#class-BindGroup) bindGroup, char const\* label)
+void wgpuBindGroupSetLabel([WGPUBindGroup]({{ '/api/c.html#class-BindGroup' | relative_url }}) bindGroup, char const\* label)
 
 </div>
 
@@ -2119,7 +2119,7 @@ void wgpuBindGroupSetLabel([WGPUBindGroup](c.html#class-BindGroup) bindGroup, ch
 
 <div class='signature' markdown=1>
 
-void wgpuBindGroupLayoutReference([WGPUBindGroupLayout](c.html#class-BindGroupLayout) bindGroupLayout)
+void wgpuBindGroupLayoutReference([WGPUBindGroupLayout]({{ '/api/c.html#class-BindGroupLayout' | relative_url }}) bindGroupLayout)
 
 </div>
 
@@ -2133,7 +2133,7 @@ void wgpuBindGroupLayoutReference([WGPUBindGroupLayout](c.html#class-BindGroupLa
 
 <div class='signature' markdown=1>
 
-void wgpuBindGroupLayoutRelease([WGPUBindGroupLayout](c.html#class-BindGroupLayout) bindGroupLayout)
+void wgpuBindGroupLayoutRelease([WGPUBindGroupLayout]({{ '/api/c.html#class-BindGroupLayout' | relative_url }}) bindGroupLayout)
 
 </div>
 
@@ -2147,7 +2147,7 @@ void wgpuBindGroupLayoutRelease([WGPUBindGroupLayout](c.html#class-BindGroupLayo
 
 <div class='signature' markdown=1>
 
-void wgpuBindGroupLayoutSetLabel([WGPUBindGroupLayout](c.html#class-BindGroupLayout) bindGroupLayout, char const\* label)
+void wgpuBindGroupLayoutSetLabel([WGPUBindGroupLayout]({{ '/api/c.html#class-BindGroupLayout' | relative_url }}) bindGroupLayout, char const\* label)
 
 </div>
 
@@ -2168,7 +2168,7 @@ void wgpuBindGroupLayoutSetLabel([WGPUBindGroupLayout](c.html#class-BindGroupLay
 
 <div class='signature' markdown=1>
 
-void wgpuBufferDestroy([WGPUBuffer](c.html#class-Buffer) buffer)
+void wgpuBufferDestroy([WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer)
 
 </div>
 
@@ -2182,7 +2182,7 @@ void wgpuBufferDestroy([WGPUBuffer](c.html#class-Buffer) buffer)
 
 <div class='signature' markdown=1>
 
-void const * wgpuBufferGetConstMappedRange([WGPUBuffer](c.html#class-Buffer) buffer, size_t offset, size_t size)
+void const * wgpuBufferGetConstMappedRange([WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer, size_t offset, size_t size)
 
 </div>
 
@@ -2201,7 +2201,7 @@ void const * wgpuBufferGetConstMappedRange([WGPUBuffer](c.html#class-Buffer) buf
 
 <div class='signature' markdown=1>
 
-void * wgpuBufferGetMappedRange([WGPUBuffer](c.html#class-Buffer) buffer, size_t offset, size_t size)
+void * wgpuBufferGetMappedRange([WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer, size_t offset, size_t size)
 
 </div>
 
@@ -2220,7 +2220,7 @@ void * wgpuBufferGetMappedRange([WGPUBuffer](c.html#class-Buffer) buffer, size_t
 
 <div class='signature' markdown=1>
 
-uint64_t wgpuBufferGetSize([WGPUBuffer](c.html#class-Buffer) buffer)
+uint64_t wgpuBufferGetSize([WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer)
 
 </div>
 
@@ -2237,7 +2237,7 @@ uint64_t wgpuBufferGetSize([WGPUBuffer](c.html#class-Buffer) buffer)
 
 <div class='signature' markdown=1>
 
-[WGPUBufferUsage](c.html#bitmask-BufferUsage) wgpuBufferGetUsage([WGPUBuffer](c.html#class-Buffer) buffer)
+[WGPUBufferUsage]({{ '/api/c.html#bitmask-BufferUsage' | relative_url }}) wgpuBufferGetUsage([WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer)
 
 </div>
 
@@ -2254,7 +2254,7 @@ uint64_t wgpuBufferGetSize([WGPUBuffer](c.html#class-Buffer) buffer)
 
 <div class='signature' markdown=1>
 
-void wgpuBufferMapAsync([WGPUBuffer](c.html#class-Buffer) buffer, [WGPUMapMode](c.html#bitmask-MapMode) mode, size_t offset, size_t size, [WGPUBufferMapCallback](c.html#function-pointer-BufferMapCallback) callback, void \* userdata)
+void wgpuBufferMapAsync([WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer, [WGPUMapMode]({{ '/api/c.html#bitmask-MapMode' | relative_url }}) mode, size_t offset, size_t size, [WGPUBufferMapCallback]({{ '/api/c.html#function-pointer-BufferMapCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -2273,7 +2273,7 @@ void wgpuBufferMapAsync([WGPUBuffer](c.html#class-Buffer) buffer, [WGPUMapMode](
 
 <div class='signature' markdown=1>
 
-void wgpuBufferReference([WGPUBuffer](c.html#class-Buffer) buffer)
+void wgpuBufferReference([WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer)
 
 </div>
 
@@ -2287,7 +2287,7 @@ void wgpuBufferReference([WGPUBuffer](c.html#class-Buffer) buffer)
 
 <div class='signature' markdown=1>
 
-void wgpuBufferRelease([WGPUBuffer](c.html#class-Buffer) buffer)
+void wgpuBufferRelease([WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer)
 
 </div>
 
@@ -2301,7 +2301,7 @@ void wgpuBufferRelease([WGPUBuffer](c.html#class-Buffer) buffer)
 
 <div class='signature' markdown=1>
 
-void wgpuBufferSetLabel([WGPUBuffer](c.html#class-Buffer) buffer, char const\* label)
+void wgpuBufferSetLabel([WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer, char const\* label)
 
 </div>
 
@@ -2316,7 +2316,7 @@ void wgpuBufferSetLabel([WGPUBuffer](c.html#class-Buffer) buffer, char const\* l
 
 <div class='signature' markdown=1>
 
-void wgpuBufferUnmap([WGPUBuffer](c.html#class-Buffer) buffer)
+void wgpuBufferUnmap([WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer)
 
 </div>
 
@@ -2336,7 +2336,7 @@ void wgpuBufferUnmap([WGPUBuffer](c.html#class-Buffer) buffer)
 
 <div class='signature' markdown=1>
 
-void wgpuCommandBufferReference([WGPUCommandBuffer](c.html#class-CommandBuffer) commandBuffer)
+void wgpuCommandBufferReference([WGPUCommandBuffer]({{ '/api/c.html#class-CommandBuffer' | relative_url }}) commandBuffer)
 
 </div>
 
@@ -2350,7 +2350,7 @@ void wgpuCommandBufferReference([WGPUCommandBuffer](c.html#class-CommandBuffer) 
 
 <div class='signature' markdown=1>
 
-void wgpuCommandBufferRelease([WGPUCommandBuffer](c.html#class-CommandBuffer) commandBuffer)
+void wgpuCommandBufferRelease([WGPUCommandBuffer]({{ '/api/c.html#class-CommandBuffer' | relative_url }}) commandBuffer)
 
 </div>
 
@@ -2364,7 +2364,7 @@ void wgpuCommandBufferRelease([WGPUCommandBuffer](c.html#class-CommandBuffer) co
 
 <div class='signature' markdown=1>
 
-void wgpuCommandBufferSetLabel([WGPUCommandBuffer](c.html#class-CommandBuffer) commandBuffer, char const\* label)
+void wgpuCommandBufferSetLabel([WGPUCommandBuffer]({{ '/api/c.html#class-CommandBuffer' | relative_url }}) commandBuffer, char const\* label)
 
 </div>
 
@@ -2385,7 +2385,7 @@ void wgpuCommandBufferSetLabel([WGPUCommandBuffer](c.html#class-CommandBuffer) c
 
 <div class='signature' markdown=1>
 
-[WGPUComputePassEncoder](c.html#class-ComputePassEncoder) wgpuCommandEncoderBeginComputePass([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder, [WGPUComputePassDescriptor](c.html#structure-ComputePassDescriptor) const\* descriptor)
+[WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) wgpuCommandEncoderBeginComputePass([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder, [WGPUComputePassDescriptor]({{ '/api/c.html#structure-ComputePassDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -2403,7 +2403,7 @@ void wgpuCommandBufferSetLabel([WGPUCommandBuffer](c.html#class-CommandBuffer) c
 
 <div class='signature' markdown=1>
 
-[WGPURenderPassEncoder](c.html#class-RenderPassEncoder) wgpuCommandEncoderBeginRenderPass([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder, [WGPURenderPassDescriptor](c.html#structure-RenderPassDescriptor) const\* descriptor)
+[WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) wgpuCommandEncoderBeginRenderPass([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder, [WGPURenderPassDescriptor]({{ '/api/c.html#structure-RenderPassDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -2421,7 +2421,7 @@ void wgpuCommandBufferSetLabel([WGPUCommandBuffer](c.html#class-CommandBuffer) c
 
 <div class='signature' markdown=1>
 
-void wgpuCommandEncoderClearBuffer([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder, [WGPUBuffer](c.html#class-Buffer) buffer, uint64_t offset, uint64_t size)
+void wgpuCommandEncoderClearBuffer([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder, [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer, uint64_t offset, uint64_t size)
 
 </div>
 
@@ -2438,7 +2438,7 @@ void wgpuCommandEncoderClearBuffer([WGPUCommandEncoder](c.html#class-CommandEnco
 
 <div class='signature' markdown=1>
 
-void wgpuCommandEncoderCopyBufferToBuffer([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder, [WGPUBuffer](c.html#class-Buffer) source, uint64_t sourceOffset, [WGPUBuffer](c.html#class-Buffer) destination, uint64_t destinationOffset, uint64_t size)
+void wgpuCommandEncoderCopyBufferToBuffer([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder, [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) source, uint64_t sourceOffset, [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) destination, uint64_t destinationOffset, uint64_t size)
 
 </div>
 
@@ -2457,7 +2457,7 @@ void wgpuCommandEncoderCopyBufferToBuffer([WGPUCommandEncoder](c.html#class-Comm
 
 <div class='signature' markdown=1>
 
-void wgpuCommandEncoderCopyBufferToTexture([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder, [WGPUImageCopyBuffer](c.html#structure-ImageCopyBuffer) const\* source, [WGPUImageCopyTexture](c.html#structure-ImageCopyTexture) const\* destination, [WGPUExtent3D](c.html#structure-Extent3D) const\* copySize)
+void wgpuCommandEncoderCopyBufferToTexture([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder, [WGPUImageCopyBuffer]({{ '/api/c.html#structure-ImageCopyBuffer' | relative_url }}) const\* source, [WGPUImageCopyTexture]({{ '/api/c.html#structure-ImageCopyTexture' | relative_url }}) const\* destination, [WGPUExtent3D]({{ '/api/c.html#structure-Extent3D' | relative_url }}) const\* copySize)
 
 </div>
 
@@ -2474,7 +2474,7 @@ void wgpuCommandEncoderCopyBufferToTexture([WGPUCommandEncoder](c.html#class-Com
 
 <div class='signature' markdown=1>
 
-void wgpuCommandEncoderCopyTextureToBuffer([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder, [WGPUImageCopyTexture](c.html#structure-ImageCopyTexture) const\* source, [WGPUImageCopyBuffer](c.html#structure-ImageCopyBuffer) const\* destination, [WGPUExtent3D](c.html#structure-Extent3D) const\* copySize)
+void wgpuCommandEncoderCopyTextureToBuffer([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder, [WGPUImageCopyTexture]({{ '/api/c.html#structure-ImageCopyTexture' | relative_url }}) const\* source, [WGPUImageCopyBuffer]({{ '/api/c.html#structure-ImageCopyBuffer' | relative_url }}) const\* destination, [WGPUExtent3D]({{ '/api/c.html#structure-Extent3D' | relative_url }}) const\* copySize)
 
 </div>
 
@@ -2491,7 +2491,7 @@ void wgpuCommandEncoderCopyTextureToBuffer([WGPUCommandEncoder](c.html#class-Com
 
 <div class='signature' markdown=1>
 
-void wgpuCommandEncoderCopyTextureToTexture([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder, [WGPUImageCopyTexture](c.html#structure-ImageCopyTexture) const\* source, [WGPUImageCopyTexture](c.html#structure-ImageCopyTexture) const\* destination, [WGPUExtent3D](c.html#structure-Extent3D) const\* copySize)
+void wgpuCommandEncoderCopyTextureToTexture([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder, [WGPUImageCopyTexture]({{ '/api/c.html#structure-ImageCopyTexture' | relative_url }}) const\* source, [WGPUImageCopyTexture]({{ '/api/c.html#structure-ImageCopyTexture' | relative_url }}) const\* destination, [WGPUExtent3D]({{ '/api/c.html#structure-Extent3D' | relative_url }}) const\* copySize)
 
 </div>
 
@@ -2508,7 +2508,7 @@ void wgpuCommandEncoderCopyTextureToTexture([WGPUCommandEncoder](c.html#class-Co
 
 <div class='signature' markdown=1>
 
-void wgpuCommandEncoderCopyTextureToTextureInternal([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder, [WGPUImageCopyTexture](c.html#structure-ImageCopyTexture) const\* source, [WGPUImageCopyTexture](c.html#structure-ImageCopyTexture) const\* destination, [WGPUExtent3D](c.html#structure-Extent3D) const\* copySize)
+void wgpuCommandEncoderCopyTextureToTextureInternal([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder, [WGPUImageCopyTexture]({{ '/api/c.html#structure-ImageCopyTexture' | relative_url }}) const\* source, [WGPUImageCopyTexture]({{ '/api/c.html#structure-ImageCopyTexture' | relative_url }}) const\* destination, [WGPUExtent3D]({{ '/api/c.html#structure-Extent3D' | relative_url }}) const\* copySize)
 
 </div>
 
@@ -2525,7 +2525,7 @@ void wgpuCommandEncoderCopyTextureToTextureInternal([WGPUCommandEncoder](c.html#
 
 <div class='signature' markdown=1>
 
-[WGPUCommandBuffer](c.html#class-CommandBuffer) wgpuCommandEncoderFinish([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder, [WGPUCommandBufferDescriptor](c.html#structure-CommandBufferDescriptor) const\* descriptor)
+[WGPUCommandBuffer]({{ '/api/c.html#class-CommandBuffer' | relative_url }}) wgpuCommandEncoderFinish([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder, [WGPUCommandBufferDescriptor]({{ '/api/c.html#structure-CommandBufferDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -2543,7 +2543,7 @@ void wgpuCommandEncoderCopyTextureToTextureInternal([WGPUCommandEncoder](c.html#
 
 <div class='signature' markdown=1>
 
-void wgpuCommandEncoderInjectValidationError([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder, char const\* message)
+void wgpuCommandEncoderInjectValidationError([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder, char const\* message)
 
 </div>
 
@@ -2558,7 +2558,7 @@ void wgpuCommandEncoderInjectValidationError([WGPUCommandEncoder](c.html#class-C
 
 <div class='signature' markdown=1>
 
-void wgpuCommandEncoderInsertDebugMarker([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder, char const\* markerLabel)
+void wgpuCommandEncoderInsertDebugMarker([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder, char const\* markerLabel)
 
 </div>
 
@@ -2573,7 +2573,7 @@ void wgpuCommandEncoderInsertDebugMarker([WGPUCommandEncoder](c.html#class-Comma
 
 <div class='signature' markdown=1>
 
-void wgpuCommandEncoderPopDebugGroup([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder)
+void wgpuCommandEncoderPopDebugGroup([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder)
 
 </div>
 
@@ -2587,7 +2587,7 @@ void wgpuCommandEncoderPopDebugGroup([WGPUCommandEncoder](c.html#class-CommandEn
 
 <div class='signature' markdown=1>
 
-void wgpuCommandEncoderPushDebugGroup([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder, char const\* groupLabel)
+void wgpuCommandEncoderPushDebugGroup([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder, char const\* groupLabel)
 
 </div>
 
@@ -2602,7 +2602,7 @@ void wgpuCommandEncoderPushDebugGroup([WGPUCommandEncoder](c.html#class-CommandE
 
 <div class='signature' markdown=1>
 
-void wgpuCommandEncoderReference([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder)
+void wgpuCommandEncoderReference([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder)
 
 </div>
 
@@ -2616,7 +2616,7 @@ void wgpuCommandEncoderReference([WGPUCommandEncoder](c.html#class-CommandEncode
 
 <div class='signature' markdown=1>
 
-void wgpuCommandEncoderRelease([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder)
+void wgpuCommandEncoderRelease([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder)
 
 </div>
 
@@ -2630,7 +2630,7 @@ void wgpuCommandEncoderRelease([WGPUCommandEncoder](c.html#class-CommandEncoder)
 
 <div class='signature' markdown=1>
 
-void wgpuCommandEncoderResolveQuerySet([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder, [WGPUQuerySet](c.html#class-QuerySet) querySet, uint32_t firstQuery, uint32_t queryCount, [WGPUBuffer](c.html#class-Buffer) destination, uint64_t destinationOffset)
+void wgpuCommandEncoderResolveQuerySet([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder, [WGPUQuerySet]({{ '/api/c.html#class-QuerySet' | relative_url }}) querySet, uint32_t firstQuery, uint32_t queryCount, [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) destination, uint64_t destinationOffset)
 
 </div>
 
@@ -2649,7 +2649,7 @@ void wgpuCommandEncoderResolveQuerySet([WGPUCommandEncoder](c.html#class-Command
 
 <div class='signature' markdown=1>
 
-void wgpuCommandEncoderSetLabel([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder, char const\* label)
+void wgpuCommandEncoderSetLabel([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder, char const\* label)
 
 </div>
 
@@ -2664,7 +2664,7 @@ void wgpuCommandEncoderSetLabel([WGPUCommandEncoder](c.html#class-CommandEncoder
 
 <div class='signature' markdown=1>
 
-void wgpuCommandEncoderWriteBuffer([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder, [WGPUBuffer](c.html#class-Buffer) buffer, uint64_t bufferOffset, uint8_t const\* data, uint64_t size)
+void wgpuCommandEncoderWriteBuffer([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder, [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer, uint64_t bufferOffset, uint8_t const\* data, uint64_t size)
 
 </div>
 
@@ -2682,7 +2682,7 @@ void wgpuCommandEncoderWriteBuffer([WGPUCommandEncoder](c.html#class-CommandEnco
 
 <div class='signature' markdown=1>
 
-void wgpuCommandEncoderWriteTimestamp([WGPUCommandEncoder](c.html#class-CommandEncoder) commandEncoder, [WGPUQuerySet](c.html#class-QuerySet) querySet, uint32_t queryIndex)
+void wgpuCommandEncoderWriteTimestamp([WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) commandEncoder, [WGPUQuerySet]({{ '/api/c.html#class-QuerySet' | relative_url }}) querySet, uint32_t queryIndex)
 
 </div>
 
@@ -2704,7 +2704,7 @@ void wgpuCommandEncoderWriteTimestamp([WGPUCommandEncoder](c.html#class-CommandE
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderBeginPipelineStatisticsQuery([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder, [WGPUQuerySet](c.html#class-QuerySet) querySet, uint32_t queryIndex)
+void wgpuComputePassEncoderBeginPipelineStatisticsQuery([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder, [WGPUQuerySet]({{ '/api/c.html#class-QuerySet' | relative_url }}) querySet, uint32_t queryIndex)
 
 </div>
 
@@ -2720,7 +2720,7 @@ void wgpuComputePassEncoderBeginPipelineStatisticsQuery([WGPUComputePassEncoder]
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderDispatch([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder, uint32_t workgroupCountX, uint32_t workgroupCountY, uint32_t workgroupCountZ)
+void wgpuComputePassEncoderDispatch([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder, uint32_t workgroupCountX, uint32_t workgroupCountY, uint32_t workgroupCountZ)
 
 </div>
 
@@ -2737,7 +2737,7 @@ void wgpuComputePassEncoderDispatch([WGPUComputePassEncoder](c.html#class-Comput
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderDispatchIndirect([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder, [WGPUBuffer](c.html#class-Buffer) indirectBuffer, uint64_t indirectOffset)
+void wgpuComputePassEncoderDispatchIndirect([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder, [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) indirectBuffer, uint64_t indirectOffset)
 
 </div>
 
@@ -2753,7 +2753,7 @@ void wgpuComputePassEncoderDispatchIndirect([WGPUComputePassEncoder](c.html#clas
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderDispatchWorkgroups([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder, uint32_t workgroupCountX, uint32_t workgroupCountY, uint32_t workgroupCountZ)
+void wgpuComputePassEncoderDispatchWorkgroups([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder, uint32_t workgroupCountX, uint32_t workgroupCountY, uint32_t workgroupCountZ)
 
 </div>
 
@@ -2770,7 +2770,7 @@ void wgpuComputePassEncoderDispatchWorkgroups([WGPUComputePassEncoder](c.html#cl
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderDispatchWorkgroupsIndirect([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder, [WGPUBuffer](c.html#class-Buffer) indirectBuffer, uint64_t indirectOffset)
+void wgpuComputePassEncoderDispatchWorkgroupsIndirect([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder, [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) indirectBuffer, uint64_t indirectOffset)
 
 </div>
 
@@ -2786,7 +2786,7 @@ void wgpuComputePassEncoderDispatchWorkgroupsIndirect([WGPUComputePassEncoder](c
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderEnd([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder)
+void wgpuComputePassEncoderEnd([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder)
 
 </div>
 
@@ -2800,7 +2800,7 @@ void wgpuComputePassEncoderEnd([WGPUComputePassEncoder](c.html#class-ComputePass
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderEndPass([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder)
+void wgpuComputePassEncoderEndPass([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder)
 
 </div>
 
@@ -2814,7 +2814,7 @@ void wgpuComputePassEncoderEndPass([WGPUComputePassEncoder](c.html#class-Compute
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderEndPipelineStatisticsQuery([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder)
+void wgpuComputePassEncoderEndPipelineStatisticsQuery([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder)
 
 </div>
 
@@ -2828,7 +2828,7 @@ void wgpuComputePassEncoderEndPipelineStatisticsQuery([WGPUComputePassEncoder](c
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderInsertDebugMarker([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder, char const\* markerLabel)
+void wgpuComputePassEncoderInsertDebugMarker([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder, char const\* markerLabel)
 
 </div>
 
@@ -2843,7 +2843,7 @@ void wgpuComputePassEncoderInsertDebugMarker([WGPUComputePassEncoder](c.html#cla
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderPopDebugGroup([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder)
+void wgpuComputePassEncoderPopDebugGroup([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder)
 
 </div>
 
@@ -2857,7 +2857,7 @@ void wgpuComputePassEncoderPopDebugGroup([WGPUComputePassEncoder](c.html#class-C
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderPushDebugGroup([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder, char const\* groupLabel)
+void wgpuComputePassEncoderPushDebugGroup([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder, char const\* groupLabel)
 
 </div>
 
@@ -2872,7 +2872,7 @@ void wgpuComputePassEncoderPushDebugGroup([WGPUComputePassEncoder](c.html#class-
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderReference([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder)
+void wgpuComputePassEncoderReference([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder)
 
 </div>
 
@@ -2886,7 +2886,7 @@ void wgpuComputePassEncoderReference([WGPUComputePassEncoder](c.html#class-Compu
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderRelease([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder)
+void wgpuComputePassEncoderRelease([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder)
 
 </div>
 
@@ -2900,7 +2900,7 @@ void wgpuComputePassEncoderRelease([WGPUComputePassEncoder](c.html#class-Compute
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderSetBindGroup([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder, uint32_t groupIndex, [WGPUBindGroup](c.html#class-BindGroup) group, uint32_t dynamicOffsetCount, uint32_t const\* dynamicOffsets)
+void wgpuComputePassEncoderSetBindGroup([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder, uint32_t groupIndex, [WGPUBindGroup]({{ '/api/c.html#class-BindGroup' | relative_url }}) group, uint32_t dynamicOffsetCount, uint32_t const\* dynamicOffsets)
 
 </div>
 
@@ -2918,7 +2918,7 @@ void wgpuComputePassEncoderSetBindGroup([WGPUComputePassEncoder](c.html#class-Co
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderSetLabel([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder, char const\* label)
+void wgpuComputePassEncoderSetLabel([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder, char const\* label)
 
 </div>
 
@@ -2933,7 +2933,7 @@ void wgpuComputePassEncoderSetLabel([WGPUComputePassEncoder](c.html#class-Comput
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderSetPipeline([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder, [WGPUComputePipeline](c.html#class-ComputePipeline) pipeline)
+void wgpuComputePassEncoderSetPipeline([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder, [WGPUComputePipeline]({{ '/api/c.html#class-ComputePipeline' | relative_url }}) pipeline)
 
 </div>
 
@@ -2948,7 +2948,7 @@ void wgpuComputePassEncoderSetPipeline([WGPUComputePassEncoder](c.html#class-Com
 
 <div class='signature' markdown=1>
 
-void wgpuComputePassEncoderWriteTimestamp([WGPUComputePassEncoder](c.html#class-ComputePassEncoder) computePassEncoder, [WGPUQuerySet](c.html#class-QuerySet) querySet, uint32_t queryIndex)
+void wgpuComputePassEncoderWriteTimestamp([WGPUComputePassEncoder]({{ '/api/c.html#class-ComputePassEncoder' | relative_url }}) computePassEncoder, [WGPUQuerySet]({{ '/api/c.html#class-QuerySet' | relative_url }}) querySet, uint32_t queryIndex)
 
 </div>
 
@@ -2970,7 +2970,7 @@ void wgpuComputePassEncoderWriteTimestamp([WGPUComputePassEncoder](c.html#class-
 
 <div class='signature' markdown=1>
 
-[WGPUBindGroupLayout](c.html#class-BindGroupLayout) wgpuComputePipelineGetBindGroupLayout([WGPUComputePipeline](c.html#class-ComputePipeline) computePipeline, uint32_t groupIndex)
+[WGPUBindGroupLayout]({{ '/api/c.html#class-BindGroupLayout' | relative_url }}) wgpuComputePipelineGetBindGroupLayout([WGPUComputePipeline]({{ '/api/c.html#class-ComputePipeline' | relative_url }}) computePipeline, uint32_t groupIndex)
 
 </div>
 
@@ -2988,7 +2988,7 @@ void wgpuComputePassEncoderWriteTimestamp([WGPUComputePassEncoder](c.html#class-
 
 <div class='signature' markdown=1>
 
-void wgpuComputePipelineReference([WGPUComputePipeline](c.html#class-ComputePipeline) computePipeline)
+void wgpuComputePipelineReference([WGPUComputePipeline]({{ '/api/c.html#class-ComputePipeline' | relative_url }}) computePipeline)
 
 </div>
 
@@ -3002,7 +3002,7 @@ void wgpuComputePipelineReference([WGPUComputePipeline](c.html#class-ComputePipe
 
 <div class='signature' markdown=1>
 
-void wgpuComputePipelineRelease([WGPUComputePipeline](c.html#class-ComputePipeline) computePipeline)
+void wgpuComputePipelineRelease([WGPUComputePipeline]({{ '/api/c.html#class-ComputePipeline' | relative_url }}) computePipeline)
 
 </div>
 
@@ -3016,7 +3016,7 @@ void wgpuComputePipelineRelease([WGPUComputePipeline](c.html#class-ComputePipeli
 
 <div class='signature' markdown=1>
 
-void wgpuComputePipelineSetLabel([WGPUComputePipeline](c.html#class-ComputePipeline) computePipeline, char const\* label)
+void wgpuComputePipelineSetLabel([WGPUComputePipeline]({{ '/api/c.html#class-ComputePipeline' | relative_url }}) computePipeline, char const\* label)
 
 </div>
 
@@ -3037,7 +3037,7 @@ void wgpuComputePipelineSetLabel([WGPUComputePipeline](c.html#class-ComputePipel
 
 <div class='signature' markdown=1>
 
-[WGPUBindGroup](c.html#class-BindGroup) wgpuDeviceCreateBindGroup([WGPUDevice](c.html#class-Device) device, [WGPUBindGroupDescriptor](c.html#structure-BindGroupDescriptor) const\* descriptor)
+[WGPUBindGroup]({{ '/api/c.html#class-BindGroup' | relative_url }}) wgpuDeviceCreateBindGroup([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUBindGroupDescriptor]({{ '/api/c.html#structure-BindGroupDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3055,7 +3055,7 @@ void wgpuComputePipelineSetLabel([WGPUComputePipeline](c.html#class-ComputePipel
 
 <div class='signature' markdown=1>
 
-[WGPUBindGroupLayout](c.html#class-BindGroupLayout) wgpuDeviceCreateBindGroupLayout([WGPUDevice](c.html#class-Device) device, [WGPUBindGroupLayoutDescriptor](c.html#structure-BindGroupLayoutDescriptor) const\* descriptor)
+[WGPUBindGroupLayout]({{ '/api/c.html#class-BindGroupLayout' | relative_url }}) wgpuDeviceCreateBindGroupLayout([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUBindGroupLayoutDescriptor]({{ '/api/c.html#structure-BindGroupLayoutDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3073,7 +3073,7 @@ void wgpuComputePipelineSetLabel([WGPUComputePipeline](c.html#class-ComputePipel
 
 <div class='signature' markdown=1>
 
-[WGPUBuffer](c.html#class-Buffer) wgpuDeviceCreateBuffer([WGPUDevice](c.html#class-Device) device, [WGPUBufferDescriptor](c.html#structure-BufferDescriptor) const\* descriptor)
+[WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) wgpuDeviceCreateBuffer([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUBufferDescriptor]({{ '/api/c.html#structure-BufferDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3091,7 +3091,7 @@ void wgpuComputePipelineSetLabel([WGPUComputePipeline](c.html#class-ComputePipel
 
 <div class='signature' markdown=1>
 
-[WGPUCommandEncoder](c.html#class-CommandEncoder) wgpuDeviceCreateCommandEncoder([WGPUDevice](c.html#class-Device) device, [WGPUCommandEncoderDescriptor](c.html#structure-CommandEncoderDescriptor) const\* descriptor)
+[WGPUCommandEncoder]({{ '/api/c.html#class-CommandEncoder' | relative_url }}) wgpuDeviceCreateCommandEncoder([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUCommandEncoderDescriptor]({{ '/api/c.html#structure-CommandEncoderDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3109,7 +3109,7 @@ void wgpuComputePipelineSetLabel([WGPUComputePipeline](c.html#class-ComputePipel
 
 <div class='signature' markdown=1>
 
-[WGPUComputePipeline](c.html#class-ComputePipeline) wgpuDeviceCreateComputePipeline([WGPUDevice](c.html#class-Device) device, [WGPUComputePipelineDescriptor](c.html#structure-ComputePipelineDescriptor) const\* descriptor)
+[WGPUComputePipeline]({{ '/api/c.html#class-ComputePipeline' | relative_url }}) wgpuDeviceCreateComputePipeline([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUComputePipelineDescriptor]({{ '/api/c.html#structure-ComputePipelineDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3127,7 +3127,7 @@ void wgpuComputePipelineSetLabel([WGPUComputePipeline](c.html#class-ComputePipel
 
 <div class='signature' markdown=1>
 
-void wgpuDeviceCreateComputePipelineAsync([WGPUDevice](c.html#class-Device) device, [WGPUComputePipelineDescriptor](c.html#structure-ComputePipelineDescriptor) const\* descriptor, [WGPUCreateComputePipelineAsyncCallback](c.html#function-pointer-CreateComputePipelineAsyncCallback) callback, void \* userdata)
+void wgpuDeviceCreateComputePipelineAsync([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUComputePipelineDescriptor]({{ '/api/c.html#structure-ComputePipelineDescriptor' | relative_url }}) const\* descriptor, [WGPUCreateComputePipelineAsyncCallback]({{ '/api/c.html#function-pointer-CreateComputePipelineAsyncCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -3144,7 +3144,7 @@ void wgpuDeviceCreateComputePipelineAsync([WGPUDevice](c.html#class-Device) devi
 
 <div class='signature' markdown=1>
 
-[WGPUBuffer](c.html#class-Buffer) wgpuDeviceCreateErrorBuffer([WGPUDevice](c.html#class-Device) device)
+[WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) wgpuDeviceCreateErrorBuffer([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device)
 
 </div>
 
@@ -3161,7 +3161,7 @@ void wgpuDeviceCreateComputePipelineAsync([WGPUDevice](c.html#class-Device) devi
 
 <div class='signature' markdown=1>
 
-[WGPUExternalTexture](c.html#class-ExternalTexture) wgpuDeviceCreateErrorExternalTexture([WGPUDevice](c.html#class-Device) device)
+[WGPUExternalTexture]({{ '/api/c.html#class-ExternalTexture' | relative_url }}) wgpuDeviceCreateErrorExternalTexture([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device)
 
 </div>
 
@@ -3178,7 +3178,7 @@ void wgpuDeviceCreateComputePipelineAsync([WGPUDevice](c.html#class-Device) devi
 
 <div class='signature' markdown=1>
 
-[WGPUTexture](c.html#class-Texture) wgpuDeviceCreateErrorTexture([WGPUDevice](c.html#class-Device) device, [WGPUTextureDescriptor](c.html#structure-TextureDescriptor) const\* descriptor)
+[WGPUTexture]({{ '/api/c.html#class-Texture' | relative_url }}) wgpuDeviceCreateErrorTexture([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUTextureDescriptor]({{ '/api/c.html#structure-TextureDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3196,7 +3196,7 @@ void wgpuDeviceCreateComputePipelineAsync([WGPUDevice](c.html#class-Device) devi
 
 <div class='signature' markdown=1>
 
-[WGPUExternalTexture](c.html#class-ExternalTexture) wgpuDeviceCreateExternalTexture([WGPUDevice](c.html#class-Device) device, [WGPUExternalTextureDescriptor](c.html#structure-ExternalTextureDescriptor) const\* externalTextureDescriptor)
+[WGPUExternalTexture]({{ '/api/c.html#class-ExternalTexture' | relative_url }}) wgpuDeviceCreateExternalTexture([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUExternalTextureDescriptor]({{ '/api/c.html#structure-ExternalTextureDescriptor' | relative_url }}) const\* externalTextureDescriptor)
 
 </div>
 
@@ -3214,7 +3214,7 @@ void wgpuDeviceCreateComputePipelineAsync([WGPUDevice](c.html#class-Device) devi
 
 <div class='signature' markdown=1>
 
-[WGPUPipelineLayout](c.html#class-PipelineLayout) wgpuDeviceCreatePipelineLayout([WGPUDevice](c.html#class-Device) device, [WGPUPipelineLayoutDescriptor](c.html#structure-PipelineLayoutDescriptor) const\* descriptor)
+[WGPUPipelineLayout]({{ '/api/c.html#class-PipelineLayout' | relative_url }}) wgpuDeviceCreatePipelineLayout([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUPipelineLayoutDescriptor]({{ '/api/c.html#structure-PipelineLayoutDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3232,7 +3232,7 @@ void wgpuDeviceCreateComputePipelineAsync([WGPUDevice](c.html#class-Device) devi
 
 <div class='signature' markdown=1>
 
-[WGPUQuerySet](c.html#class-QuerySet) wgpuDeviceCreateQuerySet([WGPUDevice](c.html#class-Device) device, [WGPUQuerySetDescriptor](c.html#structure-QuerySetDescriptor) const\* descriptor)
+[WGPUQuerySet]({{ '/api/c.html#class-QuerySet' | relative_url }}) wgpuDeviceCreateQuerySet([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUQuerySetDescriptor]({{ '/api/c.html#structure-QuerySetDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3250,7 +3250,7 @@ void wgpuDeviceCreateComputePipelineAsync([WGPUDevice](c.html#class-Device) devi
 
 <div class='signature' markdown=1>
 
-[WGPURenderBundleEncoder](c.html#class-RenderBundleEncoder) wgpuDeviceCreateRenderBundleEncoder([WGPUDevice](c.html#class-Device) device, [WGPURenderBundleEncoderDescriptor](c.html#structure-RenderBundleEncoderDescriptor) const\* descriptor)
+[WGPURenderBundleEncoder]({{ '/api/c.html#class-RenderBundleEncoder' | relative_url }}) wgpuDeviceCreateRenderBundleEncoder([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPURenderBundleEncoderDescriptor]({{ '/api/c.html#structure-RenderBundleEncoderDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3268,7 +3268,7 @@ void wgpuDeviceCreateComputePipelineAsync([WGPUDevice](c.html#class-Device) devi
 
 <div class='signature' markdown=1>
 
-[WGPURenderPipeline](c.html#class-RenderPipeline) wgpuDeviceCreateRenderPipeline([WGPUDevice](c.html#class-Device) device, [WGPURenderPipelineDescriptor](c.html#structure-RenderPipelineDescriptor) const\* descriptor)
+[WGPURenderPipeline]({{ '/api/c.html#class-RenderPipeline' | relative_url }}) wgpuDeviceCreateRenderPipeline([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPURenderPipelineDescriptor]({{ '/api/c.html#structure-RenderPipelineDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3286,7 +3286,7 @@ void wgpuDeviceCreateComputePipelineAsync([WGPUDevice](c.html#class-Device) devi
 
 <div class='signature' markdown=1>
 
-void wgpuDeviceCreateRenderPipelineAsync([WGPUDevice](c.html#class-Device) device, [WGPURenderPipelineDescriptor](c.html#structure-RenderPipelineDescriptor) const\* descriptor, [WGPUCreateRenderPipelineAsyncCallback](c.html#function-pointer-CreateRenderPipelineAsyncCallback) callback, void \* userdata)
+void wgpuDeviceCreateRenderPipelineAsync([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPURenderPipelineDescriptor]({{ '/api/c.html#structure-RenderPipelineDescriptor' | relative_url }}) const\* descriptor, [WGPUCreateRenderPipelineAsyncCallback]({{ '/api/c.html#function-pointer-CreateRenderPipelineAsyncCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -3303,7 +3303,7 @@ void wgpuDeviceCreateRenderPipelineAsync([WGPUDevice](c.html#class-Device) devic
 
 <div class='signature' markdown=1>
 
-[WGPUSampler](c.html#class-Sampler) wgpuDeviceCreateSampler([WGPUDevice](c.html#class-Device) device, [WGPUSamplerDescriptor](c.html#structure-SamplerDescriptor) const\* descriptor)
+[WGPUSampler]({{ '/api/c.html#class-Sampler' | relative_url }}) wgpuDeviceCreateSampler([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUSamplerDescriptor]({{ '/api/c.html#structure-SamplerDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3321,7 +3321,7 @@ void wgpuDeviceCreateRenderPipelineAsync([WGPUDevice](c.html#class-Device) devic
 
 <div class='signature' markdown=1>
 
-[WGPUShaderModule](c.html#class-ShaderModule) wgpuDeviceCreateShaderModule([WGPUDevice](c.html#class-Device) device, [WGPUShaderModuleDescriptor](c.html#structure-ShaderModuleDescriptor) const\* descriptor)
+[WGPUShaderModule]({{ '/api/c.html#class-ShaderModule' | relative_url }}) wgpuDeviceCreateShaderModule([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUShaderModuleDescriptor]({{ '/api/c.html#structure-ShaderModuleDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3339,26 +3339,7 @@ void wgpuDeviceCreateRenderPipelineAsync([WGPUDevice](c.html#class-Device) devic
 
 <div class='signature' markdown=1>
 
-[WGPUSwapChain](c.html#class-SwapChain) wgpuDeviceCreateSwapChain([WGPUDevice](c.html#class-Device) device, [WGPUSurface](c.html#class-Surface) surface, [WGPUSwapChainDescriptor](c.html#structure-SwapChainDescriptor) const\* descriptor)
-
-</div>
-
-#### Returns
-
-
-#### Arguments
-
-* *device*: 
-* *surface*: 
-* *descriptor*: 
-
-</div>
-
-<div class='method' markdown=1>
-
-<div class='signature' markdown=1>
-
-[WGPUSwapChain](c.html#class-SwapChain) wgpuDeviceCreateSwapChain([WGPUDevice](c.html#class-Device) device, [WGPUSurface](c.html#class-Surface) surface, [WGPUSwapChainDescriptor](c.html#structure-SwapChainDescriptor) const\* descriptor)
+[WGPUSwapChain]({{ '/api/c.html#class-SwapChain' | relative_url }}) wgpuDeviceCreateSwapChain([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUSurface]({{ '/api/c.html#class-Surface' | relative_url }}) surface, [WGPUSwapChainDescriptor]({{ '/api/c.html#structure-SwapChainDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3377,7 +3358,26 @@ void wgpuDeviceCreateRenderPipelineAsync([WGPUDevice](c.html#class-Device) devic
 
 <div class='signature' markdown=1>
 
-[WGPUTexture](c.html#class-Texture) wgpuDeviceCreateTexture([WGPUDevice](c.html#class-Device) device, [WGPUTextureDescriptor](c.html#structure-TextureDescriptor) const\* descriptor)
+[WGPUSwapChain]({{ '/api/c.html#class-SwapChain' | relative_url }}) wgpuDeviceCreateSwapChain([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUSurface]({{ '/api/c.html#class-Surface' | relative_url }}) surface, [WGPUSwapChainDescriptor]({{ '/api/c.html#structure-SwapChainDescriptor' | relative_url }}) const\* descriptor)
+
+</div>
+
+#### Returns
+
+
+#### Arguments
+
+* *device*: 
+* *surface*: 
+* *descriptor*: 
+
+</div>
+
+<div class='method' markdown=1>
+
+<div class='signature' markdown=1>
+
+[WGPUTexture]({{ '/api/c.html#class-Texture' | relative_url }}) wgpuDeviceCreateTexture([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUTextureDescriptor]({{ '/api/c.html#structure-TextureDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3395,7 +3395,7 @@ void wgpuDeviceCreateRenderPipelineAsync([WGPUDevice](c.html#class-Device) devic
 
 <div class='signature' markdown=1>
 
-void wgpuDeviceDestroy([WGPUDevice](c.html#class-Device) device)
+void wgpuDeviceDestroy([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device)
 
 </div>
 
@@ -3409,7 +3409,7 @@ void wgpuDeviceDestroy([WGPUDevice](c.html#class-Device) device)
 
 <div class='signature' markdown=1>
 
-size_t wgpuDeviceEnumerateFeatures([WGPUDevice](c.html#class-Device) device, [WGPUFeatureName](c.html#enum-FeatureName) \* features)
+size_t wgpuDeviceEnumerateFeatures([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUFeatureName]({{ '/api/c.html#enum-FeatureName' | relative_url }}) \* features)
 
 </div>
 
@@ -3427,7 +3427,7 @@ size_t wgpuDeviceEnumerateFeatures([WGPUDevice](c.html#class-Device) device, [WG
 
 <div class='signature' markdown=1>
 
-void wgpuDeviceForceLoss([WGPUDevice](c.html#class-Device) device, [WGPUDeviceLostReason](c.html#enum-DeviceLostReason) type, char const\* message)
+void wgpuDeviceForceLoss([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUDeviceLostReason]({{ '/api/c.html#enum-DeviceLostReason' | relative_url }}) type, char const\* message)
 
 </div>
 
@@ -3443,7 +3443,7 @@ void wgpuDeviceForceLoss([WGPUDevice](c.html#class-Device) device, [WGPUDeviceLo
 
 <div class='signature' markdown=1>
 
-[WGPUAdapter](c.html#class-Adapter) wgpuDeviceGetAdapter([WGPUDevice](c.html#class-Device) device)
+[WGPUAdapter]({{ '/api/c.html#class-Adapter' | relative_url }}) wgpuDeviceGetAdapter([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device)
 
 </div>
 
@@ -3460,7 +3460,7 @@ void wgpuDeviceForceLoss([WGPUDevice](c.html#class-Device) device, [WGPUDeviceLo
 
 <div class='signature' markdown=1>
 
-bool wgpuDeviceGetLimits([WGPUDevice](c.html#class-Device) device, [WGPUSupportedLimits](c.html#structure-SupportedLimits) \* limits)
+bool wgpuDeviceGetLimits([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUSupportedLimits]({{ '/api/c.html#structure-SupportedLimits' | relative_url }}) \* limits)
 
 </div>
 
@@ -3478,7 +3478,7 @@ bool wgpuDeviceGetLimits([WGPUDevice](c.html#class-Device) device, [WGPUSupporte
 
 <div class='signature' markdown=1>
 
-[WGPUQueue](c.html#class-Queue) wgpuDeviceGetQueue([WGPUDevice](c.html#class-Device) device)
+[WGPUQueue]({{ '/api/c.html#class-Queue' | relative_url }}) wgpuDeviceGetQueue([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device)
 
 </div>
 
@@ -3495,7 +3495,7 @@ bool wgpuDeviceGetLimits([WGPUDevice](c.html#class-Device) device, [WGPUSupporte
 
 <div class='signature' markdown=1>
 
-bool wgpuDeviceHasFeature([WGPUDevice](c.html#class-Device) device, [WGPUFeatureName](c.html#enum-FeatureName) feature)
+bool wgpuDeviceHasFeature([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUFeatureName]({{ '/api/c.html#enum-FeatureName' | relative_url }}) feature)
 
 </div>
 
@@ -3513,7 +3513,7 @@ bool wgpuDeviceHasFeature([WGPUDevice](c.html#class-Device) device, [WGPUFeature
 
 <div class='signature' markdown=1>
 
-void wgpuDeviceInjectError([WGPUDevice](c.html#class-Device) device, [WGPUErrorType](c.html#enum-ErrorType) type, char const\* message)
+void wgpuDeviceInjectError([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUErrorType]({{ '/api/c.html#enum-ErrorType' | relative_url }}) type, char const\* message)
 
 </div>
 
@@ -3529,7 +3529,7 @@ void wgpuDeviceInjectError([WGPUDevice](c.html#class-Device) device, [WGPUErrorT
 
 <div class='signature' markdown=1>
 
-bool wgpuDevicePopErrorScope([WGPUDevice](c.html#class-Device) device, [WGPUErrorCallback](c.html#function-pointer-ErrorCallback) callback, void \* userdata)
+bool wgpuDevicePopErrorScope([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUErrorCallback]({{ '/api/c.html#function-pointer-ErrorCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -3548,7 +3548,7 @@ bool wgpuDevicePopErrorScope([WGPUDevice](c.html#class-Device) device, [WGPUErro
 
 <div class='signature' markdown=1>
 
-void wgpuDevicePushErrorScope([WGPUDevice](c.html#class-Device) device, [WGPUErrorFilter](c.html#enum-ErrorFilter) filter)
+void wgpuDevicePushErrorScope([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUErrorFilter]({{ '/api/c.html#enum-ErrorFilter' | relative_url }}) filter)
 
 </div>
 
@@ -3563,7 +3563,7 @@ void wgpuDevicePushErrorScope([WGPUDevice](c.html#class-Device) device, [WGPUErr
 
 <div class='signature' markdown=1>
 
-void wgpuDeviceReference([WGPUDevice](c.html#class-Device) device)
+void wgpuDeviceReference([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device)
 
 </div>
 
@@ -3577,7 +3577,7 @@ void wgpuDeviceReference([WGPUDevice](c.html#class-Device) device)
 
 <div class='signature' markdown=1>
 
-void wgpuDeviceRelease([WGPUDevice](c.html#class-Device) device)
+void wgpuDeviceRelease([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device)
 
 </div>
 
@@ -3591,7 +3591,7 @@ void wgpuDeviceRelease([WGPUDevice](c.html#class-Device) device)
 
 <div class='signature' markdown=1>
 
-void wgpuDeviceSetDeviceLostCallback([WGPUDevice](c.html#class-Device) device, [WGPUDeviceLostCallback](c.html#function-pointer-DeviceLostCallback) callback, void \* userdata)
+void wgpuDeviceSetDeviceLostCallback([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUDeviceLostCallback]({{ '/api/c.html#function-pointer-DeviceLostCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -3607,7 +3607,7 @@ void wgpuDeviceSetDeviceLostCallback([WGPUDevice](c.html#class-Device) device, [
 
 <div class='signature' markdown=1>
 
-void wgpuDeviceSetLabel([WGPUDevice](c.html#class-Device) device, char const\* label)
+void wgpuDeviceSetLabel([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, char const\* label)
 
 </div>
 
@@ -3622,7 +3622,7 @@ void wgpuDeviceSetLabel([WGPUDevice](c.html#class-Device) device, char const\* l
 
 <div class='signature' markdown=1>
 
-void wgpuDeviceSetLoggingCallback([WGPUDevice](c.html#class-Device) device, [WGPULoggingCallback](c.html#function-pointer-LoggingCallback) callback, void \* userdata)
+void wgpuDeviceSetLoggingCallback([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPULoggingCallback]({{ '/api/c.html#function-pointer-LoggingCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -3638,7 +3638,7 @@ void wgpuDeviceSetLoggingCallback([WGPUDevice](c.html#class-Device) device, [WGP
 
 <div class='signature' markdown=1>
 
-void wgpuDeviceSetUncapturedErrorCallback([WGPUDevice](c.html#class-Device) device, [WGPUErrorCallback](c.html#function-pointer-ErrorCallback) callback, void \* userdata)
+void wgpuDeviceSetUncapturedErrorCallback([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device, [WGPUErrorCallback]({{ '/api/c.html#function-pointer-ErrorCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -3654,7 +3654,7 @@ void wgpuDeviceSetUncapturedErrorCallback([WGPUDevice](c.html#class-Device) devi
 
 <div class='signature' markdown=1>
 
-void wgpuDeviceTick([WGPUDevice](c.html#class-Device) device)
+void wgpuDeviceTick([WGPUDevice]({{ '/api/c.html#class-Device' | relative_url }}) device)
 
 </div>
 
@@ -3674,7 +3674,7 @@ void wgpuDeviceTick([WGPUDevice](c.html#class-Device) device)
 
 <div class='signature' markdown=1>
 
-void wgpuExternalTextureDestroy([WGPUExternalTexture](c.html#class-ExternalTexture) externalTexture)
+void wgpuExternalTextureDestroy([WGPUExternalTexture]({{ '/api/c.html#class-ExternalTexture' | relative_url }}) externalTexture)
 
 </div>
 
@@ -3688,7 +3688,7 @@ void wgpuExternalTextureDestroy([WGPUExternalTexture](c.html#class-ExternalTextu
 
 <div class='signature' markdown=1>
 
-void wgpuExternalTextureReference([WGPUExternalTexture](c.html#class-ExternalTexture) externalTexture)
+void wgpuExternalTextureReference([WGPUExternalTexture]({{ '/api/c.html#class-ExternalTexture' | relative_url }}) externalTexture)
 
 </div>
 
@@ -3702,7 +3702,7 @@ void wgpuExternalTextureReference([WGPUExternalTexture](c.html#class-ExternalTex
 
 <div class='signature' markdown=1>
 
-void wgpuExternalTextureRelease([WGPUExternalTexture](c.html#class-ExternalTexture) externalTexture)
+void wgpuExternalTextureRelease([WGPUExternalTexture]({{ '/api/c.html#class-ExternalTexture' | relative_url }}) externalTexture)
 
 </div>
 
@@ -3716,7 +3716,7 @@ void wgpuExternalTextureRelease([WGPUExternalTexture](c.html#class-ExternalTextu
 
 <div class='signature' markdown=1>
 
-void wgpuExternalTextureSetLabel([WGPUExternalTexture](c.html#class-ExternalTexture) externalTexture, char const\* label)
+void wgpuExternalTextureSetLabel([WGPUExternalTexture]({{ '/api/c.html#class-ExternalTexture' | relative_url }}) externalTexture, char const\* label)
 
 </div>
 
@@ -3737,7 +3737,7 @@ void wgpuExternalTextureSetLabel([WGPUExternalTexture](c.html#class-ExternalText
 
 <div class='signature' markdown=1>
 
-[WGPUSurface](c.html#class-Surface) wgpuInstanceCreateSurface([WGPUInstance](c.html#class-Instance) instance, [WGPUSurfaceDescriptor](c.html#structure-SurfaceDescriptor) const\* descriptor)
+[WGPUSurface]({{ '/api/c.html#class-Surface' | relative_url }}) wgpuInstanceCreateSurface([WGPUInstance]({{ '/api/c.html#class-Instance' | relative_url }}) instance, [WGPUSurfaceDescriptor]({{ '/api/c.html#structure-SurfaceDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -3755,7 +3755,7 @@ void wgpuExternalTextureSetLabel([WGPUExternalTexture](c.html#class-ExternalText
 
 <div class='signature' markdown=1>
 
-void wgpuInstanceProcessEvents([WGPUInstance](c.html#class-Instance) instance)
+void wgpuInstanceProcessEvents([WGPUInstance]({{ '/api/c.html#class-Instance' | relative_url }}) instance)
 
 </div>
 
@@ -3769,7 +3769,7 @@ void wgpuInstanceProcessEvents([WGPUInstance](c.html#class-Instance) instance)
 
 <div class='signature' markdown=1>
 
-void wgpuInstanceReference([WGPUInstance](c.html#class-Instance) instance)
+void wgpuInstanceReference([WGPUInstance]({{ '/api/c.html#class-Instance' | relative_url }}) instance)
 
 </div>
 
@@ -3783,7 +3783,7 @@ void wgpuInstanceReference([WGPUInstance](c.html#class-Instance) instance)
 
 <div class='signature' markdown=1>
 
-void wgpuInstanceRelease([WGPUInstance](c.html#class-Instance) instance)
+void wgpuInstanceRelease([WGPUInstance]({{ '/api/c.html#class-Instance' | relative_url }}) instance)
 
 </div>
 
@@ -3797,7 +3797,7 @@ void wgpuInstanceRelease([WGPUInstance](c.html#class-Instance) instance)
 
 <div class='signature' markdown=1>
 
-void wgpuInstanceRequestAdapter([WGPUInstance](c.html#class-Instance) instance, [WGPURequestAdapterOptions](c.html#structure-RequestAdapterOptions) const\* options, [WGPURequestAdapterCallback](c.html#function-pointer-RequestAdapterCallback) callback, void \* userdata)
+void wgpuInstanceRequestAdapter([WGPUInstance]({{ '/api/c.html#class-Instance' | relative_url }}) instance, [WGPURequestAdapterOptions]({{ '/api/c.html#structure-RequestAdapterOptions' | relative_url }}) const\* options, [WGPURequestAdapterCallback]({{ '/api/c.html#function-pointer-RequestAdapterCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -3820,7 +3820,7 @@ void wgpuInstanceRequestAdapter([WGPUInstance](c.html#class-Instance) instance, 
 
 <div class='signature' markdown=1>
 
-void wgpuPipelineLayoutReference([WGPUPipelineLayout](c.html#class-PipelineLayout) pipelineLayout)
+void wgpuPipelineLayoutReference([WGPUPipelineLayout]({{ '/api/c.html#class-PipelineLayout' | relative_url }}) pipelineLayout)
 
 </div>
 
@@ -3834,7 +3834,7 @@ void wgpuPipelineLayoutReference([WGPUPipelineLayout](c.html#class-PipelineLayou
 
 <div class='signature' markdown=1>
 
-void wgpuPipelineLayoutRelease([WGPUPipelineLayout](c.html#class-PipelineLayout) pipelineLayout)
+void wgpuPipelineLayoutRelease([WGPUPipelineLayout]({{ '/api/c.html#class-PipelineLayout' | relative_url }}) pipelineLayout)
 
 </div>
 
@@ -3848,7 +3848,7 @@ void wgpuPipelineLayoutRelease([WGPUPipelineLayout](c.html#class-PipelineLayout)
 
 <div class='signature' markdown=1>
 
-void wgpuPipelineLayoutSetLabel([WGPUPipelineLayout](c.html#class-PipelineLayout) pipelineLayout, char const\* label)
+void wgpuPipelineLayoutSetLabel([WGPUPipelineLayout]({{ '/api/c.html#class-PipelineLayout' | relative_url }}) pipelineLayout, char const\* label)
 
 </div>
 
@@ -3869,7 +3869,7 @@ void wgpuPipelineLayoutSetLabel([WGPUPipelineLayout](c.html#class-PipelineLayout
 
 <div class='signature' markdown=1>
 
-void wgpuQuerySetDestroy([WGPUQuerySet](c.html#class-QuerySet) querySet)
+void wgpuQuerySetDestroy([WGPUQuerySet]({{ '/api/c.html#class-QuerySet' | relative_url }}) querySet)
 
 </div>
 
@@ -3883,7 +3883,7 @@ void wgpuQuerySetDestroy([WGPUQuerySet](c.html#class-QuerySet) querySet)
 
 <div class='signature' markdown=1>
 
-uint32_t wgpuQuerySetGetCount([WGPUQuerySet](c.html#class-QuerySet) querySet)
+uint32_t wgpuQuerySetGetCount([WGPUQuerySet]({{ '/api/c.html#class-QuerySet' | relative_url }}) querySet)
 
 </div>
 
@@ -3900,7 +3900,7 @@ uint32_t wgpuQuerySetGetCount([WGPUQuerySet](c.html#class-QuerySet) querySet)
 
 <div class='signature' markdown=1>
 
-[WGPUQueryType](c.html#enum-QueryType) wgpuQuerySetGetType([WGPUQuerySet](c.html#class-QuerySet) querySet)
+[WGPUQueryType]({{ '/api/c.html#enum-QueryType' | relative_url }}) wgpuQuerySetGetType([WGPUQuerySet]({{ '/api/c.html#class-QuerySet' | relative_url }}) querySet)
 
 </div>
 
@@ -3917,7 +3917,7 @@ uint32_t wgpuQuerySetGetCount([WGPUQuerySet](c.html#class-QuerySet) querySet)
 
 <div class='signature' markdown=1>
 
-void wgpuQuerySetReference([WGPUQuerySet](c.html#class-QuerySet) querySet)
+void wgpuQuerySetReference([WGPUQuerySet]({{ '/api/c.html#class-QuerySet' | relative_url }}) querySet)
 
 </div>
 
@@ -3931,7 +3931,7 @@ void wgpuQuerySetReference([WGPUQuerySet](c.html#class-QuerySet) querySet)
 
 <div class='signature' markdown=1>
 
-void wgpuQuerySetRelease([WGPUQuerySet](c.html#class-QuerySet) querySet)
+void wgpuQuerySetRelease([WGPUQuerySet]({{ '/api/c.html#class-QuerySet' | relative_url }}) querySet)
 
 </div>
 
@@ -3945,7 +3945,7 @@ void wgpuQuerySetRelease([WGPUQuerySet](c.html#class-QuerySet) querySet)
 
 <div class='signature' markdown=1>
 
-void wgpuQuerySetSetLabel([WGPUQuerySet](c.html#class-QuerySet) querySet, char const\* label)
+void wgpuQuerySetSetLabel([WGPUQuerySet]({{ '/api/c.html#class-QuerySet' | relative_url }}) querySet, char const\* label)
 
 </div>
 
@@ -3966,7 +3966,7 @@ void wgpuQuerySetSetLabel([WGPUQuerySet](c.html#class-QuerySet) querySet, char c
 
 <div class='signature' markdown=1>
 
-void wgpuQueueCopyTextureForBrowser([WGPUQueue](c.html#class-Queue) queue, [WGPUImageCopyTexture](c.html#structure-ImageCopyTexture) const\* source, [WGPUImageCopyTexture](c.html#structure-ImageCopyTexture) const\* destination, [WGPUExtent3D](c.html#structure-Extent3D) const\* copySize, [WGPUCopyTextureForBrowserOptions](c.html#structure-CopyTextureForBrowserOptions) const\* options)
+void wgpuQueueCopyTextureForBrowser([WGPUQueue]({{ '/api/c.html#class-Queue' | relative_url }}) queue, [WGPUImageCopyTexture]({{ '/api/c.html#structure-ImageCopyTexture' | relative_url }}) const\* source, [WGPUImageCopyTexture]({{ '/api/c.html#structure-ImageCopyTexture' | relative_url }}) const\* destination, [WGPUExtent3D]({{ '/api/c.html#structure-Extent3D' | relative_url }}) const\* copySize, [WGPUCopyTextureForBrowserOptions]({{ '/api/c.html#structure-CopyTextureForBrowserOptions' | relative_url }}) const\* options)
 
 </div>
 
@@ -3984,7 +3984,7 @@ void wgpuQueueCopyTextureForBrowser([WGPUQueue](c.html#class-Queue) queue, [WGPU
 
 <div class='signature' markdown=1>
 
-void wgpuQueueOnSubmittedWorkDone([WGPUQueue](c.html#class-Queue) queue, uint64_t signalValue, [WGPUQueueWorkDoneCallback](c.html#function-pointer-QueueWorkDoneCallback) callback, void \* userdata)
+void wgpuQueueOnSubmittedWorkDone([WGPUQueue]({{ '/api/c.html#class-Queue' | relative_url }}) queue, uint64_t signalValue, [WGPUQueueWorkDoneCallback]({{ '/api/c.html#function-pointer-QueueWorkDoneCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -4001,7 +4001,7 @@ void wgpuQueueOnSubmittedWorkDone([WGPUQueue](c.html#class-Queue) queue, uint64_
 
 <div class='signature' markdown=1>
 
-void wgpuQueueOnSubmittedWorkDone([WGPUQueue](c.html#class-Queue) queue, [WGPUQueueWorkDoneCallback](c.html#function-pointer-QueueWorkDoneCallback) callback, void \* userdata)
+void wgpuQueueOnSubmittedWorkDone([WGPUQueue]({{ '/api/c.html#class-Queue' | relative_url }}) queue, [WGPUQueueWorkDoneCallback]({{ '/api/c.html#function-pointer-QueueWorkDoneCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -4017,7 +4017,7 @@ void wgpuQueueOnSubmittedWorkDone([WGPUQueue](c.html#class-Queue) queue, [WGPUQu
 
 <div class='signature' markdown=1>
 
-void wgpuQueueReference([WGPUQueue](c.html#class-Queue) queue)
+void wgpuQueueReference([WGPUQueue]({{ '/api/c.html#class-Queue' | relative_url }}) queue)
 
 </div>
 
@@ -4031,7 +4031,7 @@ void wgpuQueueReference([WGPUQueue](c.html#class-Queue) queue)
 
 <div class='signature' markdown=1>
 
-void wgpuQueueRelease([WGPUQueue](c.html#class-Queue) queue)
+void wgpuQueueRelease([WGPUQueue]({{ '/api/c.html#class-Queue' | relative_url }}) queue)
 
 </div>
 
@@ -4045,7 +4045,7 @@ void wgpuQueueRelease([WGPUQueue](c.html#class-Queue) queue)
 
 <div class='signature' markdown=1>
 
-void wgpuQueueSetLabel([WGPUQueue](c.html#class-Queue) queue, char const\* label)
+void wgpuQueueSetLabel([WGPUQueue]({{ '/api/c.html#class-Queue' | relative_url }}) queue, char const\* label)
 
 </div>
 
@@ -4060,7 +4060,7 @@ void wgpuQueueSetLabel([WGPUQueue](c.html#class-Queue) queue, char const\* label
 
 <div class='signature' markdown=1>
 
-void wgpuQueueSubmit([WGPUQueue](c.html#class-Queue) queue, uint32_t commandCount, [WGPUCommandBuffer](c.html#class-CommandBuffer) const\* commands)
+void wgpuQueueSubmit([WGPUQueue]({{ '/api/c.html#class-Queue' | relative_url }}) queue, uint32_t commandCount, [WGPUCommandBuffer]({{ '/api/c.html#class-CommandBuffer' | relative_url }}) const\* commands)
 
 </div>
 
@@ -4076,7 +4076,7 @@ void wgpuQueueSubmit([WGPUQueue](c.html#class-Queue) queue, uint32_t commandCoun
 
 <div class='signature' markdown=1>
 
-void wgpuQueueWriteBuffer([WGPUQueue](c.html#class-Queue) queue, [WGPUBuffer](c.html#class-Buffer) buffer, uint64_t bufferOffset, void const\* data, size_t size)
+void wgpuQueueWriteBuffer([WGPUQueue]({{ '/api/c.html#class-Queue' | relative_url }}) queue, [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer, uint64_t bufferOffset, void const\* data, size_t size)
 
 </div>
 
@@ -4094,7 +4094,7 @@ void wgpuQueueWriteBuffer([WGPUQueue](c.html#class-Queue) queue, [WGPUBuffer](c.
 
 <div class='signature' markdown=1>
 
-void wgpuQueueWriteTexture([WGPUQueue](c.html#class-Queue) queue, [WGPUImageCopyTexture](c.html#structure-ImageCopyTexture) const\* destination, void const\* data, size_t dataSize, [WGPUTextureDataLayout](c.html#structure-TextureDataLayout) const\* dataLayout, [WGPUExtent3D](c.html#structure-Extent3D) const\* writeSize)
+void wgpuQueueWriteTexture([WGPUQueue]({{ '/api/c.html#class-Queue' | relative_url }}) queue, [WGPUImageCopyTexture]({{ '/api/c.html#structure-ImageCopyTexture' | relative_url }}) const\* destination, void const\* data, size_t dataSize, [WGPUTextureDataLayout]({{ '/api/c.html#structure-TextureDataLayout' | relative_url }}) const\* dataLayout, [WGPUExtent3D]({{ '/api/c.html#structure-Extent3D' | relative_url }}) const\* writeSize)
 
 </div>
 
@@ -4119,7 +4119,7 @@ void wgpuQueueWriteTexture([WGPUQueue](c.html#class-Queue) queue, [WGPUImageCopy
 
 <div class='signature' markdown=1>
 
-void wgpuRenderBundleReference([WGPURenderBundle](c.html#class-RenderBundle) renderBundle)
+void wgpuRenderBundleReference([WGPURenderBundle]({{ '/api/c.html#class-RenderBundle' | relative_url }}) renderBundle)
 
 </div>
 
@@ -4133,7 +4133,7 @@ void wgpuRenderBundleReference([WGPURenderBundle](c.html#class-RenderBundle) ren
 
 <div class='signature' markdown=1>
 
-void wgpuRenderBundleRelease([WGPURenderBundle](c.html#class-RenderBundle) renderBundle)
+void wgpuRenderBundleRelease([WGPURenderBundle]({{ '/api/c.html#class-RenderBundle' | relative_url }}) renderBundle)
 
 </div>
 
@@ -4153,7 +4153,7 @@ void wgpuRenderBundleRelease([WGPURenderBundle](c.html#class-RenderBundle) rende
 
 <div class='signature' markdown=1>
 
-void wgpuRenderBundleEncoderDraw([WGPURenderBundleEncoder](c.html#class-RenderBundleEncoder) renderBundleEncoder, uint32_t vertexCount, uint32_t instanceCount, uint32_t firstVertex, uint32_t firstInstance)
+void wgpuRenderBundleEncoderDraw([WGPURenderBundleEncoder]({{ '/api/c.html#class-RenderBundleEncoder' | relative_url }}) renderBundleEncoder, uint32_t vertexCount, uint32_t instanceCount, uint32_t firstVertex, uint32_t firstInstance)
 
 </div>
 
@@ -4171,7 +4171,7 @@ void wgpuRenderBundleEncoderDraw([WGPURenderBundleEncoder](c.html#class-RenderBu
 
 <div class='signature' markdown=1>
 
-void wgpuRenderBundleEncoderDrawIndexed([WGPURenderBundleEncoder](c.html#class-RenderBundleEncoder) renderBundleEncoder, uint32_t indexCount, uint32_t instanceCount, uint32_t firstIndex, int32_t baseVertex, uint32_t firstInstance)
+void wgpuRenderBundleEncoderDrawIndexed([WGPURenderBundleEncoder]({{ '/api/c.html#class-RenderBundleEncoder' | relative_url }}) renderBundleEncoder, uint32_t indexCount, uint32_t instanceCount, uint32_t firstIndex, int32_t baseVertex, uint32_t firstInstance)
 
 </div>
 
@@ -4190,7 +4190,7 @@ void wgpuRenderBundleEncoderDrawIndexed([WGPURenderBundleEncoder](c.html#class-R
 
 <div class='signature' markdown=1>
 
-void wgpuRenderBundleEncoderDrawIndexedIndirect([WGPURenderBundleEncoder](c.html#class-RenderBundleEncoder) renderBundleEncoder, [WGPUBuffer](c.html#class-Buffer) indirectBuffer, uint64_t indirectOffset)
+void wgpuRenderBundleEncoderDrawIndexedIndirect([WGPURenderBundleEncoder]({{ '/api/c.html#class-RenderBundleEncoder' | relative_url }}) renderBundleEncoder, [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) indirectBuffer, uint64_t indirectOffset)
 
 </div>
 
@@ -4206,7 +4206,7 @@ void wgpuRenderBundleEncoderDrawIndexedIndirect([WGPURenderBundleEncoder](c.html
 
 <div class='signature' markdown=1>
 
-void wgpuRenderBundleEncoderDrawIndirect([WGPURenderBundleEncoder](c.html#class-RenderBundleEncoder) renderBundleEncoder, [WGPUBuffer](c.html#class-Buffer) indirectBuffer, uint64_t indirectOffset)
+void wgpuRenderBundleEncoderDrawIndirect([WGPURenderBundleEncoder]({{ '/api/c.html#class-RenderBundleEncoder' | relative_url }}) renderBundleEncoder, [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) indirectBuffer, uint64_t indirectOffset)
 
 </div>
 
@@ -4222,7 +4222,7 @@ void wgpuRenderBundleEncoderDrawIndirect([WGPURenderBundleEncoder](c.html#class-
 
 <div class='signature' markdown=1>
 
-[WGPURenderBundle](c.html#class-RenderBundle) wgpuRenderBundleEncoderFinish([WGPURenderBundleEncoder](c.html#class-RenderBundleEncoder) renderBundleEncoder, [WGPURenderBundleDescriptor](c.html#structure-RenderBundleDescriptor) const\* descriptor)
+[WGPURenderBundle]({{ '/api/c.html#class-RenderBundle' | relative_url }}) wgpuRenderBundleEncoderFinish([WGPURenderBundleEncoder]({{ '/api/c.html#class-RenderBundleEncoder' | relative_url }}) renderBundleEncoder, [WGPURenderBundleDescriptor]({{ '/api/c.html#structure-RenderBundleDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -4240,7 +4240,7 @@ void wgpuRenderBundleEncoderDrawIndirect([WGPURenderBundleEncoder](c.html#class-
 
 <div class='signature' markdown=1>
 
-void wgpuRenderBundleEncoderInsertDebugMarker([WGPURenderBundleEncoder](c.html#class-RenderBundleEncoder) renderBundleEncoder, char const\* markerLabel)
+void wgpuRenderBundleEncoderInsertDebugMarker([WGPURenderBundleEncoder]({{ '/api/c.html#class-RenderBundleEncoder' | relative_url }}) renderBundleEncoder, char const\* markerLabel)
 
 </div>
 
@@ -4255,7 +4255,7 @@ void wgpuRenderBundleEncoderInsertDebugMarker([WGPURenderBundleEncoder](c.html#c
 
 <div class='signature' markdown=1>
 
-void wgpuRenderBundleEncoderPopDebugGroup([WGPURenderBundleEncoder](c.html#class-RenderBundleEncoder) renderBundleEncoder)
+void wgpuRenderBundleEncoderPopDebugGroup([WGPURenderBundleEncoder]({{ '/api/c.html#class-RenderBundleEncoder' | relative_url }}) renderBundleEncoder)
 
 </div>
 
@@ -4269,7 +4269,7 @@ void wgpuRenderBundleEncoderPopDebugGroup([WGPURenderBundleEncoder](c.html#class
 
 <div class='signature' markdown=1>
 
-void wgpuRenderBundleEncoderPushDebugGroup([WGPURenderBundleEncoder](c.html#class-RenderBundleEncoder) renderBundleEncoder, char const\* groupLabel)
+void wgpuRenderBundleEncoderPushDebugGroup([WGPURenderBundleEncoder]({{ '/api/c.html#class-RenderBundleEncoder' | relative_url }}) renderBundleEncoder, char const\* groupLabel)
 
 </div>
 
@@ -4284,7 +4284,7 @@ void wgpuRenderBundleEncoderPushDebugGroup([WGPURenderBundleEncoder](c.html#clas
 
 <div class='signature' markdown=1>
 
-void wgpuRenderBundleEncoderReference([WGPURenderBundleEncoder](c.html#class-RenderBundleEncoder) renderBundleEncoder)
+void wgpuRenderBundleEncoderReference([WGPURenderBundleEncoder]({{ '/api/c.html#class-RenderBundleEncoder' | relative_url }}) renderBundleEncoder)
 
 </div>
 
@@ -4298,7 +4298,7 @@ void wgpuRenderBundleEncoderReference([WGPURenderBundleEncoder](c.html#class-Ren
 
 <div class='signature' markdown=1>
 
-void wgpuRenderBundleEncoderRelease([WGPURenderBundleEncoder](c.html#class-RenderBundleEncoder) renderBundleEncoder)
+void wgpuRenderBundleEncoderRelease([WGPURenderBundleEncoder]({{ '/api/c.html#class-RenderBundleEncoder' | relative_url }}) renderBundleEncoder)
 
 </div>
 
@@ -4312,7 +4312,7 @@ void wgpuRenderBundleEncoderRelease([WGPURenderBundleEncoder](c.html#class-Rende
 
 <div class='signature' markdown=1>
 
-void wgpuRenderBundleEncoderSetBindGroup([WGPURenderBundleEncoder](c.html#class-RenderBundleEncoder) renderBundleEncoder, uint32_t groupIndex, [WGPUBindGroup](c.html#class-BindGroup) group, uint32_t dynamicOffsetCount, uint32_t const\* dynamicOffsets)
+void wgpuRenderBundleEncoderSetBindGroup([WGPURenderBundleEncoder]({{ '/api/c.html#class-RenderBundleEncoder' | relative_url }}) renderBundleEncoder, uint32_t groupIndex, [WGPUBindGroup]({{ '/api/c.html#class-BindGroup' | relative_url }}) group, uint32_t dynamicOffsetCount, uint32_t const\* dynamicOffsets)
 
 </div>
 
@@ -4330,7 +4330,7 @@ void wgpuRenderBundleEncoderSetBindGroup([WGPURenderBundleEncoder](c.html#class-
 
 <div class='signature' markdown=1>
 
-void wgpuRenderBundleEncoderSetIndexBuffer([WGPURenderBundleEncoder](c.html#class-RenderBundleEncoder) renderBundleEncoder, [WGPUBuffer](c.html#class-Buffer) buffer, [WGPUIndexFormat](c.html#enum-IndexFormat) format, uint64_t offset, uint64_t size)
+void wgpuRenderBundleEncoderSetIndexBuffer([WGPURenderBundleEncoder]({{ '/api/c.html#class-RenderBundleEncoder' | relative_url }}) renderBundleEncoder, [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer, [WGPUIndexFormat]({{ '/api/c.html#enum-IndexFormat' | relative_url }}) format, uint64_t offset, uint64_t size)
 
 </div>
 
@@ -4348,7 +4348,7 @@ void wgpuRenderBundleEncoderSetIndexBuffer([WGPURenderBundleEncoder](c.html#clas
 
 <div class='signature' markdown=1>
 
-void wgpuRenderBundleEncoderSetLabel([WGPURenderBundleEncoder](c.html#class-RenderBundleEncoder) renderBundleEncoder, char const\* label)
+void wgpuRenderBundleEncoderSetLabel([WGPURenderBundleEncoder]({{ '/api/c.html#class-RenderBundleEncoder' | relative_url }}) renderBundleEncoder, char const\* label)
 
 </div>
 
@@ -4363,7 +4363,7 @@ void wgpuRenderBundleEncoderSetLabel([WGPURenderBundleEncoder](c.html#class-Rend
 
 <div class='signature' markdown=1>
 
-void wgpuRenderBundleEncoderSetPipeline([WGPURenderBundleEncoder](c.html#class-RenderBundleEncoder) renderBundleEncoder, [WGPURenderPipeline](c.html#class-RenderPipeline) pipeline)
+void wgpuRenderBundleEncoderSetPipeline([WGPURenderBundleEncoder]({{ '/api/c.html#class-RenderBundleEncoder' | relative_url }}) renderBundleEncoder, [WGPURenderPipeline]({{ '/api/c.html#class-RenderPipeline' | relative_url }}) pipeline)
 
 </div>
 
@@ -4378,7 +4378,7 @@ void wgpuRenderBundleEncoderSetPipeline([WGPURenderBundleEncoder](c.html#class-R
 
 <div class='signature' markdown=1>
 
-void wgpuRenderBundleEncoderSetVertexBuffer([WGPURenderBundleEncoder](c.html#class-RenderBundleEncoder) renderBundleEncoder, uint32_t slot, [WGPUBuffer](c.html#class-Buffer) buffer, uint64_t offset, uint64_t size)
+void wgpuRenderBundleEncoderSetVertexBuffer([WGPURenderBundleEncoder]({{ '/api/c.html#class-RenderBundleEncoder' | relative_url }}) renderBundleEncoder, uint32_t slot, [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer, uint64_t offset, uint64_t size)
 
 </div>
 
@@ -4402,7 +4402,7 @@ void wgpuRenderBundleEncoderSetVertexBuffer([WGPURenderBundleEncoder](c.html#cla
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderBeginOcclusionQuery([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, uint32_t queryIndex)
+void wgpuRenderPassEncoderBeginOcclusionQuery([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, uint32_t queryIndex)
 
 </div>
 
@@ -4417,7 +4417,7 @@ void wgpuRenderPassEncoderBeginOcclusionQuery([WGPURenderPassEncoder](c.html#cla
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderBeginPipelineStatisticsQuery([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, [WGPUQuerySet](c.html#class-QuerySet) querySet, uint32_t queryIndex)
+void wgpuRenderPassEncoderBeginPipelineStatisticsQuery([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, [WGPUQuerySet]({{ '/api/c.html#class-QuerySet' | relative_url }}) querySet, uint32_t queryIndex)
 
 </div>
 
@@ -4433,7 +4433,7 @@ void wgpuRenderPassEncoderBeginPipelineStatisticsQuery([WGPURenderPassEncoder](c
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderDraw([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, uint32_t vertexCount, uint32_t instanceCount, uint32_t firstVertex, uint32_t firstInstance)
+void wgpuRenderPassEncoderDraw([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, uint32_t vertexCount, uint32_t instanceCount, uint32_t firstVertex, uint32_t firstInstance)
 
 </div>
 
@@ -4451,7 +4451,7 @@ void wgpuRenderPassEncoderDraw([WGPURenderPassEncoder](c.html#class-RenderPassEn
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderDrawIndexed([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, uint32_t indexCount, uint32_t instanceCount, uint32_t firstIndex, int32_t baseVertex, uint32_t firstInstance)
+void wgpuRenderPassEncoderDrawIndexed([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, uint32_t indexCount, uint32_t instanceCount, uint32_t firstIndex, int32_t baseVertex, uint32_t firstInstance)
 
 </div>
 
@@ -4470,7 +4470,7 @@ void wgpuRenderPassEncoderDrawIndexed([WGPURenderPassEncoder](c.html#class-Rende
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderDrawIndexedIndirect([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, [WGPUBuffer](c.html#class-Buffer) indirectBuffer, uint64_t indirectOffset)
+void wgpuRenderPassEncoderDrawIndexedIndirect([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) indirectBuffer, uint64_t indirectOffset)
 
 </div>
 
@@ -4486,7 +4486,7 @@ void wgpuRenderPassEncoderDrawIndexedIndirect([WGPURenderPassEncoder](c.html#cla
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderDrawIndirect([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, [WGPUBuffer](c.html#class-Buffer) indirectBuffer, uint64_t indirectOffset)
+void wgpuRenderPassEncoderDrawIndirect([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) indirectBuffer, uint64_t indirectOffset)
 
 </div>
 
@@ -4502,7 +4502,7 @@ void wgpuRenderPassEncoderDrawIndirect([WGPURenderPassEncoder](c.html#class-Rend
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderEnd([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder)
+void wgpuRenderPassEncoderEnd([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder)
 
 </div>
 
@@ -4516,7 +4516,7 @@ void wgpuRenderPassEncoderEnd([WGPURenderPassEncoder](c.html#class-RenderPassEnc
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderEndOcclusionQuery([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder)
+void wgpuRenderPassEncoderEndOcclusionQuery([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder)
 
 </div>
 
@@ -4530,7 +4530,7 @@ void wgpuRenderPassEncoderEndOcclusionQuery([WGPURenderPassEncoder](c.html#class
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderEndPass([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder)
+void wgpuRenderPassEncoderEndPass([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder)
 
 </div>
 
@@ -4544,7 +4544,7 @@ void wgpuRenderPassEncoderEndPass([WGPURenderPassEncoder](c.html#class-RenderPas
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderEndPipelineStatisticsQuery([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder)
+void wgpuRenderPassEncoderEndPipelineStatisticsQuery([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder)
 
 </div>
 
@@ -4558,7 +4558,7 @@ void wgpuRenderPassEncoderEndPipelineStatisticsQuery([WGPURenderPassEncoder](c.h
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderExecuteBundles([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, uint32_t bundlesCount, [WGPURenderBundle](c.html#class-RenderBundle) const\* bundles)
+void wgpuRenderPassEncoderExecuteBundles([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, uint32_t bundlesCount, [WGPURenderBundle]({{ '/api/c.html#class-RenderBundle' | relative_url }}) const\* bundles)
 
 </div>
 
@@ -4574,7 +4574,7 @@ void wgpuRenderPassEncoderExecuteBundles([WGPURenderPassEncoder](c.html#class-Re
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderInsertDebugMarker([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, char const\* markerLabel)
+void wgpuRenderPassEncoderInsertDebugMarker([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, char const\* markerLabel)
 
 </div>
 
@@ -4589,7 +4589,7 @@ void wgpuRenderPassEncoderInsertDebugMarker([WGPURenderPassEncoder](c.html#class
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderPopDebugGroup([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder)
+void wgpuRenderPassEncoderPopDebugGroup([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder)
 
 </div>
 
@@ -4603,7 +4603,7 @@ void wgpuRenderPassEncoderPopDebugGroup([WGPURenderPassEncoder](c.html#class-Ren
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderPushDebugGroup([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, char const\* groupLabel)
+void wgpuRenderPassEncoderPushDebugGroup([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, char const\* groupLabel)
 
 </div>
 
@@ -4618,7 +4618,7 @@ void wgpuRenderPassEncoderPushDebugGroup([WGPURenderPassEncoder](c.html#class-Re
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderReference([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder)
+void wgpuRenderPassEncoderReference([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder)
 
 </div>
 
@@ -4632,7 +4632,7 @@ void wgpuRenderPassEncoderReference([WGPURenderPassEncoder](c.html#class-RenderP
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderRelease([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder)
+void wgpuRenderPassEncoderRelease([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder)
 
 </div>
 
@@ -4646,7 +4646,7 @@ void wgpuRenderPassEncoderRelease([WGPURenderPassEncoder](c.html#class-RenderPas
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderSetBindGroup([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, uint32_t groupIndex, [WGPUBindGroup](c.html#class-BindGroup) group, uint32_t dynamicOffsetCount, uint32_t const\* dynamicOffsets)
+void wgpuRenderPassEncoderSetBindGroup([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, uint32_t groupIndex, [WGPUBindGroup]({{ '/api/c.html#class-BindGroup' | relative_url }}) group, uint32_t dynamicOffsetCount, uint32_t const\* dynamicOffsets)
 
 </div>
 
@@ -4664,7 +4664,7 @@ void wgpuRenderPassEncoderSetBindGroup([WGPURenderPassEncoder](c.html#class-Rend
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderSetBlendConstant([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, [WGPUColor](c.html#structure-Color) const\* color)
+void wgpuRenderPassEncoderSetBlendConstant([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, [WGPUColor]({{ '/api/c.html#structure-Color' | relative_url }}) const\* color)
 
 </div>
 
@@ -4679,7 +4679,7 @@ void wgpuRenderPassEncoderSetBlendConstant([WGPURenderPassEncoder](c.html#class-
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderSetIndexBuffer([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, [WGPUBuffer](c.html#class-Buffer) buffer, [WGPUIndexFormat](c.html#enum-IndexFormat) format, uint64_t offset, uint64_t size)
+void wgpuRenderPassEncoderSetIndexBuffer([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer, [WGPUIndexFormat]({{ '/api/c.html#enum-IndexFormat' | relative_url }}) format, uint64_t offset, uint64_t size)
 
 </div>
 
@@ -4697,7 +4697,7 @@ void wgpuRenderPassEncoderSetIndexBuffer([WGPURenderPassEncoder](c.html#class-Re
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderSetLabel([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, char const\* label)
+void wgpuRenderPassEncoderSetLabel([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, char const\* label)
 
 </div>
 
@@ -4712,7 +4712,7 @@ void wgpuRenderPassEncoderSetLabel([WGPURenderPassEncoder](c.html#class-RenderPa
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderSetPipeline([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, [WGPURenderPipeline](c.html#class-RenderPipeline) pipeline)
+void wgpuRenderPassEncoderSetPipeline([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, [WGPURenderPipeline]({{ '/api/c.html#class-RenderPipeline' | relative_url }}) pipeline)
 
 </div>
 
@@ -4727,7 +4727,7 @@ void wgpuRenderPassEncoderSetPipeline([WGPURenderPassEncoder](c.html#class-Rende
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderSetScissorRect([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, uint32_t x, uint32_t y, uint32_t width, uint32_t height)
+void wgpuRenderPassEncoderSetScissorRect([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, uint32_t x, uint32_t y, uint32_t width, uint32_t height)
 
 </div>
 
@@ -4745,7 +4745,7 @@ void wgpuRenderPassEncoderSetScissorRect([WGPURenderPassEncoder](c.html#class-Re
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderSetStencilReference([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, uint32_t reference)
+void wgpuRenderPassEncoderSetStencilReference([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, uint32_t reference)
 
 </div>
 
@@ -4760,7 +4760,7 @@ void wgpuRenderPassEncoderSetStencilReference([WGPURenderPassEncoder](c.html#cla
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderSetVertexBuffer([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, uint32_t slot, [WGPUBuffer](c.html#class-Buffer) buffer, uint64_t offset, uint64_t size)
+void wgpuRenderPassEncoderSetVertexBuffer([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, uint32_t slot, [WGPUBuffer]({{ '/api/c.html#class-Buffer' | relative_url }}) buffer, uint64_t offset, uint64_t size)
 
 </div>
 
@@ -4778,7 +4778,7 @@ void wgpuRenderPassEncoderSetVertexBuffer([WGPURenderPassEncoder](c.html#class-R
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderSetViewport([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, float x, float y, float width, float height, float minDepth, float maxDepth)
+void wgpuRenderPassEncoderSetViewport([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, float x, float y, float width, float height, float minDepth, float maxDepth)
 
 </div>
 
@@ -4798,7 +4798,7 @@ void wgpuRenderPassEncoderSetViewport([WGPURenderPassEncoder](c.html#class-Rende
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPassEncoderWriteTimestamp([WGPURenderPassEncoder](c.html#class-RenderPassEncoder) renderPassEncoder, [WGPUQuerySet](c.html#class-QuerySet) querySet, uint32_t queryIndex)
+void wgpuRenderPassEncoderWriteTimestamp([WGPURenderPassEncoder]({{ '/api/c.html#class-RenderPassEncoder' | relative_url }}) renderPassEncoder, [WGPUQuerySet]({{ '/api/c.html#class-QuerySet' | relative_url }}) querySet, uint32_t queryIndex)
 
 </div>
 
@@ -4820,7 +4820,7 @@ void wgpuRenderPassEncoderWriteTimestamp([WGPURenderPassEncoder](c.html#class-Re
 
 <div class='signature' markdown=1>
 
-[WGPUBindGroupLayout](c.html#class-BindGroupLayout) wgpuRenderPipelineGetBindGroupLayout([WGPURenderPipeline](c.html#class-RenderPipeline) renderPipeline, uint32_t groupIndex)
+[WGPUBindGroupLayout]({{ '/api/c.html#class-BindGroupLayout' | relative_url }}) wgpuRenderPipelineGetBindGroupLayout([WGPURenderPipeline]({{ '/api/c.html#class-RenderPipeline' | relative_url }}) renderPipeline, uint32_t groupIndex)
 
 </div>
 
@@ -4838,7 +4838,7 @@ void wgpuRenderPassEncoderWriteTimestamp([WGPURenderPassEncoder](c.html#class-Re
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPipelineReference([WGPURenderPipeline](c.html#class-RenderPipeline) renderPipeline)
+void wgpuRenderPipelineReference([WGPURenderPipeline]({{ '/api/c.html#class-RenderPipeline' | relative_url }}) renderPipeline)
 
 </div>
 
@@ -4852,7 +4852,7 @@ void wgpuRenderPipelineReference([WGPURenderPipeline](c.html#class-RenderPipelin
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPipelineRelease([WGPURenderPipeline](c.html#class-RenderPipeline) renderPipeline)
+void wgpuRenderPipelineRelease([WGPURenderPipeline]({{ '/api/c.html#class-RenderPipeline' | relative_url }}) renderPipeline)
 
 </div>
 
@@ -4866,7 +4866,7 @@ void wgpuRenderPipelineRelease([WGPURenderPipeline](c.html#class-RenderPipeline)
 
 <div class='signature' markdown=1>
 
-void wgpuRenderPipelineSetLabel([WGPURenderPipeline](c.html#class-RenderPipeline) renderPipeline, char const\* label)
+void wgpuRenderPipelineSetLabel([WGPURenderPipeline]({{ '/api/c.html#class-RenderPipeline' | relative_url }}) renderPipeline, char const\* label)
 
 </div>
 
@@ -4887,7 +4887,7 @@ void wgpuRenderPipelineSetLabel([WGPURenderPipeline](c.html#class-RenderPipeline
 
 <div class='signature' markdown=1>
 
-void wgpuSamplerReference([WGPUSampler](c.html#class-Sampler) sampler)
+void wgpuSamplerReference([WGPUSampler]({{ '/api/c.html#class-Sampler' | relative_url }}) sampler)
 
 </div>
 
@@ -4901,7 +4901,7 @@ void wgpuSamplerReference([WGPUSampler](c.html#class-Sampler) sampler)
 
 <div class='signature' markdown=1>
 
-void wgpuSamplerRelease([WGPUSampler](c.html#class-Sampler) sampler)
+void wgpuSamplerRelease([WGPUSampler]({{ '/api/c.html#class-Sampler' | relative_url }}) sampler)
 
 </div>
 
@@ -4915,7 +4915,7 @@ void wgpuSamplerRelease([WGPUSampler](c.html#class-Sampler) sampler)
 
 <div class='signature' markdown=1>
 
-void wgpuSamplerSetLabel([WGPUSampler](c.html#class-Sampler) sampler, char const\* label)
+void wgpuSamplerSetLabel([WGPUSampler]({{ '/api/c.html#class-Sampler' | relative_url }}) sampler, char const\* label)
 
 </div>
 
@@ -4936,7 +4936,7 @@ void wgpuSamplerSetLabel([WGPUSampler](c.html#class-Sampler) sampler, char const
 
 <div class='signature' markdown=1>
 
-void wgpuShaderModuleGetCompilationInfo([WGPUShaderModule](c.html#class-ShaderModule) shaderModule, [WGPUCompilationInfoCallback](c.html#function-pointer-CompilationInfoCallback) callback, void \* userdata)
+void wgpuShaderModuleGetCompilationInfo([WGPUShaderModule]({{ '/api/c.html#class-ShaderModule' | relative_url }}) shaderModule, [WGPUCompilationInfoCallback]({{ '/api/c.html#function-pointer-CompilationInfoCallback' | relative_url }}) callback, void \* userdata)
 
 </div>
 
@@ -4952,7 +4952,7 @@ void wgpuShaderModuleGetCompilationInfo([WGPUShaderModule](c.html#class-ShaderMo
 
 <div class='signature' markdown=1>
 
-void wgpuShaderModuleReference([WGPUShaderModule](c.html#class-ShaderModule) shaderModule)
+void wgpuShaderModuleReference([WGPUShaderModule]({{ '/api/c.html#class-ShaderModule' | relative_url }}) shaderModule)
 
 </div>
 
@@ -4966,7 +4966,7 @@ void wgpuShaderModuleReference([WGPUShaderModule](c.html#class-ShaderModule) sha
 
 <div class='signature' markdown=1>
 
-void wgpuShaderModuleRelease([WGPUShaderModule](c.html#class-ShaderModule) shaderModule)
+void wgpuShaderModuleRelease([WGPUShaderModule]({{ '/api/c.html#class-ShaderModule' | relative_url }}) shaderModule)
 
 </div>
 
@@ -4980,7 +4980,7 @@ void wgpuShaderModuleRelease([WGPUShaderModule](c.html#class-ShaderModule) shade
 
 <div class='signature' markdown=1>
 
-void wgpuShaderModuleSetLabel([WGPUShaderModule](c.html#class-ShaderModule) shaderModule, char const\* label)
+void wgpuShaderModuleSetLabel([WGPUShaderModule]({{ '/api/c.html#class-ShaderModule' | relative_url }}) shaderModule, char const\* label)
 
 </div>
 
@@ -5001,7 +5001,7 @@ void wgpuShaderModuleSetLabel([WGPUShaderModule](c.html#class-ShaderModule) shad
 
 <div class='signature' markdown=1>
 
-[WGPUTextureFormat](c.html#enum-TextureFormat) wgpuSurfaceGetPreferredFormat([WGPUSurface](c.html#class-Surface) surface, [WGPUAdapter](c.html#class-Adapter) adapter)
+[WGPUTextureFormat]({{ '/api/c.html#enum-TextureFormat' | relative_url }}) wgpuSurfaceGetPreferredFormat([WGPUSurface]({{ '/api/c.html#class-Surface' | relative_url }}) surface, [WGPUAdapter]({{ '/api/c.html#class-Adapter' | relative_url }}) adapter)
 
 </div>
 
@@ -5019,7 +5019,7 @@ void wgpuShaderModuleSetLabel([WGPUShaderModule](c.html#class-ShaderModule) shad
 
 <div class='signature' markdown=1>
 
-void wgpuSurfaceReference([WGPUSurface](c.html#class-Surface) surface)
+void wgpuSurfaceReference([WGPUSurface]({{ '/api/c.html#class-Surface' | relative_url }}) surface)
 
 </div>
 
@@ -5033,7 +5033,7 @@ void wgpuSurfaceReference([WGPUSurface](c.html#class-Surface) surface)
 
 <div class='signature' markdown=1>
 
-void wgpuSurfaceRelease([WGPUSurface](c.html#class-Surface) surface)
+void wgpuSurfaceRelease([WGPUSurface]({{ '/api/c.html#class-Surface' | relative_url }}) surface)
 
 </div>
 
@@ -5053,7 +5053,7 @@ void wgpuSurfaceRelease([WGPUSurface](c.html#class-Surface) surface)
 
 <div class='signature' markdown=1>
 
-void wgpuSwapChainConfigure([WGPUSwapChain](c.html#class-SwapChain) swapChain, [WGPUTextureFormat](c.html#enum-TextureFormat) format, [WGPUTextureUsage](c.html#bitmask-TextureUsage) allowedUsage, uint32_t width, uint32_t height)
+void wgpuSwapChainConfigure([WGPUSwapChain]({{ '/api/c.html#class-SwapChain' | relative_url }}) swapChain, [WGPUTextureFormat]({{ '/api/c.html#enum-TextureFormat' | relative_url }}) format, [WGPUTextureUsage]({{ '/api/c.html#bitmask-TextureUsage' | relative_url }}) allowedUsage, uint32_t width, uint32_t height)
 
 </div>
 
@@ -5071,7 +5071,7 @@ void wgpuSwapChainConfigure([WGPUSwapChain](c.html#class-SwapChain) swapChain, [
 
 <div class='signature' markdown=1>
 
-[WGPUTextureView](c.html#class-TextureView) wgpuSwapChainGetCurrentTextureView([WGPUSwapChain](c.html#class-SwapChain) swapChain)
+[WGPUTextureView]({{ '/api/c.html#class-TextureView' | relative_url }}) wgpuSwapChainGetCurrentTextureView([WGPUSwapChain]({{ '/api/c.html#class-SwapChain' | relative_url }}) swapChain)
 
 </div>
 
@@ -5088,7 +5088,7 @@ void wgpuSwapChainConfigure([WGPUSwapChain](c.html#class-SwapChain) swapChain, [
 
 <div class='signature' markdown=1>
 
-void wgpuSwapChainPresent([WGPUSwapChain](c.html#class-SwapChain) swapChain)
+void wgpuSwapChainPresent([WGPUSwapChain]({{ '/api/c.html#class-SwapChain' | relative_url }}) swapChain)
 
 </div>
 
@@ -5102,7 +5102,7 @@ void wgpuSwapChainPresent([WGPUSwapChain](c.html#class-SwapChain) swapChain)
 
 <div class='signature' markdown=1>
 
-void wgpuSwapChainReference([WGPUSwapChain](c.html#class-SwapChain) swapChain)
+void wgpuSwapChainReference([WGPUSwapChain]({{ '/api/c.html#class-SwapChain' | relative_url }}) swapChain)
 
 </div>
 
@@ -5116,7 +5116,7 @@ void wgpuSwapChainReference([WGPUSwapChain](c.html#class-SwapChain) swapChain)
 
 <div class='signature' markdown=1>
 
-void wgpuSwapChainRelease([WGPUSwapChain](c.html#class-SwapChain) swapChain)
+void wgpuSwapChainRelease([WGPUSwapChain]({{ '/api/c.html#class-SwapChain' | relative_url }}) swapChain)
 
 </div>
 
@@ -5136,7 +5136,7 @@ void wgpuSwapChainRelease([WGPUSwapChain](c.html#class-SwapChain) swapChain)
 
 <div class='signature' markdown=1>
 
-[WGPUTextureView](c.html#class-TextureView) wgpuTextureCreateView([WGPUTexture](c.html#class-Texture) texture, [WGPUTextureViewDescriptor](c.html#structure-TextureViewDescriptor) const\* descriptor)
+[WGPUTextureView]({{ '/api/c.html#class-TextureView' | relative_url }}) wgpuTextureCreateView([WGPUTexture]({{ '/api/c.html#class-Texture' | relative_url }}) texture, [WGPUTextureViewDescriptor]({{ '/api/c.html#structure-TextureViewDescriptor' | relative_url }}) const\* descriptor)
 
 </div>
 
@@ -5154,7 +5154,7 @@ void wgpuSwapChainRelease([WGPUSwapChain](c.html#class-SwapChain) swapChain)
 
 <div class='signature' markdown=1>
 
-void wgpuTextureDestroy([WGPUTexture](c.html#class-Texture) texture)
+void wgpuTextureDestroy([WGPUTexture]({{ '/api/c.html#class-Texture' | relative_url }}) texture)
 
 </div>
 
@@ -5168,7 +5168,7 @@ void wgpuTextureDestroy([WGPUTexture](c.html#class-Texture) texture)
 
 <div class='signature' markdown=1>
 
-uint32_t wgpuTextureGetDepthOrArrayLayers([WGPUTexture](c.html#class-Texture) texture)
+uint32_t wgpuTextureGetDepthOrArrayLayers([WGPUTexture]({{ '/api/c.html#class-Texture' | relative_url }}) texture)
 
 </div>
 
@@ -5185,7 +5185,7 @@ uint32_t wgpuTextureGetDepthOrArrayLayers([WGPUTexture](c.html#class-Texture) te
 
 <div class='signature' markdown=1>
 
-[WGPUTextureDimension](c.html#enum-TextureDimension) wgpuTextureGetDimension([WGPUTexture](c.html#class-Texture) texture)
+[WGPUTextureDimension]({{ '/api/c.html#enum-TextureDimension' | relative_url }}) wgpuTextureGetDimension([WGPUTexture]({{ '/api/c.html#class-Texture' | relative_url }}) texture)
 
 </div>
 
@@ -5202,7 +5202,7 @@ uint32_t wgpuTextureGetDepthOrArrayLayers([WGPUTexture](c.html#class-Texture) te
 
 <div class='signature' markdown=1>
 
-[WGPUTextureFormat](c.html#enum-TextureFormat) wgpuTextureGetFormat([WGPUTexture](c.html#class-Texture) texture)
+[WGPUTextureFormat]({{ '/api/c.html#enum-TextureFormat' | relative_url }}) wgpuTextureGetFormat([WGPUTexture]({{ '/api/c.html#class-Texture' | relative_url }}) texture)
 
 </div>
 
@@ -5219,7 +5219,7 @@ uint32_t wgpuTextureGetDepthOrArrayLayers([WGPUTexture](c.html#class-Texture) te
 
 <div class='signature' markdown=1>
 
-uint32_t wgpuTextureGetHeight([WGPUTexture](c.html#class-Texture) texture)
+uint32_t wgpuTextureGetHeight([WGPUTexture]({{ '/api/c.html#class-Texture' | relative_url }}) texture)
 
 </div>
 
@@ -5236,7 +5236,7 @@ uint32_t wgpuTextureGetHeight([WGPUTexture](c.html#class-Texture) texture)
 
 <div class='signature' markdown=1>
 
-uint32_t wgpuTextureGetMipLevelCount([WGPUTexture](c.html#class-Texture) texture)
+uint32_t wgpuTextureGetMipLevelCount([WGPUTexture]({{ '/api/c.html#class-Texture' | relative_url }}) texture)
 
 </div>
 
@@ -5253,7 +5253,7 @@ uint32_t wgpuTextureGetMipLevelCount([WGPUTexture](c.html#class-Texture) texture
 
 <div class='signature' markdown=1>
 
-uint32_t wgpuTextureGetSampleCount([WGPUTexture](c.html#class-Texture) texture)
+uint32_t wgpuTextureGetSampleCount([WGPUTexture]({{ '/api/c.html#class-Texture' | relative_url }}) texture)
 
 </div>
 
@@ -5270,7 +5270,7 @@ uint32_t wgpuTextureGetSampleCount([WGPUTexture](c.html#class-Texture) texture)
 
 <div class='signature' markdown=1>
 
-[WGPUTextureUsage](c.html#bitmask-TextureUsage) wgpuTextureGetUsage([WGPUTexture](c.html#class-Texture) texture)
+[WGPUTextureUsage]({{ '/api/c.html#bitmask-TextureUsage' | relative_url }}) wgpuTextureGetUsage([WGPUTexture]({{ '/api/c.html#class-Texture' | relative_url }}) texture)
 
 </div>
 
@@ -5287,7 +5287,7 @@ uint32_t wgpuTextureGetSampleCount([WGPUTexture](c.html#class-Texture) texture)
 
 <div class='signature' markdown=1>
 
-uint32_t wgpuTextureGetWidth([WGPUTexture](c.html#class-Texture) texture)
+uint32_t wgpuTextureGetWidth([WGPUTexture]({{ '/api/c.html#class-Texture' | relative_url }}) texture)
 
 </div>
 
@@ -5304,7 +5304,7 @@ uint32_t wgpuTextureGetWidth([WGPUTexture](c.html#class-Texture) texture)
 
 <div class='signature' markdown=1>
 
-void wgpuTextureReference([WGPUTexture](c.html#class-Texture) texture)
+void wgpuTextureReference([WGPUTexture]({{ '/api/c.html#class-Texture' | relative_url }}) texture)
 
 </div>
 
@@ -5318,7 +5318,7 @@ void wgpuTextureReference([WGPUTexture](c.html#class-Texture) texture)
 
 <div class='signature' markdown=1>
 
-void wgpuTextureRelease([WGPUTexture](c.html#class-Texture) texture)
+void wgpuTextureRelease([WGPUTexture]({{ '/api/c.html#class-Texture' | relative_url }}) texture)
 
 </div>
 
@@ -5332,7 +5332,7 @@ void wgpuTextureRelease([WGPUTexture](c.html#class-Texture) texture)
 
 <div class='signature' markdown=1>
 
-void wgpuTextureSetLabel([WGPUTexture](c.html#class-Texture) texture, char const\* label)
+void wgpuTextureSetLabel([WGPUTexture]({{ '/api/c.html#class-Texture' | relative_url }}) texture, char const\* label)
 
 </div>
 
@@ -5353,7 +5353,7 @@ void wgpuTextureSetLabel([WGPUTexture](c.html#class-Texture) texture, char const
 
 <div class='signature' markdown=1>
 
-void wgpuTextureViewReference([WGPUTextureView](c.html#class-TextureView) textureView)
+void wgpuTextureViewReference([WGPUTextureView]({{ '/api/c.html#class-TextureView' | relative_url }}) textureView)
 
 </div>
 
@@ -5367,7 +5367,7 @@ void wgpuTextureViewReference([WGPUTextureView](c.html#class-TextureView) textur
 
 <div class='signature' markdown=1>
 
-void wgpuTextureViewRelease([WGPUTextureView](c.html#class-TextureView) textureView)
+void wgpuTextureViewRelease([WGPUTextureView]({{ '/api/c.html#class-TextureView' | relative_url }}) textureView)
 
 </div>
 
@@ -5381,7 +5381,7 @@ void wgpuTextureViewRelease([WGPUTextureView](c.html#class-TextureView) textureV
 
 <div class='signature' markdown=1>
 
-void wgpuTextureViewSetLabel([WGPUTextureView](c.html#class-TextureView) textureView, char const\* label)
+void wgpuTextureViewSetLabel([WGPUTextureView]({{ '/api/c.html#class-TextureView' | relative_url }}) textureView, char const\* label)
 
 </div>
 
