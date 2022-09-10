@@ -1,0 +1,29 @@
+name: Build Examples
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install depot_tools and sync deps
+      run: |
+          git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git ../depot_tools
+          export PATH=$PWD/../depot_tools:$PATH
+          gclient sync --jobs=16
+
+    - name: Configure CMake
+      run: CC=clang CXX=clang++ cmake -GNinja -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
+    - name: Build
+      run: ninja -C ${{github.workspace}}/build
