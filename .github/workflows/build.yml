@@ -22,6 +22,10 @@ jobs:
           export PATH=$PWD/../depot_tools:$PATH
           gclient sync --jobs=16
 
+    - name: Dependencies
+      run: |
+          apt-get install librandr-dev
+
     - name: Configure CMake
       run: CC=clang CXX=clang++ cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
