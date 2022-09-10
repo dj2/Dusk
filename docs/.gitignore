@@ -4,3 +4,7 @@ _site
 .jekyll-metadata
 vendor
 cert.pem
+api/c.md
+api/cpp.md
+_includes/c_nav.html
+_includes/cpp_nav.html

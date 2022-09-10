@@ -117,4 +117,4 @@ the docs folder):
 jekyll serve
 ```
 
-This should launch the site on `localhosts:4000`.
+This should launch the site on `localhosts:4000/Dusk/`.
