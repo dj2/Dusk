@@ -623,7 +623,7 @@ def gen_c_structures(f)
       end
 
       if struct['chained'] == 'in'
-        f.puts "| `WGPUChainedStruct chain` | | ChainedStruct base object|"
+        f.puts "| `WGPUChainedStruct chain` | ChainedStruct base object |"
       end
 
       struct['members'].each do |member|
