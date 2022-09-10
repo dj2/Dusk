@@ -56,7 +56,6 @@ header {
 
 table {
   border-collapse: collapse;
-  margin: 25px 0;
   font-size: 0.9em;
   box-shadow: 0 0 20px $shadow-colour;
 
@@ -89,14 +88,8 @@ table {
 }
 
 .function {
-  box-shadow: 0 0 20px $shadow-colour;
-  margin-bottom: 1em;
-
-  .header-link {
-    text-decoration: none;
-  }
-
   h3 {
+    margin: 0;
     background-color: $table-border;
     color: #fff;
     padding: 2px;
@@ -105,40 +98,79 @@ table {
   }
 
   .content {
-    padding: 5px;
+    padding: .5em .5em;
 
-    h4 { margin-bottom: 0; }
-
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 1em;
+    p {
+      margin-top: 0;
     }
   }
 }
 
+.function, .method {
+  box-shadow: 0 0 20px $shadow-colour;
+  margin: .5em 0;
+
+  h4 {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid $shadow-colour;
+  }
+  h5 { margin-bottom: 0; }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    margin-top: 5px;
+    padding: 0;
+  }
+}
+
 .object {
+  margin-top: 1em;
+
   .header-link { text-decoration: none; }
 
   h3 {
     background-color: $table-border;
     color: #fff;
+    margin-top: 0;
     padding: 2px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
   }
 
-  .method {
-    box-shadow: 0 0 20px $shadow-colour;
-    margin: .5em 0;
+  .content {
+    border: 1px solid $shadow-colour;
     padding: .5em .5em;
 
-    h4 { margin-bottom: 0; }
-
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 1em;
+    .method {
+      padding: .5em .5em;
     }
+
+    p {
+      margin-top: 0;
+    }
+  }
+}
+
+.header-link {
+  margin-left: .5em;
+}
+
+.structure {
+  border-bottom: 2px solid $shadow-colour;
+  padding-bottom: 1em;
+
+  ul {
+    margin: 0;
+  }
+  h5 {
+    margin-bottom: 0;
+  }
+}
+
+.enum {
+  p {
+    margin-top: .25em;
   }
 }

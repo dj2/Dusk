@@ -86,14 +86,23 @@ def gen_header(f, name, length = 2)
   f.puts ""
 end
 
-def gen_table(f, name, values, info, &block)
+def gen_linked_header(f, prefix, name, suffix, lvl, id_kind, &block)
+  prefix = "#{prefix} " unless prefix.empty?
+  suffix = " #{suffix}" unless suffix.empty?
+
+  gen_header(f,
+    "#{prefix}#{block.call(name)}#{suffix} {##{id_kind}-#{name.CamelCase}}",
+    lvl)
+end
+
+def gen_table(f, lang, name, values, info, &block)
   f.puts ""
   f.puts "| Value | Description |"
   f.puts "|:------|:------------|"
   values.each do |v|
     vn = v['name']
     puts "Unable to find value for #{name} :: #{vn}" unless info.has_key?(vn)
-    f.puts "| `#{block.call(vn)}` | #{info[vn].strip} |"
+    f.puts "| `#{block.call(vn)}` | #{substitute(lang, info[vn].strip)} |"
   end
   f.puts ""
 end
@@ -125,13 +134,17 @@ def get_info(type, name)
   info
 end
 
+def gen_anchor(type)
+  "#{$kinds[type]}-#{type.CamelCase}"
+end
+
 def gen_type_link(prefix, page, type)
   return "void" if type.nil?
 
   if $native_types.has_key?(type)
     type
   else
-    "[#{prefix}#{type.CamelCase}]({{ '#{page}##{$kinds[type]}-#{type.CamelCase}' | relative_url }})"
+    "[#{prefix}#{type.CamelCase}]({{ '#{page}##{gen_anchor(type)}' | relative_url }})"
   end
 end
 
@@ -143,12 +156,15 @@ def gen_c_type_link(type)
   gen_type_link("WGPU", "/api/c.html", type)
 end
 
-def emit_type(type, &block)
+def emit_type(f, type, &block)
   order_by_name(@categories[type]).each do |k|
     name = k['name']
 
     info = get_info(type, name)
-    block.call(k, name, info)
+
+    emit_div_block(f, type) do
+      block.call(k, name, info)
+    end
   end
 end
 
@@ -163,17 +179,11 @@ end
 def emit_params(f, args, &block)
   f.write "("
   args.each_with_index do |a, idx|
-    f.write ", " if idx > 0
+    f.write "," if idx > 0
+    f.write "<br>&nbsp; &nbsp;&nbsp;"
     f.write block.call(a)
   end
   f.puts ")"
-end
-
-def gen_linked_header(f, prefix, name, suffix, id_kind, &block)
-  prefix = "#{prefix} " unless prefix.empty?
-  suffix = " #{suffix}" unless suffix.empty?
-
-  gen_header(f, "#{prefix}#{block.call(name.CamelCase)}#{suffix} {##{id_kind}-#{name.CamelCase}}", 3)
 end
 
 def gen_list(f, list, &block)
@@ -254,7 +264,7 @@ end
 def emit_args(f, lang, src_name, args, info)
   return if args.nil? || args.empty?
 
-  gen_header(f, "Arguments", 4)
+  gen_header(f, "Arguments", 5)
   args.each do |arg|
     arg_name = arg['name']
 
@@ -294,10 +304,10 @@ end
 def gen_cpp_enums(f)
   gen_header(f, "Enums")
 
-  emit_type('enum') do |e, name, info|
-    gen_linked_header(f, 'enum class', name, '', 'enum') { |n| n }
+  emit_type(f, 'enum') do |e, name, info|
+    gen_linked_header(f, 'enum class', name, '', 3, 'enum') { |n| n.CamelCase }
     gen_description_and_ref(f, info)
-    gen_table(f, name, e['values'], info['values']) { |n| n.CamelCase }
+    gen_table(f, "cpp", name, e['values'], info['values']) { |n| n.CamelCase }
   end
 end
 
@@ -309,35 +319,33 @@ def gen_cpp_bitmasks(f)
     operators in order to use them as bitmasks.
     HERE
 
-  emit_type('bitmask') do |b, name, info|
-    gen_linked_header(f, 'enum class', name, '[bitmask]', 'bitmask') { |n| n }
+  emit_type(f, 'bitmask') do |b, name, info|
+    gen_linked_header(f, 'enum class', name, '[bitmask]', 3, 'bitmask') { |n| n.CamelCase }
     gen_description_and_ref(f, info)
-    gen_table(f, name, b['values'], info['values']) { |n| n.CamelCase }
+    gen_table(f, "cpp", name, b['values'], info['values']) { |n| n.CamelCase }
   end
 end
 
 def gen_cpp_function(f)
   gen_header(f, "Functions")
 
-  emit_type('function') do |func, name, info|
-    emit_div_block(f, 'function') do
-      gen_linked_header(f, '', name, '', 'function') { |n| n }
+  emit_type(f, 'function') do |func, name, info|
+    gen_linked_header(f, '', name, '', 3, 'function') { |n| n.CamelCase }
 
-      emit_div_block(f, 'content') do
-        gen_description_and_ref(f, info)
+    emit_div_block(f, 'content') do
+      gen_description_and_ref(f, info)
 
-        emit_div_block(f, 'signature') do
-          f.write "#{gen_cpp_type_link(func['returns'])} #{name.CamelCase}"
-          emit_params(f, func['args']) { |p| gen_cpp_member(p) }
-        end
-
-        gen_header(f, 'Returns', 4)
-        emit_value_or_warning(f, "cpp", info['returns'], func['returns'], func['name'])
-        f.puts ""
-        f.puts ""
-
-        emit_args(f, "cpp", func['name'], func['args'], info)
+      emit_div_block(f, 'signature') do
+        f.write "#{gen_cpp_type_link(func['returns'])} #{name.CamelCase}"
+        emit_params(f, func['args']) { |p| gen_cpp_member(p) }
       end
+
+      gen_header(f, 'Returns', 5)
+      emit_value_or_warning(f, "cpp", info['returns'], func['returns'], func['name'])
+      f.puts ""
+      f.puts ""
+
+      emit_args(f, "cpp", func['name'], func['args'], info)
     end
   end
 end
@@ -345,9 +353,9 @@ end
 def gen_cpp_function_pointers(f)
   gen_header(f, "Function Pointers")
 
-  emit_type('function pointer') do |func, name, info|
+  emit_type(f, 'function pointer') do |func, name, info|
     emit_div_block(f, 'function') do
-      gen_linked_header(f, '', name, '', 'function-pointer') { |n| n }
+      gen_linked_header(f, '', name, '', 3, 'function-pointer') { |n| n.CamelCase }
 
       emit_div_block(f, 'content') do
         gen_description_and_ref(f, info)
@@ -366,8 +374,8 @@ end
 def gen_cpp_structures(f)
   gen_header(f, "Structures")
 
-  emit_type('structure') do |struct, name, info|
-    gen_linked_header(f, 'struct', name, '', 'structure') { |n| n }
+  emit_type(f, 'structure') do |struct, name, info|
+    gen_linked_header(f, 'struct', name, '', 3, 'structure') { |n| n.CamelCase }
 
     if !struct['members'].empty? || ['in', 'out'].include?(struct['extensible']) ||
           ['in', 'out'].include?(struct['chained'])
@@ -403,12 +411,12 @@ def gen_cpp_structures(f)
     end
 
     if !$chain_in[name].nil?
-      gen_header(f, 'Chainable Structures', 4)
+      gen_header(f, 'Chainable Structures', 5)
       gen_list(f, $chain_in[name]) { |n| gen_cpp_type_link(n) }
     end
 
     if !$chain_in_parents[name].nil?
-      gen_header(f, 'Chain Parent Structures', 4)
+      gen_header(f, 'Chain Parent Structures', 5)
       gen_list(f, $chain_in_parents[name]) { |n| gen_cpp_type_link(n) }
     end
   end
@@ -417,31 +425,39 @@ end
 def gen_cpp_classes(f)
   gen_header(f, "Classes")
 
-  emit_type('object') do |klass, name, info|
+  emit_type(f, 'object') do |klass, name, info|
     emit_div_block(f, 'object') do
-      gen_linked_header(f, 'class', name, '', 'class') { |n| n }
-      gen_description_and_ref(f, info)
+      gen_linked_header(f, 'class', name, '', 3, 'class') { |n| n.CamelCase }
 
-      (klass['methods'] || []).sort { |a, b| a['name'] <=> b['name'] }.each do |method|
-        emit_div_block(f, 'method') do
+      emit_div_block(f, 'content') do
+        emit_div_block(f, 'description') do
+          gen_description_and_ref(f, info)
+        end
 
-          method_info = (info['methods'] || {})[method['name']] || {}
-          gen_description_and_ref(f, method_info)
+        (klass['methods'] || []).sort { |a, b| a['name'] <=> b['name'] }.each do |method|
+          emit_div_block(f, 'method') do
+            gen_linked_header(f, '', method['name'], '', 4, "#{gen_anchor(name)}") do |n|
+              n.CamelCase
+            end
 
-          emit_div_block(f, 'signature') do
-            f.write "#{gen_cpp_type_link(method['returns'])} #{method['name'].CamelCase}"
-            emit_params(f, method['args'] || []) { |p| gen_cpp_member(p) }
-            f.puts ""
+            method_info = (info['methods'] || {})[method['name']] || {}
+            gen_description_and_ref(f, method_info)
+
+            emit_div_block(f, 'signature') do
+              f.write "#{gen_cpp_type_link(method['returns'])} #{method['name'].CamelCase}"
+              emit_params(f, method['args'] || []) { |p| gen_cpp_member(p) }
+              f.puts ""
+            end
+
+            if !method['returns'].nil? && method['returns'] != 'void'
+              gen_header(f, "Returns", 5)
+              emit_value_or_warning(f, "cpp", method_info['returns'],
+                      method['returns'], method['name'])
+              f.puts ""
+            end
+
+            emit_args(f, "cpp", method['name'], method['args'], method_info)
           end
-
-          if !method['returns'].nil? && method['returns'] != 'void'
-            gen_header(f, "Returns", 4)
-            emit_value_or_warning(f, "cpp", method_info['returns'],
-                    method['returns'], method['name'])
-            f.puts ""
-          end
-
-          emit_args(f, "cpp", method['name'], method['args'], method_info)
         end
       end
     end
@@ -513,10 +529,10 @@ end
 def gen_c_enums(f)
   gen_header(f, "Enums")
 
-  emit_type('enum') do |e, name, info|
-    gen_linked_header(f, 'enum', name, '', 'enum') { |n| "WGPU#{n}" }
+  emit_type(f, 'enum') do |e, name, info|
+    gen_linked_header(f, 'enum', name, '', 3, 'enum') { |n| "WGPU#{n.CamelCase}" }
     gen_description_and_ref(f, info)
-    gen_table(f, name, e['values'], info['values']) do |n|
+    gen_table(f, "c", name, e['values'], info['values']) do |n|
       "WGPU#{name.CamelCase}_#{n.CamelCase}"
     end
   end
@@ -531,10 +547,10 @@ def gen_c_bitmasks(f)
     signatures.
     HERE
 
-  emit_type('bitmask') do |b, name, info|
-    gen_linked_header(f, 'enum', name, '[bitmask]', 'bitmask') { |n| "WGPU#{n}" }
+  emit_type(f, 'bitmask') do |b, name, info|
+    gen_linked_header(f, 'enum', name, '[bitmask]', 2, 'bitmask') { |n| "WGPU#{n.CamelCase}" }
     gen_description_and_ref(f, info)
-    gen_table(f, name, b['values'], info['values']) do |n|
+    gen_table(f, "c", name, b['values'], info['values']) do |n|
       "WGPU#{name.CamelCase}_#{n.CamelCase}"
     end
     f.puts "`typedef WGPUFlags WGPU#{name.CamelCase}Flags`"
@@ -545,25 +561,23 @@ end
 def gen_c_function(f)
   gen_header(f, "Functions")
 
-  emit_type('function') do |func, name, info|
-    emit_div_block(f, 'function') do
-      gen_linked_header(f, '', name, '', 'function') { |n| "wgpu#{n}" }
+  emit_type(f, 'function') do |func, name, info|
+    gen_linked_header(f, '', name, '', 3, 'function') { |n| "wgpu#{n.CamelCase}" }
 
-      emit_div_block(f, 'content') do
-        gen_description_and_ref(f, info)
+    emit_div_block(f, 'content') do
+      gen_description_and_ref(f, info)
 
-        emit_div_block(f, 'signature') do
-          f.write "#{gen_c_type_link(func['returns'])} wgpu#{name.CamelCase}"
-          emit_params(f, func['args']) { |p| gen_c_member(p) }
-        end
-
-        gen_header(f, 'Returns', 4)
-        emit_value_or_warning(f, "c", info['returns'], func['returns'], func['name'])
-        f.puts ""
-        f.puts ""
-
-        emit_args(f, "c", func['name'], func['args'], info)
+      emit_div_block(f, 'signature') do
+        f.write "#{gen_c_type_link(func['returns'])} wgpu#{name.CamelCase}"
+        emit_params(f, func['args']) { |p| gen_c_member(p) }
       end
+
+      gen_header(f, 'Returns', 5)
+      emit_value_or_warning(f, "c", info['returns'], func['returns'], func['name'])
+      f.puts ""
+      f.puts ""
+
+      emit_args(f, "c", func['name'], func['args'], info)
     end
   end
 end
@@ -571,9 +585,9 @@ end
 def gen_c_function_pointers(f)
   gen_header(f, "Function Pointers")
 
-  emit_type('function pointer') do |func, name, info|
+  emit_type(f, 'function pointer') do |func, name, info|
     emit_div_block(f, 'function') do
-      gen_linked_header(f, '', name, '', 'function-pointer') { |n| "WGPU#{n}" }
+      gen_linked_header(f, '', name, '', 3, 'function-pointer') { |n| "WGPU#{n.CamelCase}" }
 
       emit_div_block(f, 'content') do
         gen_description_and_ref(f, info)
@@ -592,8 +606,8 @@ end
 def gen_c_structures(f)
   gen_header(f, "Structures")
 
-  emit_type('structure') do |struct, name, info|
-    gen_linked_header(f, 'struct', name, '', 'structure') { |n| "WGPU#{n}" }
+  emit_type(f, 'structure') do |struct, name, info|
+    gen_linked_header(f, 'struct', name, '', 3, 'structure') { |n| "WGPU#{n.CamelCase}" }
 
     if !struct['members'].empty? || ['in', 'out'].include?(struct['extensible']) ||
           ['in', 'out'].include?(struct['chained'])
@@ -621,12 +635,12 @@ def gen_c_structures(f)
     end
 
     if !$chain_in[name].nil?
-      gen_header(f, 'Chainable Structures', 4)
+      gen_header(f, 'Chainable Structures', 5)
       gen_list(f, $chain_in[name]) { |n| gen_c_type_link(n) }
     end
 
     if !$chain_in_parents[name].nil?
-      gen_header(f, 'Chain Parent Structures', 4)
+      gen_header(f, 'Chain Parent Structures', 5)
       gen_list(f, $chain_in_parents[name]) { |n| gen_c_type_link(n) }
     end
   end
@@ -635,43 +649,54 @@ end
 def gen_c_objects(f)
   gen_header(f, "Methods")
 
-  emit_type('object') do |klass, name, info|
+  emit_type(f, 'object') do |klass, name, info|
     emit_div_block(f, 'object') do
-      gen_linked_header(f, 'Methods of', name, '', 'class') { |n| "WGPU#{n}" }
-      gen_description_and_ref(f, info)
+      gen_linked_header(f, 'Methods of', name, '', 3, 'class') { |n| "WGPU#{n.CamelCase}" }
 
-      methods = (klass['methods'] || [])
-      methods.push({
-        "name" => "reference"
-      })
-      methods.push({
-        "name" => "release"
-      })
+      emit_div_block(f, 'content') do
+        emit_div_block(f, 'description') do
+          gen_description_and_ref(f, info)
+        end
 
-      methods.sort { |a, b| a['name'] <=> b['name'] }.each do |method|
-        emit_div_block(f, 'method') do
-          args = method['args'] || []
-          args.unshift({
-            "name" => klass['name'],
-            "type" => klass['name']
-          })
+        methods = (klass['methods'] || [])
+        methods.push({
+          "name" => "reference"
+        })
+        methods.push({
+          "name" => "release"
+        })
 
-          method_info = (info['methods'] || {})[method['name']] || {}
-          gen_description_and_ref(f, method_info)
+        methods.sort { |a, b| a['name'] <=> b['name'] }.each do |method|
+          emit_div_block(f, 'method') do
+            args = method['args'] || []
+            args.unshift({
+              "name" => klass['name'],
+              "type" => klass['name']
+            })
 
-          emit_div_block(f, 'signature') do
-            f.write "#{gen_c_type_link(method['returns'])} wgpu#{klass['name'].CamelCase}#{method['name'].CamelCase}"
-            emit_params(f, args) { |p| gen_c_member(p) }
-            f.puts ""
+            to_method_name = lambda { |n| "wgpu#{klass['name'].CamelCase}#{n.CamelCase}" }
+            gen_linked_header(f, '', method['name'], '', 4, "#{gen_anchor(name)}") do |n|
+                to_method_name.call(n)
+            end
+
+            method_info = (info['methods'] || {})[method['name']] || {}
+            gen_description_and_ref(f, method_info)
+
+            emit_div_block(f, 'signature') do
+              f.write "#{gen_c_type_link(method['returns'])} #{to_method_name.call(method['name'])}"
+              emit_params(f, args) { |p| gen_c_member(p) }
+              f.puts ""
+            end
+
+            if !method['returns'].nil? && method['returns'] != 'void'
+              gen_header(f, "Returns", 5)
+              emit_value_or_warning(
+                  f, "c", method_info['returns'], method['returns'], method['name'])
+              f.puts ""
+            end
+
+            emit_args(f, "c", method['name'], args, method_info)
           end
-
-          if !method['returns'].nil? && method['returns'] != 'void'
-            gen_header(f, "Returns", 4)
-            emit_value_or_warning(f, "c", method_info['returns'], method['returns'], method['name'])
-            f.puts ""
-          end
-
-          emit_args(f, "c", method['name'], args, method_info)
         end
       end
     end
