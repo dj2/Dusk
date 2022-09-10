@@ -24,7 +24,7 @@ jobs:
 
     - name: Dependencies
       run: |
-          sudo apt-get install librandr-dev
+          sudo apt-get install libxrandr-dev
 
     - name: Configure CMake
       run: CC=clang CXX=clang++ cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
