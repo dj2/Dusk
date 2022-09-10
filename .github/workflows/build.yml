@@ -23,7 +23,8 @@ jobs:
           gclient sync --jobs=16
 
     - name: Configure CMake
-      run: CC=clang CXX=clang++ cmake -GNinja -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+      run: CC=clang CXX=clang++ cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
     - name: Build
-      run: ninja -C ${{github.workspace}}/build
+      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
