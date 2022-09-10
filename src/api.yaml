@@ -119,12 +119,12 @@ enum:
         Factor is set to one minus the destionation alpha value. <br>
         `(1 - A_dst, 1 - A_dst, 1 - A_dst, 1 - A_dst)`
       constant: >
-        Factor is set to the constant value.
+        Factor is set to the constant value.<br>
         (See %% method(render pass encoder, set blend constant) %%
         for setting of the constant value.)<br>
         `(R_const, G_const, B_const, A_const)`
       one minus constant: >
-        Factor is set to one minus the constant value.
+        Factor is set to one minus the constant value.<br>
         (See %% method(render pass encoder, set blend constant) %%
         for setting of the constant value.)<br>
         `(1 - R_const, 1 - G_const, 1 - B_const, 1 - A_const)`
