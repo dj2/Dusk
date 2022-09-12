@@ -4,9 +4,9 @@ var gen_anchor = function(header) {
   var anchor = document.createElement("a");
   anchor.className = "header-link";
   anchor.href = "#" + header.id;
+  anchor.innerHTML = "&nearhk;"
 
-  header.parentNode.insertBefore(anchor, header);
-  anchor.appendChild(header);
+  header.appendChild(anchor);
 };
 
 var link_anchors = function(level, parent) {
@@ -23,7 +23,7 @@ var link_anchors = function(level, parent) {
 
 document.addEventListener('DOMContentLoaded', () => {
   var main = document.getElementsByClassName("main")[0];
-  for(var i = 2; i < 4; i++) {
+  for(var i = 2; i < 5; i++) {
     link_anchors(i, main);
   }
 });
