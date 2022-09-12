@@ -129,6 +129,29 @@ enum:
         for setting of the constant value.)<br>
         `(1 - R_const, 1 - G_const, 1 - B_const, 1 - A_const)`
 
+  blend operation:
+    description: >
+      The algorithm used to blend source and destination colors.
+    ref:
+      name: GPUBlendOperation
+      anchor: "#enumdef-gpublendoperation"
+    values:
+      add: >
+        Adds the scaled source and scaled destination together.<br>
+        `(RGBA_src` &times; `RGBA_src_factor) + (RGBA_dst` &times; `RGBA_dst_factor)`
+      subtract: >
+        Subtracts the scaled destination from the scaled source.<br>
+        `(RGBA_src` &times; `RGBA_src_factor) - (RGBA_dst` &times; `RGBA_dst_factor)`
+      reverse subtract: >
+        Subtracts the scaled source from the scaled destination.<br>
+        `(RGBA_dst` &times; `RGBA_dst_factor) - (RGBA_src` &times; `RGBA_src_factor)`
+      min: >
+        Takes the minimum of the source and destination.<br>
+        `min(RGBA_src, RGBA_dst)`
+      max: >
+        Takes the maximum of the source and destination.<br>
+        `max(RGBA_src, RGBA_dst)`
+
 bitmask:
   texture usage:
     description: Determine how a GPUTexture maybe be used after creation.
