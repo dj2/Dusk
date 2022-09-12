@@ -235,17 +235,30 @@ def substitute(lang, str)
   str.gsub(/%%(.*?)%%/) do |m|
     cmd = $1.strip!
 
-    if lang == "cpp"
-      if cmd == 'null'
-        "nullptr"
+    if cmd =~ /method\(([^,]*),\s+([^\)]*)\)/
+      obj = $1
+      method = $2
+
+      display_name = if lang == "cpp"
+        "#{obj.CamelCase}::#{method.CamelCase}"
       else
-        gen_cpp_type_link(cmd)
+        "wgpu#{obj.CamelCase}#{method.CamelCase}"
       end
+
+      "[#{display_name}](##{gen_anchor(obj)}-#{method.CamelCase})"
     else
-      if cmd == 'null'
-        "NULL"
+      if lang == "cpp"
+        if cmd == 'null'
+          "nullptr"
+        else
+          gen_cpp_type_link(cmd)
+        end
       else
-        gen_c_type_link(cmd)
+        if cmd == 'null'
+          "NULL"
+        else
+          gen_c_type_link(cmd)
+        end
       end
     end
   end

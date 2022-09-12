@@ -77,6 +77,58 @@ enum:
       openGL: The OpenGL backend
       openGLES: The OpenGL ES backend
 
+  blend factor:
+    description: >
+      Determines how a blend factor is calculated. This factor will be combined
+      with the original color based on the selected blend operation.
+    ref:
+      name: GPUBlendFactor
+      anchor: '#enumdef-gpublendfactor'
+    values:
+      zero: >
+        Factor is set to zero.<br>
+        `(0, 0, 0, 0)`
+      one: >
+        Factor is set to one. <br>
+        `(1, 1, 1, 1)`
+      src: >
+        Factor is set to the source values. <br>
+        `(R_src, G_src, B_src, A_src)`
+      one minus src: >
+        Factor is set to one minus source value. <br>
+        `(1 - R_src, 1 - G_src, 1 - B_src, 1 - A_src)`
+      src alpha: >
+        Factor is set to the source alpha value. <br>
+        `(A_src, A_src, A_src, A_src)`
+      src alpha saturated: >
+        Factor is set to the source alpha value. <br>
+        `(A_src, A_src, A_src, A_src)`
+      one minus src alpha: >
+        Factor is set to one minus the source alpha value. <br>
+        `(1 - A_src, 1 - A_src, 1 - A_src, 1 - A_src)`
+      dst: >
+       Factor is set to the destination value.<br>
+       `(R_dst, G_dst, B_dst, A_dst)`
+      one minus dst: >
+        Factor is set to one minus destination value. <br>
+        `(1 - R_dst, 1 - G_dst, 1 - B_dst, 1 - A_dst)`
+      dst alpha: >
+        Factor is set to the destinatinon alpha value. <br>
+        `(A_dst, A_dst, A_dst, A_dst)`
+      one minus dst alpha: >
+        Factor is set to one minus the destionation alpha value. <br>
+        `(1 - A_dst, 1 - A_dst, 1 - A_dst, 1 - A_dst)`
+      constant: >
+        Factor is set to the constant value.<br>
+        (See %% method(render pass encoder, set blend constant) %%
+        for setting of the constant value.)<br>
+        `(R_const, G_const, B_const, A_const)`
+      one minus constant: >
+        Factor is set to one minus the constant value.<br>
+        (See %% method(render pass encoder, set blend constant) %%
+        for setting of the constant value.)<br>
+        `(1 - R_const, 1 - G_const, 1 - B_const, 1 - A_const)`
+
 bitmask:
   texture usage:
     description: Determine how a GPUTexture maybe be used after creation.
