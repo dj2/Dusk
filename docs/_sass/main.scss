@@ -23,8 +23,11 @@ header {
   margin-bottom: 1em;
 }
 
+@media only screen and (min-width: 1000px) {
+  .wrapper { display: flex; }
+}
+
 .wrapper {
-  display: flex;
   padding: 0 1em;
 
   h3 {
@@ -55,6 +58,7 @@ header {
 }
 
 table {
+  width: 100%;
   border-collapse: collapse;
   font-size: 0.9em;
   box-shadow: 0 0 20px $shadow-colour;
