@@ -79,6 +79,8 @@ The following examples are provided:
 * [02 - Coloured Triangle](src/example_02/README.md)
 * [03 - Using an Index Buffer](src/example_03/README.md)
 * [04 - Rotating Cube](src/example_04/README.md)
+* [05 - Instanced Cube](src/example_05/README.md)
+* [06 - Obj File Viewer](src/example_06/README.md)
 
 ## Doc Site
 The documentation site is served by GitHub pages. The generate is Jekyll. There

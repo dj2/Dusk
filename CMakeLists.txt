@@ -85,8 +85,16 @@ function(dusk_compile_options TARGET)
       -Wno-missing-field-initializers
     )
   endif()
-
 endfunction()
+
+function(dusk_test_compile_options TARGET)
+  dusk_compile_options(${TARGET})
+
+  target_compile_options(${TARGET} PRIVATE
+    -Wno-global-constructors
+  )
+endfunction()
+
 
 add_subdirectory(third_party)
 add_subdirectory(src)
