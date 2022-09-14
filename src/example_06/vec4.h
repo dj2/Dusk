@@ -22,7 +22,9 @@ class Vec4 {
  public:
   Vec4(float x, float y, float z, float w) : x_(x), y_(y), z_(z), w_(w) {}
 
-  float Length() const { return sqrtf((x_ * x_) + (y_ * y_) + (z_ * z_) + (w_ * w_)); }
+  float Length() const {
+    return sqrtf((x_ * x_) + (y_ * y_) + (z_ * z_) + (w_ * w_));
+  }
 
   Vec4 Normalize() const {
     auto l = Length();
@@ -35,8 +37,8 @@ class Vec4 {
   }
 
   bool operator==(const Vec4& o) const {
-    return float_eq(x_, o.x_) && float_eq(y_, o.y_) && float_eq(z_, o.z_)
-        && float_eq(w_, o.w_);
+    return float_eq(x_, o.x_) && float_eq(y_, o.y_) && float_eq(z_, o.z_) &&
+           float_eq(w_, o.w_);
   }
 
   inline float x() const { return x_; }

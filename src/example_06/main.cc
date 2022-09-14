@@ -63,8 +63,8 @@ fn fs_main(in : VertexOutput) -> @location(0) vec4<f32> {
 
 int main(int argc, const char** argv) {
   dusk::Args args;
-  auto ret = args.Parse({argv, argv + argc}, {
-      {"h", dusk::Args::Type::kBoolean}});
+  auto ret =
+      args.Parse({argv, argv + argc}, {{"h", dusk::Args::Type::kBoolean}});
   if (ret.has_value()) {
     std::cerr << ret.value() << std::endl;
     return 1;
@@ -121,32 +121,32 @@ int main(int argc, const char** argv) {
   auto swapchain = device.CreateSwapChain(surface, &swapchainDesc);
 
   // Create buffers
-//  auto vertexBuffer = dusk::webgpu::createBufferFromData(
-//      device, "Cube Data Buffer", cube_data, sizeof(cube_data),
-//      wgpu::BufferUsage::Vertex);
+  //  auto vertexBuffer = dusk::webgpu::createBufferFromData(
+  //      device, "Cube Data Buffer", cube_data, sizeof(cube_data),
+  //      wgpu::BufferUsage::Vertex);
 
   // Shaders
   auto shader =
       dusk::webgpu::createShaderModule(device, "Main Shader Module", kShader);
 
   // Pipeline creation
-//  wgpu::VertexAttribute vertAttributes[2] = {
-//      {
-//          .format = wgpu::VertexFormat::Float32x4,
-//          .offset = kPositionByteOffset,
-//          .shaderLocation = 0,
-//      },
-//      {
-//          .format = wgpu::VertexFormat::Float32x2,
-//          .offset = kUVByteOffset,
-//          .shaderLocation = 1,
-//      }};
+  //  wgpu::VertexAttribute vertAttributes[2] = {
+  //      {
+  //          .format = wgpu::VertexFormat::Float32x4,
+  //          .offset = kPositionByteOffset,
+  //          .shaderLocation = 0,
+  //      },
+  //      {
+  //          .format = wgpu::VertexFormat::Float32x2,
+  //          .offset = kUVByteOffset,
+  //          .shaderLocation = 1,
+  //      }};
 
-//  wgpu::VertexBufferLayout vertBufferLayout{
-//      .arrayStride = kCubeDataStride * sizeof(float),
-//      .attributeCount = 2,
-//      .attributes = vertAttributes,
-//  };
+  //  wgpu::VertexBufferLayout vertBufferLayout{
+  //      .arrayStride = kCubeDataStride * sizeof(float),
+  //      .attributeCount = 2,
+  //      .attributes = vertAttributes,
+  //  };
 
   wgpu::ColorTargetState target{
       .format = wgpu::TextureFormat::BGRA8Unorm,
@@ -170,10 +170,8 @@ int main(int argc, const char** argv) {
       .layout = nullptr,
       .vertex =
           {
-              .module = shader,
-              .entryPoint = "vs_main",
-              .bufferCount = 0,
-//              .buffers = &vertBufferLayout,
+              .module = shader, .entryPoint = "vs_main", .bufferCount = 0,
+              //              .buffers = &vertBufferLayout,
           },
       .primitive =
           {
@@ -274,8 +272,8 @@ int main(int argc, const char** argv) {
       auto pass = encoder.BeginRenderPass(&renderPass);
       pass.SetPipeline(pipeline);
       pass.SetBindGroup(0, uniformBindGroup);
-//      pass.SetVertexBuffer(0, vertexBuffer);
-//      pass.Draw(kVertexCount, num_instances);
+      //      pass.SetVertexBuffer(0, vertexBuffer);
+      //      pass.Draw(kVertexCount, num_instances);
       pass.End();
     }
     auto commands = encoder.Finish();

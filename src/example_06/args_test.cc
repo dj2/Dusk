@@ -105,4 +105,3 @@ TEST_F(ArgsTest, ShortName) {
 
 }  // namespace
 }  // namespace dusk
-

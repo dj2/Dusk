@@ -22,9 +22,9 @@ Args::Args() = default;
 
 Args::~Args() = default;
 
-std::optional<std::string> Args::Parse(std::span<const char*> args,
-        std::unordered_map<std::string, Type> options) {
-
+std::optional<std::string> Args::Parse(
+    std::span<const char*> args,
+    std::unordered_map<std::string, Type> options) {
   if (args.empty()) {
     return {};
   }

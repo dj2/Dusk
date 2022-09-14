@@ -26,7 +26,10 @@ namespace dusk {
 class Args {
  public:
   /// The type of the argument option.
-  enum class Type { kBoolean = 0, kString, };
+  enum class Type {
+    kBoolean = 0,
+    kString,
+  };
 
   Args();
   ~Args();
@@ -36,8 +39,9 @@ class Args {
   /// @param options the program options that determine how the
   ///        |args| are parsed.
   /// @returns an empty optional on success, an error string on failure
-  std::optional<std::string> Parse(std::span<const char*> args,
-        std::unordered_map<std::string, Type> options);
+  std::optional<std::string> Parse(
+      std::span<const char*> args,
+      std::unordered_map<std::string, Type> options);
 
   /// @returns the name of the executable
   const std::string& ExeName() const { return exe_name_; }

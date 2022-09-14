@@ -23,4 +23,3 @@ std::ostream& operator<<(std::ostream& out, const Vec3& v);
 std::ostream& operator<<(std::ostream& out, const Vec4& v);
 
 }  // namespace dusk
-

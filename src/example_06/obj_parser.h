@@ -14,13 +14,13 @@
 
 #pragma once
 
+#include <iostream>
 #include <optional>
 #include <string>
 #include <string_view>
 #include <unordered_map>
 #include <variant>
 #include <vector>
-#include <iostream>
 
 #include "src/example_06/vec3.h"
 #include "src/example_06/vec4.h"
@@ -59,7 +59,9 @@ class Mesh {
   Mesh& operator=(Mesh&&);
 
   /// @returns the geometric vertices
-  const std::vector<Vec4>& GeometricVertices() const { return geometric_vertices_; }
+  const std::vector<Vec4>& GeometricVertices() const {
+    return geometric_vertices_;
+  }
   /// @returns the geometric vertices
   std::vector<Vec4>& GeometricVertices() { return geometric_vertices_; }
 
@@ -80,8 +82,8 @@ class Mesh {
 
  private:
   std::vector<Vec4> geometric_vertices_;  // v
-  std::vector<Vec3> texture_vertices_;  // vt
-  std::vector<Vec3> vertex_normals_;  // vn
+  std::vector<Vec3> texture_vertices_;    // vt
+  std::vector<Vec3> vertex_normals_;      // vn
 
   std::vector<Group> groups_;
   std::unordered_map<std::string, size_t> group_name_to_group_;
@@ -143,25 +145,36 @@ class Parser {
   const std::vector<Error>& Errors() const { return errors_; }
   std::string ErrorString() const;
 
+  bool HasWarnings() const { return !warnings_.empty(); }
+  const std::vector<Error>& Warnings() const { return warnings_; }
+  std::string WarningString() const;
+
   std::optional<Mesh> Parse();
 
  private:
-  void AddError(size_t line, size_t column, const std::string& err) {
-    errors_.push_back(Error{
-        .line = line,
-        .column = column,
-        .msg = err
-    });
-  }
+  void AddError(const std::string& err) { AddError(line_, column_, err); }
   void AddError(const Token& token, const std::string& err) {
-    errors_.push_back(Error{
-        .line = token.line,
-        .column = token.column,
-        .msg = err
-    });
+    AddError(token.line, token.column, err);
+  }
+  void AddError(size_t line, size_t column, const std::string& err) {
+    errors_.push_back(Error{.line = line, .column = column, .msg = err});
   }
 
+  void AddWarning(const std::string& warn) { AddWarning(line_, column_, warn); }
+  void AddWarning(const Token& token, const std::string& warn) {
+    AddWarning(token.line, token.column, warn);
+  }
+  void AddWarning(size_t line, size_t column, const std::string& warn) {
+    warnings_.push_back(Error{.line = line, .column = column, .msg = warn});
+  }
+
+  std::optional<float> ParseNumber(const std::string& command_name,
+                                   const std::string& component_name,
+                                   const std::string& command_format);
+
   bool ParseGeometricVertex();
+  bool ParseVertexNormal();
+  bool ParseTextureVertex();
 
   void Resync();
   void SkipCommentsAndWhitespace();
@@ -179,7 +192,7 @@ class Parser {
 
   std::vector<size_t> current_groups_;
   std::vector<Error> errors_;
+  std::vector<Error> warnings_;
 };
 
 }  // namespace dusk::obj
-

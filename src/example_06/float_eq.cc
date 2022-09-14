@@ -28,4 +28,3 @@ bool float_eq(float a, float b) {
 }
 
 }  // namespace dusk
-
