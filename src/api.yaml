@@ -152,6 +152,24 @@ enum:
         Takes the maximum of the source and destination.<br>
         `max(RGBA_src, RGBA_dst)`
 
+  buffer binding type:
+    description: >
+      Describes the address space and access mode for the buffer binding. The
+      value used must match up to the
+      [address space](%% wgsl(#address-space) %%) and
+      [access mode](%% wgsl(#memory-access-mode) %%) set
+      in the corresponding WGSL shader.
+    ref:
+      name: GPUBufferBindingType
+      anchor: "#enumdef-gpubufferbindingtype"
+    values:
+      undefined: Undefined binding. (Tags the binding as a non-buffer binding)
+      uniform: Binding in the `uniform` address space.
+      storage: >
+        Binding in the `storage` address space with `read-write` access mode.
+      read only storage: >
+        Binding in the `storage` address space with `read` access mode.
+
 bitmask:
   texture usage:
     description: Determine how a GPUTexture maybe be used after creation.
@@ -187,7 +205,7 @@ function:
     returns:
       proc: >
         The %% proc %% function pointer if it exists,
-        %% null %% otherwise.
+        `%% null %%` otherwise.
     args:
       device: The %% device %% to retrieve the proc for
       proc name: The name of the pointer to retrieve

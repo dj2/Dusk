@@ -15,3 +15,7 @@ redcarpet:
     - hard_wrap
     - no_styles
     - safe_links_only
+
+collections:
+  examples:
+    output: true

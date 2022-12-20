@@ -2,6 +2,9 @@
   <section>
     <h1>Examples</h1>
     <ul>
+      {% for ex in site.examples %}
+        <li><a href="{{ ex.url | relative_url }}">{{ ex.title }}</a></li>
+      {% endfor %}
     </ul>
   </section>
   <section>
