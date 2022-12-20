@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <array>
 #include <cassert>
 #include <chrono>
 #include <cmath>
@@ -190,8 +191,8 @@ int main() {
   assert(pos != std::string::npos);
   shader_data.replace(pos, key.size(), std::to_string(num_instances));
 
-  auto shader =
-      dusk::webgpu::createShaderModule(device, "Main Shader Module", shader_data);
+  auto shader = dusk::webgpu::createShaderModule(device, "Main Shader Module",
+                                                 shader_data);
 
   // Pipeline creation
   wgpu::VertexAttribute vertAttributes[2] = {
@@ -296,8 +297,8 @@ int main() {
   // Initialize matrix data for each cube instance
   for (size_t x = 0; x < x_count; x++) {
     for (size_t y = 0; y < y_count; y++) {
-      model_matrices[(x * y_count) + y] = dusk::Mat4::Translation(
-        dusk::Vec3(step * (float(x) - half_x), step * (float(y) - half_y), 0));
+      model_matrices[(x * y_count) + y] = dusk::Mat4::Translation(dusk::Vec3(
+          step * (float(x) - half_x), step * (float(y) - half_y), 0));
     }
   }
 
@@ -311,14 +312,16 @@ int main() {
 
     for (size_t x = 0; x < x_count; x++) {
       for (size_t y = 0; y < y_count; y++) {
-        auto rotMatrix = dusk::Mat4::Rotation(1,
-              dusk::Vec3(sinf((float(x) + 0.5f) * ms),
-                         cosf((float(y) + 0.5f) * ms), 0));
+        auto rotMatrix = dusk::Mat4::Rotation(
+            1, dusk::Vec3(sinf((float(x) + 0.5f) * ms),
+                          cosf((float(y) + 0.5f) * ms), 0));
 
-        auto movZ = dusk::Mat4::Translation(dusk::Vec3(0, 0, sinf((float(x) + 0.5f) * ms)));
+        auto movZ = dusk::Mat4::Translation(
+            dusk::Vec3(0, 0, sinf((float(x) + 0.5f) * ms)));
 
         auto idx = (x * y_count) + y;
-        mvp_matrices[idx] = projectionMatrix * viewMatrix * (model_matrices[idx] * movZ) * rotMatrix;
+        mvp_matrices[idx] = projectionMatrix * viewMatrix *
+                            (model_matrices[idx] * movZ) * rotMatrix;
       }
     }
   };

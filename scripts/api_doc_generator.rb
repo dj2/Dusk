@@ -350,7 +350,6 @@ def gen_cpp_function(f)
 
     emit_div_block(f, 'content') do
       gen_description_and_ref(f, "cpp", info)
-
       emit_div_block(f, 'signature') do
         f.write "#{gen_cpp_type_link(func['returns'])} #{name.CamelCase}"
         emit_params(f, func['args']) { |p| gen_cpp_member(p) }
@@ -639,7 +638,7 @@ def gen_c_structures(f)
       end
 
       if struct['chained'] == 'in'
-        f.puts "| `WGPUChainedStruct chain` | | ChainedStruct base object|"
+        f.puts "| `WGPUChainedStruct chain` | ChainedStruct base object |"
       end
 
       struct['members'].each do |member|
