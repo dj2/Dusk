@@ -6,7 +6,7 @@ vars = {
 
 deps = {
   'third_party/dawn':
-      '{dawn_git}/dawn@0df4e4aea30a98e93863c77b1d4ef307b6a718ef',
+      '{dawn_git}/dawn@1058e7aa5067e0415b77fc3ae8a340157a11d9e8',
 }
 
 recursedeps = [
