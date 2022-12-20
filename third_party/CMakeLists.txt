@@ -35,6 +35,7 @@ endif()
 
 add_definitions(
   -Wno-deprecated-builtins    # Warning from Abseil
+  -Wno-unknown-warning-option  # SPIRV-Tools
 )
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/dawn EXCLUDE_FROM_ALL)

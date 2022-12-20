@@ -35,7 +35,7 @@ jobs:
           gclient sync --jobs=16
       - name: Build API docs
         run: |
-          ./scripts/api_doc_generator.rb
+          ruby scripts/api_doc_generator.rb
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
