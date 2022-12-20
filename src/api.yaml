@@ -163,7 +163,7 @@ enum:
       name: GPUBufferBindingType
       anchor: "#enumdef-gpubufferbindingtype"
     values:
-      undefined: Undefined binding.
+      undefined: Undefined binding. (Tags the binding as a non-buffer binding)
       uniform: Binding in the `uniform` address space.
       storage: >
         Binding in the `storage` address space with `read-write` access mode.
