@@ -8,6 +8,7 @@ DAWN_JSON = File.join(BASE_DIR, "third_party", "dawn", "dawn.json")
 API_YAML = File.join(BASE_DIR, "src", "api.yaml")
 
 WEBGPU_URL = "https://webgpu.dev"
+WGSL_URL = "https://webgpu.dev/wgsl/"
 
 data = JSON.parse(File.open(DAWN_JSON).read)
 ['_comment', '_doc', '_metadata'].each { |n| data.delete(n) }
@@ -107,9 +108,9 @@ def gen_table(f, lang, name, values, info, &block)
   f.puts ""
 end
 
-def gen_description_and_ref(f, info)
+def gen_description_and_ref(f, lang, info)
   if !info["description"].nil?
-    f.puts info["description"]
+    f.puts substitute(lang, info["description"])
     f.puts ""
   end
 
@@ -246,6 +247,8 @@ def substitute(lang, str)
       end
 
       "[#{display_name}](##{gen_anchor(obj)}-#{method.CamelCase})"
+    elsif cmd =~ /wgsl\(([^\)]*)\)/
+      "#{WGSL_URL}#{$1}"
     else
       if lang == "cpp"
         if cmd == 'null'
@@ -319,7 +322,7 @@ def gen_cpp_enums(f)
 
   emit_type(f, 'enum') do |e, name, info|
     gen_linked_header(f, 'enum class', name, '', 3, 'enum') { |n| n.CamelCase }
-    gen_description_and_ref(f, info)
+    gen_description_and_ref(f, "cpp", info)
     gen_table(f, "cpp", name, e['values'], info['values']) { |n| n.CamelCase }
   end
 end
@@ -334,7 +337,7 @@ def gen_cpp_bitmasks(f)
 
   emit_type(f, 'bitmask') do |b, name, info|
     gen_linked_header(f, 'enum class', name, '[bitmask]', 3, 'bitmask') { |n| n.CamelCase }
-    gen_description_and_ref(f, info)
+    gen_description_and_ref(f, "cpp", info)
     gen_table(f, "cpp", name, b['values'], info['values']) { |n| n.CamelCase }
   end
 end
@@ -346,8 +349,7 @@ def gen_cpp_function(f)
     gen_linked_header(f, '', name, '', 3, 'function') { |n| n.CamelCase }
 
     emit_div_block(f, 'content') do
-      gen_description_and_ref(f, info)
-
+      gen_description_and_ref(f, "cpp", info)
       emit_div_block(f, 'signature') do
         f.write "#{gen_cpp_type_link(func['returns'])} #{name.CamelCase}"
         emit_params(f, func['args']) { |p| gen_cpp_member(p) }
@@ -371,7 +373,7 @@ def gen_cpp_function_pointers(f)
       gen_linked_header(f, '', name, '', 3, 'function-pointer') { |n| n.CamelCase }
 
       emit_div_block(f, 'content') do
-        gen_description_and_ref(f, info)
+        gen_description_and_ref(f, "cpp", info)
 
         emit_div_block(f, 'signature') do
           f.write "void (&#x2a;#{name.CamelCase})"
@@ -444,7 +446,7 @@ def gen_cpp_classes(f)
 
       emit_div_block(f, 'content') do
         emit_div_block(f, 'description') do
-          gen_description_and_ref(f, info)
+          gen_description_and_ref(f, "cpp", info)
         end
 
         (klass['methods'] || []).sort { |a, b| a['name'] <=> b['name'] }.each do |method|
@@ -454,7 +456,7 @@ def gen_cpp_classes(f)
             end
 
             method_info = (info['methods'] || {})[method['name']] || {}
-            gen_description_and_ref(f, method_info)
+            gen_description_and_ref(f, "cpp", method_info)
 
             emit_div_block(f, 'signature') do
               f.write "#{gen_cpp_type_link(method['returns'])} #{method['name'].CamelCase}"
@@ -544,7 +546,7 @@ def gen_c_enums(f)
 
   emit_type(f, 'enum') do |e, name, info|
     gen_linked_header(f, 'enum', name, '', 3, 'enum') { |n| "WGPU#{n.CamelCase}" }
-    gen_description_and_ref(f, info)
+    gen_description_and_ref(f, "c", info)
     gen_table(f, "c", name, e['values'], info['values']) do |n|
       "WGPU#{name.CamelCase}_#{n.CamelCase}"
     end
@@ -562,7 +564,7 @@ def gen_c_bitmasks(f)
 
   emit_type(f, 'bitmask') do |b, name, info|
     gen_linked_header(f, 'enum', name, '[bitmask]', 2, 'bitmask') { |n| "WGPU#{n.CamelCase}" }
-    gen_description_and_ref(f, info)
+    gen_description_and_ref(f, "c", info)
     gen_table(f, "c", name, b['values'], info['values']) do |n|
       "WGPU#{name.CamelCase}_#{n.CamelCase}"
     end
@@ -578,7 +580,7 @@ def gen_c_function(f)
     gen_linked_header(f, '', name, '', 3, 'function') { |n| "wgpu#{n.CamelCase}" }
 
     emit_div_block(f, 'content') do
-      gen_description_and_ref(f, info)
+      gen_description_and_ref(f, "c", info)
 
       emit_div_block(f, 'signature') do
         f.write "#{gen_c_type_link(func['returns'])} wgpu#{name.CamelCase}"
@@ -603,7 +605,7 @@ def gen_c_function_pointers(f)
       gen_linked_header(f, '', name, '', 3, 'function-pointer') { |n| "WGPU#{n.CamelCase}" }
 
       emit_div_block(f, 'content') do
-        gen_description_and_ref(f, info)
+        gen_description_and_ref(f, "c", info)
 
         emit_div_block(f, 'signature') do
           f.write "void (&#x2a;WGPU#{name.CamelCase})"
@@ -668,7 +670,7 @@ def gen_c_objects(f)
 
       emit_div_block(f, 'content') do
         emit_div_block(f, 'description') do
-          gen_description_and_ref(f, info)
+          gen_description_and_ref(f, "c", info)
         end
 
         methods = (klass['methods'] || [])
@@ -693,7 +695,7 @@ def gen_c_objects(f)
             end
 
             method_info = (info['methods'] || {})[method['name']] || {}
-            gen_description_and_ref(f, method_info)
+            gen_description_and_ref(f, "c", method_info)
 
             emit_div_block(f, 'signature') do
               f.write "#{gen_c_type_link(method['returns'])} #{to_method_name.call(method['name'])}"
