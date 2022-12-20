@@ -122,6 +122,11 @@ std::optional<Mesh> Parser::Parse() {
       if (!ParseTextureVertex()) {
         Resync();
       }
+    } else if (val == "g" || val == "o") {
+      // Ignore group and object statements. Don't seem to be involved in
+      // rendering.
+      AddWarning(tok, "Skipping '" + val + "' statement");
+      Resync();
     } else {
       AddWarning(tok, "Unhandled command: " + std::string(val) + ". Skipping.");
       Resync();

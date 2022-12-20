@@ -27,26 +27,10 @@
 
 namespace dusk::obj {
 
-/// A group defined in the obj file. There is always a `default` group created
-/// even if there isn't one declared.
-class Group {
- public:
-  Group(const std::string_view& name);
-  Group(Group&&);
-  ~Group();
-
-  Group& operator=(Group&&);
-
-  /// @returns the name of the group
-  const std::string& Name() const { return name_; }
-
-  /// @return the group faces
-  const std::vector<Vec3>& Faces() const { return faces_; }
-
- private:
-  std::string name_;
-
-  std::vector<Vec3> faces_;  // f
+struct Indices {
+  uint32_t vertex;
+  std::optional<uint32_t> texture;
+  std::optional<uint32_t> normal;
 };
 
 /// A mesh object defined in the obj file
@@ -75,17 +59,13 @@ class Mesh {
   /// @returns the vertex normals
   std::vector<Vec3>& VertexNormals() { return vertex_normals_; }
 
-  /// @returns the groups in the mesh
-  const std::vector<Group>& Groups() const { return groups_; }
-  /// @returns the groups in the mesh
-  std::vector<Group>& Groups() { return groups_; }
-
  private:
   std::vector<Vec4> geometric_vertices_;  // v
   std::vector<Vec3> texture_vertices_;    // vt
   std::vector<Vec3> vertex_normals_;      // vn
 
-  std::vector<Group> groups_;
+  std::vector<Indices> indices_;  // f values
+
   std::unordered_map<std::string, size_t> group_name_to_group_;
 };
 
