@@ -49,6 +49,12 @@ std::string FeatureNameToString(wgpu::FeatureName f) {
       return "DawnNative";
     case wgpu::FeatureName::ChromiumExperimentalDp4a:
       return "ChromiumExperimentalDp4a";
+    case wgpu::FeatureName::TimestampQueryInsidePasses:
+      return "TimestampQueryInsidePasses";
+    case wgpu::FeatureName::ShaderF16:
+      return "ShaderF16";
+    case wgpu::FeatureName::RG11B10UfloatRenderable:
+      return "RG11B10UfloatRenderable";
     case wgpu::FeatureName::Undefined:
       break;
   }

@@ -30,6 +30,7 @@ void Error(WGPUErrorType type, const char* msg, void*) {
     case WGPUErrorType_Unknown:
     case WGPUErrorType_DeviceLost:
     case WGPUErrorType_Force32:
+    case WGPUErrorType_Internal:
       std::cerr << msg << std::endl;
       break;
   }
