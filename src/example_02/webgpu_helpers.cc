@@ -34,8 +34,8 @@ wgpu::Buffer createBufferFromData(const wgpu::Device& device,
 wgpu::ShaderModule createShaderModule(const wgpu::Device& device,
                                       const std::string& label,
                                       const char* src) {
-  wgpu::ShaderModuleWGSLDescriptor wgslDesc;
-  wgslDesc.source = src;
+  wgpu::ShaderSourceWGSL wgslDesc;
+  wgslDesc.code = src;
   wgpu::ShaderModuleDescriptor desc{
       .nextInChain = &wgslDesc,
       .label = label.c_str(),

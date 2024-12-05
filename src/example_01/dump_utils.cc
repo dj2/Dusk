@@ -17,9 +17,16 @@
 #include <cassert>
 #include <iostream>
 #include <sstream>
+#include <string_view>
 #include <vector>
 
 namespace dusk::dump_utils {
+
+namespace {
+std::string str(const wgpu::StringView& s) {
+  return {s.data, s.length};
+}
+}  // namespace
 
 std::string FeatureNameToString(wgpu::FeatureName f) {
   switch (f) {
@@ -29,8 +36,6 @@ std::string FeatureNameToString(wgpu::FeatureName f) {
       return "Depth32FloatStencil8";
     case wgpu::FeatureName::TimestampQuery:
       return "TimestampQuery";
-    case wgpu::FeatureName::PipelineStatisticsQuery:
-      return "PipelineStatisticsQuery";
     case wgpu::FeatureName::TextureCompressionBC:
       return "TextureCompressionBC";
     case wgpu::FeatureName::TextureCompressionETC2:
@@ -39,26 +44,134 @@ std::string FeatureNameToString(wgpu::FeatureName f) {
       return "TextureCompressionASTC";
     case wgpu::FeatureName::IndirectFirstInstance:
       return "IndirectFirstInstance";
-    case wgpu::FeatureName::DawnShaderFloat16:
-      return "DawnShaderFloat16";
+    case wgpu::FeatureName::ShaderF16:
+      return "ShaderF16";
+    case wgpu::FeatureName::RG11B10UfloatRenderable:
+      return "RG11B10UfloatRenderable";
+    case wgpu::FeatureName::BGRA8UnormStorage:
+      return "BGRA8UnormStorage";
+    case wgpu::FeatureName::Float32Filterable:
+      return "Float32Filterable";
+    case wgpu::FeatureName::Float32Blendable:
+      return "Float32Blendable";
+    case wgpu::FeatureName::Subgroups:
+      return "Subgroups";
+    case wgpu::FeatureName::SubgroupsF16:
+      return "SubgroupsF16";
     case wgpu::FeatureName::DawnInternalUsages:
       return "DawnInternalUsages";
     case wgpu::FeatureName::DawnMultiPlanarFormats:
       return "DawnMultiPlanarFormats";
     case wgpu::FeatureName::DawnNative:
       return "DawnNative";
-    case wgpu::FeatureName::ChromiumExperimentalDp4a:
-      return "ChromiumExperimentalDp4a";
-    case wgpu::FeatureName::TimestampQueryInsidePasses:
-      return "TimestampQueryInsidePasses";
-    case wgpu::FeatureName::ShaderF16:
-      return "ShaderF16";
-    case wgpu::FeatureName::RG11B10UfloatRenderable:
-      return "RG11B10UfloatRenderable";
-    case wgpu::FeatureName::Undefined:
-      break;
+    case wgpu::FeatureName::ChromiumExperimentalTimestampQueryInsidePasses:
+      return "ChromiumExperimentalTimestampQueryInsidePasses";
+    case wgpu::FeatureName::ImplicitDeviceSynchronization:
+      return "ImplicitDeviceSynchronization";
+    case wgpu::FeatureName::ChromiumExperimentalImmediateData:
+      return "ChromiumExperimentalImmediateData";
+    case wgpu::FeatureName::TransientAttachments:
+      return "TransientAttachments";
+    case wgpu::FeatureName::MSAARenderToSingleSampled:
+      return "MSAARenderToSingleSampled";
+    case wgpu::FeatureName::DualSourceBlending:
+      return "DualSourceBlending";
+    case wgpu::FeatureName::D3D11MultithreadProtected:
+      return "D3D11MultithreadProtected";
+    case wgpu::FeatureName::ANGLETextureSharing:
+      return "ANGLETextureSharing";
+    case wgpu::FeatureName::PixelLocalStorageCoherent:
+      return "PixelLocalStorageCoherent";
+    case wgpu::FeatureName::PixelLocalStorageNonCoherent:
+      return "PixelLocalStorageNonCoherent";
+    case wgpu::FeatureName::Unorm16TextureFormats:
+      return "Unorm16TextureFormats";
+    case wgpu::FeatureName::Snorm16TextureFormats:
+      return "Snorm16TextureFormats";
+    case wgpu::FeatureName::MultiPlanarFormatExtendedUsages:
+      return "MultiPlanarFormatExtendedUsages";
+    case wgpu::FeatureName::MultiPlanarFormatP010:
+      return "MultiPlanarFormatP010";
+    case wgpu::FeatureName::HostMappedPointer:
+      return "HostMappedPointer";
+    case wgpu::FeatureName::MultiPlanarRenderTargets:
+      return "MultiPlanarRenderTargets";
+    case wgpu::FeatureName::MultiPlanarFormatNv12a:
+      return "MultiPlanarFormatNv12a";
+    case wgpu::FeatureName::FramebufferFetch:
+      return "FramebufferFetch";
+    case wgpu::FeatureName::BufferMapExtendedUsages:
+      return "BufferMapExtendedUsages";
+    case wgpu::FeatureName::AdapterPropertiesMemoryHeaps:
+      return "AdapterPropertiesMemoryHeaps";
+    case wgpu::FeatureName::AdapterPropertiesD3D:
+      return "AdapterPropertiesD3D";
+    case wgpu::FeatureName::AdapterPropertiesVk:
+      return "AdapterPropertiesVk";
+    case wgpu::FeatureName::R8UnormStorage:
+      return "R8UnormStorage";
+    case wgpu::FeatureName::FormatCapabilities:
+      return "FormatCapabilities";
+    case wgpu::FeatureName::DrmFormatCapabilities:
+      return "DrmFormatCapabilities";
+    case wgpu::FeatureName::Norm16TextureFormats:
+      return "Norm16TextureFormats";
+    case wgpu::FeatureName::MultiPlanarFormatNv16:
+      return "MultiPlanarFormatNv16";
+    case wgpu::FeatureName::MultiPlanarFormatNv24:
+      return "MultiPlanarFormatNv24";
+    case wgpu::FeatureName::MultiPlanarFormatP210:
+      return "MultiPlanarFormatP210";
+    case wgpu::FeatureName::MultiPlanarFormatP410:
+      return "MultiPlanarFormatP410";
+    case wgpu::FeatureName::SharedTextureMemoryVkDedicatedAllocation:
+      return "SharedTextureMemoryVkDedicatedAllocation";
+    case wgpu::FeatureName::SharedTextureMemoryAHardwareBuffer:
+      return "SharedTextureMemoryAHardwareBuffer";
+    case wgpu::FeatureName::SharedTextureMemoryDmaBuf:
+      return "SharedTextureMemoryDmaBuf";
+    case wgpu::FeatureName::SharedTextureMemoryOpaqueFD:
+      return "SharedTextureMemoryOpaqueFD";
+    case wgpu::FeatureName::SharedTextureMemoryZirconHandle:
+      return "SharedTextureMemoryZirconHandle";
+    case wgpu::FeatureName::SharedTextureMemoryDXGISharedHandle:
+      return "SharedTextureMemoryDXGISharedHandle";
+    case wgpu::FeatureName::SharedTextureMemoryD3D11Texture2D:
+      return "SharedTextureMemoryD3D11Texture2D";
+    case wgpu::FeatureName::SharedTextureMemoryIOSurface:
+      return "SharedTextureMemoryIOSurface";
+    case wgpu::FeatureName::SharedTextureMemoryEGLImage:
+      return "SharedTextureMemoryEGLImage";
+    case wgpu::FeatureName::SharedFenceVkSemaphoreOpaqueFD:
+      return "SharedFenceVkSemaphoreOpaqueFD";
+    case wgpu::FeatureName::SharedFenceSyncFD:
+      return "SharedFenceSyncFD";
+    case wgpu::FeatureName::SharedFenceVkSemaphoreZirconHandle:
+      return "SharedFenceVkSemaphoreZirconHandle";
+    case wgpu::FeatureName::SharedFenceDXGISharedHandle:
+      return "SharedFenceDXGISharedHandle";
+    case wgpu::FeatureName::SharedFenceMTLSharedEvent:
+      return "SharedFenceMTLSharedEvent";
+    case wgpu::FeatureName::SharedBufferMemoryD3D12Resource:
+      return "SharedBufferMemoryD3D12Resource";
+    case wgpu::FeatureName::StaticSamplers:
+      return "StaticSamplers";
+    case wgpu::FeatureName::YCbCrVulkanSamplers:
+      return "YCbCrVulkanSamplers";
+    case wgpu::FeatureName::ShaderModuleCompilationOptions:
+      return "ShaderModuleCompilationOptions";
+    case wgpu::FeatureName::DawnLoadResolveTexture:
+      return "DawnLoadResolveTexture";
+    case wgpu::FeatureName::DawnPartialLoadResolveTexture:
+      return "DawnPartialLoadResolveTexture";
+    case wgpu::FeatureName::MultiDrawIndirect:
+      return "MultiDrawIndirect";
+    case wgpu::FeatureName::ClipDistances:
+      return "ClipDistances";
+    case wgpu::FeatureName::DawnTexelCopyBufferRowAlignment:
+      return "DawnTexelCopyBufferRowAlignment";
   }
-  return "Undefined";
+  return "Unknown";
 }
 
 std::string AdapterTypeToString(wgpu::AdapterType type) {
@@ -93,23 +206,23 @@ std::string BackendTypeToString(wgpu::BackendType type) {
       return "OpenGL";
     case wgpu::BackendType::OpenGLES:
       return "OpenGLES";
+    case wgpu::BackendType::Undefined:
+      return "Undefined";
   }
   return "unknown";
 }
 
-std::string AdapterPropertiesToString(const wgpu::AdapterProperties& props) {
-  assert(props.nextInChain == nullptr);
+std::string AdapterInfoToString(const wgpu::AdapterInfo& info) {
+  assert(info.nextInChain == nullptr);
 
   std::stringstream out;
-  out << "VendorID: " << props.vendorID << std::endl;
-  out << "Vendor: " << props.vendorName << std::endl;
-  out << "Architecture: " << props.architecture << std::endl;
-  out << "DeviceID: " << props.deviceID << std::endl;
-  out << "Name: " << props.name << std::endl;
-  out << "Driver description: " << props.driverDescription << std::endl;
-  out << "Adapter Type: " << AdapterTypeToString(props.adapterType)
+  out << "Vendor: " << str(info.vendor) << std::endl;
+  out << "Architecture: " << str(info.architecture) << std::endl;
+  out << "Device: " << str(info.device) << std::endl;
+  out << "Description: " << str(info.description) << std::endl;
+  out << "Adapter Type: " << AdapterTypeToString(info.adapterType)
       << std::endl;
-  out << "Backend Type: " << BackendTypeToString(props.backendType)
+  out << "Backend Type: " << BackendTypeToString(info.backendType)
       << std::endl;
   return out.str();
 }
@@ -201,19 +314,18 @@ std::string LimitsToString(const wgpu::Limits& limits,
   return out.str();
 }
 
-void DumpAdapterProperties(wgpu::Adapter& adapter) {
-  wgpu::AdapterProperties properties;
-  adapter.GetProperties(&properties);
-  std::cerr << AdapterPropertiesToString(properties) << std::endl;
+void DumpAdapterInfo(wgpu::Adapter& adapter) {
+  wgpu::AdapterInfo info;
+  adapter.GetInfo(&info);
+  std::cerr << AdapterInfoToString(info) << std::endl;
 }
 
 void DumpAdapterFeatures(wgpu::Adapter& adapter) {
-  auto feature_count = adapter.EnumerateFeatures(nullptr);
-  std::vector<wgpu::FeatureName> features(feature_count);
-  adapter.EnumerateFeatures(features.data());
+  wgpu::SupportedFeatures f;
+  adapter.GetFeatures(&f);
   std::cerr << "Adapter Extensions:" << std::endl;
-  for (const auto& f : features) {
-    std::cerr << "  " << FeatureNameToString(f) << std::endl;
+  for (size_t i = 0; i < f.featureCount; ++i) {
+    std::cerr << "  " << FeatureNameToString(f.features[i]) << std::endl;
   }
 }
 
@@ -226,18 +338,17 @@ void DumpAdapterLimits(wgpu::Adapter& adapter) {
 }
 
 void DumpAdapter(wgpu::Adapter& adapter) {
-  DumpAdapterProperties(adapter);
+  DumpAdapterInfo(adapter);
   DumpAdapterFeatures(adapter);
   DumpAdapterLimits(adapter);
 }
 
 void DumpDeviceFeatures(wgpu::Device& device) {
-  auto feature_count = device.EnumerateFeatures(nullptr);
-  std::vector<wgpu::FeatureName> features(feature_count);
-  device.EnumerateFeatures(features.data());
+  wgpu::SupportedFeatures f;
+  device.GetFeatures(&f);
   std::cerr << "Device Extensions:" << std::endl;
-  for (const auto& f : features) {
-    std::cerr << "  " << FeatureNameToString(f) << std::endl;
+  for (size_t i = 0; i < f.featureCount; ++i) {
+    std::cerr << "  " << FeatureNameToString(f.features[i]) << std::endl;
   }
 }
 
