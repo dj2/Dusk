@@ -23,13 +23,13 @@ namespace dusk::dump_utils {
 std::string FeatureNameToString(wgpu::FeatureName f);
 std::string AdapterTypeToString(wgpu::AdapterType type);
 std::string BackendTypeToString(wgpu::BackendType type);
-std::string AdapterPropertiesToString(const wgpu::AdapterProperties& props);
+std::string AdapterInfoToString(const wgpu::AdapterInfo& info);
 std::string FormatNumber(uint64_t num);
 
 std::string LimitsToString(const wgpu::Limits& limits,
                            const std::string& indent);
 
-void DumpAdapterProperties(wgpu::Adapter& adapter);
+void DumpAdapterInfo(wgpu::Adapter& adapter);
 void DumpAdapterFeatures(wgpu::Adapter& adapter);
 void DumpAdapterLimits(wgpu::Adapter& adapter);
 void DumpAdapter(wgpu::Adapter& adapter);

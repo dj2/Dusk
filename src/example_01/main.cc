@@ -22,7 +22,7 @@ int main() {
   wgpu::Adapter adapter;
   instance.RequestAdapter(
       nullptr,
-      [](WGPURequestAdapterStatus, WGPUAdapter adapterIn, const char*,
+      [](WGPURequestAdapterStatus, WGPUAdapter adapterIn, WGPUStringView,
          void* userdata) {
         *static_cast<wgpu::Adapter*>(userdata) =
             wgpu::Adapter::Acquire(adapterIn);

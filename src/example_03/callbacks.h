@@ -18,8 +18,10 @@
 
 namespace dusk::cb {
 
-void Error(WGPUErrorType type, const char* msg, void*);
-void DeviceLost(WGPUDeviceLostReason reason, char const* msg, void*);
-void Logging(WGPULoggingType type, const char* msg, void*);
+void Error(const wgpu::Device&, wgpu::ErrorType type, const char* msg);
+void DeviceLost(const wgpu::Device&,
+                wgpu::DeviceLostReason reason,
+                const char* msg);
+void Logging(WGPULoggingType type, WGPUStringView msg, void*);
 
 }  // namespace dusk::cb

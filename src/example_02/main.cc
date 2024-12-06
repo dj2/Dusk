@@ -77,7 +77,7 @@ int main() {
   wgpu::Adapter adapter;
   instance.RequestAdapter(
       nullptr,
-      [](WGPURequestAdapterStatus, WGPUAdapter adapterIn, const char*,
+      [](WGPURequestAdapterStatus, WGPUAdapter adapterIn, WGPUStringView,
          void* userdata) {
         *static_cast<wgpu::Adapter*>(userdata) =
             wgpu::Adapter::Acquire(adapterIn);
@@ -87,11 +87,13 @@ int main() {
   dusk::dump_utils::DumpAdapter(adapter);
 
   // Get device
-  auto device = adapter.CreateDevice();
+  wgpu::DeviceDescriptor deviceDesc;
+  deviceDesc.SetDeviceLostCallback(wgpu::CallbackMode::AllowSpontaneous,
+                                   dusk::cb::DeviceLost);
+  deviceDesc.SetUncapturedErrorCallback(dusk::cb::Error);
+  auto device = adapter.CreateDevice(&deviceDesc);
   device.SetLabel("Primary Device");
 
-  device.SetUncapturedErrorCallback(dusk::cb::Error, nullptr);
-  device.SetDeviceLostCallback(dusk::cb::DeviceLost, nullptr);
   // Logging is enabled as soon as the callback is setup.
   device.SetLoggingCallback(dusk::cb::Logging, nullptr);
 
@@ -100,15 +102,18 @@ int main() {
   // Get surface
   auto surface = wgpu::glfw::CreateSurfaceForWindow(instance, window);
 
-  // Setup swapchain
-  wgpu::SwapChainDescriptor swapchainDesc{
-      .usage = wgpu::TextureUsage::RenderAttachment,
-      .format = wgpu::TextureFormat::BGRA8Unorm,
+  // Set up surface for drawing and presenting
+  wgpu::SurfaceCapabilities capabilities;
+  surface.GetCapabilities(adapter, &capabilities);
+  auto surfaceFormat = capabilities.formats[0];
+  wgpu::SurfaceConfiguration config = {
+      .device = device,
+      .format = surfaceFormat,
       .width = kWidth,
       .height = kHeight,
       .presentMode = wgpu::PresentMode::Mailbox,
   };
-  auto swapchain = device.CreateSwapChain(surface, &swapchainDesc);
+  surface.Configure(&config);
 
   // Create buffers
   auto vertexBuffer = dusk::webgpu::createBufferFromData(
@@ -134,12 +139,13 @@ int main() {
 
   wgpu::VertexBufferLayout vertBufferLayout{
       .arrayStride = 8 * sizeof(float),
+      .stepMode = wgpu::VertexStepMode::Vertex,
       .attributeCount = 2,
       .attributes = vertAttributes,
   };
 
   wgpu::ColorTargetState target{
-      .format = wgpu::TextureFormat::BGRA8Unorm,
+      .format = surfaceFormat,
   };
 
   wgpu::FragmentState fragState{
@@ -169,7 +175,9 @@ int main() {
     encoder.SetLabel("Main command encoder");
 
     {
-      auto backbufferView = swapchain.GetCurrentTextureView();
+      wgpu::SurfaceTexture surfaceTexture;
+      surface.GetCurrentTexture(&surfaceTexture);
+      auto backbufferView = surfaceTexture.texture.CreateView();
       backbufferView.SetLabel("Back Buffer Texture View");
 
       wgpu::RenderPassColorAttachment attachment{
@@ -194,7 +202,7 @@ int main() {
     auto commands = encoder.Finish();
 
     device.GetQueue().Submit(1, &commands);
-    swapchain.Present();
+    surface.Present();
   };
 
   while (!glfwWindowShouldClose(window)) {

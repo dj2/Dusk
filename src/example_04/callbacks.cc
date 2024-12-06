@@ -18,40 +18,50 @@
 
 namespace dusk::cb {
 
-void Error(WGPUErrorType type, const char* msg, void*) {
+namespace {
+std::string_view str(const WGPUStringView& s) {
+  return {s.data, s.length};
+}
+}  // anonymous namespace
+
+void Error(const wgpu::Device&, wgpu::ErrorType type, const char* msg) {
   switch (type) {
-    case WGPUErrorType_OutOfMemory:
-      std::cerr << "[Unhandled Error] Out Of Memory: " << msg << std::endl;
+    case wgpu::ErrorType::OutOfMemory:
+      std::cerr << "[Error] Out Of Memory: " << msg << std::endl;
       abort();
-    case WGPUErrorType_Validation:
-      std::cerr << "[Unhandled Error] Validation: " << msg << std::endl;
+    case wgpu::ErrorType::Validation:
+      std::cerr << "[Error Validation: " << msg << std::endl;
       abort();
-    case WGPUErrorType_NoError:
-    case WGPUErrorType_Unknown:
-    case WGPUErrorType_DeviceLost:
-    case WGPUErrorType_Force32:
-    case WGPUErrorType_Internal:
+    case wgpu::ErrorType::NoError:
+    case wgpu::ErrorType::Unknown:
+    case wgpu::ErrorType::DeviceLost:
+    case wgpu::ErrorType::Internal:
       std::cerr << msg << std::endl;
       break;
   }
 }
 
-void DeviceLost(WGPUDeviceLostReason reason, char const* msg, void*) {
+void DeviceLost(const wgpu::Device&,
+                wgpu::DeviceLostReason reason,
+                const char* msg) {
   std::cerr << "[Device Lost]: ";
   switch (reason) {
-    case WGPUDeviceLostReason_Undefined:
+    case wgpu::DeviceLostReason::Unknown:
       std::cerr << "Undefined: " << msg << std::endl;
       break;
-    case WGPUDeviceLostReason_Destroyed:
+    case wgpu::DeviceLostReason::Destroyed:
       std::cerr << "Destroyed: " << msg << std::endl;
       break;
-    case WGPUDeviceLostReason_Force32:
-      std::cerr << "Force32: " << msg << std::endl;
+    case wgpu::DeviceLostReason::InstanceDropped:
+      std::cerr << "InstanceDropped: " << msg << std::endl;
+      break;
+    case wgpu::DeviceLostReason::FailedCreation:
+      std::cerr << "FailedCreation: " << msg << std::endl;
       break;
   }
 }
 
-void Logging(WGPULoggingType type, const char* msg, void*) {
+void Logging(WGPULoggingType type, WGPUStringView msg, void*) {
   switch (type) {
     case WGPULoggingType_Verbose:
       std::cerr << "Log [Verbose]: ";
@@ -69,7 +79,7 @@ void Logging(WGPULoggingType type, const char* msg, void*) {
       std::cerr << "Log [Force32]: ";
       break;
   }
-  std::cerr << msg << std::endl;
+  std::cerr << str(msg) << std::endl;
 }
 
 }  // namespace dusk::cb
