@@ -14,4 +14,12 @@
 
 #pragma once
 
-#include <webgpu/webgpu_glfw.h>
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+#pragma clang diagnostic ignored "-Wdocumentation-unknown-command"
+#pragma clang diagnostic ignored "-Wdouble-promotion"
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wshadow-field-in-constructor"
+#pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
+#include <webgpu/webgpu_cpp.h>  // IWYU pragma: export
+#pragma clang diagnostic pop

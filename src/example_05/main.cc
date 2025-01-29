@@ -16,12 +16,9 @@
 #include <cassert>
 #include <chrono>
 #include <cmath>
-#include <iostream>
 #include <numbers>
 #include <string>
-#include <vector>
 
-#include "src/example_05/callbacks.h"
 #include "src/example_05/dump_utils.h"
 #include "src/example_05/mat4.h"
 #include "src/example_05/webgpu_helpers.h"
@@ -33,7 +30,7 @@ constexpr uint32_t kWidth = 1024;
 constexpr uint32_t kHeight = 768;
 
 // clang-format off
-constexpr const float cube_data[216] = {
+constexpr const std::array<float, 216> cube_data {
   // vec4<f32> position, vec2<f32> uv,
      1, -1,  1,  1,      1, 1,
     -1, -1,  1,  1,      0, 1,
@@ -92,44 +89,84 @@ constexpr uint32_t num_instances = x_count * y_count;
 
 constexpr const char* kShader = R"(
 struct Uniforms {
-  modelViewProjectionMatrix : array<mat4x4<f32>, {{NUM_INSTANCES}}>,
+  mvp : array<mat4x4f, {{NUM_INSTANCES}}>,
 }
 @binding(0) @group(0) var<uniform> uniforms : Uniforms;
 
 struct VertexInput {
   @builtin(instance_index) instance_idx : u32,
-  @location(0) pos: vec4<f32>,
-  @location(1) uv: vec2<f32>,
+  @location(0) pos: vec4f,
+  @location(1) uv: vec2f,
 }
 
 struct VertexOutput {
-  @builtin(position) vertex_pos : vec4<f32>,
-  @location(0) uv: vec2<f32>,
-  @location(1) frag_colour: vec4<f32>,
+  @builtin(position) vertex_pos: vec4f,
+  @location(0) uv: vec2f,
+  @location(1) frag_colour: vec4f,
 }
 
 @vertex
-fn vs_main(in : VertexInput) -> VertexOutput {
-  let vert_pos = uniforms.modelViewProjectionMatrix[in.instance_idx] * in.pos;
+fn vs_main(in: VertexInput) -> VertexOutput {
+  let vert_pos = uniforms.mvp[in.instance_idx] * in.pos;
   let frag_colour = 0.5 * (in.pos + vec4(1));
   return VertexOutput(vert_pos, in.uv, frag_colour);
 }
 
 @fragment
-fn fs_main(in : VertexOutput) -> @location(0) vec4<f32> {
+fn fs_main(in : VertexOutput) -> @location(0) vec4f {
   return in.frag_colour;
 }
 )";
 
+void adapter_request_cb(wgpu::RequestAdapterStatus status,
+                        wgpu::Adapter a,
+                        wgpu::StringView message,
+                        wgpu::Adapter* data) {
+  if (status != wgpu::RequestAdapterStatus::Success) {
+    std::println(stderr, "Adapter request failed: {}",
+                 std::string_view(message));
+    exit(1);
+  }
+  *data = a;
+}
+
+void device_lost_cb([[maybe_unused]] const wgpu::Device& device,
+                    wgpu::DeviceLostReason reason,
+                    struct wgpu::StringView message) {
+  std::print(stderr, "device lost: {}",
+             dusk::dump_utils::DeviceLostReasonToString(reason));
+  if (message.length > 0) {
+    std::print(stderr, ": {}", std::string_view(message));
+  }
+  std::println(stderr, "");
+}
+
+void uncaptured_error_cb
+    [[noreturn]] ([[maybe_unused]] const wgpu::Device& device,
+                  wgpu::ErrorType type,
+                  struct wgpu::StringView message) {
+  std::print(stderr, "uncaptured error: {}",
+             dusk::dump_utils::ErrorTypeToString(type));
+  if (message.length > 0) {
+    std::print(stderr, ": {}", std::string_view(message));
+  }
+
+  std::println(stderr, "");
+  assert(false);
+};
+
+void glfw_error_cb [[noreturn]] (int code, const char* message) {
+  std::println(stderr, "GLFW error: {}: {}", code, message);
+  assert(false);
+}
+
 }  // namespace
 
 int main() {
-  glfwSetErrorCallback([](int code, const char* message) {
-    std::cerr << "GLFW error: " << code << " - " << message << std::endl;
-  });
+  glfwSetErrorCallback(glfw_error_cb);
 
   if (!glfwInit()) {
-    std::cerr << "Failed to initialize GLFW." << std::endl;
+    std::println(stderr, "Failed to initialize GLFW.");
     return 1;
   }
 
@@ -138,38 +175,35 @@ int main() {
 
   auto window = glfwCreateWindow(kWidth, kHeight, "dusk", nullptr, nullptr);
   if (!window) {
+    std::println(stderr, "Unable to create GLFW window");
     return 1;
   }
+
   auto instance = wgpu::CreateInstance();
 
+  // Get surface
+  auto surface = wgpu::glfw::CreateSurfaceForWindow(instance, window);
+
   // Get Adapter
-  wgpu::Adapter adapter;
-  instance.RequestAdapter(
-      nullptr,
-      [](WGPURequestAdapterStatus, WGPUAdapter adapterIn, WGPUStringView,
-         void* userdata) {
-        *static_cast<wgpu::Adapter*>(userdata) =
-            wgpu::Adapter::Acquire(adapterIn);
-      },
-      &adapter);
+  wgpu::RequestAdapterOptions adapter_opts{
+      .compatibleSurface = surface,
+      .powerPreference = wgpu::PowerPreference::HighPerformance,
+  };
+  wgpu::Adapter adapter{};
+  instance.RequestAdapter(&adapter_opts, wgpu::CallbackMode::AllowSpontaneous,
+                          adapter_request_cb, &adapter);
 
   dusk::dump_utils::DumpAdapter(adapter);
 
   // Get device
-  wgpu::DeviceDescriptor deviceDesc;
-  deviceDesc.SetDeviceLostCallback(wgpu::CallbackMode::AllowSpontaneous,
-                                   dusk::cb::DeviceLost);
-  deviceDesc.SetUncapturedErrorCallback(dusk::cb::Error);
+  wgpu::DeviceDescriptor deviceDesc{};
+  deviceDesc.label = "Primary Device";
+  deviceDesc.SetDeviceLostCallback(wgpu::CallbackMode::AllowProcessEvents,
+                                   device_lost_cb);
+  deviceDesc.SetUncapturedErrorCallback(uncaptured_error_cb);
   auto device = adapter.CreateDevice(&deviceDesc);
-  device.SetLabel("Primary Device");
-
-  // Logging is enabled as soon as the callback is setup.
-  device.SetLoggingCallback(dusk::cb::Logging, nullptr);
 
   dusk::dump_utils::DumpDevice(device);
-
-  // Get surface
-  auto surface = wgpu::glfw::CreateSurfaceForWindow(instance, window);
 
   // Setup surface for drawing and presenting
   wgpu::SurfaceCapabilities capabilities;
@@ -177,8 +211,8 @@ int main() {
   auto surfaceFormat = capabilities.formats[0];
   wgpu::SurfaceConfiguration config = {
       .device = device,
-      .usage = wgpu::TextureUsage::RenderAttachment,
       .format = surfaceFormat,
+      .usage = wgpu::TextureUsage::RenderAttachment,
       .width = kWidth,
       .height = kHeight,
       .presentMode = wgpu::PresentMode::Mailbox,
@@ -187,8 +221,8 @@ int main() {
 
   // Create buffers
   auto vertexBuffer = dusk::webgpu::createBufferFromData(
-      device, "Cube Data Buffer", cube_data, sizeof(cube_data),
-      wgpu::BufferUsage::Vertex);
+      device, "Cube Data Buffer", cube_data.data(),
+      cube_data.size() * sizeof(float), wgpu::BufferUsage::Vertex);
 
   // Shaders
   auto shader_data = std::string(kShader);
@@ -201,23 +235,24 @@ int main() {
                                                  shader_data);
 
   // Pipeline creation
-  wgpu::VertexAttribute vertAttributes[2] = {
-      {
+  std::array<wgpu::VertexAttribute, 2> vertAttributes{
+      wgpu::VertexAttribute{
           .format = wgpu::VertexFormat::Float32x4,
           .offset = kPositionByteOffset,
           .shaderLocation = 0,
       },
-      {
+      wgpu::VertexAttribute{
           .format = wgpu::VertexFormat::Float32x2,
           .offset = kUVByteOffset,
           .shaderLocation = 1,
-      }};
+      },
+  };
 
   wgpu::VertexBufferLayout vertBufferLayout{
       .arrayStride = kCubeDataStride * sizeof(float),
       .stepMode = wgpu::VertexStepMode::Vertex,
-      .attributeCount = 2,
-      .attributes = vertAttributes,
+      .attributeCount = vertAttributes.size(),
+      .attributes = vertAttributes.data(),
   };
 
   wgpu::ColorTargetState target{
@@ -227,6 +262,7 @@ int main() {
   wgpu::FragmentState fragState{
       .module = shader,
       .entryPoint = "fs_main",
+      .constants = nullptr,
       .targetCount = 1,
       .targets = &target,
   };
@@ -244,6 +280,7 @@ int main() {
           {
               .module = shader,
               .entryPoint = "vs_main",
+              .constants = nullptr,
               .bufferCount = 1,
               .buffers = &vertBufferLayout,
           },
@@ -274,22 +311,24 @@ int main() {
   auto uniformBuffer = dusk::webgpu::createBuffer(
       device, "Uniform buffer", uniformBufferSize, wgpu::BufferUsage::Uniform);
 
-  wgpu::BindGroupEntry bindEntries[1] = {{
-      .binding = 0,
-      .buffer = uniformBuffer,
-      .size = uniformBufferSize,
-  }};
+  std::array<wgpu::BindGroupEntry, 1> bindEntries{
+      wgpu::BindGroupEntry{
+          .binding = 0,
+          .buffer = uniformBuffer,
+          .size = uniformBufferSize,
+      },
+  };
 
   wgpu::BindGroupDescriptor bindGroupDesc{
       .label = "Uniform bind group",
       .layout = pipeline.GetBindGroupLayout(0),
-      .entryCount = 1,
-      .entries = bindEntries,
+      .entryCount = bindEntries.size(),
+      .entries = bindEntries.data(),
   };
   auto uniformBindGroup = device.CreateBindGroup(&bindGroupDesc);
 
   auto aspect = float(kWidth) / float(kHeight);
-  auto fov_y_radians = float((2.f * std::numbers::pi) / 5.f);
+  auto fov_y_radians = float((2.f * std::numbers::pi_v<float>) / 5.f);
   auto projectionMatrix =
       dusk::Mat4::Perspective(fov_y_radians, aspect, 1.f, 100.f);
 
@@ -312,23 +351,25 @@ int main() {
   auto viewMatrix = dusk::Mat4::Translation(dusk::Vec3(0, 3, -92));
   viewMatrix = viewMatrix * dusk::Mat4::Rotation(30, dusk::Vec3(1., 0., 0.));
 
+  auto projViewMatrix = projectionMatrix * viewMatrix;
+
+  auto frame = 1.f;
   auto update_transformation_matrices = [&]() {
-    auto now_s = std::chrono::time_point_cast<std::chrono::milliseconds>(
-        std::chrono::steady_clock::now());
-    auto ms = float(now_s.time_since_epoch().count()) / 10000.f;
+    auto frame_step = frame / 512.f;
+    frame += 1.f;
 
     for (size_t x = 0; x < x_count; x++) {
       for (size_t y = 0; y < y_count; y++) {
         auto rotMatrix = dusk::Mat4::Rotation(
-            1, dusk::Vec3(sinf((float(x) + 0.5f) * ms),
-                          cosf((float(y) + 0.5f) * ms), 0));
+            1, dusk::Vec3(sinf((float(x) + 2.5f) * frame_step),
+                          cosf((float(y) + 2.5f) * frame_step), 0));
 
         auto movZ = dusk::Mat4::Translation(
-            dusk::Vec3(0, 0, sinf((float(x) + 0.5f) * ms)));
+            dusk::Vec3(0, 0, 3.f * sinf((float(x) + 2.5f) * frame_step)));
 
         auto idx = (x * y_count) + y;
-        mvp_matrices[idx] = projectionMatrix * viewMatrix *
-                            (model_matrices[idx] * movZ) * rotMatrix;
+        mvp_matrices[idx] =
+            projViewMatrix * (model_matrices[idx] * movZ) * rotMatrix;
       }
     }
   };
@@ -354,10 +395,9 @@ int main() {
       .depthStencilAttachment = &depthStencilAttach,
   };
 
-  // Per-frame method
-  auto frame_number = 0;
-  auto frame = [&]() {
-    frame_number += 1;
+  while (!glfwWindowShouldClose(window)) {
+    glfwPollEvents();
+    device.Tick();
 
     update_transformation_matrices();
     device.GetQueue().WriteBuffer(uniformBuffer, 0, mvp_matrices.data(),
@@ -369,6 +409,7 @@ int main() {
     {
       wgpu::SurfaceTexture surfaceTexture;
       surface.GetCurrentTexture(&surfaceTexture);
+
       auto backbufferView = surfaceTexture.texture.CreateView();
       backbufferView.SetLabel("Back Buffer Texture View");
 
@@ -385,24 +426,6 @@ int main() {
 
     device.GetQueue().Submit(1, &commands);
     surface.Present();
-  };
-
-  auto start = std::chrono::time_point_cast<std::chrono::seconds>(
-      std::chrono::steady_clock::now());
-
-  auto last = 0ll;
-  while (!glfwWindowShouldClose(window)) {
-    frame();
-    glfwPollEvents();
-
-    auto now = std::chrono::time_point_cast<std::chrono::seconds>(
-        std::chrono::steady_clock::now());
-    auto dur = now - start;
-
-    if (dur.count() > last) {
-      std::cerr << "FPS: " << (frame_number / dur.count()) << std::endl;
-      last = dur.count();
-    }
   }
 
   glfwDestroyWindow(window);
