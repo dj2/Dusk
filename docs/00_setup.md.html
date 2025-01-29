@@ -3,6 +3,10 @@
 **Setup and Configuration**
   Jan 28, 2025
 
+This article provides some information on setting up Dawn for use with CMake.
+The requirements are:
+
+
  * [c++23](https://en.cppreference.com/w/cpp/23)
  * [CMake](https://cmake.org/)
  * [Clang](https://clang.llvm.org/)
@@ -17,7 +21,7 @@
 We'll use a folder setup of:
 
 *******************************************************************************
-* magi
+* dusk
 *  |
 *  +-- out
 *  +-- src
@@ -39,7 +43,7 @@ All of our dependencies, and the dependencies needed by `Dawn`, will live in the
 and build artifacts.
 
 We will be using `submodules` to manage Dawn and needed dependencies. This means
-you'll need to run `git init` in the `magi` folder before continuing to setup
+you'll need to run `git init` in the `dawn` folder before continuing to setup
 `git`.
 
 ## Submodules
