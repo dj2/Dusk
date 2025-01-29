@@ -1,0 +1,281 @@
+<meta charset='utf-8'>
+
+**Setup and Configuration**
+  Jan 28, 2025
+
+ * [c++23](https://en.cppreference.com/w/cpp/23)
+ * [CMake](https://cmake.org/)
+ * [Clang](https://clang.llvm.org/)
+ * [Git](https://git-scm.com/)
+ * [Ninja](https://ninja-build.org/)
+ * [GLFW](https://www.glfw.org/)
+
+ All code licensed under the [Apache License, v2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+# Setup
+
+We'll use a folder setup of:
+
+*******************************************************************************
+* magi
+*  |
+*  +-- out
+*  +-- src
+*  |    |
+*  |    +-- example_yy
+*  |    |    |
+*  |    |    +-- CMakeLists.txt
+*  |    +-- CMakeLists.txt
+*  |
+*  +-- third_party
+*  |    |
+*  |    +-- CMakeLists.txt
+*  |
+*  +-- CMakeLists.txt
+*******************************************************************************
+
+All of our dependencies, and the dependencies needed by `Dawn`, will live in the
+`third_party` folder. Our source will live in `src` and `out` will be used for
+and build artifacts.
+
+We will be using `submodules` to manage Dawn and needed dependencies. This means
+you'll need to run `git init` in the `magi` folder before continuing to setup
+`git`.
+
+## Submodules
+
+~~~ shell
+git submodule init
+git submodule add https://dawn.googlesource.com/dawn third_party/dawn
+git submodule add https://github.com/abseil/abseil-cpp third_party/abseil-cpp
+git submodule add https://github.com/KhronosGroup/Spirv-Tools third_party/spirv-tools
+git submodule add https://github.com/KhronosGroup/Spirv-Headers third_party/spirv-headers
+git submodule add https://github.com/pallets/jinja third_party/jinja
+git submodule add https://github.com/mitsuhiko/markupsafe third_party/markupsafe
+git submodule add https://github.com/KhronosGroup/Vulkan-Tools third_party/vulkan-tools
+git submodule add https://github.com/KhronosGroup/Vulkan-Headers third_party/vulkan-headers
+git submodule add https://github.com/KhronosGroup/Vulkan-Utility-Libraries third_party/vulkan-utility-libraries
+git submodule add https://github.com/glfw/glfw third_party/glfw
+~~~
+[Listing [git-submodules]: Git submodule list]
+
+## CMake
+
+There are a few different `CMakeLists.txt` files in the repository. The two
+primary ones are the top level `CMakeLists.txt` and
+`third_party/CMakeLists.txt`. These control the initial project setup and the
+Dawn configuration options.
+
+### `CMakeLists.txt`
+
+Setting up CMake follows a simple pattern of configuring some CMake options,
+setting up `clang-format` if available, creating a function to set build options
+for each `TARGET` and then adding the sub-directories.
+
+For the build options, we enable c++ 23 mode, turn of c++ modules scanning as
+we won't be using them. We turn on the `CMAKE_EXPORT_COMPILE_COMMANDS` entry
+so that `compile_commands.json` will be created and usable by various tools.
+Finally, we log the build information to make it obvious what was found by
+CMake and where.
+
+~~~ Makefile
+cmake_minimum_required(VERSION 3.12)
+
+project(dusk
+  VERSION 0.0.1
+  LANGUAGES CXX
+)
+
+enable_testing()
+
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
+
+if ("${CMAKE_BUILD_TYPE}" STREQUAL "")
+  message(STATUS "No build type selected, default to Debug")
+  set(CMAKE_BUILD_TYPE "Debug")
+endif()
+
+message(STATUS "")
+message(STATUS "Build type...........: ${CMAKE_BUILD_TYPE}")
+message(STATUS "CMake generator......: ${CMAKE_GENERATOR} ${CMAKE_VERSION}")
+message(STATUS "CXX compiler.........: ${CMAKE_CXX_COMPILER}")
+message(STATUS "")
+~~~
+[Listing [cmake-config]: CMake configuration]
+
+`clang-format` we attempt to find, either already part of the build, or
+using the CMake `find_program` option. If found, we configure it out run over
+all of our `src` files of type `.cc` and `.h`. A `format` target is also added
+so we can do `ninja format` to run the formatter over the source.
+
+~~~ Makefile
+if (NOT CLANG_FORMAT)
+  find_program(CLANG_FORMAT "clang-format")
+endif()
+if (CLANG_FORMAT)
+  message(STATUS "Clang-format.........: ${CLANG_FORMAT}")
+  file(GLOB_RECURSE
+       ALL_CXX_SOURCE_FILES
+       ${PROJECT_SOURCE_DIR}/src/*.h
+       ${PROJECT_SOURCE_DIR}/src/*.cc
+  )
+
+  add_custom_target(
+      format
+      COMMAND ${CLANG_FORMAT} -i ${ALL_CXX_SOURCE_FILES}
+  )
+endif()
+
+message(STATUS "")
+~~~
+[Listing [cmake-format]: clang-format setup]
+
+Each of our `TARGET` executables will use the `dusk_compile_options` to setup
+the basic build configuration. This does turn on `Werror` and `Weverything`
+which people may find too restrictive. My preference is to find the warnings
+as soon as possible and add suppressions or fixes for them.
+
+~~~ Makefile
+function(dusk_compile_options TARGET)
+  target_include_directories(${TARGET} PRIVATE "${PROJECT_SOURCE_DIR}")
+
+  target_compile_options(${TARGET} PRIVATE
+    -O3
+    -fno-rtti
+    -fno-exceptions
+    -fvisibility=hidden
+    -Wall
+    -Werror
+    -Wextra
+    -Wpedantic
+    -pedantic-errors
+
+    -Wno-unknown-pragmas
+  )
+
+  if (("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang") OR
+      ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang"))
+    target_compile_options(${TARGET} PRIVATE
+      -Weverything
+
+      -Wno-c++98-compat
+      -Wno-c++98-compat-pedantic
+      -Wno-documentation
+      -Wno-documentation-unknown-command
+      -Wno-poison-system-directories
+    )
+  elseif(CMAKE_COMPILER_IS_GNUCXX)
+    target_compile_options(${TARGET} PRIVATE
+      -Wno-missing-field-initializers
+    )
+  endif()
+endfunction()
+~~~
+[Listing [compile-opts]: Compile options function]
+
+Finally, the `third_party` and `src` folders are added to the build.
+
+~~~ Makefile
+add_subdirectory(third_party)
+add_subdirectory(src)
+~~~
+[Listing [cmake-subdirs]: Add sub-directories to CMake]
+
+### `third_party/CMakeLists.txt`
+
+The `third_party/CMakeLists.txt` is concerned with configuring the Dawn build.
+All of the dependencies we added will be add to the build by Dawn, we just have
+to tell Dawn where it's dependencies live.
+
+Each of the dependencies has a `_DIR` entry tell Dawn how to find the
+dependency. There is also a `DAWN_THIRD_PARTY_DIR` but the subfolders are
+expected to have a specific layout which we aren't adhering too. So, while we
+set `DAWN_THIRD_PARTY_DIR` we really only use it for our configuration of the
+dependencies.
+
+~~~ Makefile
+set(DAWN_THIRD_PARTY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/)
+set(DAWN_SPIRV_HEADERS_DIR ${DAWN_THIRD_PARTY_DIR}/spirv-headers)
+set(DAWN_SPIRV_TOOLS_DIR ${DAWN_THIRD_PARTY_DIR}/spirv-tools)
+set(DAWN_VULKAN_HEADERS_DIR ${DAWN_THIRD_PARTY_DIR}/vulkan-headers)
+set(DAWN_VULKAN_UTILITY_LIBRARIES_DIR ${DAWN_THIRD_PARTY_DIR}/vulkan-utility-libraries)
+set(DAWN_JINJA2_DIR ${DAWN_THIRD_PARTY_DIR}/jinja/src/jinja2)
+set(DAWN_MARKUPSAFE_DIR ${DAWN_THIRD_PARTY_DIR}/markupsafe/src/markupsafe)
+~~~
+[Listing [dawn-config]: Configuring Dawn dependencies]
+
+Next we configure the Dawn build as desired. There are a few backend options
+I'm not planning on using, so we turn those off (mostly Compat and testing
+backends). We can then turn off various samples, tests and validation which we
+won't be using. You can leave these on, it's just more things to build.
+
+~~~ Makefile
+set(DAWN_BUILD_GEN_DIR ${CMAKE_CURRENT_BINARY_DIR}/gen)
+set(DAWN_ENABLE_DESKTOP_GL OFF)
+set(DAWN_ENABLE_OPENGLES OFF)
+set(DAWN_ENABLE_NULL OFF)
+set(DAWN_BUILD_SAMPLES OFF)
+set(TINT_BUILD_DOCS OFF)
+set(TINT_BUILD_TESTS OFF)
+set(TINT_BUILD_SAMPLES OFF)
+set(TINT_BUILD_GLSL_VALIDATOR OFF)
+set(TINT_BUILD_GLSL_WRITER OFF)
+set(TINT_BUILD_SPV_READER OFF)
+
+if(NOT APPLE)
+  set(BUILD_SHARED_LIBS ON)
+endif()
+
+add_definitions(
+  -Wno-deprecated-builtins     # From Abseil
+  -Wno-nullability-extension   # From abseil
+  -Wno-unknown-warning-option  # SPIRV-Tools
+)
+~~~
+[Listing [dawn-build-flags]: Setting Dawn build flags]
+
+Finally, add the Dawn folder to the CMake build.
+
+~~~ Makefile
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/dawn EXCLUDE_FROM_ALL)
+~~~
+[Listing [dawn-dir]: Add Dawn folder]
+
+### `src/CMakeLists.txt`
+
+The `src` CMake file just adds the sub-directories for each of the examples.
+Essentially just a proxy file.
+
+### `example/CMakeList.txt`
+
+Each example has a build file similar to:
+
+~~~ Makefile
+add_executable(dusk_example_01)
+dusk_compile_options(dusk_example_01)
+target_sources(dusk_example_01
+  dump_utils.cc
+  dump_utils.h
+  main.cc
+  wgpu.h
+)
+
+target_link_libraries(dusk_example_01
+  webgpu_dawn
+  webgpu_cpp
+)
+~~~
+
+This sets the source files, creates the executable with `add_executable` sets
+our compile options and then links against the needed targets. Typically they'll
+link against `webgpu_dawn` and `webgpu_cpp`. If you're using `glfw` we'll also
+end up adding a `glfw` and `webgpu_glfw` target to link against as well.
+
+
+<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js" charset="utf-8"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>

@@ -14,25 +14,37 @@
 
 cmake_minimum_required(VERSION 3.12)
 
-project(dusk)
+project(dusk
+  VERSION 0.0.1
+  LANGUAGES CXX
+)
+
 enable_testing()
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
 
 if ("${CMAKE_BUILD_TYPE}" STREQUAL "")
   message(STATUS "No build type selected, default to Debug")
   set(CMAKE_BUILD_TYPE "Debug")
 endif()
 
+message(STATUS "")
+message(STATUS "Build type...........: ${CMAKE_BUILD_TYPE}")
+message(STATUS "CMake generator......: ${CMAKE_GENERATOR} ${CMAKE_VERSION}")
+message(STATUS "CXX compiler.........: ${CMAKE_CXX_COMPILER}")
+message(STATUS "")
+
 if (NOT CLANG_FORMAT)
   find_program(CLANG_FORMAT "clang-format")
 endif()
 if (CLANG_FORMAT)
-  message(STATUS "Found clang-format: ${CLANG_FORMAT}")
+  message(STATUS "Clang-format.........: ${CLANG_FORMAT}")
   file(GLOB_RECURSE
        ALL_CXX_SOURCE_FILES
        ${PROJECT_SOURCE_DIR}/src/*.h
@@ -41,51 +53,48 @@ if (CLANG_FORMAT)
 
   add_custom_target(
       format
-      COMMAND ${CLANG_FORMAT} -i ${ALL_CXX_SOURCE_FILES})
-  add_custom_target(
-      format-ci
-      COMMAND
-        ! ${CLANG_FORMAT} -output-replacements-xml ${ALL_CXX_SOURCE_FILES}
-            | grep -q "replacement offset"
+      COMMAND ${CLANG_FORMAT} -i ${ALL_CXX_SOURCE_FILES}
   )
 endif()
 
+message(STATUS "")
+
 function(dusk_compile_options TARGET)
   target_include_directories(${TARGET} PRIVATE "${PROJECT_SOURCE_DIR}")
-  target_include_directories(${TARGET} PRIVATE "${PROJECT_SOURCE_DIR}/third_party/dawn/include")
 
   target_compile_options(${TARGET} PRIVATE
     -O3
     -fno-rtti
+    -fno-exceptions
     -fvisibility=hidden
     -Wall
     -Werror
     -Wextra
-    -Wno-unknown-pragmas
     -Wpedantic
     -pedantic-errors
+
+    -Wno-unknown-pragmas
   )
 
   if (("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang") OR
       ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang"))
     target_compile_options(${TARGET} PRIVATE
       -Weverything
+
+      -Wno-switch-default
+      -Wno-switch-enum
       -Wno-c++98-compat
       -Wno-c++98-compat-pedantic
       -Wno-documentation
       -Wno-documentation-unknown-command
-      -Wno-double-promotion
-      -Wno-padded
       -Wno-poison-system-directories
-      -Wno-shadow-field-in-constructor
-      -Wno-zero-as-null-pointer-constant
+      -Wno-unsafe-buffer-usage
     )
   elseif(CMAKE_COMPILER_IS_GNUCXX)
     target_compile_options(${TARGET} PRIVATE
       -Wno-missing-field-initializers
     )
   endif()
-
 endfunction()
 
 add_subdirectory(third_party)

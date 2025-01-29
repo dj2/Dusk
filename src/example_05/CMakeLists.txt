@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set(DUSK_SRCS
-  callbacks.cc
-  callbacks.h
+add_executable(dusk_example_05 ${DUSK_SRCS})
+dusk_compile_options(dusk_example_05)
+target_sources(dusk_example_05 PRIVATE
   dump_utils.cc
   dump_utils.h
   main.cc
@@ -25,10 +25,6 @@ set(DUSK_SRCS
   webgpu_helpers.h
   wgpu.h
 )
-
-add_executable(dusk_example_05 ${DUSK_SRCS})
-dusk_compile_options(dusk_example_05)
-
 target_link_libraries(dusk_example_05
   webgpu_dawn
   webgpu_cpp

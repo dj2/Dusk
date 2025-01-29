@@ -15,14 +15,18 @@
 #pragma once
 
 #include <string>
+#include <string_view>
 
-#include "src/example_05/wgpu.h"
+#include "src/example_01/wgpu.h"
 
 namespace dusk::dump_utils {
 
-std::string FeatureNameToString(wgpu::FeatureName f);
-std::string AdapterTypeToString(wgpu::AdapterType type);
-std::string BackendTypeToString(wgpu::BackendType type);
+std::string_view FeatureNameToString(wgpu::FeatureName f);
+std::string_view AdapterTypeToString(wgpu::AdapterType type);
+std::string_view BackendTypeToString(wgpu::BackendType type);
+std::string_view DeviceLostReasonToString(wgpu::DeviceLostReason reason);
+std::string_view ErrorTypeToString(wgpu::ErrorType type);
+
 std::string AdapterInfoToString(const wgpu::AdapterInfo& info);
 std::string FormatNumber(uint64_t num);
 

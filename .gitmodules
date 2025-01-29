@@ -1,0 +1,30 @@
+[submodule "third_party/dawn"]
+	path = third_party/dawn
+	url = https://dawn.googlesource.com/dawn
+[submodule "third_party/abseil-cpp"]
+	path = third_party/abseil-cpp
+	url = https://github.com/abseil/abseil-cpp
+[submodule "third_party/spirv-tools"]
+	path = third_party/spirv-tools
+	url = https://github.com/KhronosGroup/Spirv-Tools
+[submodule "third_party/spirv-headers"]
+	path = third_party/spirv-headers
+	url = https://github.com/KhronosGroup/Spirv-Headers
+[submodule "third_party/jinja"]
+	path = third_party/jinja
+	url = https://github.com/pallets/jinja
+[submodule "third_party/markupsafe"]
+	path = third_party/markupsafe
+	url = https://github.com/mitsuhiko/markupsafe
+[submodule "third_party/vulkan-tools"]
+	path = third_party/vulkan-tools
+	url = https://github.com/KhronosGroup/Vulkan-Tools
+[submodule "third_party/vulkan-headers"]
+	path = third_party/vulkan-headers
+	url = https://github.com/KhronosGroup/Vulkan-Headers
+[submodule "third_party/glfw"]
+	path = third_party/glfw
+	url = https://github.com/glfw/glfw
+[submodule "third_party/vulkan-utility-libraries"]
+	path = third_party/vulkan-utility-libraries
+	url = https://github.com/KhronosGroup/Vulkan-Utility-Libraries

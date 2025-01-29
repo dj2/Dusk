@@ -12,16 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set(DUSK_SRCS
+add_executable(dusk_example_01)
+dusk_compile_options(dusk_example_01)
+target_sources(dusk_example_01 PRIVATE
   dump_utils.cc
   dump_utils.h
   main.cc
   wgpu.h
 )
-
-add_executable(dusk_example_01 ${DUSK_SRCS})
-dusk_compile_options(dusk_example_01)
-
 target_link_libraries(dusk_example_01
   webgpu_dawn
   webgpu_cpp

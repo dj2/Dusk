@@ -31,9 +31,11 @@ class Mat4 {
        float m, float n, float o, float p)  // fourth-column
       : data_{a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p} {}
   // clang-format on
+  Mat4(const Mat4&) = default;
   Mat4(Mat4&&) = default;
   ~Mat4() = default;
 
+  Mat4& operator=(const Mat4&) = default;
   Mat4& operator=(Mat4&&) = default;
 
   static Mat4 Identity();

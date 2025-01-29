@@ -12,27 +12,73 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <print>
+
 #include "src/example_01/dump_utils.h"
 #include "src/example_01/wgpu.h"
+
+namespace {
+
+void adapter_request_cb(wgpu::RequestAdapterStatus status,
+                        wgpu::Adapter a,
+                        wgpu::StringView message,
+                        wgpu::Adapter* data) {
+  if (status != wgpu::RequestAdapterStatus::Success) {
+    std::println(stderr, "Adapter request failed: {}",
+                 std::string_view(message));
+    exit(1);
+  }
+  *data = a;
+}
+
+void device_lost_cb([[maybe_unused]] const wgpu::Device& device,
+                    wgpu::DeviceLostReason reason,
+                    struct wgpu::StringView message) {
+  std::print(stderr, "device lost: {}",
+             dusk::dump_utils::DeviceLostReasonToString(reason));
+  if (message.length > 0) {
+    std::print(stderr, ": {}", std::string_view(message));
+  }
+  std::println(stderr, "");
+}
+
+void uncaptured_error_cb
+    [[noreturn]] ([[maybe_unused]] const wgpu::Device& device,
+                  wgpu::ErrorType type,
+                  struct wgpu::StringView message) {
+  std::print(stderr, "uncaptured error: {}",
+             dusk::dump_utils::ErrorTypeToString(type));
+  if (message.length > 0) {
+    std::print(stderr, ": {}", std::string_view(message));
+  }
+
+  std::println(stderr, "");
+  assert(false);
+};
+
+}  // namespace
 
 int main() {
   auto instance = wgpu::CreateInstance();
 
   // Get Adapter
-  wgpu::Adapter adapter;
-  instance.RequestAdapter(
-      nullptr,
-      [](WGPURequestAdapterStatus, WGPUAdapter adapterIn, WGPUStringView,
-         void* userdata) {
-        *static_cast<wgpu::Adapter*>(userdata) =
-            wgpu::Adapter::Acquire(adapterIn);
-      },
-      &adapter);
+  wgpu::RequestAdapterOptions adapter_opts{
+      .powerPreference = wgpu::PowerPreference::HighPerformance,
+  };
+  wgpu::Adapter adapter{};
+  instance.RequestAdapter(&adapter_opts, wgpu::CallbackMode::AllowSpontaneous,
+                          adapter_request_cb, &adapter);
 
   dusk::dump_utils::DumpAdapter(adapter);
 
   // Get device
-  auto device = adapter.CreateDevice();
+  wgpu::DeviceDescriptor device_desc{};
+  device_desc.label = "default device";
+  device_desc.SetDeviceLostCallback(wgpu::CallbackMode::AllowProcessEvents,
+                                    device_lost_cb);
+  device_desc.SetUncapturedErrorCallback(uncaptured_error_cb);
+
+  wgpu::Device device = adapter.CreateDevice(&device_desc);
   dusk::dump_utils::DumpDevice(device);
 
   return 0;
