@@ -14,15 +14,16 @@
 
 #include <array>
 #include <cassert>
-#include <chrono>
 #include <cmath>
 #include <numbers>
+#include <print>
 #include <string>
 
-#include "src/example_05/dump_utils.h"
+#include "src/common/glfw.h"
+#include "src/common/log.h"
+#include "src/common/wgpu.h"
 #include "src/example_05/mat4.h"
 #include "src/example_05/webgpu_helpers.h"
-#include "src/example_05/wgpu.h"
 
 namespace {
 
@@ -133,8 +134,7 @@ void adapter_request_cb(wgpu::RequestAdapterStatus status,
 void device_lost_cb([[maybe_unused]] const wgpu::Device& device,
                     wgpu::DeviceLostReason reason,
                     struct wgpu::StringView message) {
-  std::print(stderr, "device lost: {}",
-             dusk::dump_utils::DeviceLostReasonToString(reason));
+  std::print(stderr, "device lost: {}", dusk::log::to_str(reason));
   if (message.length > 0) {
     std::print(stderr, ": {}", std::string_view(message));
   }
@@ -145,8 +145,7 @@ void uncaptured_error_cb
     [[noreturn]] ([[maybe_unused]] const wgpu::Device& device,
                   wgpu::ErrorType type,
                   struct wgpu::StringView message) {
-  std::print(stderr, "uncaptured error: {}",
-             dusk::dump_utils::ErrorTypeToString(type));
+  std::print(stderr, "uncaptured error: {}", dusk::log::to_str(type));
   if (message.length > 0) {
     std::print(stderr, ": {}", std::string_view(message));
   }
@@ -193,7 +192,7 @@ int main() {
   instance.RequestAdapter(&adapter_opts, wgpu::CallbackMode::AllowSpontaneous,
                           adapter_request_cb, &adapter);
 
-  dusk::dump_utils::DumpAdapter(adapter);
+  dusk::log::emit(adapter);
 
   // Get device
   wgpu::DeviceDescriptor deviceDesc{};
@@ -203,7 +202,7 @@ int main() {
   deviceDesc.SetUncapturedErrorCallback(uncaptured_error_cb);
   auto device = adapter.CreateDevice(&deviceDesc);
 
-  dusk::dump_utils::DumpDevice(device);
+  dusk::log::emit(device);
 
   // Setup surface for drawing and presenting
   wgpu::SurfaceCapabilities capabilities;

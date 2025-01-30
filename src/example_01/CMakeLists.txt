@@ -15,10 +15,10 @@
 add_executable(dusk_example_01)
 dusk_compile_options(dusk_example_01)
 target_sources(dusk_example_01 PRIVATE
-  dump_utils.cc
-  dump_utils.h
+  ../common/log.cc
+  ../common/log.h
+  ../common/wgpu.h
   main.cc
-  wgpu.h
 )
 target_link_libraries(dusk_example_01
   webgpu_dawn

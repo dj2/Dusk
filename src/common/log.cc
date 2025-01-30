@@ -1,4 +1,4 @@
-// Copyright 2022 The Dusk Authors
+// Copyright 2025 The Dusk Authors
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,15 +12,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "src/example_03/dump_utils.h"
+#include "src/common/log.h"
 
 #include <cassert>
 #include <print>
 #include <sstream>
 
-namespace dusk::dump_utils {
+namespace dusk::log {
+namespace {
 
-std::string_view FeatureNameToString(wgpu::FeatureName f) {
+std::string format_number(uint64_t num) {
+  auto s = std::to_string(num);
+  std::stringstream ret;
+
+  auto remainder = s.length() % 3;
+  ret << s.substr(0, remainder);
+  for (size_t i = remainder; i < s.length(); i += 3) {
+    if (i > 0) {
+      ret << ",";
+    }
+    ret << s.substr(i, 3);
+  }
+  return ret.str();
+}
+
+}  // namespace
+
+std::string_view to_str(wgpu::FeatureName f) {
   switch (f) {
     case wgpu::FeatureName::DepthClipControl:
       return "DepthClipControl";
@@ -168,7 +186,7 @@ std::string_view FeatureNameToString(wgpu::FeatureName f) {
   return "Unknown";
 }
 
-std::string_view AdapterTypeToString(wgpu::AdapterType type) {
+std::string_view to_str(wgpu::AdapterType type) {
   switch (type) {
     case wgpu::AdapterType::DiscreteGPU:
       return "discrete GPU";
@@ -182,7 +200,7 @@ std::string_view AdapterTypeToString(wgpu::AdapterType type) {
   return "unknown";
 }
 
-std::string_view BackendTypeToString(wgpu::BackendType type) {
+std::string_view to_str(wgpu::BackendType type) {
   switch (type) {
     case wgpu::BackendType::Null:
       return "Null";
@@ -206,7 +224,7 @@ std::string_view BackendTypeToString(wgpu::BackendType type) {
   return "unknown";
 }
 
-std::string_view DeviceLostReasonToString(wgpu::DeviceLostReason reason) {
+std::string_view to_str(wgpu::DeviceLostReason reason) {
   switch (reason) {
     case wgpu::DeviceLostReason::Destroyed:
       return "Destroyed";
@@ -219,7 +237,7 @@ std::string_view DeviceLostReasonToString(wgpu::DeviceLostReason reason) {
   }
 }
 
-std::string_view ErrorTypeToString(wgpu::ErrorType type) {
+std::string_view to_str(wgpu::ErrorType type) {
   switch (type) {
     case wgpu::ErrorType::NoError:
       return "NoError";
@@ -234,7 +252,7 @@ std::string_view ErrorTypeToString(wgpu::ErrorType type) {
   }
 }
 
-std::string AdapterInfoToString(const wgpu::AdapterInfo& info) {
+std::string to_str(const wgpu::AdapterInfo& info) {
   assert(info.nextInChain == nullptr);
 
   std::stringstream out;
@@ -242,141 +260,125 @@ std::string AdapterInfoToString(const wgpu::AdapterInfo& info) {
   std::println(out, "Architecture: {}", std::string_view(info.architecture));
   std::println(out, "Device: {}", std::string_view(info.device));
   std::println(out, "Description: {}", std::string_view(info.description));
-  std::println(out, "Adapter Type: {}", AdapterTypeToString(info.adapterType));
-  std::println(out, "Backend Type: {}", BackendTypeToString(info.backendType));
+  std::println(out, "Adapter Type: {}", to_str(info.adapterType));
+  std::println(out, "Backend Type: {}", to_str(info.backendType));
   return out.str();
 }
 
-std::string FormatNumber(uint64_t num) {
-  auto s = std::to_string(num);
-  std::stringstream ret;
-
-  auto remainder = s.length() % 3;
-  ret << s.substr(0, remainder);
-  for (size_t i = remainder; i < s.length(); i += 3) {
-    if (i > 0) {
-      ret << ",";
-    }
-    ret << s.substr(i, 3);
-  }
-  return ret.str();
-}
-
-std::string LimitsToString(const wgpu::Limits& limits,
-                           const std::string& indent) {
+std::string limits(const wgpu::Limits& limits, const std::string& indent) {
   std::stringstream out;
   std::println(out, "{}maxTextureDimension1D: {}", indent,
-               FormatNumber(limits.maxTextureDimension1D));
+               format_number(limits.maxTextureDimension1D));
   std::println(out, "{}maxTextureDimension2D: {}", indent,
-               FormatNumber(limits.maxTextureDimension2D));
+               format_number(limits.maxTextureDimension2D));
   std::println(out, "{}maxTextureDimension3D: {}", indent,
-               FormatNumber(limits.maxTextureDimension3D));
+               format_number(limits.maxTextureDimension3D));
   std::println(out, "{}maxTextureArrayLayers: {}", indent,
-               FormatNumber(limits.maxTextureArrayLayers));
+               format_number(limits.maxTextureArrayLayers));
   std::println(out, "{}maxBindGroups: {}", indent,
-               FormatNumber(limits.maxBindGroups));
+               format_number(limits.maxBindGroups));
   std::println(out, "{}maxDynamicUniformBuffersPerPipelineLayout: {}", indent,
-               FormatNumber(limits.maxDynamicUniformBuffersPerPipelineLayout));
+               format_number(limits.maxDynamicUniformBuffersPerPipelineLayout));
   std::println(out, "{}maxDynamicStorageBuffersPerPipelineLayout: {}", indent,
-               FormatNumber(limits.maxDynamicStorageBuffersPerPipelineLayout));
+               format_number(limits.maxDynamicStorageBuffersPerPipelineLayout));
   std::println(out, "{}maxSampledTexturesPerShaderStage: {}", indent,
-               FormatNumber(limits.maxSampledTexturesPerShaderStage));
+               format_number(limits.maxSampledTexturesPerShaderStage));
   std::println(out, "{}maxSamplersPerShaderStage: {}", indent,
-               FormatNumber(limits.maxSamplersPerShaderStage));
+               format_number(limits.maxSamplersPerShaderStage));
   std::println(out, "{}maxStorageBuffersPerShaderStage: {}", indent,
-               FormatNumber(limits.maxStorageBuffersPerShaderStage));
+               format_number(limits.maxStorageBuffersPerShaderStage));
   std::println(out, "{}maxStorageTexturesPerShaderStage: {}", indent,
-               FormatNumber(limits.maxStorageTexturesPerShaderStage));
+               format_number(limits.maxStorageTexturesPerShaderStage));
   std::println(out, "{}maxUniformBuffersPerShaderStage: {}", indent,
-               FormatNumber(limits.maxUniformBuffersPerShaderStage));
+               format_number(limits.maxUniformBuffersPerShaderStage));
   std::println(out, "{}maxUniformBufferBindingSize: {}", indent,
-               FormatNumber(limits.maxUniformBufferBindingSize));
+               format_number(limits.maxUniformBufferBindingSize));
   std::println(out, "{}maxStorageBufferBindingSize: {}", indent,
-               FormatNumber(limits.maxStorageBufferBindingSize));
+               format_number(limits.maxStorageBufferBindingSize));
   std::println(out, "{}minUniformBufferOffsetAlignment: {}", indent,
-               FormatNumber(limits.minUniformBufferOffsetAlignment));
+               format_number(limits.minUniformBufferOffsetAlignment));
   std::println(out, "{}minStorageBufferOffsetAlignment: {}", indent,
-               FormatNumber(limits.minStorageBufferOffsetAlignment));
+               format_number(limits.minStorageBufferOffsetAlignment));
   std::println(out, "{}maxVertexBuffers: {}", indent,
-               FormatNumber(limits.maxVertexBuffers));
+               format_number(limits.maxVertexBuffers));
   std::println(out, "{}maxVertexAttributes: {}", indent,
-               FormatNumber(limits.maxVertexAttributes));
+               format_number(limits.maxVertexAttributes));
   std::println(out, "{}maxVertexBufferArrayStride: {}", indent,
-               FormatNumber(limits.maxVertexBufferArrayStride));
+               format_number(limits.maxVertexBufferArrayStride));
   std::println(out, "{}maxInterStageShaderComponents: {}", indent,
-               FormatNumber(limits.maxInterStageShaderComponents));
+               format_number(limits.maxInterStageShaderComponents));
   std::println(out, "{}maxInterStageShaderVariables: {}", indent,
-               FormatNumber(limits.maxInterStageShaderVariables));
+               format_number(limits.maxInterStageShaderVariables));
   std::println(out, "{}maxColorAttachments: {}", indent,
-               FormatNumber(limits.maxColorAttachments));
+               format_number(limits.maxColorAttachments));
   std::println(out, "{}maxComputeWorkgroupStorageSize: {}", indent,
-               FormatNumber(limits.maxComputeWorkgroupStorageSize));
+               format_number(limits.maxComputeWorkgroupStorageSize));
   std::println(out, "{}maxComputeInvocationsPerWorkgroup: {}", indent,
-               FormatNumber(limits.maxComputeInvocationsPerWorkgroup));
+               format_number(limits.maxComputeInvocationsPerWorkgroup));
   std::println(out, "{}maxComputeWorkgroupSizeX: {}", indent,
-               FormatNumber(limits.maxComputeWorkgroupSizeX));
+               format_number(limits.maxComputeWorkgroupSizeX));
   std::println(out, "{}maxComputeWorkgroupSizeY: {}", indent,
-               FormatNumber(limits.maxComputeWorkgroupSizeY));
+               format_number(limits.maxComputeWorkgroupSizeY));
   std::println(out, "{}maxComputeWorkgroupSizeZ: {}", indent,
-               FormatNumber(limits.maxComputeWorkgroupSizeZ));
+               format_number(limits.maxComputeWorkgroupSizeZ));
   std::println(out, "{}maxComputeWorkgroupsPerDimension: {}", indent,
-               FormatNumber(limits.maxComputeWorkgroupsPerDimension));
+               format_number(limits.maxComputeWorkgroupsPerDimension));
 
   return out.str();
 }
 
-void DumpAdapterInfo(wgpu::Adapter& adapter) {
+void emit_adapter_info(wgpu::Adapter& adapter) {
   wgpu::AdapterInfo info;
   adapter.GetInfo(&info);
-  std::println(stderr, "{}", AdapterInfoToString(info));
+  std::println(stderr, "{}", to_str(info));
 }
 
-void DumpAdapterFeatures(wgpu::Adapter& adapter) {
+void emit_adapter_features(wgpu::Adapter& adapter) {
   wgpu::SupportedFeatures f;
   adapter.GetFeatures(&f);
   std::println(stderr, "Adapter Extensions:");
   for (size_t i = 0; i < f.featureCount; ++i) {
-    std::println(stderr, "  {}", FeatureNameToString(f.features[i]));
+    std::println(stderr, "  {}", to_str(f.features[i]));
   }
 }
 
-void DumpAdapterLimits(wgpu::Adapter& adapter) {
+void emit_adapter_limits(wgpu::Adapter& adapter) {
   wgpu::SupportedLimits adapterLimits;
   if (adapter.GetLimits(&adapterLimits)) {
     std::println(stderr, "");
     std::println(stderr, "Adapter Limits:");
-    std::println(stderr, "{}", LimitsToString(adapterLimits.limits, "  "));
+    std::println(stderr, "{}", limits(adapterLimits.limits, "  "));
   }
 }
 
-void DumpAdapter(wgpu::Adapter& adapter) {
-  DumpAdapterInfo(adapter);
-  DumpAdapterFeatures(adapter);
-  DumpAdapterLimits(adapter);
+void emit(wgpu::Adapter& adapter) {
+  emit_adapter_info(adapter);
+  emit_adapter_features(adapter);
+  emit_adapter_limits(adapter);
 }
 
-void DumpDeviceFeatures(wgpu::Device& device) {
+void emit_device_features(wgpu::Device& device) {
   wgpu::SupportedFeatures f;
   device.GetFeatures(&f);
   std::println(stderr, "Device Extensions:");
 
   for (size_t i = 0; i < f.featureCount; ++i) {
-    std::println(stderr, "  {}", FeatureNameToString(f.features[i]));
+    std::println(stderr, "  {}", to_str(f.features[i]));
   }
 }
 
-void DumpDeviceLimits(wgpu::Device& device) {
+void emit_device_limits(wgpu::Device& device) {
   wgpu::SupportedLimits deviceLimits;
   if (device.GetLimits(&deviceLimits)) {
     std::println(stderr, "");
     std::println(stderr, "Device Limits:");
-    std::println(stderr, "{}", LimitsToString(deviceLimits.limits, "  "));
+    std::println(stderr, "{}", limits(deviceLimits.limits, "  "));
   }
 }
 
-void DumpDevice(wgpu::Device& device) {
-  DumpDeviceFeatures(device);
-  DumpDeviceLimits(device);
+void emit(wgpu::Device& device) {
+  emit_device_features(device);
+  emit_device_limits(device);
 }
 
-}  // namespace dusk::dump_utils
+}  // namespace dusk::log

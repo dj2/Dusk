@@ -14,7 +14,7 @@
 
 #include <string>
 
-#include "src/example_04/wgpu.h"
+#include "src/common/wgpu.h"
 
 namespace dusk::webgpu {
 
