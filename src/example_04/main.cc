@@ -19,9 +19,9 @@
 
 #include "src/common/glfw.h"
 #include "src/common/log.h"
+#include "src/common/webgpu_helpers.h"
 #include "src/common/wgpu.h"
 #include "src/example_04/mat4.h"
-#include "src/example_04/webgpu_helpers.h"
 
 namespace {
 
@@ -209,13 +209,13 @@ int main() {
   surface.Configure(&config);
 
   // Create buffers
-  auto vertexBuffer = dusk::webgpu::createBufferFromData(
+  auto vertexBuffer = dusk::webgpu::create_buffer(
       device, "Cube Data Buffer", cube_data.data(),
       cube_data.size() * sizeof(float), wgpu::BufferUsage::Vertex);
 
   // Shaders
   auto shader =
-      dusk::webgpu::createShaderModule(device, "Main Shader Module", kShader);
+      dusk::webgpu::create_shader_module(device, "Main Shader Module", kShader);
 
   // Pipeline creation
   std::array<wgpu::VertexAttribute, 2> vertAttributes{
@@ -278,7 +278,7 @@ int main() {
   auto pipeline = device.CreateRenderPipeline(&pipelineDesc);
 
   // Create depth texture
-  auto depthTexture = dusk::webgpu::createTexture(
+  auto depthTexture = dusk::webgpu::create_texture(
       device, "Depth texture",
       {
           .width = kWidth,
@@ -288,7 +288,7 @@ int main() {
 
   // Setup Uniforms
   constexpr uint64_t uniformBufferSize = 4 * 16;  // mat4x4<f32>
-  auto uniformBuffer = dusk::webgpu::createBuffer(
+  auto uniformBuffer = dusk::webgpu::create_buffer(
       device, "Uniform buffer", uniformBufferSize, wgpu::BufferUsage::Uniform);
 
   std::array<wgpu::BindGroupEntry, 1> bindEntries{

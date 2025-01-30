@@ -21,9 +21,9 @@
 
 #include "src/common/glfw.h"
 #include "src/common/log.h"
+#include "src/common/webgpu_helpers.h"
 #include "src/common/wgpu.h"
 #include "src/example_05/mat4.h"
-#include "src/example_05/webgpu_helpers.h"
 
 namespace {
 
@@ -219,7 +219,7 @@ int main() {
   surface.Configure(&config);
 
   // Create buffers
-  auto vertexBuffer = dusk::webgpu::createBufferFromData(
+  auto vertexBuffer = dusk::webgpu::create_buffer(
       device, "Cube Data Buffer", cube_data.data(),
       cube_data.size() * sizeof(float), wgpu::BufferUsage::Vertex);
 
@@ -230,8 +230,8 @@ int main() {
   assert(pos != std::string::npos);
   shader_data.replace(pos, key.size(), std::to_string(num_instances));
 
-  auto shader = dusk::webgpu::createShaderModule(device, "Main Shader Module",
-                                                 shader_data);
+  auto shader = dusk::webgpu::create_shader_module(device, "Main Shader Module",
+                                                   shader_data);
 
   // Pipeline creation
   std::array<wgpu::VertexAttribute, 2> vertAttributes{
@@ -295,7 +295,7 @@ int main() {
   auto pipeline = device.CreateRenderPipeline(&pipelineDesc);
 
   // Create depth texture
-  auto depthTexture = dusk::webgpu::createTexture(
+  auto depthTexture = dusk::webgpu::create_texture(
       device, "Depth texture",
       {
           .width = kWidth,
@@ -307,7 +307,7 @@ int main() {
   constexpr uint32_t matrix_element_count = 4 * 4;  // 4x4 matrix
   constexpr uint32_t matrix_byte_size = sizeof(float) * matrix_element_count;
   constexpr uint64_t uniformBufferSize = matrix_byte_size * num_instances;
-  auto uniformBuffer = dusk::webgpu::createBuffer(
+  auto uniformBuffer = dusk::webgpu::create_buffer(
       device, "Uniform buffer", uniformBufferSize, wgpu::BufferUsage::Uniform);
 
   std::array<wgpu::BindGroupEntry, 1> bindEntries{
