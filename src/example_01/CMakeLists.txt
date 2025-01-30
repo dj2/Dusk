@@ -15,14 +15,10 @@
 add_executable(dusk_example_01)
 dusk_compile_options(dusk_example_01)
 target_sources(dusk_example_01 PRIVATE
-  ../common/callback.cc
-  ../common/callback.h
-  ../common/log.cc
-  ../common/log.h
-  ../common/wgpu.h
   main.cc
 )
 target_link_libraries(dusk_example_01
+  dusk::common
   webgpu_dawn
   webgpu_cpp
 )

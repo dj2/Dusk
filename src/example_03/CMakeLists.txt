@@ -15,17 +15,10 @@
 add_executable(dusk_example_03 ${DUSK_SRCS})
 dusk_compile_options(dusk_example_03)
 target_sources(dusk_example_03 PRIVATE
-  ../common/callback.cc
-  ../common/callback.h
-  ../common/glfw.h
-  ../common/log.cc
-  ../common/log.h
-  ../common/webgpu_helpers.cc
-  ../common/webgpu_helpers.h
-  ../common/wgpu.h
   main.cc
 )
 target_link_libraries(dusk_example_03
+  dusk::common
   webgpu_dawn
   webgpu_cpp
   webgpu_glfw
