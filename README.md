@@ -1,18 +1,12 @@
 # Dusk
 
 The Dusk repository contains a series of examples which show usage of
-the Dawn native API. Each example is designed to be standalone so each
-example contains copies of all the required code for that example. This should
-make it easier to determine exactly what code is needed at any given point.
-
-Note, the README.md files in each folder only talk about the new ideas and
-concepts provided in that example. So, looking at README.md files in earlier
-examples maybe needed to understand the concepts that were introduced earlier.
+the Dawn native API. 
 
 This is not an officially supported Google product.
 
 ## Requirements
- * `depot_tools`
+ * `git`
  * `cmake`
  * `ninja`
  * `clang` or `gcc`

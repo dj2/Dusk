@@ -14,8 +14,8 @@
 
 #include <print>
 
-#include "src/example_01/dump_utils.h"
-#include "src/example_01/wgpu.h"
+#include "src/common/log.h"
+#include "src/common/wgpu.h"
 
 namespace {
 
@@ -34,8 +34,7 @@ void adapter_request_cb(wgpu::RequestAdapterStatus status,
 void device_lost_cb([[maybe_unused]] const wgpu::Device& device,
                     wgpu::DeviceLostReason reason,
                     struct wgpu::StringView message) {
-  std::print(stderr, "device lost: {}",
-             dusk::dump_utils::DeviceLostReasonToString(reason));
+  std::print(stderr, "device lost: {}", dusk::log::to_str(reason));
   if (message.length > 0) {
     std::print(stderr, ": {}", std::string_view(message));
   }
@@ -46,8 +45,7 @@ void uncaptured_error_cb
     [[noreturn]] ([[maybe_unused]] const wgpu::Device& device,
                   wgpu::ErrorType type,
                   struct wgpu::StringView message) {
-  std::print(stderr, "uncaptured error: {}",
-             dusk::dump_utils::ErrorTypeToString(type));
+  std::print(stderr, "uncaptured error: {}", dusk::log::to_str(type));
   if (message.length > 0) {
     std::print(stderr, ": {}", std::string_view(message));
   }
@@ -69,7 +67,7 @@ int main() {
   instance.RequestAdapter(&adapter_opts, wgpu::CallbackMode::AllowSpontaneous,
                           adapter_request_cb, &adapter);
 
-  dusk::dump_utils::DumpAdapter(adapter);
+  dusk::log::emit(adapter);
 
   // Get device
   wgpu::DeviceDescriptor device_desc{};
@@ -79,7 +77,7 @@ int main() {
   device_desc.SetUncapturedErrorCallback(uncaptured_error_cb);
 
   wgpu::Device device = adapter.CreateDevice(&device_desc);
-  dusk::dump_utils::DumpDevice(device);
+  dusk::log::emit(device);
 
   return 0;
 }

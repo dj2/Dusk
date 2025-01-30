@@ -15,15 +15,16 @@
 add_executable(dusk_example_04 ${DUSK_SRCS})
 dusk_compile_options(dusk_example_04)
 target_sources(dusk_example_04 PRIVATE
-  dump_utils.cc
-  dump_utils.h
+  ../common/glfw.h
+  ../common/log.cc
+  ../common/log.h
+  ../common/wgpu.h
   main.cc
   mat4.cc
   mat4.h
   vec3.h
   webgpu_helpers.cc
   webgpu_helpers.h
-  wgpu.h
 )
 target_link_libraries(dusk_example_04
   webgpu_dawn
