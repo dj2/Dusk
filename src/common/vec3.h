@@ -18,14 +18,18 @@
 
 namespace dusk {
 
+/// A vector in 3-space
 class Vec3 {
  public:
+  /// Creates a new vector with the given values
   Vec3(float x, float y, float z) : x_(x), y_(y), z_(z) {}
 
-  float Length() const { return sqrtf((x_ * x_) + (y_ * y_) + (z_ * z_)); }
+  /// Returns the length of the vector
+  float length() const { return sqrtf((x_ * x_) + (y_ * y_) + (z_ * z_)); }
 
-  Vec3 Normalize() const {
-    auto l = Length();
+  /// Returns the normalized version of the vector
+  Vec3 normalize() const {
+    auto l = length();
     if (l == 0.0f) {
       return Vec3{0., 0., 0.};
     }
