@@ -19,24 +19,85 @@
 
 #include "src/common/wgpu.h"
 
+/// Methods used to log various bits of data from WebGPU.
 namespace dusk::log {
 
+/// Creates a textual version of the the feature name
+///
+/// @param f the feature name to convert
+/// @returns the string name
 std::string_view to_str(wgpu::FeatureName f);
+
+/// Creates a textual version of the the adapter type
+///
+/// @param type the adapter type to convert
+/// @returns the string name
 std::string_view to_str(wgpu::AdapterType type);
+
+/// Creates a textual version of the the backend type
+///
+/// @param type the backend type to convert
+/// @returns the string name
 std::string_view to_str(wgpu::BackendType type);
+
+/// Creates a textual version of the the device lost reason
+///
+/// @param f the device lost reason to convert
+/// @returns the string name
 std::string_view to_str(wgpu::DeviceLostReason reason);
+
+/// Creates a textual version of the the error type
+///
+/// @param f the error type to convert
+/// @returns the string name
 std::string_view to_str(wgpu::ErrorType type);
 
+/// Creates a textual version of the the adapter information
+///
+/// @param info the adapter info to convert
+/// @returns the string representation
 std::string to_str(const wgpu::AdapterInfo& info);
-std::string limits(const wgpu::Limits& limits, const std::string& indent);
 
+/// Creates a textual version of the limits
+///
+/// @param limits the limits to convert
+/// @param indent the amount to indent each limit string
+/// @returns the string representation
+std::string limits(const wgpu::Limits& limits, std::string_view indent);
+
+/// Emits the adapter info to `stderr`
+///
+/// @param adapter the adapter to emit from
 void emit_adapter_info(wgpu::Adapter& adapter);
+
+/// Emits the adapter features to `stderr`
+///
+/// @param adapter the adapter to emit from
 void emit_adapter_features(wgpu::Adapter& adapter);
+
+/// Emits the adapter limits to `stderr`
+///
+/// @param adapter the adapter to emit from
 void emit_adapter_limits(wgpu::Adapter& adapter);
+
+/// Emits the adapter to `stderr`
+///
+/// @param adapter the adapter to emit
 void emit(wgpu::Adapter& adapter);
 
+/// Emits the device features to `stderr`
+///
+/// @param device the device to emit from
 void emit_device_features(wgpu::Device& device);
+
+/// Emits the device limits to `stderr`
+///
+/// @param device the device to emit from
 void emit_device_limits(wgpu::Device& device);
+
+/// Emits the device to `stderr`
+///
+/// @param device the device to emit
 void emit(wgpu::Device& device);
 
 }  // namespace dusk::log
