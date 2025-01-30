@@ -1,4 +1,4 @@
-# Copyright 2022 The Dusk Authors
+# Copyright 2025 The Dusk Authors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,15 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-add_executable(dusk_example_02)
-dusk_compile_options(dusk_example_02)
-target_sources(dusk_example_02 PRIVATE
-  main.cc
+add_library(dusk-common)
+add_library(dusk::common ALIAS dusk-common)
+dusk_compile_options(dusk-common)
+target_sources(dusk-common PRIVATE
+  callback.cc
+  callback.h
+  glfw.h
+  log.cc
+  log.h
+  webgpu_helpers.cc
+  webgpu_helpers.h
+  wgpu.h
 )
-target_link_libraries(dusk_example_02
-  dusk::common
-  webgpu_dawn
+
+target_link_libraries(dusk-common PRIVATE
   webgpu_cpp
-  webgpu_glfw
-  glfw
 )
