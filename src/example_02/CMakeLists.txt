@@ -15,6 +15,8 @@
 add_executable(dusk_example_02)
 dusk_compile_options(dusk_example_02)
 target_sources(dusk_example_02 PRIVATE
+  ../common/callback.cc
+  ../common/callback.h
   ../common/glfw.h
   ../common/log.cc
   ../common/log.h
