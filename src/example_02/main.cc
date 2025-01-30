@@ -17,8 +17,8 @@
 
 #include "src/common/glfw.h"
 #include "src/common/log.h"
+#include "src/common/webgpu_helpers.h"
 #include "src/common/wgpu.h"
-#include "src/example_02/webgpu_helpers.h"
 
 namespace {
 
@@ -151,13 +151,13 @@ int main() {
   surface.Configure(&config);
 
   // Create buffers
-  auto vertexBuffer = dusk::webgpu::createBufferFromData(
+  auto vertexBuffer = dusk::webgpu::create_buffer(
       device, "Vertex Buffer", vertex_data.data(),
       vertex_data.size() * sizeof(float), wgpu::BufferUsage::Vertex);
 
   // Shaders
   auto shader =
-      dusk::webgpu::createShaderModule(device, "Main Shader Module", kShader);
+      dusk::webgpu::create_shader_module(device, "Main Shader Module", kShader);
 
   // Pipeline creation
   std::array<wgpu::VertexAttribute, 2> vertAttributes{

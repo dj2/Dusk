@@ -18,10 +18,10 @@ target_sources(dusk_example_02 PRIVATE
   ../common/glfw.h
   ../common/log.cc
   ../common/log.h
+  ../common/webgpu_helpers.cc
+  ../common/webgpu_helpers.h
   ../common/wgpu.h
   main.cc
-  webgpu_helpers.cc
-  webgpu_helpers.h
 )
 target_link_libraries(dusk_example_02
   webgpu_dawn
