@@ -21,6 +21,9 @@ target_sources(dusk-common PRIVATE
   glfw.h
   log.cc
   log.h
+  mat4.cc
+  mat4.h
+  vec3.h
   webgpu_helpers.cc
   webgpu_helpers.h
   wgpu.h

@@ -22,9 +22,9 @@
 #include "src/common/callback.h"
 #include "src/common/glfw.h"
 #include "src/common/log.h"
+#include "src/common/mat4.h"
 #include "src/common/webgpu_helpers.h"
 #include "src/common/wgpu.h"
-#include "src/example_05/mat4.h"
 
 namespace {
 

@@ -16,9 +16,6 @@ add_executable(dusk_example_05 ${DUSK_SRCS})
 dusk_compile_options(dusk_example_05)
 target_sources(dusk_example_05 PRIVATE
   main.cc
-  mat4.cc
-  mat4.h
-  vec3.h
 )
 target_link_libraries(dusk_example_05
   dusk::common

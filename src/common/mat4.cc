@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "src/example_05/mat4.h"
+#include "src/common/mat4.h"
 
 #include <cmath>
 
@@ -60,7 +60,7 @@ Mat4 Mat4::Translation(const Vec3& v) {
 //
 // static
 Mat4 Mat4::Rotation(float radians, const Vec3& angle) {
-  auto r = angle.Normalize();
+  auto r = angle.normalize();
   auto x = r.x();
   auto y = r.y();
   auto z = r.z();
@@ -86,41 +86,41 @@ Mat4 Mat4::Rotation(float radians, const Vec3& angle) {
 }
 
 Mat4 Mat4::operator*(const Mat4& o) const {
-  float r00 = At(0, 0) * o.At(0, 0) + At(1, 0) * o.At(0, 1) +
-              At(2, 0) * o.At(0, 2) + At(3, 0) * o.At(0, 3);
-  float r01 = At(0, 1) * o.At(0, 0) + At(1, 1) * o.At(0, 1) +
-              At(2, 1) * o.At(0, 2) + At(3, 1) * o.At(0, 3);
-  float r02 = At(0, 2) * o.At(0, 0) + At(1, 2) * o.At(0, 1) +
-              At(2, 2) * o.At(0, 2) + At(3, 2) * o.At(0, 3);
-  float r03 = At(0, 3) * o.At(0, 0) + At(1, 3) * o.At(0, 1) +
-              At(2, 3) * o.At(0, 2) + At(3, 3) * o.At(0, 3);
+  float r00 = at(0, 0) * o.at(0, 0) + at(1, 0) * o.at(0, 1) +
+              at(2, 0) * o.at(0, 2) + at(3, 0) * o.at(0, 3);
+  float r01 = at(0, 1) * o.at(0, 0) + at(1, 1) * o.at(0, 1) +
+              at(2, 1) * o.at(0, 2) + at(3, 1) * o.at(0, 3);
+  float r02 = at(0, 2) * o.at(0, 0) + at(1, 2) * o.at(0, 1) +
+              at(2, 2) * o.at(0, 2) + at(3, 2) * o.at(0, 3);
+  float r03 = at(0, 3) * o.at(0, 0) + at(1, 3) * o.at(0, 1) +
+              at(2, 3) * o.at(0, 2) + at(3, 3) * o.at(0, 3);
 
-  float r10 = At(0, 0) * o.At(1, 0) + At(1, 0) * o.At(1, 1) +
-              At(2, 0) * o.At(1, 2) + At(3, 0) * o.At(1, 3);
-  float r11 = At(0, 1) * o.At(1, 0) + At(1, 1) * o.At(1, 1) +
-              At(2, 1) * o.At(1, 2) + At(3, 1) * o.At(1, 3);
-  float r12 = At(0, 2) * o.At(1, 0) + At(1, 2) * o.At(1, 1) +
-              At(2, 2) * o.At(1, 2) + At(3, 2) * o.At(1, 3);
-  float r13 = At(0, 3) * o.At(1, 0) + At(1, 3) * o.At(1, 1) +
-              At(2, 3) * o.At(1, 2) + At(3, 3) * o.At(1, 3);
+  float r10 = at(0, 0) * o.at(1, 0) + at(1, 0) * o.at(1, 1) +
+              at(2, 0) * o.at(1, 2) + at(3, 0) * o.at(1, 3);
+  float r11 = at(0, 1) * o.at(1, 0) + at(1, 1) * o.at(1, 1) +
+              at(2, 1) * o.at(1, 2) + at(3, 1) * o.at(1, 3);
+  float r12 = at(0, 2) * o.at(1, 0) + at(1, 2) * o.at(1, 1) +
+              at(2, 2) * o.at(1, 2) + at(3, 2) * o.at(1, 3);
+  float r13 = at(0, 3) * o.at(1, 0) + at(1, 3) * o.at(1, 1) +
+              at(2, 3) * o.at(1, 2) + at(3, 3) * o.at(1, 3);
 
-  float r20 = At(0, 0) * o.At(2, 0) + At(1, 0) * o.At(2, 1) +
-              At(2, 0) * o.At(2, 2) + At(3, 0) * o.At(2, 3);
-  float r21 = At(0, 1) * o.At(2, 0) + At(1, 1) * o.At(2, 1) +
-              At(2, 1) * o.At(2, 2) + At(3, 1) * o.At(2, 3);
-  float r22 = At(0, 2) * o.At(2, 0) + At(1, 2) * o.At(2, 1) +
-              At(2, 2) * o.At(2, 2) + At(3, 2) * o.At(2, 3);
-  float r23 = At(0, 3) * o.At(2, 0) + At(1, 3) * o.At(2, 1) +
-              At(2, 3) * o.At(2, 2) + At(3, 3) * o.At(2, 3);
+  float r20 = at(0, 0) * o.at(2, 0) + at(1, 0) * o.at(2, 1) +
+              at(2, 0) * o.at(2, 2) + at(3, 0) * o.at(2, 3);
+  float r21 = at(0, 1) * o.at(2, 0) + at(1, 1) * o.at(2, 1) +
+              at(2, 1) * o.at(2, 2) + at(3, 1) * o.at(2, 3);
+  float r22 = at(0, 2) * o.at(2, 0) + at(1, 2) * o.at(2, 1) +
+              at(2, 2) * o.at(2, 2) + at(3, 2) * o.at(2, 3);
+  float r23 = at(0, 3) * o.at(2, 0) + at(1, 3) * o.at(2, 1) +
+              at(2, 3) * o.at(2, 2) + at(3, 3) * o.at(2, 3);
 
-  float r30 = At(0, 0) * o.At(3, 0) + At(1, 0) * o.At(3, 1) +
-              At(2, 0) * o.At(3, 2) + At(3, 0) * o.At(3, 3);
-  float r31 = At(0, 1) * o.At(3, 0) + At(1, 1) * o.At(3, 1) +
-              At(2, 1) * o.At(3, 2) + At(3, 1) * o.At(3, 3);
-  float r32 = At(0, 2) * o.At(3, 0) + At(1, 2) * o.At(3, 1) +
-              At(2, 2) * o.At(3, 2) + At(3, 2) * o.At(3, 3);
-  float r33 = At(0, 3) * o.At(3, 0) + At(1, 3) * o.At(3, 1) +
-              At(2, 3) * o.At(3, 2) + At(3, 3) * o.At(3, 3);
+  float r30 = at(0, 0) * o.at(3, 0) + at(1, 0) * o.at(3, 1) +
+              at(2, 0) * o.at(3, 2) + at(3, 0) * o.at(3, 3);
+  float r31 = at(0, 1) * o.at(3, 0) + at(1, 1) * o.at(3, 1) +
+              at(2, 1) * o.at(3, 2) + at(3, 1) * o.at(3, 3);
+  float r32 = at(0, 2) * o.at(3, 0) + at(1, 2) * o.at(3, 1) +
+              at(2, 2) * o.at(3, 2) + at(3, 2) * o.at(3, 3);
+  float r33 = at(0, 3) * o.at(3, 0) + at(1, 3) * o.at(3, 1) +
+              at(2, 3) * o.at(3, 2) + at(3, 3) * o.at(3, 3);
 
   // clang-format off
   return Mat4{
