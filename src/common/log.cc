@@ -265,7 +265,7 @@ std::string to_str(const wgpu::AdapterInfo& info) {
   return out.str();
 }
 
-std::string limits(const wgpu::Limits& limits, const std::string& indent) {
+std::string limits(const wgpu::Limits& limits, std::string_view indent) {
   std::stringstream out;
   std::println(out, "{}maxTextureDimension1D: {}", indent,
                format_number(limits.maxTextureDimension1D));

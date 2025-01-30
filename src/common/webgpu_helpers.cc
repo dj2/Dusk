@@ -17,34 +17,34 @@
 namespace dusk::webgpu {
 
 wgpu::Buffer create_buffer(const wgpu::Device& device,
-                           const std::string& label,
-                           uint64_t size,
+                           std::string_view label,
+                           uint64_t size_in_bytes,
                            wgpu::BufferUsage usage) {
   wgpu::BufferDescriptor desc{
-      .label = label.c_str(),
+      .label = label,
       .usage = usage | wgpu::BufferUsage::CopyDst,
-      .size = size,
+      .size = size_in_bytes,
   };
   return device.CreateBuffer(&desc);
 }
 
 wgpu::Buffer create_buffer(const wgpu::Device& device,
-                           const std::string& label,
+                           std::string_view label,
                            const void* data,
-                           uint64_t size,
+                           uint64_t size_in_bytes,
                            wgpu::BufferUsage usage) {
-  auto buffer = create_buffer(device, label, size, usage);
-  device.GetQueue().WriteBuffer(buffer, 0, data, size);
+  auto buffer = create_buffer(device, label, size_in_bytes, usage);
+  device.GetQueue().WriteBuffer(buffer, 0, data, size_in_bytes);
   return buffer;
 }
 
 wgpu::Texture create_texture(const wgpu::Device& device,
-                             const std::string& label,
+                             std::string_view label,
                              wgpu::Extent3D extent,
                              wgpu::TextureFormat format,
                              wgpu::TextureUsage usage) {
   wgpu::TextureDescriptor desc{
-      .label = label.c_str(),
+      .label = label,
       .usage = usage,
       .size = extent,
       .format = format,
@@ -54,14 +54,14 @@ wgpu::Texture create_texture(const wgpu::Device& device,
 }
 
 wgpu::ShaderModule create_shader_module(const wgpu::Device& device,
-                                        const std::string& label,
-                                        const std::string& src) {
+                                        std::string_view label,
+                                        std::string_view src) {
   wgpu::ShaderSourceWGSL wgslDesc;
-  wgslDesc.code = src.c_str();
+  wgslDesc.code = src;
 
   wgpu::ShaderModuleDescriptor desc{
       .nextInChain = &wgslDesc,
-      .label = label.c_str(),
+      .label = label,
   };
   return device.CreateShaderModule(&desc);
 }

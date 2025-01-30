@@ -14,21 +14,47 @@
 
 #include "src/common/wgpu.h"
 
+/// Callbacks which are common over all of the examples.
 namespace dusk::cb {
 
+/// Callback when making a WebGPU Adapter Request
+///
+/// @param status reports if the adapter request was successful or not
+/// @param adapter the selected adapter
+/// @param message if the request failed, a message about the failure
+/// @param data the user data attached to the request.
+
+/// @note, the type of the `data` member matches the type of data attached when
+/// calling `instance.requestAdapter`. We happen to be passing a `wgpu::Adapter`
+/// so our type is `wgpu::Adapter*` but if you used a custom `struct MyStruct`
+/// for example you'd use `MyStruct*`.
 void adapter_request(wgpu::RequestAdapterStatus status,
-                     wgpu::Adapter a,
+                     wgpu::Adapter adapter,
                      wgpu::StringView message,
                      wgpu::Adapter* data);
 
-void device_lost([[maybe_unused]] const wgpu::Device& device,
+/// Callback when the GPU is lost to WebGPU
+///
+/// @param device the device associated to the lost GPU
+/// @param reason the reason the device was lost
+/// @param message any context information
+void device_lost(const wgpu::Device& device,
                  wgpu::DeviceLostReason reason,
                  struct wgpu::StringView message);
 
-void uncaptured_error [[noreturn]] ([[maybe_unused]] const wgpu::Device& device,
+/// Callback for any error not captured in an error scope.
+///
+/// @param device the device where the error originated
+/// @param type the type of error
+/// @param message any context information on the error
+void uncaptured_error [[noreturn]] (const wgpu::Device& device,
                                     wgpu::ErrorType type,
                                     struct wgpu::StringView message);
 
+/// Callback for a GLFW error
+///
+/// @param code the error code
+/// @param message any context information for the error.
 void glfw_error [[noreturn]] (int code, const char* message);
 
 }  // namespace dusk::cb

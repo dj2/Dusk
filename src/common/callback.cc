@@ -22,7 +22,7 @@
 namespace dusk::cb {
 
 void adapter_request(wgpu::RequestAdapterStatus status,
-                     wgpu::Adapter a,
+                     wgpu::Adapter adapter,
                      wgpu::StringView message,
                      wgpu::Adapter* data) {
   if (status != wgpu::RequestAdapterStatus::Success) {
@@ -30,7 +30,7 @@ void adapter_request(wgpu::RequestAdapterStatus status,
                  std::string_view(message));
     exit(1);
   }
-  *data = a;
+  *data = adapter;
 }
 
 void device_lost([[maybe_unused]] const wgpu::Device& device,
