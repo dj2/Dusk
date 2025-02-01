@@ -19,7 +19,12 @@
 #include "src/common/wgpu.h"
 
 int main() {
+  wgpu::InstanceCapabilities caps{};
+  WGPU_TRY_EXIT(wgpu::GetInstanceCapabilities(&caps));
+  dusk::log::emit(caps);
+
   auto instance = wgpu::CreateInstance();
+  dusk::log::emit_instance_language_features(instance);
 
   // Get Adapter
   wgpu::RequestAdapterOptions adapter_opts{
