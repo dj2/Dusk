@@ -1,0 +1,107 @@
+<meta charset='utf-8'>
+
+**Adapter and Device Info**
+  Jan 31, 2025
+
+This example shows how to create the initial `Instance`, `Adapter` and `Device`
+objects and then query them for any available information.
+
+* [Source](https://github.com/dj2/Dusk/tree/main/src/example_01)
+
+# Instance
+~~~ cpp
+  auto instance = wgpu::CreateInstance();
+~~~
+[Listing [instance-creation]: Creating an `Instance`]
+
+# Adapter
+
+## Adapter Request
+~~~ cpp
+  // Get Adapter
+  wgpu::RequestAdapterOptions adapter_opts{
+      .powerPreference = wgpu::PowerPreference::HighPerformance,
+  };
+  wgpu::Adapter adapter{};
+  instance.RequestAdapter(&adapter_opts, wgpu::CallbackMode::AllowSpontaneous,
+                          dusk::cb::adapter_request, &adapter);
+~~~
+[Listing [adapter-request]: Requesting an adapter]
+
+## Adapter Request Callback
+~~~ cpp
+void adapter_request(wgpu::RequestAdapterStatus status,
+                     wgpu::Adapter adapter,
+                     wgpu::StringView message,
+                     wgpu::Adapter* data) {
+  if (status != wgpu::RequestAdapterStatus::Success) {
+    std::println(stderr, "Adapter request failed: {}",
+                 std::string_view(message));
+    exit(1);
+  }
+  *data = adapter;
+}
+~~~
+[Listing [adapter-request-callback]: Adapter request callback]
+
+## Logging Adapter Information
+~~~ cpp
+  dusk::log::emit(adapter);
+~~~
+[Listing [adapter-log]: Logging adapter information]
+
+# Device
+
+## Device Creation
+~~~ cpp
+  // Get device
+  wgpu::DeviceDescriptor device_desc{};
+  device_desc.label = "default device";
+  device_desc.SetDeviceLostCallback(wgpu::CallbackMode::AllowProcessEvents,
+                                    dusk::cb::device_lost);
+  device_desc.SetUncapturedErrorCallback(dusk::cb::uncaptured_error);
+
+  wgpu::Device device = adapter.CreateDevice(&device_desc);
+~~~
+[Listing [device-creation]: Device creation]
+
+## Device Lost Callback
+~~~ cpp
+void device_lost([[maybe_unused]] const wgpu::Device& device,
+                 wgpu::DeviceLostReason reason,
+                 struct wgpu::StringView message) {
+  std::print(stderr, "device lost: {}", dusk::log::to_str(reason));
+  if (message.length > 0) {
+    std::print(stderr, ": {}", std::string_view(message));
+  }
+  std::println(stderr, "");
+}
+~~~
+[Listing [device-lost-callback]: Device lost callback]
+
+## Device Uncaptured Error Callback
+~~~ cpp
+void uncaptured_error [[noreturn]] ([[maybe_unused]] const wgpu::Device& device,
+                                    wgpu::ErrorType type,
+                                    struct wgpu::StringView message) {
+  std::print(stderr, "uncaptured error: {}", dusk::log::to_str(type));
+  if (message.length > 0) {
+    std::print(stderr, ": {}", std::string_view(message));
+  }
+
+  std::println(stderr, "");
+  assert(false);
+};
+~~~
+[Listing [device-uncaptured-error-callback]: Device uncaptured error callback]
+
+## Logging Device Information
+~~~ cpp
+  dusk::log::emit(device);
+~~~
+[Listing [device-log]: Logging device information]
+
+
+
+
+<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js" charset="utf-8"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>

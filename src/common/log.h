@@ -22,37 +22,55 @@
 /// Methods used to log various bits of data from WebGPU.
 namespace dusk::log {
 
-/// Creates a textual version of the the feature name
+/// Creates a textual version of the feature name
 ///
 /// @param f the feature name to convert
 /// @returns the string name
 std::string_view to_str(wgpu::FeatureName f);
 
-/// Creates a textual version of the the adapter type
+/// Creates a textual version of the WGSL language feature name
+///
+/// @Parma f the language feature name to convert
+/// @returns the string name
+std::string_view to_str(wgpu::WGSLLanguageFeatureName f);
+
+/// Creates a textual version of the adapter type
 ///
 /// @param type the adapter type to convert
 /// @returns the string name
 std::string_view to_str(wgpu::AdapterType type);
 
-/// Creates a textual version of the the backend type
+/// Creates a textual version of the backend type
 ///
 /// @param type the backend type to convert
 /// @returns the string name
 std::string_view to_str(wgpu::BackendType type);
 
-/// Creates a textual version of the the device lost reason
+/// Creates a textual version of the device lost reason
 ///
 /// @param f the device lost reason to convert
 /// @returns the string name
 std::string_view to_str(wgpu::DeviceLostReason reason);
 
-/// Creates a textual version of the the error type
+/// Creates a textual version of the error type
 ///
 /// @param f the error type to convert
 /// @returns the string name
 std::string_view to_str(wgpu::ErrorType type);
 
-/// Creates a textual version of the the adapter information
+/// Creates a textual version of the heap properties
+///
+/// @param prop the property to emit
+/// @returns the string name
+std::string_view to_str(wgpu::HeapProperty prop);
+
+/// Creates a textual version of the power preference
+///
+/// @param prop the power preference to emit
+/// @returns the string name
+std::string_view to_str(wgpu::PowerPreference pref);
+
+/// Creates a textual version of the adapter information
 ///
 /// @param info the adapter info to convert
 /// @returns the string representation
@@ -64,6 +82,17 @@ std::string to_str(const wgpu::AdapterInfo& info);
 /// @param indent the amount to indent each limit string
 /// @returns the string representation
 std::string limits(const wgpu::Limits& limits, std::string_view indent);
+
+/// Emits the instance capability information
+///
+/// @param caps the instance capabilities
+void emit(wgpu::InstanceCapabilities& caps);
+
+/// Emits the language features known to the instance
+///
+/// @param instance the instance to retrieve the features from
+std::expected<void, std::string> emit_instance_language_features(
+    wgpu::Instance& instance);
 
 /// Emits the adapter info to `stderr`
 ///
