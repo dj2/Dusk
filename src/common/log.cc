@@ -17,6 +17,7 @@
 #include <cassert>
 #include <print>
 #include <sstream>
+#include "src/common/expected.h"
 
 namespace dusk::log {
 namespace {
@@ -437,10 +438,11 @@ std::expected<void, std::string> emit_instance_language_features(
   return {};
 }
 
-void emit_adapter_info(wgpu::Adapter& adapter) {
+std::expected<void, std::string> emit_adapter_info(wgpu::Adapter& adapter) {
   wgpu::AdapterInfo info;
-  adapter.GetInfo(&info);
+  WGPU_TRY(adapter.GetInfo(&info));
   std::println(stderr, "{}", to_str(info));
+  return {};
 }
 
 void emit_adapter_features(wgpu::Adapter& adapter) {
@@ -453,13 +455,13 @@ void emit_adapter_features(wgpu::Adapter& adapter) {
   }
 }
 
-void emit_adapter_limits(wgpu::Adapter& adapter) {
+std::expected<void, std::string> emit_adapter_limits(wgpu::Adapter& adapter) {
   wgpu::SupportedLimits adapter_limits;
-  if (adapter.GetLimits(&adapter_limits)) {
-    std::println(stderr, "");
-    std::println(stderr, "Adapter Limits:");
-    std::println(stderr, "{}", limits(adapter_limits.limits, "  "));
-  }
+  WGPU_TRY(adapter.GetLimits(&adapter_limits));
+
+  std::println(stderr, "");
+  std::println(stderr, "Adapter Limits:");
+  std::println(stderr, "{}", limits(adapter_limits.limits, "  "));
 
   {
     wgpu::ChainedStructOut* next = adapter_limits.nextInChain;
@@ -485,12 +487,14 @@ void emit_adapter_limits(wgpu::Adapter& adapter) {
       next = next->nextInChain;
     }
   }
+  return {};
 }
 
-void emit(wgpu::Adapter& adapter) {
-  emit_adapter_info(adapter);
+std::expected<void, std::string> emit(wgpu::Adapter& adapter) {
+  VALID_OR_PROPAGATE(emit_adapter_info(adapter));
   emit_adapter_features(adapter);
-  emit_adapter_limits(adapter);
+  VALID_OR_PROPAGATE(emit_adapter_limits(adapter));
+  return {};
 }
 
 void emit_device_features(wgpu::Device& device) {
@@ -503,18 +507,19 @@ void emit_device_features(wgpu::Device& device) {
   }
 }
 
-void emit_device_limits(wgpu::Device& device) {
+std::expected<void, std::string> emit_device_limits(wgpu::Device& device) {
   wgpu::SupportedLimits deviceLimits;
-  if (device.GetLimits(&deviceLimits)) {
-    std::println(stderr, "");
-    std::println(stderr, "Device Limits:");
-    std::println(stderr, "{}", limits(deviceLimits.limits, "  "));
-  }
+  WGPU_TRY(device.GetLimits(&deviceLimits));
+  std::println(stderr, "");
+  std::println(stderr, "Device Limits:");
+  std::println(stderr, "{}", limits(deviceLimits.limits, "  "));
+  return {};
 }
 
-void emit(wgpu::Device& device) {
+std::expected<void, std::string> emit(wgpu::Device& device) {
   emit_device_features(device);
-  emit_device_limits(device);
+  VALID_OR_PROPAGATE(emit_device_limits(device));
+  return {};
 }
 
 }  // namespace dusk::log
