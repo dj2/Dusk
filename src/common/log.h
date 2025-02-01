@@ -97,7 +97,7 @@ std::expected<void, std::string> emit_instance_language_features(
 /// Emits the adapter info to `stderr`
 ///
 /// @param adapter the adapter to emit from
-void emit_adapter_info(wgpu::Adapter& adapter);
+std::expected<void, std::string> emit_adapter_info(wgpu::Adapter& adapter);
 
 /// Emits the adapter features to `stderr`
 ///
@@ -107,12 +107,12 @@ void emit_adapter_features(wgpu::Adapter& adapter);
 /// Emits the adapter limits to `stderr`
 ///
 /// @param adapter the adapter to emit from
-void emit_adapter_limits(wgpu::Adapter& adapter);
+std::expected<void, std::string> emit_adapter_limits(wgpu::Adapter& adapter);
 
 /// Emits the adapter to `stderr`
 ///
 /// @param adapter the adapter to emit
-void emit(wgpu::Adapter& adapter);
+std::expected<void, std::string> emit(wgpu::Adapter& adapter);
 
 /// Emits the device features to `stderr`
 ///
@@ -122,11 +122,11 @@ void emit_device_features(wgpu::Device& device);
 /// Emits the device limits to `stderr`
 ///
 /// @param device the device to emit from
-void emit_device_limits(wgpu::Device& device);
+std::expected<void, std::string> emit_device_limits(wgpu::Device& device);
 
 /// Emits the device to `stderr`
 ///
 /// @param device the device to emit
-void emit(wgpu::Device& device);
+std::expected<void, std::string> emit(wgpu::Device& device);
 
 }  // namespace dusk::log

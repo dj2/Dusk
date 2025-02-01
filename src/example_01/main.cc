@@ -15,6 +15,7 @@
 #include <print>
 
 #include "src/common/callback.h"
+#include "src/common/expected.h"
 #include "src/common/log.h"
 #include "src/common/wgpu.h"
 
@@ -24,7 +25,7 @@ int main() {
   dusk::log::emit(caps);
 
   auto instance = wgpu::CreateInstance();
-  dusk::log::emit_instance_language_features(instance);
+  dusk::valid_or_exit(dusk::log::emit_instance_language_features(instance));
 
   // Get Adapter
   wgpu::RequestAdapterOptions adapter_opts{
@@ -34,7 +35,7 @@ int main() {
   instance.RequestAdapter(&adapter_opts, wgpu::CallbackMode::AllowSpontaneous,
                           dusk::cb::adapter_request, &adapter);
 
-  dusk::log::emit(adapter);
+  dusk::valid_or_exit(dusk::log::emit(adapter));
 
   // Get device
   wgpu::DeviceDescriptor device_desc{};
@@ -44,7 +45,7 @@ int main() {
   device_desc.SetUncapturedErrorCallback(dusk::cb::uncaptured_error);
 
   wgpu::Device device = adapter.CreateDevice(&device_desc);
-  dusk::log::emit(device);
+  dusk::valid_or_exit(dusk::log::emit(device));
 
   return 0;
 }

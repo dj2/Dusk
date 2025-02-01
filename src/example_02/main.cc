@@ -16,6 +16,7 @@
 #include <print>
 
 #include "src/common/callback.h"
+#include "src/common/expected.h"
 #include "src/common/glfw.h"
 #include "src/common/log.h"
 #include "src/common/webgpu_helpers.h"
@@ -86,7 +87,7 @@ int main() {
   instance.RequestAdapter(&adapter_opts, wgpu::CallbackMode::AllowSpontaneous,
                           dusk::cb::adapter_request, &adapter);
 
-  dusk::log::emit(adapter);
+  dusk::valid_or_exit(dusk::log::emit(adapter));
 
   // Get device
   wgpu::DeviceDescriptor deviceDesc{};
@@ -96,7 +97,7 @@ int main() {
   deviceDesc.SetUncapturedErrorCallback(dusk::cb::uncaptured_error);
   auto device = adapter.CreateDevice(&deviceDesc);
 
-  dusk::log::emit(device);
+  dusk::valid_or_exit(dusk::log::emit(device));
 
   // Set up surface for drawing and presenting
   wgpu::SurfaceCapabilities capabilities;
