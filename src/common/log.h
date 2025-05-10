@@ -26,49 +26,49 @@ namespace dusk::log {
 ///
 /// @param f the feature name to convert
 /// @returns the string name
-std::string_view to_str(wgpu::FeatureName f);
+std::string to_str(wgpu::FeatureName f);
 
 /// Creates a textual version of the WGSL language feature name
 ///
 /// @Parma f the language feature name to convert
 /// @returns the string name
-std::string_view to_str(wgpu::WGSLLanguageFeatureName f);
+std::string to_str(wgpu::WGSLLanguageFeatureName f);
 
 /// Creates a textual version of the adapter type
 ///
 /// @param type the adapter type to convert
 /// @returns the string name
-std::string_view to_str(wgpu::AdapterType type);
+std::string to_str(wgpu::AdapterType type);
 
 /// Creates a textual version of the backend type
 ///
 /// @param type the backend type to convert
 /// @returns the string name
-std::string_view to_str(wgpu::BackendType type);
+std::string to_str(wgpu::BackendType type);
 
 /// Creates a textual version of the device lost reason
 ///
 /// @param f the device lost reason to convert
 /// @returns the string name
-std::string_view to_str(wgpu::DeviceLostReason reason);
+std::string to_str(wgpu::DeviceLostReason reason);
 
 /// Creates a textual version of the error type
 ///
 /// @param f the error type to convert
 /// @returns the string name
-std::string_view to_str(wgpu::ErrorType type);
+std::string to_str(wgpu::ErrorType type);
 
 /// Creates a textual version of the heap properties
 ///
 /// @param prop the property to emit
 /// @returns the string name
-std::string_view to_str(wgpu::HeapProperty prop);
+std::string to_str(wgpu::HeapProperty prop);
 
 /// Creates a textual version of the power preference
 ///
 /// @param prop the power preference to emit
 /// @returns the string name
-std::string_view to_str(wgpu::PowerPreference pref);
+std::string to_str(wgpu::PowerPreference pref);
 
 /// Creates a textual version of the adapter information
 ///
