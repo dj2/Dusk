@@ -11,8 +11,8 @@ namespace dusk {
 /// Checks if `item` is valid, if so returns the expected value. If not, prints
 /// the error and calls `exit`.
 template <typename T, typename K>
-std::enable_if_t<!std::is_void<T>::value, T> valid_or_exit(
-    std::expected<T, K> item) {
+  requires(!std::is_void_v<T>)
+T valid_or_exit(std::expected<T, K> item) {
   if (!item) {
     std::println(stderr, "{}", item.error());
     exit(1);
@@ -23,8 +23,8 @@ std::enable_if_t<!std::is_void<T>::value, T> valid_or_exit(
 /// Checks if `item` is valid, if so returns. If not, prints the error and calls
 /// `exit`.
 template <typename T, typename K>
-std::enable_if_t<std::is_void<T>::value, void> valid_or_exit(
-    std::expected<T, K> item) {
+  requires(std::is_void_v<T>)
+void valid_or_exit(std::expected<T, K> item) {
   if (!item) {
     std::println(stderr, "{}", item.error());
     exit(1);
