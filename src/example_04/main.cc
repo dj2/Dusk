@@ -166,7 +166,7 @@ int main() {
       .format = surfaceFormat,
       .width = kWidth,
       .height = kHeight,
-      .presentMode = wgpu::PresentMode::Mailbox,
+      .presentMode = wgpu::PresentMode::Fifo,
   };
   surface.Configure(&config);
 
