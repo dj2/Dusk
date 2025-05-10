@@ -62,7 +62,7 @@ message(STATUS "")
 function(dusk_compile_options TARGET)
   target_include_directories(${TARGET} PRIVATE "${PROJECT_SOURCE_DIR}")
 
-  target_compile_options(${TARGET} PRIVATE  
+  target_compile_options(${TARGET} PRIVATE
     -O3
     -fno-rtti
     -fno-exceptions
