@@ -1,7 +1,7 @@
 # Dusk
 
-The Dusk repository contains a series of examples which show usage of
-the Dawn native API. 
+The Dusk repository contains examples of small programs using the WebGPU
+native API.
 
 This is not an officially supported Google product.
 
@@ -11,14 +11,13 @@ This is not an officially supported Google product.
  * `ninja`
  * `clang` or `gcc`
 
-
 ## Building
 ```
 git submodule init
 git submodule update
 mkdir -p out/Debug
 cd out/Debug
-CC=clang CXX=clang++ cmake -GNinja ../..
+cmake -GNinja ../..
 ninja
 ```
 
@@ -28,7 +27,8 @@ submodules to handle the heavy lifting of checkout out all the needed
 dependencies.
 
 The examples are using `CMake` for build configuration. The CMake is pretty
-standard, c++23 is used for a few of the newer features. When linking the executables we add the following to the `target_link_libraries`:
+standard, c++23 is used for a few of the newer features. When linking the
+executables we add the following to the `target_link_libraries`:
 
 * `webgpu_dawn`
 * `webgpu_cpp`

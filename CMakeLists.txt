@@ -36,8 +36,9 @@ endif()
 
 message(STATUS "")
 message(STATUS "Build type...........: ${CMAKE_BUILD_TYPE}")
-message(STATUS "CMake generator......: ${CMAKE_GENERATOR} ${CMAKE_VERSION}")
-message(STATUS "CXX compiler.........: ${CMAKE_CXX_COMPILER}")
+message(STATUS "C++ compiler.........: ${CMAKE_CXX_COMPILER}")
+message(STATUS "CMake generator......: ${CMAKE_GENERATOR}")
+message(STATUS "CMake version........: ${CMAKE_VERSION}")
 message(STATUS "")
 
 if (NOT CLANG_FORMAT)
