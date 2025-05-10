@@ -80,8 +80,8 @@ int main() {
 
   // Get Adapter
   wgpu::RequestAdapterOptions adapter_opts{
-      .compatibleSurface = surface,
       .powerPreference = wgpu::PowerPreference::HighPerformance,
+      .compatibleSurface = surface,
   };
   wgpu::Adapter adapter{};
   instance.RequestAdapter(&adapter_opts, wgpu::CallbackMode::AllowSpontaneous,
@@ -135,8 +135,8 @@ int main() {
       }};
 
   wgpu::VertexBufferLayout vertBufferLayout{
-      .arrayStride = 8 * sizeof(float),
       .stepMode = wgpu::VertexStepMode::Vertex,
+      .arrayStride = 8 * sizeof(float),
       .attributeCount = vertAttributes.size(),
       .attributes = vertAttributes.data(),
   };

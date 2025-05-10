@@ -67,8 +67,6 @@ std::string_view to_str(wgpu::FeatureName f) {
       return "Float32Blendable";
     case wgpu::FeatureName::Subgroups:
       return "Subgroups";
-    case wgpu::FeatureName::SubgroupsF16:
-      return "SubgroupsF16";
     case wgpu::FeatureName::DawnInternalUsages:
       return "DawnInternalUsages";
     case wgpu::FeatureName::DawnMultiPlanarFormats:
@@ -79,8 +77,8 @@ std::string_view to_str(wgpu::FeatureName f) {
       return "ChromiumExperimentalTimestampQueryInsidePasses";
     case wgpu::FeatureName::ImplicitDeviceSynchronization:
       return "ImplicitDeviceSynchronization";
-    case wgpu::FeatureName::ChromiumExperimentalImmediateData:
-      return "ChromiumExperimentalImmediateData";
+    case wgpu::FeatureName::ChromiumExperimentalImmediate:
+      return "ChromiumExperimentalImmediate";
     case wgpu::FeatureName::TransientAttachments:
       return "TransientAttachments";
     case wgpu::FeatureName::MSAARenderToSingleSampled:
@@ -183,6 +181,18 @@ std::string_view to_str(wgpu::FeatureName f) {
       return "DawnTexelCopyBufferRowAlignment";
     case wgpu::FeatureName::FlexibleTextureViews:
       return "FlexibleTextureViews";
+    case wgpu::FeatureName::TextureCompressionBCSliced3D:
+      return "TextureCompressionBCSliced3D";
+    case wgpu::FeatureName::TextureCompressionASTCSliced3D:
+      return "TextureCompressionASTCSliced3D";
+    case wgpu::FeatureName::CoreFeaturesAndLimits:
+      return "CoreFeaturesAndLimits";
+    case wgpu::FeatureName::ChromiumExperimentalSubgroupMatrix:
+      return "ChromiumExperimentalSubgroupMatrix";
+    case wgpu::FeatureName::SharedFenceEGLSync:
+      return "SharedFenceEGLSync";
+    case wgpu::FeatureName::DawnDeviceAllocatorControl:
+      return "DawnDeviceAllocatorControl";
   }
   return "Unknown";
 }
@@ -207,6 +217,8 @@ std::string_view to_str(wgpu::WGSLLanguageFeatureName name) {
       return "ChromiumTestingShippedWithKillswitch";
     case wgpu::WGSLLanguageFeatureName::ChromiumTestingShipped:
       return "ChromiumTestingShipped";
+    case wgpu::WGSLLanguageFeatureName::SizedBindingArray:
+      return "SizedBindingArray";
   }
 }
 
@@ -252,8 +264,6 @@ std::string_view to_str(wgpu::DeviceLostReason reason) {
   switch (reason) {
     case wgpu::DeviceLostReason::Destroyed:
       return "Destroyed";
-    case wgpu::DeviceLostReason::InstanceDropped:
-      return "InstanceDropped";
     case wgpu::DeviceLostReason::FailedCreation:
       return "FailedCreation";
     default:
@@ -288,6 +298,8 @@ std::string_view to_str(wgpu::HeapProperty props) {
       return "host_uncached";
     case wgpu::HeapProperty::HostCached:
       return "host_cached";
+    case wgpu::HeapProperty::None:
+      return "none";
   }
 }
 
@@ -315,8 +327,8 @@ std::string to_str(const wgpu::AdapterInfo& info) {
   std::println(out, "  Backend Type: {}", to_str(info.backendType));
   std::println(out, "  Vendor ID: 0x{:x}", info.vendorID);
   std::println(out, "  Device ID: 0x{:x}", info.deviceID);
-  std::println(out, "  Compat: {}",
-               (info.compatibilityMode == 1) ? "yes" : "no");
+  std::println(out, "  Subgroup size: min: {}, max {}", info.subgroupMinSize,
+               info.subgroupMaxSize);
 
   {
     wgpu::ChainedStructOut* next = info.nextInChain;
@@ -396,7 +408,7 @@ std::string limits(const wgpu::Limits& limits, std::string_view indent) {
   std::println(out, "{}maxVertexBufferArrayStride: {}", indent,
                format_number(limits.maxVertexBufferArrayStride));
   std::println(out, "{}maxInterStageShaderComponents: {}", indent,
-               format_number(limits.maxInterStageShaderComponents));
+               format_number(limits.maxInterStageShaderVariables));
   std::println(out, "{}maxInterStageShaderVariables: {}", indent,
                format_number(limits.maxInterStageShaderVariables));
   std::println(out, "{}maxColorAttachments: {}", indent,
@@ -456,12 +468,12 @@ void emit_adapter_features(wgpu::Adapter& adapter) {
 }
 
 std::expected<void, std::string> emit_adapter_limits(wgpu::Adapter& adapter) {
-  wgpu::SupportedLimits adapter_limits;
+  wgpu::Limits adapter_limits;
   WGPU_TRY(adapter.GetLimits(&adapter_limits));
 
   std::println(stderr, "");
   std::println(stderr, "Adapter Limits:");
-  std::println(stderr, "{}", limits(adapter_limits.limits, "  "));
+  std::println(stderr, "{}", limits(adapter_limits, "  "));
 
   {
     wgpu::ChainedStructOut* next = adapter_limits.nextInChain;
@@ -470,10 +482,6 @@ std::expected<void, std::string> emit_adapter_limits(wgpu::Adapter& adapter) {
         auto* l = static_cast<wgpu::DawnExperimentalImmediateDataLimits*>(next);
         std::println(stderr, "  maxImmediateDataRangeByteSize = {}",
                      l->maxImmediateDataRangeByteSize);
-      } else if (next->sType == wgpu::SType::DawnExperimentalSubgroupLimits) {
-        auto* l = static_cast<wgpu::DawnExperimentalSubgroupLimits*>(next);
-        std::println(stderr, "  minSubgroupSize = {}", l->minSubgroupSize);
-        std::println(stderr, "  maxSubgroupSize = {}", l->maxSubgroupSize);
       } else if (next->sType ==
                  wgpu::SType::DawnTexelCopyBufferRowAlignmentLimits) {
         auto* l =
@@ -508,11 +516,11 @@ void emit_device_features(wgpu::Device& device) {
 }
 
 std::expected<void, std::string> emit_device_limits(wgpu::Device& device) {
-  wgpu::SupportedLimits deviceLimits;
+  wgpu::Limits deviceLimits;
   WGPU_TRY(device.GetLimits(&deviceLimits));
   std::println(stderr, "");
   std::println(stderr, "Device Limits:");
-  std::println(stderr, "{}", limits(deviceLimits.limits, "  "));
+  std::println(stderr, "{}", limits(deviceLimits, "  "));
   return {};
 }
 

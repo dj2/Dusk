@@ -21,6 +21,9 @@
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wshadow-field-in-constructor"
 #pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
+
+#define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>          // IWYU pragma: export
 #include <webgpu/webgpu_glfw.h>  // IWYU pragma: export
+
 #pragma clang diagnostic pop
