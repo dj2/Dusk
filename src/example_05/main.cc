@@ -176,7 +176,7 @@ int main() {
       .usage = wgpu::TextureUsage::RenderAttachment,
       .width = kWidth,
       .height = kHeight,
-      .presentMode = wgpu::PresentMode::Mailbox,
+      .presentMode = wgpu::PresentMode::Fifo,
   };
   surface.Configure(&config);
 
