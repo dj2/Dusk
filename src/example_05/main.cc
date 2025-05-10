@@ -144,13 +144,15 @@ int main() {
   auto surface = wgpu::glfw::CreateSurfaceForWindow(instance, window);
 
   // Get Adapter
-  wgpu::RequestAdapterOptions adapter_opts{
-      .powerPreference = wgpu::PowerPreference::HighPerformance,
-      .compatibleSurface = surface,
-  };
   wgpu::Adapter adapter{};
-  instance.RequestAdapter(&adapter_opts, wgpu::CallbackMode::AllowSpontaneous,
-                          dusk::cb::adapter_request, &adapter);
+  {
+    wgpu::RequestAdapterOptions adapter_opts{
+        .powerPreference = wgpu::PowerPreference::HighPerformance,
+        .compatibleSurface = surface,
+    };
+    instance.RequestAdapter(&adapter_opts, wgpu::CallbackMode::AllowSpontaneous,
+                            dusk::cb::adapter_request, &adapter);
+  }
 
   // Get device
   wgpu::DeviceDescriptor deviceDesc{};
@@ -382,6 +384,11 @@ int main() {
     device.GetQueue().Submit(1, &commands);
     surface.Present();
   }
+
+  vertexBuffer.Destroy();
+  surface.Unconfigure();
+  surface = nullptr;
+  device.Destroy();
 
   glfwDestroyWindow(window);
   glfwTerminate();
