@@ -76,6 +76,50 @@ std::string to_str(wgpu::PowerPreference pref);
 /// @returns the string representation
 std::string to_str(const wgpu::AdapterInfo& info);
 
+/// Creates a textual version of the subgroup matrix component type
+///
+/// @param type the type to convert
+/// @returns the string representation
+std::string to_str(wgpu::SubgroupMatrixComponentType type);
+
+/// Creates a textual representation of the D3D adapter properties
+///
+/// @param props the properties
+/// @returns the string representation
+std::string to_str(wgpu::AdapterPropertiesD3D* props);
+
+/// Creates a textual representation of the VK adapter properties
+///
+/// @param props the properties
+/// @returns the string representation
+std::string to_str(wgpu::AdapterPropertiesVk* props);
+
+/// Creates a textual representation of the Subgroups adapter properties
+///
+/// @param props the properties
+/// @returns the string representation
+std::string to_str(wgpu::AdapterPropertiesSubgroups* props);
+
+/// Creates a textual representation of the subgroup matrix configuration
+/// adapter properties
+///
+/// @param props the properties
+/// @returns the string representation
+std::string to_str(wgpu::AdapterPropertiesSubgroupMatrixConfigs* props);
+
+/// Creates a textual representation of the memmory heaps adapter properties
+///
+/// @param props the properties
+/// @returns the string representation
+std::string to_str(wgpu::AdapterPropertiesMemoryHeaps* props);
+
+/// Creates a textual representation of the dawn power preference adapter
+/// properties
+///
+/// @param props the props
+/// @returns the string representation
+std::string to_str(wgpu::DawnAdapterPropertiesPowerPreference* props);
+
 /// Creates a textual version of the limits
 ///
 /// @param limits the limits to convert

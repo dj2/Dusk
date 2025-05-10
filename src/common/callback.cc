@@ -36,6 +36,11 @@ void adapter_request(wgpu::RequestAdapterStatus status,
 void device_lost([[maybe_unused]] const wgpu::Device& device,
                  wgpu::DeviceLostReason reason,
                  struct wgpu::StringView message) {
+  if (message == std::string_view(
+                     "A valid external Instance reference no longer exists.")) {
+    return;
+  }
+
   std::print(stderr, "device lost: {}", dusk::log::to_str(reason));
   if (message.length > 0) {
     std::print(stderr, ": {}", std::string_view(message));

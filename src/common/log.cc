@@ -24,6 +24,7 @@
 #pragma clang diagnostic pop
 
 #include "src/common/expected.h"
+#include "src/common/wgpu.h"
 
 namespace dusk::log {
 namespace {
@@ -93,9 +94,80 @@ std::string to_str(wgpu::PowerPreference pref) {
   return s.str();
 }
 
-std::string to_str(const wgpu::AdapterInfo& info) {
-  assert(info.nextInChain == nullptr);
+std::string to_str(wgpu::SubgroupMatrixComponentType type) {
+  std::stringstream s;
+  s << type;
+  return s.str();
+}
 
+std::string to_str(wgpu::AdapterPropertiesD3D* props) {
+  std::stringstream out;
+  std::println(out, "  AdapterPropertiesD3D");
+  std::println(out, "  ====================");
+  std::println(out, "  ShaderModel: {}", props->shaderModel);
+  return out.str();
+}
+
+std::string to_str(wgpu::AdapterPropertiesVk* props) {
+  std::stringstream out;
+  std::println(out, "  AdapterPropertiesVK");
+  std::println(out, "  ===================");
+  std::println(out, "  Driver version: {}", props->driverVersion);
+  return out.str();
+}
+
+std::string to_str(wgpu::AdapterPropertiesSubgroups* props) {
+  std::stringstream out;
+  std::println(out, "  AdapterPropertiesSubgroups");
+  std::println(out, "  ==========================");
+  std::println(out, "  SubgroupMinSize: {}", props->subgroupMinSize);
+  std::println(out, "  SubgroupMaxSize: {}", props->subgroupMaxSize);
+  return out.str();
+}
+
+std::string to_str(wgpu::AdapterPropertiesSubgroupMatrixConfigs* props) {
+  std::stringstream out;
+
+  std::println(out, "  AdapterPropertiesSubgroupMatrixConfig");
+  std::println(out, "  =====================================");
+  for (size_t i = 0; i < props->configCount; ++i) {
+    const wgpu::SubgroupMatrixConfig& cfg = props->configs[i];
+
+    if (i > 0) {
+      std::println("");
+    }
+
+    std::println(out, "  ComponentType: {}", to_str(cfg.componentType));
+    std::println(out, "  ResultComponentType: {}",
+                 to_str(cfg.resultComponentType));
+    std::println(out, "  M: {}, N: {}, K: {}", cfg.M, cfg.N, cfg.K);
+  }
+  return out.str();
+}
+
+std::string to_str(wgpu::AdapterPropertiesMemoryHeaps* props) {
+  std::stringstream out;
+  std::println(out, "  AdapterPropertiesMemroyHeaps");
+  std::println(out, "  ============================");
+
+  std::println(out, "  Heap count: {}", props->heapCount);
+  if (props->heapInfo) {
+    std::println(out, "  Heap size: {}", props->heapInfo->size);
+    std::println(out, "  Heap properties: {}",
+                 to_str(props->heapInfo->properties));
+  }
+  return out.str();
+}
+
+std::string to_str(wgpu::DawnAdapterPropertiesPowerPreference* props) {
+  std::stringstream out;
+  std::println(out, "  DawnAdapterPropertiesPowerPreference");
+  std::println(out, "  ====================================");
+  std::println(out, "  Power preference: {}", to_str(props->powerPreference));
+  return out.str();
+}
+
+std::string to_str(const wgpu::AdapterInfo& info) {
   std::stringstream out;
   std::println(out, "Adapter Info");
   std::println(out, "  Vendor: {}", std::string_view(info.vendor));
@@ -109,40 +181,55 @@ std::string to_str(const wgpu::AdapterInfo& info) {
   std::println(out, "  Subgroup size: min: {}, max {}", info.subgroupMinSize,
                info.subgroupMaxSize);
 
-  {
-    wgpu::ChainedStructOut* next = info.nextInChain;
-    while (next != nullptr) {
-      if (next->sType == wgpu::SType::AdapterPropertiesD3D) {
-        auto* l = static_cast<wgpu::AdapterPropertiesD3D*>(next);
-        std::println(out, "  ShaderModel = {}", l->shaderModel);
-      } else if (next->sType == wgpu::SType::AdapterPropertiesSubgroups) {
-        auto* l = static_cast<wgpu::AdapterPropertiesSubgroups*>(next);
-        std::println(out, "  SubgroupMinSize = {}", l->subgroupMinSize);
-        std::println(out, "  SubgroupMaxSize = {}", l->subgroupMaxSize);
-      } else if (next->sType == wgpu::SType::AdapterPropertiesVk) {
-        auto* l = static_cast<wgpu::AdapterPropertiesVk*>(next);
-        std::println(out, "  Driver version: {}", l->driverVersion);
-      } else if (next->sType ==
-                 wgpu::SType::DawnAdapterPropertiesPowerPreference) {
-        auto* l =
-            static_cast<wgpu::DawnAdapterPropertiesPowerPreference*>(next);
-        std::println(out, "  Power preference: {}", to_str(l->powerPreference));
-      } else if (next->sType == wgpu::SType::AdapterPropertiesMemoryHeaps) {
-        auto* l = static_cast<wgpu::AdapterPropertiesMemoryHeaps*>(next);
-        std::println(out, "  Heap count: {}", l->heapCount);
-        if (l->heapInfo) {
-          std::println(out, "  Heap size: {}", l->heapInfo->size);
-          std::println(out, "  Heap properties: {}",
-                       to_str(l->heapInfo->properties));
-        }
+  wgpu::ChainedStructOut* next = info.nextInChain;
+  while (next != nullptr) {
+    std::println(out, "");
 
-      } else {
+    switch (next->sType) {
+      case wgpu::SType::AdapterPropertiesD3D:
+        std::print(out, "{}",
+                   to_str(static_cast<wgpu::AdapterPropertiesD3D*>(next)));
+        break;
+
+      case wgpu::SType::AdapterPropertiesVk:
+        std::print(out, "{}",
+                   to_str(static_cast<wgpu::AdapterPropertiesVk*>(next)));
+        break;
+
+      case wgpu::SType::AdapterPropertiesSubgroups:
+        std::print(
+            out, "{}",
+            to_str(static_cast<wgpu::AdapterPropertiesSubgroups*>(next)));
+        break;
+
+      case wgpu::SType::AdapterPropertiesSubgroupMatrixConfigs:
+        std::print(
+            out, "{}",
+            to_str(static_cast<wgpu::AdapterPropertiesSubgroupMatrixConfigs*>(
+                next)));
+        break;
+
+      case wgpu::SType::AdapterPropertiesMemoryHeaps:
+        std::print(
+            out, "{}",
+            to_str(static_cast<wgpu::AdapterPropertiesMemoryHeaps*>(next)));
+        break;
+
+      case wgpu::SType::DawnAdapterPropertiesPowerPreference:
+        std::print(
+            out, "{}",
+            to_str(static_cast<wgpu::DawnAdapterPropertiesPowerPreference*>(
+                next)));
+        break;
+
+      default:
         std::println(stderr, "Unknown stype: {}",
                      static_cast<uint32_t>(next->sType));
-      }
-      next = next->nextInChain;
+        break;
     }
+    next = next->nextInChain;
   }
+
   return out.str();
 }
 
@@ -221,16 +308,56 @@ std::expected<void, std::string> emit_instance_language_features(
   wgpu::SupportedWGSLLanguageFeatures supported_features;
   WGPU_TRY(instance.GetWGSLLanguageFeatures(&supported_features));
 
-  std::println(stderr, "Instance Language Features");
+  std::vector<std::string> names;
+  names.reserve(supported_features.featureCount);
   for (size_t i = 0; i < supported_features.featureCount; ++i) {
-    std::println(stderr, "  {}", to_str(supported_features.features[i]));
+    names.push_back(to_str(supported_features.features[i]));
+  }
+  std::sort(names.begin(), names.end());
+
+  std::println(stderr, "Instance Language Features");
+  for (auto& name : names) {
+    std::println(stderr, "  {}", name);
   }
   std::println(stderr, "");
   return {};
 }
 
 std::expected<void, std::string> emit_adapter_info(wgpu::Adapter& adapter) {
+  wgpu::DawnAdapterPropertiesPowerPreference power_props{};
+  wgpu::AdapterPropertiesVk vk_props{};
+  wgpu::AdapterPropertiesD3D d3d_props{};
+  wgpu::AdapterPropertiesMemoryHeaps memory_props{};
+  wgpu::AdapterPropertiesSubgroups subgroup_props{};
+  wgpu::AdapterPropertiesSubgroupMatrixConfigs subgroup_matrix_props{};
+
   wgpu::AdapterInfo info;
+  info.nextInChain = &power_props;
+
+  wgpu::ChainedStructOut* cur = info.nextInChain;
+
+  auto hook = [&](wgpu::ChainedStructOut* s) {
+    cur->nextInChain = s;
+    cur = cur->nextInChain;
+  };
+
+  if (adapter.HasFeature(wgpu::FeatureName::AdapterPropertiesD3D)) {
+    hook(&d3d_props);
+  }
+  if (adapter.HasFeature(wgpu::FeatureName::AdapterPropertiesVk)) {
+    hook(&vk_props);
+  }
+  if (adapter.HasFeature(wgpu::FeatureName::AdapterPropertiesMemoryHeaps)) {
+    hook(&memory_props);
+  }
+  if (adapter.HasFeature(wgpu::FeatureName::Subgroups)) {
+    hook(&subgroup_props);
+  }
+  if (adapter.HasFeature(
+          wgpu::FeatureName::ChromiumExperimentalSubgroupMatrix)) {
+    hook(&subgroup_matrix_props);
+  }
+
   WGPU_TRY(adapter.GetInfo(&info));
   std::println(stderr, "{}", to_str(info));
   return {};
@@ -240,9 +367,16 @@ void emit_adapter_features(wgpu::Adapter& adapter) {
   wgpu::SupportedFeatures f;
   adapter.GetFeatures(&f);
 
-  std::println(stderr, "Adapter Features:");
+  std::vector<std::string> feature_names;
+  feature_names.reserve(f.featureCount);
   for (size_t i = 0; i < f.featureCount; ++i) {
-    std::println(stderr, "  {}", to_str(f.features[i]));
+    feature_names.push_back(to_str(f.features[i]));
+  }
+  std::sort(feature_names.begin(), feature_names.end());
+
+  std::println(stderr, "Adapter Features:");
+  for (auto& name : feature_names) {
+    std::println(stderr, "  {}", name);
   }
 }
 
@@ -287,10 +421,16 @@ std::expected<void, std::string> emit(wgpu::Adapter& adapter) {
 void emit_device_features(wgpu::Device& device) {
   wgpu::SupportedFeatures f;
   device.GetFeatures(&f);
-  std::println(stderr, "Device Extensions:");
 
+  std::vector<std::string> names;
+  names.reserve(f.featureCount);
   for (size_t i = 0; i < f.featureCount; ++i) {
-    std::println(stderr, "  {}", to_str(f.features[i]));
+    names.push_back(to_str(f.features[i]));
+  }
+
+  std::println(stderr, "Device Extensions:");
+  for (auto& name : names) {
+    std::println(stderr, "  {}", name);
   }
 }
 
