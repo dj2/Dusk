@@ -82,15 +82,13 @@ constexpr uint32_t kPositionByteOffset = 0;
 constexpr uint32_t kUVByteOffset = 4 * sizeof(float);
 constexpr uint32_t kCubeDataStride = 6;
 
-// 32 is the maximum we can use here without going over the max binding size
-// of a uniform buffer which is 65,536
-constexpr uint32_t x_count = 32;
-constexpr uint32_t y_count = 32;
-constexpr uint32_t num_instances = x_count * y_count;
+constexpr uint32_t kNumInstances = 1024 * 1024;
 
 constexpr const char* kShader = R"(
 struct Uniforms {
-  mvp : array<mat4x4f, {{NUM_INSTANCES}}>,
+  pv : mat4x4f,
+  num_instances: u32,
+  frame: f32,
 }
 @binding(0) @group(0) var<uniform> uniforms : Uniforms;
 
@@ -106,9 +104,37 @@ struct VertexOutput {
   @location(1) frag_colour: vec4f,
 }
 
+const step = 2.f;
+const amplitude = (3.f / 2.f);
+
 @vertex
 fn vs_main(in: VertexInput) -> VertexOutput {
-  let vert_pos = uniforms.mvp[in.instance_idx] * in.pos;
+  // Assume the grid is always square
+  let per_side = u32(sqrt(f32(uniforms.num_instances)));
+  let half_side = (f32(per_side) / 2.f) + .5;
+
+  let frame_step = uniforms.frame / 64;
+
+  // Find our position in the grid based on which instance we're emitting and the
+  // number of cubes per side.
+  let x = in.instance_idx / per_side;
+  let y = in.instance_idx % per_side;
+
+  let x_pos = step * (f32(x) - half_side);
+  let y_pos = (sin((f32(x) / 1.75) + frame_step) +
+               cos((f32(y) / 1.75) + frame_step)) * amplitude;
+  let z_pos = step * (f32(y) - half_side);
+  
+  // The WGSL matrix constructor is column major. So each group of 4 numbers is a column,
+  // so, to set the translation information into the 4th column, we have to put it into
+  // what looks like the 4th row.
+  let model = mat4x4f(1, 0, 0, 0,
+                      0, 1, 0, 0,
+                      0, 0, 1, 0,
+                      x_pos, y_pos, z_pos, 1);
+
+
+  let vert_pos = uniforms.pv * model * in.pos;
   let frag_colour = 0.5 * (in.pos + vec4(1));
   return VertexOutput(vert_pos, in.uv, frag_colour);
 }
@@ -118,6 +144,13 @@ fn fs_main(in : VertexOutput) -> @location(0) vec4f {
   return in.frag_colour;
 }
 )";
+
+struct Uniforms {
+  dusk::Mat4 projView;
+  uint32_t numInstances;
+  float frame;
+  std::array<uint8_t, 8> padding_{};
+};
 
 }  // namespace
 
@@ -182,14 +215,8 @@ int main() {
       cube_data.size() * sizeof(float), wgpu::BufferUsage::Vertex);
 
   // Shaders
-  auto shader_data = std::string(kShader);
-  auto key = std::string("{{NUM_INSTANCES}}");
-  size_t pos = shader_data.find(key);
-  assert(pos != std::string::npos);
-  shader_data.replace(pos, key.size(), std::to_string(num_instances));
-
   auto shader = dusk::webgpu::create_shader_module(device, "Main Shader Module",
-                                                   shader_data);
+                                                   std::string(kShader));
 
   // Pipeline creation
   std::array<wgpu::VertexAttribute, 2> vertAttributes{
@@ -262,11 +289,15 @@ int main() {
       wgpu::TextureFormat::Depth24Plus, wgpu::TextureUsage::RenderAttachment);
 
   // Setup Uniforms
-  constexpr uint32_t matrix_element_count = 4 * 4;  // 4x4 matrix
-  constexpr uint32_t matrix_byte_size = sizeof(float) * matrix_element_count;
-  constexpr uint64_t uniformBufferSize = matrix_byte_size * num_instances;
+  constexpr uint64_t uniformBufferSize = sizeof(Uniforms);
   auto uniformBuffer = dusk::webgpu::create_buffer(
       device, "Uniform buffer", uniformBufferSize, wgpu::BufferUsage::Uniform);
+
+  Uniforms uniforms{
+      .projView = dusk::Mat4::Identity(),
+      .numInstances = kNumInstances,
+      .frame = 0.f,
+  };
 
   std::array<wgpu::BindGroupEntry, 1> bindEntries{
       wgpu::BindGroupEntry{
@@ -285,50 +316,18 @@ int main() {
   auto uniformBindGroup = device.CreateBindGroup(&bindGroupDesc);
 
   auto aspect = float(kWidth) / float(kHeight);
-  auto fov_y_radians = float((2.f * std::numbers::pi_v<float>) / 5.f);
+  auto fov_y_radians = float((45.f * (std::numbers::pi_v<float>) / 180.f));
   auto projectionMatrix =
-      dusk::Mat4::Perspective(fov_y_radians, aspect, 1.f, 100.f);
+      dusk::Mat4::Perspective(fov_y_radians, aspect, 1.f, 1000.f);
 
-  std::array<dusk::Mat4, num_instances> model_matrices;
-  std::array<dusk::Mat4, num_instances> mvp_matrices;
+  auto startPos = dusk::Mat4::Translation(dusk::Vec3(0, -75, -650));
 
-  constexpr float step = 4.f;
+  auto update_view_matrix = [&] {
+    uniforms.frame += 1.f;
+    auto viewMatrix = startPos * dusk::Mat4::Rotation(uniforms.frame / 2048.f,
+                                                      dusk::Vec3(0., 1., 0.));
 
-  float half_x = (x_count / 2.f) + .5f;
-  float half_y = (y_count / 2.f) + .5f;
-
-  // Initialize matrix data for each cube instance
-  for (size_t x = 0; x < x_count; x++) {
-    for (size_t y = 0; y < y_count; y++) {
-      model_matrices[(x * y_count) + y] = dusk::Mat4::Translation(dusk::Vec3(
-          step * (float(x) - half_x), step * (float(y) - half_y), 0));
-    }
-  }
-
-  auto viewMatrix = dusk::Mat4::Translation(dusk::Vec3(0, 3, -92));
-  viewMatrix = viewMatrix * dusk::Mat4::Rotation(30, dusk::Vec3(1., 0., 0.));
-
-  auto projViewMatrix = projectionMatrix * viewMatrix;
-
-  auto frame = 1.f;
-  auto update_transformation_matrices = [&]() {
-    auto frame_step = frame / 512.f;
-    frame += 1.f;
-
-    for (size_t x = 0; x < x_count; x++) {
-      for (size_t y = 0; y < y_count; y++) {
-        auto rotMatrix = dusk::Mat4::Rotation(
-            1, dusk::Vec3(sinf((float(x) + 2.5f) * frame_step),
-                          cosf((float(y) + 2.5f) * frame_step), 0));
-
-        auto movZ = dusk::Mat4::Translation(
-            dusk::Vec3(0, 0, 3.f * sinf((float(x) + 2.5f) * frame_step)));
-
-        auto idx = (x * y_count) + y;
-        mvp_matrices[idx] =
-            projViewMatrix * (model_matrices[idx] * movZ) * rotMatrix;
-      }
-    }
+    uniforms.projView = projectionMatrix * viewMatrix;
   };
 
   wgpu::RenderPassColorAttachment attachment{
@@ -356,8 +355,8 @@ int main() {
     glfwPollEvents();
     device.Tick();
 
-    update_transformation_matrices();
-    device.GetQueue().WriteBuffer(uniformBuffer, 0, mvp_matrices.data(),
+    update_view_matrix();
+    device.GetQueue().WriteBuffer(uniformBuffer, 0, &uniforms,
                                   uniformBufferSize);
 
     auto encoder = device.CreateCommandEncoder();
@@ -376,7 +375,7 @@ int main() {
       pass.SetPipeline(pipeline);
       pass.SetBindGroup(0, uniformBindGroup);
       pass.SetVertexBuffer(0, vertexBuffer);
-      pass.Draw(kVertexCount, num_instances);
+      pass.Draw(kVertexCount, kNumInstances);
       pass.End();
     }
     auto commands = encoder.Finish();
