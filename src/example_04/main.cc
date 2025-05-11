@@ -278,7 +278,7 @@ int main() {
     frame += 1.f;
 
     auto rotMatrix = dusk::Mat4::Rotation(
-        1, dusk::Vec3(sinf(frame / 32.f), cosf(frame / 32.f), 0));
+        1, dusk::Vec3(sinf(frame / 256.f), cosf(frame / 256.f), 0));
     return projViewMatrix * rotMatrix;
   };
 
