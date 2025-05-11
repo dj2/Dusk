@@ -105,22 +105,29 @@ struct VertexOutput {
 }
 
 const step = 2.f;
+const amplitude = (3.f / 2.f);
 
 @vertex
 fn vs_main(in: VertexInput) -> VertexOutput {
+  // Assume the grid is always square
   let per_side = u32(sqrt(f32(uniforms.num_instances)));
   let half_side = (f32(per_side) / 2.f) + .5;
 
   let frame_step = uniforms.frame / 64;
-  let amplitude = 6.f;
 
-  let y = in.instance_idx % per_side;
+  // Find our position in the grid based on which instance we're emitting and the
+  // number of cubes per side.
   let x = in.instance_idx / per_side;
+  let y = in.instance_idx % per_side;
 
   let x_pos = step * (f32(x) - half_side);
-  let y_pos = ((sin((f32(x) / 1.5) + frame_step) + cos((f32(y) / 1.5) + frame_step)) / 4) * amplitude;
+  let y_pos = (sin((f32(x) / 1.75) + frame_step) +
+               cos((f32(y) / 1.75) + frame_step)) * amplitude;
   let z_pos = step * (f32(y) - half_side);
   
+  // The WGSL matrix constructor is column major. So each group of 4 numbers is a column,
+  // so, to set the translation information into the 4th column, we have to put it into
+  // what looks like the 4th row.
   let model = mat4x4f(1, 0, 0, 0,
                       0, 1, 0, 0,
                       0, 0, 1, 0,
