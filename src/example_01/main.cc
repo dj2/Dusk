@@ -20,10 +20,12 @@
 #include "src/common/wgpu.h"
 
 int main() {
-  wgpu::InstanceCapabilities caps{};
-  WGPU_TRY_EXIT(wgpu::GetInstanceCapabilities(&caps));
-  dusk::log::emit(caps);
-
+  // Get the default instance.
+  //
+  // Alternatively, you can use an InstanceDescriptor to request an instance
+  // with specific features (see InstanceFeatureName), minimum limits
+  // (InstanceLimits), or another feature based on a chained struct (see "Can be
+  // chained in InstanceDescriptor" in webgpu_cpp.h header).
   auto instance = wgpu::CreateInstance();
   dusk::valid_or_exit(dusk::log::emit_instance_language_features(instance));
 
