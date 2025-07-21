@@ -117,15 +117,6 @@ std::string to_str(wgpu::AdapterPropertiesVk* props) {
   return out.str();
 }
 
-std::string to_str(wgpu::AdapterPropertiesSubgroups* props) {
-  std::stringstream out;
-  std::println(out, "  AdapterPropertiesSubgroups");
-  std::println(out, "  ==========================");
-  std::println(out, "  SubgroupMinSize: {}", props->subgroupMinSize);
-  std::println(out, "  SubgroupMaxSize: {}", props->subgroupMaxSize);
-  return out.str();
-}
-
 std::string to_str(wgpu::AdapterPropertiesSubgroupMatrixConfigs* props) {
   std::stringstream out;
 
@@ -195,12 +186,6 @@ std::string to_str(const wgpu::AdapterInfo& info) {
       case wgpu::SType::AdapterPropertiesVk:
         std::print(out, "{}",
                    to_str(static_cast<wgpu::AdapterPropertiesVk*>(next)));
-        break;
-
-      case wgpu::SType::AdapterPropertiesSubgroups:
-        std::print(
-            out, "{}",
-            to_str(static_cast<wgpu::AdapterPropertiesSubgroups*>(next)));
         break;
 
       case wgpu::SType::AdapterPropertiesSubgroupMatrixConfigs:
@@ -292,22 +277,16 @@ std::string limits(const wgpu::Limits& limits, std::string_view indent) {
                format_number(limits.maxComputeWorkgroupSizeZ));
   std::println(out, "{}maxComputeWorkgroupsPerDimension: {}", indent,
                format_number(limits.maxComputeWorkgroupsPerDimension));
+  std::println(out, "{}maxImmediateSize: {}", indent,
+               format_number(limits.maxImmediateSize));
 
   return out.str();
-}
-
-void emit(wgpu::InstanceCapabilities& caps) {
-  std::println(stderr, "Instance Capabilities:");
-  std::println(stderr, "  timedWaitAnyEnable: {}",
-               caps.timedWaitAnyEnable ? "true" : "false'");
-  std::println(stderr, "  timedWaitAnyMaxCount: {}", caps.timedWaitAnyMaxCount);
-  std::println(stderr, "");
 }
 
 std::expected<void, std::string> emit_instance_language_features(
     wgpu::Instance& instance) {
   wgpu::SupportedWGSLLanguageFeatures supported_features;
-  WGPU_TRY(instance.GetWGSLLanguageFeatures(&supported_features));
+  instance.GetWGSLLanguageFeatures(&supported_features);
 
   std::vector<std::string> names;
   names.reserve(supported_features.featureCount);
@@ -329,7 +308,6 @@ std::expected<void, std::string> emit_adapter_info(wgpu::Adapter& adapter) {
   wgpu::AdapterPropertiesVk vk_props{};
   wgpu::AdapterPropertiesD3D d3d_props{};
   wgpu::AdapterPropertiesMemoryHeaps memory_props{};
-  wgpu::AdapterPropertiesSubgroups subgroup_props{};
   wgpu::AdapterPropertiesSubgroupMatrixConfigs subgroup_matrix_props{};
 
   wgpu::AdapterInfo info;
@@ -350,9 +328,6 @@ std::expected<void, std::string> emit_adapter_info(wgpu::Adapter& adapter) {
   }
   if (adapter.HasFeature(wgpu::FeatureName::AdapterPropertiesMemoryHeaps)) {
     hook(&memory_props);
-  }
-  if (adapter.HasFeature(wgpu::FeatureName::Subgroups)) {
-    hook(&subgroup_props);
   }
   if (adapter.HasFeature(
           wgpu::FeatureName::ChromiumExperimentalSubgroupMatrix)) {
@@ -392,12 +367,7 @@ std::expected<void, std::string> emit_adapter_limits(wgpu::Adapter& adapter) {
   {
     wgpu::ChainedStructOut* next = adapter_limits.nextInChain;
     while (next != nullptr) {
-      if (next->sType == wgpu::SType::DawnExperimentalImmediateDataLimits) {
-        auto* l = static_cast<wgpu::DawnExperimentalImmediateDataLimits*>(next);
-        std::println(stderr, "  maxImmediateDataRangeByteSize = {}",
-                     l->maxImmediateDataRangeByteSize);
-      } else if (next->sType ==
-                 wgpu::SType::DawnTexelCopyBufferRowAlignmentLimits) {
+      if (next->sType == wgpu::SType::DawnTexelCopyBufferRowAlignmentLimits) {
         auto* l =
             static_cast<wgpu::DawnTexelCopyBufferRowAlignmentLimits*>(next);
         std::println(stderr, "  minTexelCopyBufferRowAlignment = {}",

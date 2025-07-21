@@ -94,12 +94,6 @@ std::string to_str(wgpu::AdapterPropertiesD3D* props);
 /// @returns the string representation
 std::string to_str(wgpu::AdapterPropertiesVk* props);
 
-/// Creates a textual representation of the Subgroups adapter properties
-///
-/// @param props the properties
-/// @returns the string representation
-std::string to_str(wgpu::AdapterPropertiesSubgroups* props);
-
 /// Creates a textual representation of the subgroup matrix configuration
 /// adapter properties
 ///
@@ -126,11 +120,6 @@ std::string to_str(wgpu::DawnAdapterPropertiesPowerPreference* props);
 /// @param indent the amount to indent each limit string
 /// @returns the string representation
 std::string limits(const wgpu::Limits& limits, std::string_view indent);
-
-/// Emits the instance capability information
-///
-/// @param caps the instance capabilities
-void emit(wgpu::InstanceCapabilities& caps);
 
 /// Emits the language features known to the instance
 ///
