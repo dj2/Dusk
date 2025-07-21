@@ -14,6 +14,7 @@
 
 #include "src/common/log.h"
 
+#include <algorithm>
 #include <cassert>
 #include <print>
 #include <sstream>
