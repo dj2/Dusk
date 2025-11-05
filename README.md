@@ -7,7 +7,7 @@ This is not an officially supported Google product.
 
 ## Requirements
  * `git`
- * `cmake`
+ * `cmake` 3.22 or later
  * `ninja`
  * `clang` or `gcc`
 

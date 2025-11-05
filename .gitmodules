@@ -28,3 +28,6 @@
 [submodule "third_party/vulkan-utility-libraries"]
 	path = third_party/vulkan-utility-libraries
 	url = https://github.com/KhronosGroup/Vulkan-Utility-Libraries
+[submodule "third_party/webgpu-headers"]
+	path = third_party/webgpu-headers
+	url = https://github.com/webgpu-native/webgpu-headers
